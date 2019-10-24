@@ -32,7 +32,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/zac" component={Zac} />
           <Route path="/nic" component={Nic} />
-	  <Route path="/linford" component={Linford} />
+          <Route path="/linford" component={Linford} />
             {/* add a route with your name here */}
           <Route path="/himadri" component={Himadri} />
           <Route path="/ally" component={Ally} />
