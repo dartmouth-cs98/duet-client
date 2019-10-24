@@ -2,6 +2,9 @@
 
 We're using React Slingshot as a starterpack. Read about it [here](https://github.com/coryhouse/react-slingshot) or look in `docs/FAQ.md`.
 
+## Live Site
+cs98-duet.surge.sh
+
 ## Getting Setup on your Local Machine
 1. **Initial Machine Setup**
 
