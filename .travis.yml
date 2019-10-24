@@ -10,6 +10,7 @@ after_success:
   # - yarn run test:cover:CI
 
 deploy:
+  skip_cleanup: true
   provider: surge
   login: SURGE_LOGIN
   token: SURGE_TOKEN
