@@ -7,6 +7,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import Zac from "./Zac";
 import Nic from "./Nic";
+import Linford from "./Linford";
 import Himadri from "./Himadri";
 import Ally from "./Ally";
 
@@ -22,6 +23,7 @@ class App extends React.Component {
           <NavLink exact to="/" >Home</NavLink>
           <NavLink to="/zac" >Zac</NavLink>
           <NavLink to="/nic" >Nic</NavLink>
+          <NavLink to="linford" >Linford</NavLink>
           {/* add a NavLink with your name: i.e. <NavLink exact to="/bob" >Bob</NavLink>*/}
           <NavLink to="/himadri" >Himadri</NavLink>
           <NavLink to="/ally" >Ally</NavLink>
@@ -30,6 +32,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/zac" component={Zac} />
           <Route path="/nic" component={Nic} />
+	  <Route path="/linford" component={Linford} />
             {/* add a route with your name here */}
           <Route path="/himadri" component={Himadri} />
           <Route path="/ally" component={Ally} />
