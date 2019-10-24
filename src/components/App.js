@@ -18,6 +18,7 @@ class App extends React.Component {
         <div className="App-NavBar">
           <NavLink exact to="/" >Home</NavLink>
           <NavLink to="/zac" >Zac</NavLink>
+          <NavLink to="/nic" >Nic</NavLink>
           {/* add a NavLink with your name: i.e. <NavLink exact to="/bob" >Bob</NavLink>*/}
         </div>
         <Switch>
