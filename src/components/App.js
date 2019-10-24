@@ -7,6 +7,8 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import Zac from "./Zac";
 import Nic from "./Nic";
+import Himadri from "./Himadri";
+import Ally from "./Ally";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -21,12 +23,16 @@ class App extends React.Component {
           <NavLink to="/zac" >Zac</NavLink>
           <NavLink to="/nic" >Nic</NavLink>
           {/* add a NavLink with your name: i.e. <NavLink exact to="/bob" >Bob</NavLink>*/}
+          <NavLink to="/himadri" >Himadri</NavLink>
+          <NavLink to="/ally" >Ally</NavLink>
         </div>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/zac" component={Zac} />
           <Route path="/nic" component={Nic} />
             {/* add a route with your name here */}
+          <Route path="/himadri" component={Himadri} />
+          <Route path="/ally" component={Ally} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

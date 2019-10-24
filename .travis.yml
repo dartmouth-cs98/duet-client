@@ -8,4 +8,7 @@ node_js:
 after_success:
   # Send coverage data to coveralls.
   # - yarn run test:cover:CI
-  surge --domain cs98-duet.surge.sh
+  
+deploy:
+  provider: surge
+  domain: cs98-duet.surge.sh
