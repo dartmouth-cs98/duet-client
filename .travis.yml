@@ -9,7 +9,3 @@ after_success:
   # Send coverage data to coveralls.
   # - yarn run test:cover:CI
   surge --domain cs98-duet.surge.sh
-
-env:
-  - SURGE_LOGIN: @zacgottschall
-  - SURGE_TOKEN: 675fbb1c16436315819207770083429b
