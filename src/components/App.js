@@ -24,6 +24,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/zac" component={Zac} />
+          <Route path="/nic" component={Nic} />
             {/* add a route with your name here */}
           <Route component={NotFoundPage} />
         </Switch>
