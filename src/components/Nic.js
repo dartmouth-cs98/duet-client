@@ -3,7 +3,7 @@ import React from 'react';
 const Nic = () => {
   return (
     <div>
-        <h1>I&apos;m Nic. hello it is i, nicolas</h1>
+        <h1>I&apos;m Nic. hello it is i, nicolas bergen</h1>
     </div>
   );
 };
