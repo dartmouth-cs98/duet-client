@@ -5,7 +5,7 @@ const Ally = () => {
     <div>
     <h1>I&apos;m Ally. heyyyyyy</h1>
     </div>
-	    );
+    );
 };
 
 export default Ally;
