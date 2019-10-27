@@ -5,12 +5,7 @@ import NotFoundPage from "./NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
-import Zac from "./Zac";
-import Nic from "./Nic";
-import Linford from "./Linford";
-import Himadri from "./Himadri";
-import Ally from "./Ally";
-import Emma from "./Emma";
+import FetchSpotifyTest from "./FetchSpotifyTest";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -22,25 +17,14 @@ class App extends React.Component {
       <div>
         <div className="App-NavBar">
           <NavLink exact to="/" >Home</NavLink>
-          <NavLink to="/zac" >Zac</NavLink>
-          <NavLink to="/nic" >Nic</NavLink>
-          <NavLink to="linford" >Linford</NavLink>
-          {/* add a NavLink with your name: i.e. <NavLink exact to="/bob" >Bob</NavLink>*/}
-          <NavLink to="/himadri" >Himadri</NavLink>
-          <NavLink to="/ally" >Ally</NavLink>
-          <NavLink to="/emma">Emma</NavLink>
+          {/* <NavLink to="/otherRoute" >Other Route</NavLink> */}
         </div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/zac" component={Zac} />
-          <Route path="/nic" component={Nic} />
-          <Route path="/linford" component={Linford} />
-            {/* add a route with your name here */}
-          <Route path="/himadri" component={Himadri} />
-          <Route path="/ally" component={Ally} />
-          <Route path="/emma" component={Emma} />
+          {/* <Route path="/otherRoute" component={otherComponent} /> */}
           <Route component={NotFoundPage} />
         </Switch>
+        <FetchSpotifyTest/>
       </div>
     );
   }
