@@ -10,7 +10,7 @@ const HomePage = () => {
     <div>
       {!loggedIn && 
           <div>
-              <a  href={AUTH_SERVER_URL}> Login to Spotify </a>
+              <a href={AUTH_SERVER_URL}> Login to Spotify </a>
           </div>
       }
       {loggedIn &&
