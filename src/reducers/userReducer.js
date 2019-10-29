@@ -1,14 +1,28 @@
 import * as types from "../constants/actionTypes";
 import initialState from './initialState';
 
-function userReducer(state = initialState.user, action) {
-  if (action.type === types.FETCH_USER_TOP_TRACKS) {
-    return {...state, topTracks: action.tracks}
+const userReducer = (state = initialState.user, action) => {
+  switch(action.type) {
+    case types.FETCH_USER_TOP_TRACKS:
+      return {...state, topTracks: action.tracks}
+    case types.FETCH_USER_TOP_ARTISTS:
+      return {...state, topArtists: action.artists}
+    case types.FETCH_USER_PROFILE: {
+      const { 
+        id,
+        country, 
+        display_name, 
+        email, 
+        followers, 
+        images, 
+        product, 
+        uri
+      } = action.profile;
+      return {...state, id, country, display_name, email, followers, images, product, uri}
+    }
+    default:
+      return state
   }
-  if (action.type === types.FETCH_USER_TOP_ARTISTS) {
-    return {...state, topArtists: action.artists}
-  }
-  return state;
-}
+};
 
 export default userReducer;
