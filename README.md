@@ -38,7 +38,7 @@ If you already have Visual Studio installed:
 Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop.
 The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
 
-**Don't forget to run npm install**
+## **Don't forget to run npm install**
 
 ## Explanation of File Structure
 1. **Actions**
