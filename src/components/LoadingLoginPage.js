@@ -15,7 +15,7 @@ const getHashParams = () => {
     return hashParams;
 }
 
-const LoginPage = ({ history }) => {
+const LoadingLoginPage = ({ history }) => {
     const params = getHashParams();
     const token = params.access_token;
     const dispatch = useDispatch();
@@ -27,8 +27,8 @@ const LoginPage = ({ history }) => {
     );
 };
 
-LoginPage.propTypes = {
+LoadingLoginPage.propTypes = {
     history: ReactRouterPropTypes.history.isRequired,
 }
 
-export default LoginPage;
+export default LoadingLoginPage;

@@ -5,7 +5,7 @@ import NotFoundPage from "./NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
-import LoginPage from './LoginPage';
+import LoadingLoginPage from './LoadingLoginPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -21,7 +21,7 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route exact path="/" component={Home} />
-           <Route path="/login" component={LoginPage} />
+          <Route path="/login" component={LoadingLoginPage} />
           {/* <Route path="/otherRoute" component={otherComponent} /> */}
           <Route component={NotFoundPage} />
         </Switch>

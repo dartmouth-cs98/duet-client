@@ -36,3 +36,4 @@ export const fetchUserData = (token, time_range) => {
         })
     }
 }
+

@@ -1,5 +1,112 @@
+@font-face {
+    font-family: 'Moon';
+    src: //url('moon.woff') format('woff2'),
+         url('moon2.0-regular-webfont.woff') format('woff'),
+         url('Moon 2.0.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+ 
+ 
+ body {
+    margin: 0;
+    font-family: Moon;
+    font-weight: normal;
+    line-height: 24px;
+    letter-spacing: 0.095em;
+}
+
+
 .App-NavBar {
     display: flex;
     justify-content: space-around;
     width: 250px;
+}
+
+.LoginPage {
+    overflow: hidden;
+    position: relative;
+    background: #9BD6DC;
+    height: 100vh;
+    width: 100vw;
+    //font-family: 'moon';
+
+    .Main {
+        width: 100vw;
+        height: 100vh;
+        transform: translateY(-50px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+
+        .DuetLogo {
+            fill: #212034;
+            width: 250px;
+            height: 153px;
+            transform: translateY(-72px);
+            
+        }
+
+        .LoginPage-LoginButton {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row-reverse;
+            //align-items: center;
+
+            background: #9BD6DC;
+            width: 303px;
+            height: 59px;
+            transform: translateY(-28px);
+
+            border: 2px solid #212034;
+            box-sizing: border-box;
+            border-radius: 251px;
+
+            h1 {
+                font-family: Moon;
+                color: #212034;
+                text-align: center;
+                font-weight: normal;
+                font-size: 21px;
+                line-height: 24px;
+                letter-spacing: 0.095em;
+            }
+
+            .SpotifyLogo {
+                color: #212034;
+                stroke: #212034;
+                width: 100;
+                height: 100;
+            }
+        }
+
+        h1 {
+            width: 474px;
+            height: 72px;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 24px;
+            text-align: center;
+            line-height: 24px;
+            letter-spacing: 0.095em;
+            }
+    }
+    
+    .Squigs {
+        position:absolute;
+        width: 1508.39px;
+        height: 1045.74px;
+        top: -70px;
+        left: 50vw;
+        transform: translateX(-53.5%);
+    }
+
+    .AboutDuet {
+        
+    }
+
 }
