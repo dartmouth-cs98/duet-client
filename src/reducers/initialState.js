@@ -12,6 +12,11 @@ export default {
         images: null,
         product: null,
         uri: null,
+        taste: {},
+        avg_taste: {},
+        decade_counts: {},
+        genre_counts: {},
+        popularities: [],
     },
     auth: {
         token: null,
