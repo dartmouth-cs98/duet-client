@@ -20,6 +20,14 @@ const userReducer = (state = initialState.user, action) => {
       } = action.profile;
       return {...state, id, country, display_name, email, followers, images, product, uri}
     }
+    case types.FETCH_USER_TASTE:
+      return { ...state, taste: action.taste, avg_taste: action.avg_taste }
+    case types.FETCH_TOP_GENRES:
+      return { ...state, genre_counts: action.genre_counts }
+    case types.FETCH_TOP_DECADES:
+      return { ...state, decade_counts: action.decade_counts}
+    case types.FETCH_TRACK_POPULARITIES:
+      return { ...state, popularities: action.popularities }
     default:
       return state
   }
