@@ -109,7 +109,8 @@ export const getGenreCount = (artists) => {
             }
         })
     })
-    let genreCounts = {}
-    genreToCount.forEach((count, genre) =>  genreCounts = {...genreCounts, [genre]: count })
+    let genreCounts = [];
+    genreToCount.forEach((count, genre) =>  genreCounts = [...genreCounts, { genre,  count } ])
+    genreCounts.sort((a, b) => b.count - a.count);
     return genreCounts;
 }

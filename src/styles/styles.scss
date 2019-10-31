@@ -3,3 +3,21 @@
     justify-content: space-around;
     width: 250px;
 }
+
+.GenreChart {
+    h1 {
+        color: #E5277B;
+    }
+
+    .GenreChart-Blocks {
+        display: flex;
+    }
+
+    .GenreChart-Block {
+        border-radius: 6px; 
+    }
+
+    h2 {
+        font-size: 13px;
+    }
+}
