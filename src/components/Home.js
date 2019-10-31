@@ -1,6 +1,7 @@
 import React from 'react';
 import { AUTH_SERVER_URL } from '../constants/authServer';
 import { useSelector } from 'react-redux';
+import SpiderGraph from './SpiderGraph';
 
 const HomePage = () => {
   const { topArtists, topTracks, display_name } = useSelector((state) => state.user);
@@ -29,6 +30,7 @@ const HomePage = () => {
             </div>  
         </div>     
       }
+      {loggedIn && <SpiderGraph/>}
     </div>
   );
 };
