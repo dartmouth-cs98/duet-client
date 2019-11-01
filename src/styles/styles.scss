@@ -48,7 +48,6 @@
             width: 250px;
             height: 153px;
             transform: translateY(-72px);
-            
         }
 
         .LoginPage-LoginButton {
@@ -125,5 +124,60 @@
 
     h2 {
         font-size: 13px;
+    }
+}
+
+.Dashboard {
+    background-color: #212034;
+}
+
+.Sidebar {
+    background-color: #212034;
+    height: 100vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right-color: #FEEBDB;
+    border-right-width: 3px;
+    border-right-style: solid;
+
+    #duetlogo {
+        width: 10vw;
+        height: auto;
+    }
+
+    .DuetLogo {
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    .ButtonGroup {
+        width:100%;
+    }
+
+    .ButtonGroup:last-child {
+        border-bottom: solid 3px #FEEBDB;
+    }
+
+    .SidebarButton:hover {
+        background-color: #171724;
+    }
+
+    .active {
+        background-color: #171724;
+
+        img {
+            fill: #E5277B;
+        }
+    }
+
+    .SidebarButton {
+        width: 100%;
+        height: 80px;
+        border-top: solid 3px #FEEBDB;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
