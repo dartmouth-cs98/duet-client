@@ -32,22 +32,6 @@ const HomePage = () => {
             {/* <div className="AboutDuet"></div> */}
         </div>
       }
-      {/* {loggedIn &&
-        <div>
-            <div> 
-              <h1>User:</h1>
-              <h2>{display_name}</h2>
-            </div>
-            <div>
-                <h1>Top Tracks</h1>
-                {topTracks.map(track => <div key={track.id}>{track.name}</div>)}
-            </div>
-            <div>
-                <h1>Top Artists</h1>
-                {topArtists.map(artist => <div key={artist.id}>{artist.name}</div>)}
-            </div>  
-        </div>     
-      } */}
       {loggedIn && <SpiderGraph/>}
       {loggedIn && 
         <GenreChart
