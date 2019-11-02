@@ -10,7 +10,7 @@ export default {
         avg_taste: null,
         decade: null,
         genre_counts: null,
-        popularity: null,
+        trendex: null,
     },
     auth: {
         token: null,

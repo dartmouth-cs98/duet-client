@@ -18,13 +18,13 @@ const GenreChart = ({ height, width: chartWidth }) => {
                     className="GenreChart-Block" 
                     style={{ backgroundColor: color, height, width: chartWidth * (genre.count / genreTotal) }}
                 />
-            <h2 style={{ color }}>{genre.label}</h2>
+            <h4 style={{ color }}>{genre.label}</h4>
             </div>
         )
     }
     return (
         <div className="GenreChart">
-            <h1>Your Top Genres</h1>
+            <h2>Your Top Genres</h2>
             <div className="GenreChart-Blocks">
                 {genres.map((genre, i) => renderGenreBlock(genre, i))}
             </div>

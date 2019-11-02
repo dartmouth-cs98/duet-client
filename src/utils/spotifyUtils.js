@@ -40,7 +40,7 @@ export const getTrackInfos = (tracks) => {
     decadeToCount.forEach((count, decade) =>  decadeCounts = [...decadeCounts, { decade, count }]);
     decadeCounts.sort((a, b) => b.count - a.count);
     const { decade } = decadeCounts[0];
-    const popularity = popularitySum / popularityCount;
+    const popularity = (popularitySum / popularityCount).toFixed(1);
 
     return { trackIds, popularity, decade }
 }

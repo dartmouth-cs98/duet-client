@@ -106,27 +106,106 @@
     }
 }
 
-.GenreChart {
-    h1 {
-        color: #E5277B;
-    }
-
-    .GenreChart-Blocks {
-        display: flex;
-    }
-
-    .GenreChart-Block {
-        border-radius: 6px; 
-    }
-
-    h2 {
-        font-size: 10px;
-        margin: 0;
-    }
-}
-
 .Dashboard {
     background-color: #212034;
+    display: flex;
+
+    .Dashboard-content {
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+        width: 100%;
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #F78D91;
+            margin: 0 0 30px 0;
+        }
+
+        p {
+            color:  #FEEBDB;
+            margin: 0;
+        }
+
+        #lightPink {
+            color: #FEEBDB;
+            transform: translate(3px, -24px);
+        }
+        #neonPink {
+            color: #e5277B;
+        }
+
+        .YourMusic {
+            margin-bottom: 20px;
+        }
+
+        .TrendexAndEra {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                margin: 0 40px 0 0;
+                font-size: 105px;
+            }
+
+            .Trendex {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+
+                .Trendex-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+            .Era {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+
+                .Era-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+
+        .GenreChart {
+            h1 {
+                color: #E5277B;
+                margin-bottom: 5px;
+            }
+        
+            .GenreChart-Blocks {
+                display: flex;
+            }
+        
+            .GenreChart-Block {
+                border-radius: 6px; 
+            }
+        
+            h4 {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+
+        .SpiderGraphAndHistogram {
+            width: 100%;
+            height: 215px;
+            background-color: #FEEBDB;
+        }
+    }
 }
 
 .Sidebar {

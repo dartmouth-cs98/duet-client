@@ -19,7 +19,7 @@ export const fetchUserData = (token, time_range) => {
             const { trackIds, popularity, decade } = getTrackInfos(response.items) ;
 
             dispatch({ type: types.FETCH_DECADE, decade: decade});
-            dispatch({ type: types.FETCH_POPULARITY, popularity });
+            dispatch({ type: types.FETCH_TRENDEX, trendex: popularity });
 
             spotifyApi.getAudioFeaturesForTracks(trackIds)
             .then((tracks) => {
