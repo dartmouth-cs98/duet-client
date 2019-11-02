@@ -150,13 +150,19 @@
     .DuetLogo {
         margin-top: 10px;
         margin-bottom: 25px;
+        transition: all .2s;
+    }
+
+    .DuetLogo:hover {
+        transform: scale(1.02);
     }
 
     .ButtonGroup {
-        width:100%;
+        width: 100%;
+        margin-bottom: auto;
     }
 
-    .ButtonGroup:last-child {
+    .SidebarButton:last-child {
         border-bottom: solid 3px #FEEBDB;
     }
 
@@ -166,18 +172,91 @@
 
     .active {
         background-color: #171724;
-
-        img {
-            fill: #E5277B;
-        }
     }
 
     .SidebarButton {
         width: 100%;
         height: 80px;
+        stroke: #FEEBDB;
         border-top: solid 3px #FEEBDB;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .LinkGroup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+
+        a {
+            color: #FEEBDB;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #E5277B;
+        }
+    }
+
+    .FriendMenu, .GroupMenu {
+        background-color: #171724;
+        width: 100%;
+        color: #FEEBDB;
+        margin: auto;
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 5px;;
+
+        .border {
+            border-top: solid 1px #FEEBDB;
+            width: 85%;
+            margin: auto;
+        }
+
+        p {
+            font-weight: bolder;
+            margin: 0;
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        .MenuLinkGroup {
+            display: flex;
+            flex-direction: column;
+            margin-left: 28px;
+
+            a {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            a:hover {
+                color: #E5277B;
+                cursor: pointer;
+            }
+        }
+
+        .addButton {
+            color: #E5277B;
+            margin-left: 20px;
+        }
+
+        .addButton:hover {
+            color: #9BD6DC;
+            cursor: pointer;
+        }
+
+        .activeFriend, .activeGroup {
+            font-weight: bold;
+            font-style: italic;
+        }
+    }
+
+    .GroupMenu {
+        border-bottom: solid 3px #FEEBDB;
+        padding-bottom: 5px;
     }
 }
