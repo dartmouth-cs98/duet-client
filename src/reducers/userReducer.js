@@ -18,8 +18,8 @@ const userReducer = (state = initialState.user, action) => {
       return { ...state, genre_counts: action.genre_counts }
     case types.FETCH_DECADE:
       return { ...state, decade: action.decade}
-    case types.FETCH_POPULARITY:
-      return { ...state, popularity: action.popularity }
+    case types.FETCH_TRENDEX:
+      return { ...state, trendex: action.trendex }
     default:
       return state
   }
