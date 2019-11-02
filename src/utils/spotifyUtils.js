@@ -15,13 +15,16 @@ export const getCurrentUserProfile = (token) => {
 
 export const getTrackInfos = (tracks) => {
     let trackIds = []; 
-    let popularities = [];
+    let popularitySum = 0;
+    let popularityCount = 0;
     let decadeToCount = new Map();
+
     tracks.forEach((track) => {
         trackIds = [...trackIds, track.id];
 
-        popularities = [...popularities, track.popularity];
-       
+        popularitySum += track.popularity;
+        popularityCount++;
+
         const year = parseInt(track.album.release_date.substring(0, 4));
         const decade = year - year % 10;
 
@@ -33,10 +36,13 @@ export const getTrackInfos = (tracks) => {
         }      
     })
 
-    let decadeCounts = {};
-    decadeToCount.forEach((count, decade) =>  decadeCounts = {...decadeCounts, [decade]: count });
+    let decadeCounts = [];
+    decadeToCount.forEach((count, decade) =>  decadeCounts = [...decadeCounts, { decade, count }]);
+    decadeCounts.sort((a, b) => b.count - a.count);
+    const { decade } = decadeCounts[0];
+    const popularity = popularitySum / popularityCount;
 
-    return { trackIds, popularities, decadeCounts }
+    return { trackIds, popularity, decade }
 }
 
 export const getTaste = (audioFeatures) => {
@@ -100,6 +106,7 @@ export const getGenreCount = (artists) => {
     let genreToCount = new Map();
     artists.forEach((artist) => {
         const genres = artist.genres;
+
         genres.forEach((genre) => {
             if (genreToCount.has(genre)) {
                 genreToCount.set(genre, genreToCount.get(genre) + 1);
@@ -109,8 +116,14 @@ export const getGenreCount = (artists) => {
             }
         })
     })
+    const topNumber = 6;
+
     let genreCounts = [];
-    genreToCount.forEach((count, genre) =>  genreCounts = [...genreCounts, { genre,  count } ])
+    genreToCount.forEach((count, genre) =>  {
+        genreCounts = [...genreCounts, { label: genre, count } ]
+    })
+
     genreCounts.sort((a, b) => b.count - a.count);
-    return genreCounts;
+
+    return genreCounts.slice(0, topNumber);
 }

@@ -16,12 +16,10 @@ export const fetchUserData = (token, time_range) => {
         
         spotifyApi.getMyTopTracks({limit: 50, time_range})
         .then((response) => {
-            dispatch({ type: types.FETCH_USER_TOP_TRACKS, tracks: response.items });
+            const { trackIds, popularity, decade } = getTrackInfos(response.items) ;
 
-            const { trackIds, popularities, decadeCounts } = getTrackInfos(response.items) ;
-
-            dispatch({ type: types.FETCH_TOP_DECADES, decade_counts: decadeCounts});
-            dispatch({ type: types.FETCH_TRACK_POPULARITIES, popularities });
+            dispatch({ type: types.FETCH_DECADE, decade: decade});
+            dispatch({ type: types.FETCH_POPULARITY, popularity });
 
             spotifyApi.getAudioFeaturesForTracks(trackIds)
             .then((tracks) => {
@@ -35,7 +33,6 @@ export const fetchUserData = (token, time_range) => {
 
         spotifyApi.getMyTopArtists({limit: 50, time_range})
         .then((response) => {
-            dispatch({ type: types.FETCH_USER_TOP_ARTISTS, artists: response.items });
             dispatch({ type: types.FETCH_TOP_GENRES, genre_counts: getGenreCount(response.items) })
         })
     }

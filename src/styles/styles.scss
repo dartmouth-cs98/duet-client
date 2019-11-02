@@ -15,6 +15,7 @@
     font-weight: normal;
     line-height: 24px;
     letter-spacing: 0.095em;
+    background-color: black;
 }
 
 
@@ -103,10 +104,6 @@
         left: 50vw;
         transform: translateX(-53.5%);
     }
-
-    // .AboutDuet {
-        
-    // }
 }
 
 .GenreChart {
@@ -123,7 +120,8 @@
     }
 
     h2 {
-        font-size: 13px;
+        font-size: 10px;
+        margin: 0;
     }
 }
 

@@ -7,6 +7,7 @@ import GenreChart from './GenreChart';
 const HomePage = () => {
   // const { topArtists, topTracks, display_name } = useSelector((state) => state.user);
   const { loggedIn } = useSelector((state) => state.auth);
+  
 
   const handleLoginButtonClick = () => {
     window.open(AUTH_SERVER_URL, "_self");
@@ -36,14 +37,15 @@ const HomePage = () => {
       {loggedIn && 
         <GenreChart
           height={55} 
-          width={1082} 
-          genres={[
-            { label: "Pop Rock", percentage: .4 }, 
-            { label: "Showtunes", percentage: .2 }, 
-            { label: "Indie-Pop", percentage: .15 }, 
-            { label: "Rock", percentage: .15 }, 
-            { label: "Rap", percentage: .1 }
-          ]}/>
+          width={1000} 
+          />
+          // genres={[
+          //   { label: "Pop Rock", percentage: .4 }, 
+          //   { label: "Showtunes", percentage: .2 }, 
+          //   { label: "Indie-Pop", percentage: .15 }, 
+          //   { label: "Rock", percentage: .15 }, 
+          //   { label: "Rap", percentage: .1 }
+          // ]}/>
       }
       
     </div>
