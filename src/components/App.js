@@ -7,6 +7,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import LoadingLoginPage from './LoadingLoginPage';
 import Dashboard from './Dashboard';
+import Survey from './Survey';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoadingLoginPage} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/survey" component={Survey} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
