@@ -26,7 +26,7 @@ const SpiderGraph = () => {
         danceability: avg_taste ? "Danceability: " + avg_taste.danceability.toFixed(2):  "",
         energy: avg_taste ? "Energy: " + avg_taste.energy.toFixed(2):  "",
         speechiness: avg_taste ? "Speechiness: " + avg_taste.speechiness.toFixed(2):  "",
-        acousticness: avg_taste ? "Danceability: " + avg_taste.acousticness.toFixed(2):  "",
+        acousticness: avg_taste ? "Acousticness: " + avg_taste.acousticness.toFixed(2):  "",
         instrumentalness: avg_taste ? "Instrumentalness: " + avg_taste.instrumentalness.toFixed(2):  "",
         liveness: avg_taste ? "Liveness: " + avg_taste.liveness.toFixed(2):  "",
         valence: avg_taste ? "Valence: " + avg_taste.valence.toFixed(2):  "",
