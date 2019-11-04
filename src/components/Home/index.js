@@ -22,7 +22,31 @@ const Home = () => {
             </button>
             <h1>welcome to duet- we offer things and stuff that make the music pictures with friendos</h1>
         </div>   
-        {/* <div className="AboutDuet"></div> */}
+        <div className="AboutDuet">
+          <div className="WhatIsDuet">
+            <h1>what is duet?</h1>
+            <h2>duet is an international multi-media conglomorate destined to subjugate the masses via greater intelligence</h2>
+          </div>
+          <div className="HowDuet">
+            <h1>how does duet work</h1>
+            <h2>duet uses state of the art ai intelligences to counter-induct large music data sets using the Moussorgski spin analysis algorithm- which causes the main aftermath from the voynichian reaction between a magnifying quadritangent and the colloidal dataspace synthesized when running a quantum transistor under a calibrated ruby-quartz vibrasion with an Eigen value of an inverted negatively nanofactored mobius strip (this is all of course reverberated through an epsilon-concave modulated space)</h2>
+          </div>
+          <div className="WhatDoDuet">
+            <h1>what does duet do?</h1>
+            <h2>duet takes your spotify data to validate all of your concerns that you are not nearly as special as you thought you were kevin</h2>
+          </div>
+          <div className="WhyDuet">
+            <h1>why use duet?</h1>
+            <h2>duet will guide you.
+                duet will save you.
+                duet is love.
+                duet is god. </h2>
+          </div>
+          <div className="WhoDuet">
+            <h1>who are we?</h1>
+            <h2>duet was created by a team of dartmouth undergraduates and Xorgolth- the 2nd prince of the 8th circle of hell</h2>
+          </div>
+        </div>
       </div>
     </div>
   );

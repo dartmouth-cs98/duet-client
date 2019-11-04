@@ -15,7 +15,9 @@
     font-weight: normal;
     line-height: 24px;
     letter-spacing: 0.095em;
+    background-color: black;
 }
+
 
 .App-NavBar {
     display: flex;
@@ -24,7 +26,7 @@
 }
 
 .LoginPage {
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
     background: #9BD6DC;
     height: 100vh;
@@ -46,19 +48,20 @@
             fill: #212034;
             width: 250px;
             height: 153px;
-            transform: translateY(-72px);
+            margin: 20px;
         }
 
         .LoginPage-LoginButton {
             display: flex;
             justify-content: space-evenly;
             flex-direction: row-reverse;
+            margin: 20px;
+            transition-duration: 1.2s;
             //align-items: center;
 
             background: #9BD6DC;
             width: 303px;
             height: 59px;
-            transform: translateY(-28px);
 
             border: 2px solid #212034;
             box-sizing: border-box;
@@ -67,7 +70,9 @@
             h1 {
                 font-family: Moon;
                 color: #212034;
-                text-align: center;
+                margin: 0px;
+                height: 25px;
+                width: 250px;
                 font-weight: normal;
                 font-size: 21px;
                 line-height: 24px;
@@ -85,6 +90,7 @@
         h1 {
             width: 474px;
             height: 72px;
+            margin: 20px;
             font-size: 20px;
             font-weight: normal;
             line-height: 24px;
@@ -92,8 +98,14 @@
             line-height: 24px;
             letter-spacing: 0.095em;
             }
+
     }
-    
+
+    .LoginPage-LoginButton:hover {
+        background: rgb(167, 229, 236);
+        transform: scale(1.05);
+    }
+
     .Squigs {
         position:absolute;
         width: 1508.39px;
@@ -101,6 +113,106 @@
         top: -70px;
         left: 50vw;
         transform: translateX(-53.5%);
+    }
+
+    .AboutDuet {
+        width: 100vw;
+        height: 100vh;
+        background: #212034;
+        position: absolute;
+        
+        color: #9BD6DC;
+        text-align: center;
+
+        .WhatIsDuet {
+            position: absolute;
+            width: 371px;
+            height: 160px;
+            left: 717px;
+            top: 115px;
+
+            h1 {
+                font-size: 26px;
+                line-height: 31px;
+            }
+
+            h2 {
+                font-size: 18px;
+                line-height: 22px;
+            }
+        }
+
+        .HowDuet {
+            position: absolute;
+            width: 371px;
+            height: 284px;
+            left: 144px;
+            top: 218px;
+
+            h1 {
+                font-size: 26px;
+                line-height: 31px;
+            }
+
+            h2 {
+                font-size: 13px;
+                line-height: 16px;
+            }
+        }
+
+        .WhatDoDuet {
+            position: absolute;
+            width: 371px;
+            height: 159px;
+            left: 990px;
+            top: 275px;
+
+            h1 {
+                font-size: 26px;
+                line-height: 31px;
+            }
+
+            h2 {
+                font-size: 18px;
+                line-height: 22px;
+            }
+        }
+
+        .WhyDuet {
+            position: absolute;
+            width: 371px;
+            height: 285px;
+            left: 373px;
+            top: 467px;      
+            
+            h1 {
+                font-size: 26px;
+                line-height: 31px;
+            }
+
+            h2 {
+                font-size: 15px;
+                line-height: 18px;
+            }
+        }
+
+        .WhoDuet {
+            position: absolute;
+            width: 371px;
+            height: 94px;
+            left: 830px;
+            top: 634px;
+
+            h1 {
+                font-size: 26px;
+                line-height: 31px;
+            }
+
+            h2 {
+                font-size: 15px;
+                line-height: 18px;
+            }
+        }
     }
 }
 
