@@ -17,7 +17,6 @@
     letter-spacing: 0.095em;
 }
 
-
 .App-NavBar {
     display: flex;
     justify-content: space-around;
@@ -48,7 +47,6 @@
             width: 250px;
             height: 153px;
             transform: translateY(-72px);
-            
         }
 
         .LoginPage-LoginButton {
@@ -104,9 +102,240 @@
         left: 50vw;
         transform: translateX(-53.5%);
     }
+}
 
-    .AboutDuet {
+.Dashboard {
+    background-color: #212034;
+    display: flex;
+
+    .Dashboard-content {
+        display: flex;
+        flex-direction: column;
+        margin: 50px;
+        width: 100%;
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #F78D91;
+            margin: 0 0 30px 0;
+        }
+
+        p {
+            color:  #FEEBDB;
+            margin: 0;
+        }
+
+        #lightPink {
+            color: #FEEBDB;
+            transform: translate(3px, -24px);
+        }
+        #neonPink {
+            color: #e5277B;
+        }
+
+        .YourMusic {
+            margin-bottom: 20px;
+        }
+
+        .TrendexAndEra {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+                margin: 0 40px 0 0;
+                font-size: 105px;
+            }
+
+            .Trendex {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+
+                .Trendex-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+            .Era {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+
+                .Era-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+
+        .GenreChart {
+            h1 {
+                color: #E5277B;
+                margin-bottom: 5px;
+            }
         
+            .GenreChart-Blocks {
+                display: flex;
+            }
+        
+            .GenreChart-Block {
+                border-radius: 6px; 
+            }
+        
+            h4 {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+
+        .SpiderGraphAndHistogram {
+            width: 100%;
+            height: 215px;
+            background-color: #FEEBDB;
+        }
+    }
+}
+
+.Sidebar {
+    background-color: #212034;
+    height: 100vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right-color: #FEEBDB;
+    border-right-width: 3px;
+    border-right-style: solid;
+
+    #duetlogo {
+        width: 10vw;
+        height: auto;
     }
 
+    .DuetLogo {
+        margin-top: 10px;
+        margin-bottom: 25px;
+        transition: all .2s;
+    }
+
+    .DuetLogo:hover {
+        transform: scale(1.02);
+    }
+
+    .ButtonGroup {
+        width: 100%;
+        margin-bottom: auto;
+    }
+
+    .SidebarButton:last-child {
+        border-bottom: solid 3px #FEEBDB;
+    }
+
+    .SidebarButton:hover {
+        background-color: #171724;
+    }
+
+    .active {
+        background-color: #171724;
+    }
+
+    .SidebarButton {
+        width: 100%;
+        height: 80px;
+        stroke: #FEEBDB;
+        border-top: solid 3px #FEEBDB;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .LinkGroup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+
+        a {
+            color: #FEEBDB;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #E5277B;
+        }
+    }
+
+    .FriendMenu, .GroupMenu {
+        background-color: #171724;
+        width: 100%;
+        color: #FEEBDB;
+        margin: auto;
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 5px;;
+
+        .border {
+            border-top: solid 1px #FEEBDB;
+            width: 85%;
+            margin: auto;
+        }
+
+        p {
+            font-weight: bolder;
+            margin: 0;
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        .MenuLinkGroup {
+            display: flex;
+            flex-direction: column;
+            margin-left: 28px;
+
+            a {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            a:hover {
+                color: #E5277B;
+                cursor: pointer;
+            }
+        }
+
+        .addButton {
+            color: #E5277B;
+            margin-left: 20px;
+        }
+
+        .addButton:hover {
+            color: #9BD6DC;
+            cursor: pointer;
+        }
+
+        .activeFriend, .activeGroup {
+            font-weight: bold;
+            font-style: italic;
+        }
+    }
+
+    .GroupMenu {
+        border-bottom: solid 3px #FEEBDB;
+        padding-bottom: 5px;
+    }
 }
+
+
+// SURVEY STYLING
+
