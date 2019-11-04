@@ -129,16 +129,9 @@
             margin: 0;
         }
 
-        #lightPink {
-            color: #FEEBDB;
-            transform: translate(3px, -24px);
-        }
-        #neonPink {
-            color: #e5277B;
-        }
-
         .YourMusic {
-            margin-bottom: 20px;
+            text-shadow: -3px 0px #e5277B;
+            color: #FEEBDB;
         }
 
         .TrendexAndEra {
@@ -147,9 +140,11 @@
             display: flex;
             justify-content: space-between;
 
-            h3 {
-                margin: 0 40px 0 0;
+            .TrendexAndEra-number {
                 font-size: 105px;
+                margin-right: 40px;
+                text-shadow: -3px 0px #e5277B;
+                color: #FEEBDB;
             }
 
             .Trendex {
@@ -200,8 +195,39 @@
 
         .SpiderGraphAndHistogram {
             width: 100%;
-            height: 215px;
-            background-color: #FEEBDB;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            .SpiderGraph {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .SpiderGraph-label {
+                font-family: inherit;
+                text-anchor: middle;
+                text-shadow: -3px 0px #e5277B;
+                fill: #FEEBDB;
+            }
+
+            .SpiderGraph-shape {
+                fill: #F78D91;
+                stroke: #F78D91;
+                fill-opacity: .3;
+            }
+
+            .Histogram {
+                display: flex;
+                flex-direction: column;
+
+                .HistogramPlaceholder {
+                    width: 500px;
+                    height: 300px;
+                    background-color: white;
+                }
+            }
         }
     }
 }
@@ -335,7 +361,3 @@
         padding-bottom: 5px;
     }
 }
-
-
-// SURVEY STYLING
-

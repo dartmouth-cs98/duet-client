@@ -34,14 +34,21 @@ const SpiderGraph = () => {
     };
 
     return (
-        <div>
-            <RadarChart
-                captions={captions}
-                data={data}
-                size={300}
-                scales={3}
-            />
-        </div>
+        <RadarChart
+            captions={captions}
+            data={data}
+            size={450}
+            scales={3}
+            options={
+                { 
+                    setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size + 200}`, 
+                    captionProps: () => ({ className: 'SpiderGraph-label', fontSize: 20 }),
+                    scaleProps: () => ({ className: 'SpiderGraph-scale', fill: '#212034', stroke: '#FEEBDB' }),
+                    axisProps: () => ({ className: 'SpiderGraph-axis', stroke: '#FEEBDB' }),
+                    shapeProps: () => ({ className: 'SpiderGraph-shape' }),
+                }
+            }
+        />
     );
 }
  

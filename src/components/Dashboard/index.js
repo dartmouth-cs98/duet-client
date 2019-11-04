@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar'
-import GenreChart from '../GenreChart';
+import GenreChart from './GenreChart';
+import SpiderGraph from './SpiderGraph';
 import { useSelector } from 'react-redux';
 
 const Dashboard = () => { 
@@ -11,18 +12,12 @@ const Dashboard = () => {
     <div className="Dashboard">
       <Sidebar/>
       <div className="Dashboard-content"> 
-        <div className="YourMusic">
-          <h1 id="neonPink">Your Music</h1>
-          <h1 id="lightPink">Your Music</h1>
-        </div>
+        <h1 className="YourMusic">Your Music</h1>
         <div className="TrendexAndEra">
           <div className="Trendex">
             <h2>How trendy is your taste</h2>
             <div className="Trendex-info">
-              <div className="Trendex-number">
-                <h3 id="neonPink">{`${trendex}`}</h3>
-                <h3 id="lightPink">{`${trendex}`}</h3>
-              </div>
+              <h3 className="TrendexAndEra-number">{`${trendex}`}</h3>
               <p>Your trendex is calculated based on the popularity of your music 
                 with 100 being the most popular. The popularity of tracks are calculated 
                 by algorithm and is based, in the most part, on the total number 
@@ -36,8 +31,7 @@ const Dashboard = () => {
             <h2>Born in the wrong era?</h2>
               <div className="Era-info">
                   <div className="Era-decade">
-                    <h3 id="neonPink">{`${truncatedDecade}s`}</h3>
-                    <h3 id="lightPink">{`${truncatedDecade}s`}</h3>
+                  <h3 className="TrendexAndEra-number">{`${truncatedDecade}s`}</h3>
                   </div>
                   <p>According to your music taste, you were born in {decade}. Lorem ipsum dolor sit amet, 
                   consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -49,9 +43,21 @@ const Dashboard = () => {
           </div>
         </div>
         <GenreChart
-          height={55} 
-          width={1000} 
-        />
+            height={55} 
+            width={1000} 
+          />
+        <div className="SpiderGraphAndHistogram">
+          <div className="SpiderGraph">
+            <h2>What does your music taste look like?</h2>
+            <SpiderGraph/>
+          </div>
+          <div className="Histogram">
+            <h2>How ________ is your music?</h2>
+            <div className="HistogramPlaceholder">
+              histogram placeholder
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
