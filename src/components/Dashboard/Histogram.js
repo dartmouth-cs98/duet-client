@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Dropdown from '../Dropdown';
 import {
-    Histogram, BarSeries, XAxis, YAxis,
+    Histogram, BarSeries, XAxis 
   } from '@data-ui/histogram';
 
 const TasteHistogram = () => {
@@ -45,8 +45,7 @@ const TasteHistogram = () => {
                     fill="#F78D91"
                     rawData={taste[currAttribute.key]}
                 />
-                <XAxis label={currAttribute.label}/>
-                <YAxis />
+                <XAxis/>
                 </Histogram>
             </div>
         </div>

@@ -251,13 +251,21 @@
                 .Histogram-graph {
                     position: absolute;
                     margin-top: 40px;
-
+                    g {
+                        stroke: #F78D91;
+                        color: #F78D91;
+                    }
+                    line {
+                        stroke: #FEEBDB;
+                        color: #FEEBDB;
+                    }
                     rect {
                         rx: 5px;
                         ry: 5px;
                     }
                 }
                 
+
                 h6 {
                     background-color: #FEEBDB;
                     border: 1px solid #F78D91; 
