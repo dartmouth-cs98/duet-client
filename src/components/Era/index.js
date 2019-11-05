@@ -7,7 +7,6 @@ const Trendex = ({ decade }) => {
     
     return (
         <div className="Era">
-            <h2>Born in the wrong era?</h2>
             <div className="Era-info">
                 <div className="Era-decade">
                 <h3 className="Era-number">{`${truncatedDecade}s`}</h3>

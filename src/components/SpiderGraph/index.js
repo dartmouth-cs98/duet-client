@@ -3,9 +3,9 @@ import React from 'react';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
  
-const SpiderGraph = ( { avg_taste }) => {
+const SpiderGraph = ( { avg_taste, friend_avg_taste }) => {
 
-    const data= [
+    let data = [
         {
             data: {
                 danceability: avg_taste ? avg_taste.danceability : 0,
@@ -17,9 +17,27 @@ const SpiderGraph = ( { avg_taste }) => {
                 valence: avg_taste ? avg_taste.valence: 0,
                 mode: avg_taste ? avg_taste.mode: 0,
             },
-            meta: { color: 'blue' },
+            meta: { color: '#F78D91', stroke: '#F78D91' },
         },
     ]
+
+    if (friend_avg_taste) {
+
+        const friendData = {
+            data: {
+                danceability: friend_avg_taste ? friend_avg_taste.danceability : 0,
+                energy: friend_avg_taste ? friend_avg_taste.energy : 0,
+                speechiness: friend_avg_taste ? friend_avg_taste.speechiness : 0,
+                acousticness: friend_avg_taste ? friend_avg_taste.acousticness : 0,
+                instrumentalness: friend_avg_taste ? friend_avg_taste.instrumentalness: 0,
+                liveness: friend_avg_taste ? friend_avg_taste.liveness: 0,
+                valence: friend_avg_taste ? friend_avg_taste.valence: 0,
+                mode: friend_avg_taste ? friend_avg_taste.mode: 0,
+            },
+            meta: { color: '#E5277B', stroke: '#E5277B' },
+        }
+        data = [ ...data, friendData];
+    }
 
     const captions = {
         danceability: avg_taste ? "Danceability: " + avg_taste.danceability.toFixed(2):  "",

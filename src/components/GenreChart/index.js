@@ -24,7 +24,6 @@ const GenreChart = ({ height, width: chartWidth }) => {
     }
     return (
         <div className="GenreChart">
-            <h2>Your Top Genres</h2>
             <div className="GenreChart-Blocks">
                 {genres.map((genre, i) => renderGenreBlock(genre, i))}
             </div>

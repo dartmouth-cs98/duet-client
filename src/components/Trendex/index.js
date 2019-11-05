@@ -2,10 +2,11 @@
 import React from 'react';
 
 
-const Trendex = ({ trendex }) => {
+const Trendex = ({ trendex, friend }) => {
+    const name = friend ? `${friend}'s` : 'your';
     return (
         <div className="Trendex">
-            <h2>How trendy is your taste</h2>
+            <h2>How trendy is {name} taste?</h2>
             <div className="Trendex-info">
             <h3 className="Trendex-number">{`${trendex}`}</h3>
             <p>Your trendex is calculated based on the popularity of your music 

@@ -20,7 +20,7 @@ const LoadingLoginPage = ({ history }) => {
     const token = params.access_token;
     const dispatch = useDispatch();
     dispatch(fetchUserData(token, "long_term"))
-    history.push('/dashboard');
+    history.push('/dashboard/compare');
     
     return (
         <h1>Logging you in...</h1>

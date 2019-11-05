@@ -1,0 +1,51 @@
+.Compare-content {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    h1 {
+        font-size: 40px;
+        margin: 0;
+    }
+
+    h2 {
+        color: #F78D91;
+        font-size: 24px;
+        margin: 0;
+        padding: 7px;
+    }
+
+    p {
+        color:  #FEEBDB;
+        margin: 0;
+    }
+
+    .Compare-YouAndFriend {
+        text-shadow: -3px 0px #e5277B;
+        color: #FEEBDB;
+    }
+
+    .Compare-Trendexes {
+        display: flex;
+    }
+
+    .Compare-GenreCharts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Compare-Eras {
+        display: flex;
+    }
+
+    .Compare-SpiderGraphAndHistogram {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;     
+    }
+}
