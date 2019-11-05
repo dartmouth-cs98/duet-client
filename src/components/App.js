@@ -16,11 +16,6 @@ import Survey from './Survey';
 const App = () => {
   return (
     <div>
-      {/* <div className="App-NavBar">
-        {/* <NavLink exact to="/" >Home</NavLink> */}
-        {/* <NavLink to="/otherRoute" >Other Route</NavLink> */}
-      {/* </div> */} 
-      
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoadingLoginPage} />
