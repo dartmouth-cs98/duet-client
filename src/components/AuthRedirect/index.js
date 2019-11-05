@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUserData } from '../actions';
+import { fetchUserData } from '../../actions';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 const getHashParams = () => {

@@ -1,0 +1,19 @@
+.GenreChart {
+    h1 {
+        color: #E5277B;
+        margin-bottom: 5px;
+    }
+
+    .GenreChart-Blocks {
+        display: flex;
+    }
+
+    .GenreChart-Block {
+        border-radius: 6px; 
+    }
+
+    h4 {
+        font-size: 12px;
+        margin: 0;
+    }
+}

@@ -1,0 +1,19 @@
+.Era {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+    .Era-number {
+        font-size: 105px;
+        margin-right: 40px;
+        text-shadow: -3px 0px #e5277B;
+        color: #FEEBDB;
+    }
+
+    .Era-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Moon';
+    src: //url('moon.woff') format('woff2'),
+         url('./fonts/moon2.0-regular-webfont.woff') format('woff'),
+         url('./fonts/Moon 2.0.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+ 
+ body {
+    margin: 0;
+    font-family: Moon;
+    font-weight: normal;
+    line-height: 24px;
+    letter-spacing: 0.095em;
+    background-color: black;
+}

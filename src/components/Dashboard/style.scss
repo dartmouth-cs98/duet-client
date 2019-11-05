@@ -1,0 +1,50 @@
+.Dashboard {
+    background-color: #212034;
+    display: flex;
+
+    .Dashboard-content {
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        width: 100%;
+        max-height: 100vh;
+        box-sizing: border-box;
+        overflow-y: auto;
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        h2 {
+            color: #F78D91;
+            font-size: 24px;
+            margin: 0;
+            padding: 7px;
+        }
+
+        p {
+            color:  #FEEBDB;
+            margin: 0;
+        }
+
+        .YourMusic {
+            text-shadow: -3px 0px #e5277B;
+            color: #FEEBDB;
+        }
+
+        .TrendexAndEra {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;    
+        }
+
+        .SpiderGraphAndHistogram {
+            width: 100%;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;     
+        }
+    }
+}

@@ -34,14 +34,6 @@ const Dropdown = ({ currOption, options, onSelect }) => {
             { showDropdown &&
                 <div className="Dropdown-options">
                     {options.map(renderOptions)}
-                    {/* <h6 style={{ color: currKey == 'energy' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('energy')}>Energy</h6>
-                    <h6 style={{ color: currKey == 'danceability' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('danceability')}>Danceability</h6>
-                    <h6 style={{ color: currKey == 'acousticness' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('acousticness')}>Acousticness</h6>
-                    <h6 style={{ color: currKey == 'speechiness' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('speechiness')}>Speechiness</h6>
-                    <h6 style={{ color: currKey == 'instrumentalness' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('instrumentalness')}>Instrumentalness</h6>
-                    <h6 style={{ color: currKey == 'liveness' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('liveness')}>Liveness</h6>
-                    <h6 style={{ color: currKey == 'mode' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('mode')}>Mode</h6>
-                    <h6 style={{ color: currKey == 'valence' ? '#212034' : '#e5277B' }} onClick={() => handleSelect('valence')}>Valence</h6> */}
                 </div>
             }
         </div>
