@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { AUTH_SERVER_URL } from '../../constants/authServer';
 
 const Home = () => {

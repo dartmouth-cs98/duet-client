@@ -1,0 +1,21 @@
+.Dropdown {
+    display: flex;
+    flex-direction: column;
+
+    .Dropdown-button {
+        margin: 0 10px;
+        padding: 0 10px;
+        border: 1px solid #F78D91;
+        border-radius: 6px; 
+        background-color: #212034;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .Dropdown-options {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-4px);
+    }
+}

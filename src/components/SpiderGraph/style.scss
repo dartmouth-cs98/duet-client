@@ -1,0 +1,19 @@
+.SpiderGraph {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .SpiderGraph-label {
+        font-family: inherit;
+        text-anchor: middle;
+        text-shadow: -3px 0px #e5277B;
+        fill: #FEEBDB;
+    }
+
+    .SpiderGraph-shape {
+        fill: #F78D91;
+        stroke: #F78D91;
+        fill-opacity: .3;
+    }
+}  

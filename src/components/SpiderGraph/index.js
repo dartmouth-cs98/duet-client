@@ -1,10 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import RadarChart from 'react-svg-radar-chart';
-import { useSelector } from 'react-redux';
 import 'react-svg-radar-chart/build/css/index.css'
  
-const SpiderGraph = () => {
-    const { avg_taste } = useSelector((state) => state.user);
+const SpiderGraph = ( { avg_taste }) => {
 
     const data= [
         {
@@ -34,7 +33,9 @@ const SpiderGraph = () => {
     };
 
     return (
-        <RadarChart
+        <div className="SpiderGraph">
+            <h2>What does your music taste look like?</h2>
+            <RadarChart
             captions={captions}
             data={data}
             size={450}
@@ -48,7 +49,8 @@ const SpiderGraph = () => {
                     shapeProps: () => ({ className: 'SpiderGraph-shape' }),
                 }
             }
-        />
+            />
+        </div>
     );
 }
  

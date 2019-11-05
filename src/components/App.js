@@ -1,11 +1,11 @@
 /* eslint-disable import/no-named-as-default */
 import { Route, Switch } from "react-router-dom";
-import Home from "./Home";
+import Login from "./Login";
 import NotFoundPage from "./NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
-import LoadingLoginPage from './LoadingLoginPage';
+import AuthRedirect from './AuthRedirect';
 import Dashboard from './Dashboard';
 import Survey from './Survey';
 
@@ -17,8 +17,8 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={LoadingLoginPage} />
+        <Route exact path="/" component={Login} />
+        <Route path="/login" component={AuthRedirect} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/survey" component={Survey} />
         <Route component={NotFoundPage} />

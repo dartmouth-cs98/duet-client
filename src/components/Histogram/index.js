@@ -1,13 +1,12 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import Dropdown from '../Dropdown';
 import {
     Histogram, BarSeries, XAxis 
   } from '@data-ui/histogram';
 
-const TasteHistogram = () => {
+const TasteHistogram = ({ taste }) => {
 
-    const { taste } = useSelector((state) => state.user);
     const [currAttribute, setAttribute] = useState({ key: "energy", label: "energetic" });
 
     const dropdownOptions = [
@@ -23,7 +22,7 @@ const TasteHistogram = () => {
 
     return (
         <div className="Histogram">
-            <div style={{ display: 'flex', justifyContent: 'flex-start', zIndex: 10}} className="Histogram-questionHeader">
+            <div className="Histogram-questionHeader">
                 <h2>How</h2>
                 <Dropdown 
                     currOption={currAttribute}
