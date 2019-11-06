@@ -28,8 +28,8 @@ const Compare = () => {
           </div>
           <h2>Your Top Genres</h2>
           <div className="Compare-GenreCharts">
-            <GenreChart height={55} width={1000} />
-            <GenreChart height={55} width={1000} />
+            <GenreChart height={55}/>
+            <GenreChart height={55}/>
           </div>
           <h2>Were you born in the wrong era?</h2>
           <div className="Compare-Eras">   
@@ -39,7 +39,11 @@ const Compare = () => {
           <div className="Compare-SpiderGraphAndHistogram">
             <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
             <Histogram taste={taste}/>
-          </div>   
+          </div> 
+          <div className="Footer">
+            <div className="DividerLine"/>
+            <div className="FooterText">duet©</div>
+          </div>  
         </div>
         }
       </div>

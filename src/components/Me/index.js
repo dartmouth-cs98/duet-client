@@ -17,16 +17,17 @@ const Me = () => {
           <h1 className="YourMusic">Your Music</h1>
           <div className="TrendexAndEra">
             <Trendex trendex={trendex}/>
-            <div>
-              <h2>Born in the wrong era?</h2>
-              <Era decade={decade}/>
-            </div>  
+            <Era decade={decade}/>
           </div>
           <h2>Your Top Genres</h2>
-          <GenreChart height={55} width={1000} />
+          <GenreChart height={55} />
           <div className="SpiderGraphAndHistogram">
             <SpiderGraph avg_taste={avg_taste} />
             <Histogram taste={taste}/>
+          </div>
+          <div className="Footer">
+            <div className="DividerLine"/>
+            <div className="FooterText">duet©</div>
           </div>
         </div>
         }

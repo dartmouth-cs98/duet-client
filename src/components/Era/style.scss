@@ -5,6 +5,8 @@
 
     .Era-number {
         font-size: 105px;
+        line-height: normal;
+        margin: 0;
         margin-right: 40px;
         text-shadow: -3px 0px #e5277B;
         color: #FEEBDB;
@@ -14,6 +16,10 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+    }
+
+    .EraDescript {
+        margin-top: 10px;
     }
 }
