@@ -1,8 +1,9 @@
 .Compare-content {
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    width: 100%;
+    width: 90%;
+    margin: auto;
+    margin-top: 7vw;
 
     h1 {
         font-size: 40px;
@@ -14,29 +15,59 @@
         font-size: 24px;
         margin: 0;
         padding: 7px;
+        padding-left: 0;
+        margin-bottom: 5px;
+        font-family: 'Raleway', sans-serif;
     }
 
     p {
         color:  #FEEBDB;
         margin: 0;
+        font-size: 13px;
+        line-height: normal;
+        font-family: 'Raleway', sans-serif;
     }
 
     .Compare-YouAndFriend {
-        text-shadow: -3px 0px #e5277B;
+        text-shadow: -2px 0px #e5277B;
         color: #FEEBDB;
+        margin-bottom: 3vw;
     }
 
     .Compare-Trendexes {
         display: flex;
+        justify-content: flex-start;
+        margin-bottom: 6vh;
+
+        .Trendex:first-child {
+            flex-grow: 1;
+        }
+    
+        .Trendex:last-child {
+            margin-left: 3vw;
+           flex-grow: 8;
+        }
     }
 
     .Compare-GenreCharts {
         display: flex;
         flex-direction: column;
+        margin-bottom: 6vh;
+
+        .GenreChart:first-child {
+            margin-top: 2vh;
+            margin-bottom: 3vh;
+        }
     }
 
     .Compare-Eras {
         display: flex;
+        justify-content: space-between;
+        margin-bottom: 5vh;
+
+        h2 {
+            display: none;
+        }
     }
 
     .Compare-SpiderGraphAndHistogram {
@@ -44,5 +75,22 @@
         margin-top: 30px;
         display: flex;
         justify-content: space-between;     
+    }
+
+    .DividerLine {
+        width: 100%;
+        height: 1px;
+        background-color: #FEEBDB;
+    }
+
+    .FooterText {
+        color: #FEEBDB;
+        font-size: 10px;
+    }
+
+    .Footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 }
