@@ -1,8 +1,9 @@
 .Me-content {
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    width: 100%;
+    width: 90%;
+    margin: auto;
+    margin-top: 7vw;
 
     h1 {
         font-size: 40px;
@@ -14,29 +15,60 @@
         font-size: 24px;
         margin: 0;
         padding: 7px;
+        padding-left: 0;
+        margin-bottom: 5px;
+        font-family: 'Raleway', sans-serif;
     }
 
     p {
         color:  #FEEBDB;
         margin: 0;
+        font-size: 13px;
+        line-height: normal;
+        font-family: 'Raleway', sans-serif;
     }
 
     .YourMusic {
-        text-shadow: -3px 0px #e5277B;
+        text-shadow: -2px 0px #e5277B;
         color: #FEEBDB;
+        margin-bottom: 3vw;
     }
 
     .TrendexAndEra {
-        margin-bottom: 20px;
         width: 100%;
         display: flex;
         justify-content: space-between;    
+        margin-bottom: 8vh;
+    }
+
+    .GenreChart {
+        margin-bottom: 8vh;
     }
 
     .SpiderGraphAndHistogram {
         width: 100%;
-        margin-top: 30px;
         display: flex;
-        justify-content: space-between;     
+        justify-content: space-between;  
+    }
+
+    #EraBox {
+        width: 45%;
+    }
+
+    .DividerLine {
+        width: 100%;
+        height: 1px;
+        background-color: #FEEBDB;
+    }
+
+    .FooterText {
+        color: #FEEBDB;
+        font-size: 10px;
+    }
+
+    .Footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 }

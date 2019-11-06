@@ -52,7 +52,7 @@ const SpiderGraph = ( { avg_taste, friend_avg_taste }) => {
 
     return (
         <div className="SpiderGraph">
-            <h2>What does your music taste look like?</h2>
+            <h2>What is the shape of your music?</h2>
             <RadarChart
             captions={captions}
             data={data}

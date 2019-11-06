@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 // genres = [{ label: String, percentage: Int}]
-const GenreChart = ({ height, width: chartWidth }) => {
+const GenreChart = ({ height }) => {
     const { genre_counts } = useSelector((state) => state.user);
     const genres = genre_counts ? genre_counts : [];
     let genreTotal = 0;
@@ -13,10 +13,10 @@ const GenreChart = ({ height, width: chartWidth }) => {
     const renderGenreBlock = (genre, i) => {
         const color = colors[i % colors.length];
         return (
-            <div key={genre.label} >
+            <div key={genre.label} className="OuterDiv" style={{ flexGrow: (genre.count / genreTotal) }}>
                 <div 
                     className="GenreChart-Block" 
-                    style={{ backgroundColor: color, height, width: chartWidth * (genre.count / genreTotal) }}
+                    style={{ backgroundColor: color, height }}
                 />
             <h4 style={{ color }}>{genre.label}</h4>
             </div>

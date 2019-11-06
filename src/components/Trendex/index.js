@@ -9,7 +9,7 @@ const Trendex = ({ trendex, friend }) => {
             <h2>How trendy is {name} taste?</h2>
             <div className="Trendex-info">
             <h3 className="Trendex-number">{`${trendex}`}</h3>
-            <p>Your trendex is calculated based on the popularity of your music 
+            <p className="TrendDescript">Your trendex is calculated based on the popularity of your music 
                 with 100 being the most popular. The popularity of tracks are calculated 
                 by algorithm and is based, in the most part, on the total number 
                 of plays the track has had and how recent those plays are. Generally speaking, songs that are 
