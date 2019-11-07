@@ -19,7 +19,7 @@ const LoadingLoginPage = ({ history }) => {
     const params = getHashParams();
     const token = params.access_token;
     const dispatch = useDispatch();
-    dispatch(fetchUserData(token, "long_term"))
+    dispatch(fetchUserData(token, "short_term"))
     history.push('/dashboard/compare');
     
     return (
