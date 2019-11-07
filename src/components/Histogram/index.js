@@ -5,7 +5,7 @@ import {
     Histogram, BarSeries, XAxis 
   } from '@data-ui/histogram';
 
-const TasteHistogram = ({ taste }) => {
+const TasteHistogram = ({ taste, friendTaste }) => {
 
     const [currAttribute, setAttribute] = useState({ key: "energy", label: "energetic" });
 
@@ -40,10 +40,19 @@ const TasteHistogram = ({ taste }) => {
                 <BarSeries
                     stroke="#F78D91"
                     strokeWidth={3}
-                    fillOpacity={0.60}
+                    fillOpacity={0.80}
                     fill="#F78D91"
                     rawData={taste[currAttribute.key]}
                 />
+                { friendTaste &&
+                <BarSeries
+                    stroke="#E5277B"
+                    strokeWidth={3}
+                    fillOpacity={0.30}
+                    fill="#E5277B"
+                    rawData={friendTaste[currAttribute.key]}
+                />
+                }
                 <XAxis/>
                 </Histogram>
             </div>
