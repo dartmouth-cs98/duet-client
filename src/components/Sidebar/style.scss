@@ -78,7 +78,6 @@
         margin: auto;
         font-size: 13px;
         line-height: 20px;
-        margin-bottom: 5px;;
 
         .border {
             border-top: solid 1px #FEEBDB;
@@ -89,7 +88,6 @@
         p {
             font-weight: bolder;
             margin: 0;
-            margin-top: 5px;
             margin-left: 20px;
         }
 
@@ -97,6 +95,7 @@
             display: flex;
             flex-direction: column;
             margin-left: 28px;
+            padding-bottom: 10px;
 
             a {
                 white-space: nowrap;
@@ -129,5 +128,86 @@
     .GroupMenu {
         border-bottom: solid 3px #FEEBDB;
         padding-bottom: 5px;
+    }
+
+    .TopBar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+
+        a {
+            margin-right: 20px;
+        }
+    }
+
+    .SearchBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+
+        .TopBar {
+            margin: auto;
+            justify-content: center;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: #E5277B;
+            padding-left: 15px;
+            padding-right: 0;
+            font-size: 16px;
+        }
+
+        button:hover {
+            color: #9BD6DC;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: 0;
+        }
+
+        .results {
+            display: flex;
+            width: 75%;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin: 10px 0; 
+
+            a:hover {
+                color: #E5277B;
+                cursor: pointer;
+            }
+        }
+
+        .react-search-field {
+            border-radius: 6px;
+            border-color: #FEEBDB !important;
+        }
+        
+        .react-search-field-input {
+            height: auto !important;
+            border-radius: 6px 0 0 6px;
+            background-color: #212034;
+            font-family: 'Raleway', sans-serif;
+            color: #FEEBDB !important;
+        }
+    
+        .react-search-field-button {
+            height: auto !important;
+            border-radius: 0 6px 6px 0;
+            background-color: #212034 !important;
+            color: #FEEBDB !important;
+
+            svg {
+                fill: #E5277B !important;
+            }
+        }
     }
 }

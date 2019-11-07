@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import SearchField from 'react-search-field';
 
 const Sidebar = () => {
 
   const [selectedButton, setSelectedButton] = useState("profile")
+  const [showPopup, setShowPopup] = useState(false)
+  const [searchResults, setSearchResults] = useState(["Kevin", "Becky"])
 
 
   const onButtonPress = (e) => {
@@ -23,6 +26,22 @@ const Sidebar = () => {
     e.target.classList.add('activeGroup');
   }
 
+  const openPopup = () => {
+    setShowPopup(true)
+  }
+
+  const closePopup = () => {
+    setShowPopup(false)
+  }
+
+  const search = () => {
+   
+  }
+
+  const addFriend = () => {
+
+  }
+
   return (
     <div className="Sidebar">
       <div className="DuetLogo">
@@ -40,15 +59,41 @@ const Sidebar = () => {
               ? (
                   <div className="FriendMenu">
                       <div className="border"></div>
-                      <p>Friends</p>
-                      <div className="MenuLinkGroup">
-                          <a onClick={onFriendPress}> Emma </a>
-                          <a onClick={onFriendPress}> Zac </a>
-                          <a onClick={onFriendPress}> Linford </a>
-                          <a onClick={onFriendPress}> Ally </a>
-                          <a onClick={onFriendPress}> Himadri </a>
+                      { showPopup ? 
+                        null
+                        : 
+                        <div>
+                          <div className="TopBar">
+                            <p>Friends</p>
+                            <a className="addButton" onClick={openPopup}>+ add friend </a>
+                          </div>
+                          <div className="MenuLinkGroup">
+                              <a onClick={onFriendPress}> Emma </a>
+                              <a onClick={onFriendPress}> Zac </a>
+                              <a onClick={onFriendPress}> Linford </a>
+                              <a onClick={onFriendPress}> Ally </a>
+                              <a onClick={onFriendPress}> Himadri </a>
+                          </div>
                       </div>
-                      <a className="addButton">+ add friend </a>
+                      }
+                      { showPopup ? 
+                        <div className="SearchBox">
+                          <div className="TopBar">
+                            <SearchField
+                              placeholder='Search item'
+                              onSearchClick={search}
+                              onEnter={search}
+                            /> 
+                            <button onClick={closePopup}>x</button> 
+                          </div>
+                          <div className="results">
+                          {searchResults.map(item => (
+                            <a key={item} onClick={addFriend}>{item}</a>
+                          ))}
+                          </div>
+                        </div>
+                        : null
+                      }
                   </div>
               )
               : (
