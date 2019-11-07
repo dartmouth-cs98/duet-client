@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 const Me = () => { 
 
-  const { trendex, decade, avg_taste, taste } = useSelector((state) => state.user);
+  const { trendex, decade, avg_taste, taste, genre_counts } = useSelector((state) => state.user);
   
   return (
     <div className="Me">
@@ -20,7 +20,7 @@ const Me = () => {
             <Era decade={decade}/>
           </div>
           <h2>Your Top Genres</h2>
-          <GenreChart height={55} />
+          <GenreChart genres={genre_counts} height={55} />
           <div className="SpiderGraphAndHistogram">
             <SpiderGraph avg_taste={avg_taste} />
             <Histogram taste={taste}/>
