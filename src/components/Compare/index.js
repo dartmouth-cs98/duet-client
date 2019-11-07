@@ -8,18 +8,19 @@ import { useSelector } from 'react-redux';
 
 const Compare = () => { 
 
-  const { trendex, decade, avg_taste, taste } = useSelector((state) => state.user);
+  const { trendex, decade, avg_taste, taste, genre_counts } = useSelector((state) => state.user);
   const { 
             trendex: friendTrendex, 
             decade: friendDecade, 
             avg_taste: friend_avg_taste, 
             taste: friendTaste,
             display_name: friendName,
+            genre_counts: friendGenre_Counts,
         } = useSelector((state) => state.friend);
   
   return (
     <div className="Compare">
-      { taste && trendex && decade && avg_taste &&
+      { taste && trendex && decade && avg_taste && genre_counts &&
         <div className="Compare-content"> 
           <h1 className="Compare-YouAndFriend">You + {friendName}</h1>
           <div className="Compare-Trendexes">
@@ -28,8 +29,8 @@ const Compare = () => {
           </div>
           <h2>Your Top Genres</h2>
           <div className="Compare-GenreCharts">
-            <GenreChart height={55}/>
-            <GenreChart height={55}/>
+            <GenreChart genres={genre_counts} height={55}/>
+            <GenreChart genres={friendGenre_Counts} height={55}/>
           </div>
           <h2>Were you born in the wrong era?</h2>
           <div className="Compare-Eras">   

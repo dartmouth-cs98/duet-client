@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 // genres = [{ label: String, percentage: Int}]
-const GenreChart = ({ height }) => {
-    const { genre_counts } = useSelector((state) => state.user);
-    const genres = genre_counts ? genre_counts : [];
+const GenreChart = ({ height, genres}) => {
     let genreTotal = 0;
     genres.forEach((genre) => genreTotal += genre.count);
     
