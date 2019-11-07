@@ -161,7 +161,7 @@ const Survey = () => {
                         value={pol[0]} 
                         placeholder="Select an option" 
                     />
-                    <p>Myers Briggs (if you&aposve taken it)</p>
+                    <p>Myers Briggs (if youve taken it)</p>
                     <Dropdown 
                         options={mb} 
                         onChange={(l) => setAttribute(mb.value)} 
