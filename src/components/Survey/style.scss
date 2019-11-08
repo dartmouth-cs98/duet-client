@@ -1,0 +1,30 @@
+.SurveyPage {
+    overflow-x: hidden;
+    position: relative;
+    background: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    //font-family: 'moon';
+
+    .Main {
+        width: 100vw;
+        height: 100vh;
+        transform: translateY(-50px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .scrolling-wrapper {
+        overflow-x: scroll;
+        overflow-y: scroll;
+        white-space: nowrap;
+
+        .card {
+            display: inline-block;
+            margin-right: 10px;
+          }
+    }
+}
