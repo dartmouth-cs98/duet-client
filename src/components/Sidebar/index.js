@@ -19,12 +19,12 @@ const Sidebar = () => {
     e.target.classList.add('activeFriend');
   }
 
-  const onGroupPress = (e) => {
-    var activeGroups = document.getElementsByClassName("activeGroup");
-    while (activeGroups.length)
-        activeGroups[0].classList.remove("activeGroup");
-    e.target.classList.add('activeGroup');
-  }
+  // const onGroupPress = (e) => {
+  //   var activeGroups = document.getElementsByClassName("activeGroup");
+  //   while (activeGroups.length)
+  //       activeGroups[0].classList.remove("activeGroup");
+  //   e.target.classList.add('activeGroup');
+  // }
 
   const openPopup = () => {
     setShowPopup(true)
@@ -35,10 +35,14 @@ const Sidebar = () => {
   }
 
   const search = () => {
-   
+    setSearchResults(["Kevin", "Becky"])
   }
 
   const addFriend = () => {
+
+  }
+
+  const logout = () => {
 
   }
 
@@ -100,10 +104,11 @@ const Sidebar = () => {
                   null
               )
           }
-        <a className={["SidebarButton", selectedButton == "group" ? 'active' : ''].join(' ')} id="group" onClick={onButtonPress}>
+        <a className={["SidebarButton", selectedButton == "group" ? 'active' : ''].join(' ')} id="group" /*onClick={onButtonPress}*/>
           <img className="icon" src={selectedButton == "group" ? '../images/group-active.svg' : '../images/group.svg'}/>
+          <div id="stayTuned">Stay Tuned!</div>
         </a>
-        {selectedButton == "group"
+        {/* {selectedButton == "group"
               ? (
                   <div className="GroupMenu">
                       <div className="border"></div>
@@ -119,13 +124,13 @@ const Sidebar = () => {
               : (
                   null
               )
-          }
+          } */}
       </div>
 
       <div className="LinkGroup">
-          <a href="">home</a>
-          <a href="">about</a>
-          <a href="">logout</a>
+          <a href="/">home</a>
+          <a href="/#about">about</a>
+          <a onClick={logout} href="/">logout</a>
       </div>
     </div>
   )

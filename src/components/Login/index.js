@@ -22,7 +22,7 @@ const Home = () => {
             </button>
             <h1>welcome to duet- we offer things and stuff that make the music pictures with friendos</h1>
         </div>   
-        <div className="AboutDuet">
+        <div className="AboutDuet" id="about">
           <div className="WhatIsDuet">
             <h1>what is duet?</h1>
             <h2>duet is an international multi-media conglomorate destined to subjugate the masses via greater intelligence</h2>
