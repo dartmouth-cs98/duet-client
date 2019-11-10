@@ -210,4 +210,23 @@
             }
         }
     }
+
+    #stayTuned {
+        position: absolute;
+        background-color: #E5277B;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 2px 20px 1px 20px;
+        color: #171724;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        display: none;
+    }
+
+    #group:hover {
+        #stayTuned {
+            display: block;
+        }
+    }
 }
