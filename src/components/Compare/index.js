@@ -20,7 +20,9 @@ const Compare = () => {
   
   return (
     <div className="Compare">
-      { taste && trendex && decade && avg_taste && genre_counts &&
+      { taste && trendex && decade && avg_taste && genre_counts 
+        && friendTaste && friend_avg_taste && friendTrendex && friendDecade && 
+        friendTaste && friendName && friendGenre_Counts &&
         <div className="Compare-content"> 
           <h1 className="Compare-YouAndFriend">You + {friendName}</h1>
           <div className="Compare-Trendexes">

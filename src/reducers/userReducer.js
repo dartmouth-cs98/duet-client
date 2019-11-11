@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 const userReducer = (state = initialState.user, action) => {
   switch(action.type) {
-    case types.FETCH_USER_PROFILE: {
+    case types.FETCH_USER_SPOTIFY_PROFILE: {
       const { 
         id,
         display_name, 
@@ -12,6 +12,8 @@ const userReducer = (state = initialState.user, action) => {
       } = action.profile;
       return {...state, id, display_name, email, images }
     }
+    case types.FETCH_USER_FRIENDS:
+      return { ...state, friends: action.friends }
     case types.FETCH_USER_TASTE:
       return { ...state, taste: action.taste, avg_taste: action.avg_taste }
     case types.FETCH_TOP_GENRES:
