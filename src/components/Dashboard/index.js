@@ -6,11 +6,12 @@ import Compare from '../Compare';
 import { Route, Switch } from "react-router-dom";
 // import { useSelector } from 'react-redux';
 
-const Dashboard = () => { 
+// eslint-disable-next-line react/prop-types
+const Dashboard = ({ history }) => { 
 
   return (
     <div className="Dashboard">
-        <Sidebar/>
+        <Sidebar history={history} />
         <Switch>
             <Route path="/dashboard/me" component={Me} />
             <Route path="/dashboard/compare" component={Compare} />

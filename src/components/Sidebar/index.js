@@ -1,22 +1,34 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import SearchField from 'react-search-field';
+import { Link } from "react-router-dom";
+import { fetchFriend } from "../../actions";
+import { useSelector, useDispatch } from 'react-redux';
 
-const Sidebar = () => {
+const Sidebar = ({ history }) => {
+  const dispatch = useDispatch();
+  const { friends } = useSelector((state) => state.user);
 
   const [selectedButton, setSelectedButton] = useState("profile")
   const [showPopup, setShowPopup] = useState(false)
   const [searchResults, setSearchResults] = useState(["Kevin", "Becky"])
 
+  const renderFriend = (friend) => {
+    return <a key={friend.id} onClick={() => handleFriendClick(friend.id)}> {friend.display_name} </a>;
+  }
 
   const onButtonPress = (e) => {
     setSelectedButton(e.currentTarget.id)
   }
 
-  const onFriendPress = (e) => {
-    var activeFriends = document.getElementsByClassName("activeFriend");
-    while (activeFriends.length)
-        activeFriends[0].classList.remove("activeFriend");
-    e.target.classList.add('activeFriend');
+  const handleMeClick = (e) => {
+    onButtonPress(e);
+    history.push('/dashboard/me')
+  }
+
+  const handleFriendClick = (friendID) => {
+    dispatch(fetchFriend(friendID));
+    history.push('/dashboard/compare')
   }
 
   // const onGroupPress = (e) => {
@@ -42,9 +54,9 @@ const Sidebar = () => {
 
   }
 
-  const logout = () => {
+  // const logout = () => {
 
-  }
+  // }
 
   return (
     <div className="Sidebar">
@@ -53,7 +65,7 @@ const Sidebar = () => {
       </div>
 
       <div className="ButtonGroup">
-        <a className={["SidebarButton", selectedButton == "profile" ? 'active' : ''].join(' ')} id="profile" onClick={onButtonPress}>
+        <a className={["SidebarButton", selectedButton == "profile" ? 'active' : ''].join(' ')} id="profile" onClick={handleMeClick}>
           <img className="icon" src={selectedButton == "profile" ? '../images/profile-active.svg' : '../images/profile.svg'}/>
         </a>
         <a className={["SidebarButton", selectedButton == "friend" ? 'active' : ''].join(' ')} id="friend" onClick={onButtonPress}>
@@ -72,12 +84,8 @@ const Sidebar = () => {
                             <a className="addButton" onClick={openPopup}>+ add friend </a>
                           </div>
                           <div className="MenuLinkGroup">
-                              <a onClick={onFriendPress}> Emma </a>
-                              <a onClick={onFriendPress}> Zac </a>
-                              <a onClick={onFriendPress}> Linford </a>
-                              <a onClick={onFriendPress}> Ally </a>
-                              <a onClick={onFriendPress}> Himadri </a>
-                          </div>
+                            {friends && friends.map((renderFriend))}
+                            </div>
                       </div>
                       }
                       { showPopup ? 
@@ -128,9 +136,9 @@ const Sidebar = () => {
       </div>
 
       <div className="LinkGroup">
-          <a href="/">home</a>
-          <a href="/#about">about</a>
-          <a onClick={logout} href="/">logout</a>
+          <Link to="/">Home</Link>
+          <Link to="/">About</Link>
+          <Link to="/404">Logout</Link>
       </div>
     </div>
   )
