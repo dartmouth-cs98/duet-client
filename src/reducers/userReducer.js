@@ -22,6 +22,8 @@ const userReducer = (state = initialState.user, action) => {
       return { ...state, decade: action.decade}
     case types.FETCH_TRENDEX:
       return { ...state, trendex: action.trendex }
+    case types.ADD_FRIEND:
+      return { ...state, friends: [ ...state.friends, action.friend ]}
     default:
       return state
   }
