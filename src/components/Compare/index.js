@@ -30,7 +30,7 @@ const Compare = () => {
             <Trendex friend={friendName.split(" ")[0]} trendex={friendTrendex}/>
           </div>
           <div className="Compare-SpiderGraphAndHistogram">
-            <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
+            <SpiderGraph avg_taste={avg_taste} friendTaste={friend_avg_taste}/>
             <Histogram friendTaste={friendTaste} taste={taste}/>
           </div> 
           <h2>Do you listen to the same genres?</h2>
