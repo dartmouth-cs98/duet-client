@@ -40,7 +40,7 @@ const Compare = () => {
             <Era decade={friendDecade}/>
           </div>
           <div className="Compare-SpiderGraphAndHistogram">
-            <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
+            <SpiderGraph avg_taste={avg_taste} friendTaste={friend_avg_taste}/>
             <Histogram friendTaste={friendTaste} taste={taste}/>
           </div> 
           <div className="Footer">

@@ -2,7 +2,7 @@
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getTaste, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
-import { getUser, addUser } from '../utils/backendUtils';
+import { getUser, addUser, addNewFriend } from '../utils/backendUtils';
 import _ from 'lodash';
 
 export const fetchUserData = (token, time_range) => {
@@ -70,10 +70,23 @@ export const fetchUserData = (token, time_range) => {
     }
 }
 
-export const fetchFriend = (friendID) => {
+export const addFriend = (userId, friend) => {
     return (dispatch) => {
-        getUser(friendID).then((friend) => {
+        addNewFriend(userId, friend.id);
+        dispatch({ type: types.ADD_FRIEND,  friend })
+    }
+}
+
+export const fetchFriend = (friendId) => {
+    return (dispatch) => {
+        getUser(friendId).then((friend) => {
             dispatch({ type: types.FETCH_FRIEND, friend})
         })
     } 
+}
+
+export const clearFriend = () => {
+    return (dispatch) => {
+        dispatch({ type: types.CLEAR_FRIEND })
+    }
 }

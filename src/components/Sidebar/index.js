@@ -1,20 +1,29 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import SearchField from 'react-search-field';
-import { Link } from "react-router-dom";
-import { fetchFriend } from "../../actions";
+import { fetchFriend, clearFriend, addFriend } from "../../actions";
 import { useSelector, useDispatch } from 'react-redux';
+import { searchForUsers } from '../../utils/backendUtils';
+// import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const Sidebar = ({ history }) => {
   const dispatch = useDispatch();
-  const { friends } = useSelector((state) => state.user);
+  const { id, friends } = useSelector((state) => state.user);
 
   const [selectedButton, setSelectedButton] = useState("profile")
   const [showPopup, setShowPopup] = useState(false)
-  const [searchResults, setSearchResults] = useState(["Kevin", "Becky"])
+  const [searchResults, setSearchResults] = useState([])
 
   const renderFriend = (friend) => {
-    return <a key={friend.id} onClick={() => handleFriendClick(friend.id)}> {friend.display_name} </a>;
+    return <a key={friend.id} onClick={(e) => handleFriendClick(e, friend.id)}> {friend.display_name} </a>;
+  }
+
+  const highlightFriend = (e) => {
+    var activeFriends = document.getElementsByClassName("activeFriend");
+    while (activeFriends.length)
+        activeFriends[0].classList.remove("activeFriend");
+    e.target.classList.add('activeFriend');
   }
 
   const onButtonPress = (e) => {
@@ -23,20 +32,16 @@ const Sidebar = ({ history }) => {
 
   const handleMeClick = (e) => {
     onButtonPress(e);
+    dispatch(clearFriend());
     history.push('/dashboard/me')
   }
 
-  const handleFriendClick = (friendID) => {
-    dispatch(fetchFriend(friendID));
+  const handleFriendClick = (e, friendId) => {
+    highlightFriend(e);
+    dispatch(clearFriend());
+    dispatch(fetchFriend(friendId));
     history.push('/dashboard/compare')
   }
-
-  // const onGroupPress = (e) => {
-  //   var activeGroups = document.getElementsByClassName("activeGroup");
-  //   while (activeGroups.length)
-  //       activeGroups[0].classList.remove("activeGroup");
-  //   e.target.classList.add('activeGroup');
-  // }
 
   const openPopup = () => {
     setShowPopup(true)
@@ -46,13 +51,24 @@ const Sidebar = ({ history }) => {
     setShowPopup(false)
   }
 
-  const search = () => {
-    setSearchResults(["Kevin", "Becky"])
+  const search = (query) => {
+    searchForUsers(query).then(setSearchResults);
   }
 
-  const addFriend = () => {
-
+  const handleAddFriend = (friend) => {
+    closePopup();
+    dispatch(clearFriend());
+    dispatch(addFriend(id, friend));
+    dispatch(fetchFriend(friend.id));
+    history.push('/dashboard/compare')
   }
+
+    // const onGroupPress = (e) => {
+  //   var activeGroups = document.getElementsByClassName("activeGroup");
+  //   while (activeGroups.length)
+  //       activeGroups[0].classList.remove("activeGroup");
+  //   e.target.classList.add('activeGroup');
+  // }
 
   // const logout = () => {
 
@@ -65,7 +81,7 @@ const Sidebar = ({ history }) => {
       </div>
 
       <div className="ButtonGroup">
-        <a className={["SidebarButton", selectedButton == "profile" ? 'active' : ''].join(' ')} id="profile" onClick={handleMeClick}>
+        <a className={["SidebarButton", selectedButton == "profile" ? 'active' : ''].join(' ')} id="profile" onClick={(e) => handleMeClick(e)}>
           <img className="icon" src={selectedButton == "profile" ? '../images/profile-active.svg' : '../images/profile.svg'}/>
         </a>
         <a className={["SidebarButton", selectedButton == "friend" ? 'active' : ''].join(' ')} id="friend" onClick={onButtonPress}>
@@ -99,8 +115,8 @@ const Sidebar = ({ history }) => {
                             <button onClick={closePopup}>x</button> 
                           </div>
                           <div className="results">
-                          {searchResults.map(item => (
-                            <a key={item} onClick={addFriend}>{item}</a>
+                          {searchResults.map(person => (
+                            <a key={person.id} onClick={() => handleAddFriend(person)}>{person.display_name}</a>
                           ))}
                           </div>
                         </div>
@@ -136,9 +152,9 @@ const Sidebar = ({ history }) => {
       </div>
 
       <div className="LinkGroup">
-          <Link to="/">Home</Link>
-          <Link to="/">About</Link>
-          <Link to="/404">Logout</Link>
+          <a href="/">home</a>
+          <a href="/#about">about</a>
+          {/* <a onClick={logout} href="/">logout</a> */}
       </div>
     </div>
   )
