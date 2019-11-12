@@ -21,7 +21,7 @@ const LoadingLoginPage = ({ history }) => {
     const token = params.access_token;
     const dispatch = useDispatch();
     dispatch(fetchUserData(token, "short_term"))
-    history.push('/dashboard/me');
+    history.push(token ? '/dashboard/me' : '/');
     
     return (
         <h1>Logging you in...</h1>

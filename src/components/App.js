@@ -8,19 +8,24 @@ import { hot } from "react-hot-loader";
 import AuthRedirect from './AuthRedirect';
 import Survey from './Survey';
 import Dashboard from "./Dashboard";
+import { useSelector } from "react-redux";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
 
 const App = () => {
+  const { loggedIn } = useSelector((state) => state.auth);
+  const authOnly = (Component) => {
+    return loggedIn ? Component : Login;
+  }
   return (
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/login" component={AuthRedirect} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/survey" component={Survey} />
+        <Route path="/dashboard" component={authOnly(Dashboard)} />
+        <Route path="/survey" component={authOnly(Survey)} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
