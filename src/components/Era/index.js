@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const Trendex = ({ decade }) => {
+const Trendex = ({ decade, name }) => {
     const truncatedDecade = decade ? decade.toString().slice(-2) : 10;
 
     const returnExamples = (decade) => {
@@ -31,7 +31,7 @@ const Trendex = ({ decade }) => {
                 <div className="Era-decade">
                 <h3 className="Era-number">{`${truncatedDecade}s`}</h3>
                 </div>
-                <p className="EraDescript"> According to your music taste, you were born in the {decade}s. This means most of your top songs were released between {decade} and {decade+9}, so maybe you listen to lots of {returnExamples(decade)[0]} and {returnExamples(decade)[1]}. So were you born in the wrong era? Probably not. Most people listen to mostly recent songs, so even if you think of yourself as a big oldies guy you are probably stuck in this decade of music just like everybody else.
+                <p className="EraDescript"> According to {name ? "their" : "your"} music taste, {name ? `${name} was` : "you were"} born in the {decade}s. This means most of {name ? "their" : "your"} top songs were released between {decade} and {decade+9}, so maybe {name ? "they" : "you"} listen to lots of {returnExamples(decade)[0]} and {returnExamples(decade)[1]}. So were {name ? "they" : "you"} born in the wrong era? Probably not. Most people listen to mostly recent songs, so even if you think of yourself as a big oldies guy you are probably stuck in this decade of music just like everybody else.
                 </p>
             </div>
         </div>

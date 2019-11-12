@@ -27,21 +27,21 @@ const Compare = () => {
           <h1 className="Compare-YouAndFriend">You + {friendName}</h1>
           <div className="Compare-Trendexes">
             <Trendex trendex={trendex}/>
-            <Trendex friend={friendName} trendex={friendTrendex}/>
+            <Trendex friend={friendName.split(" ")[0]} trendex={friendTrendex}/>
           </div>
           <div className="Compare-SpiderGraphAndHistogram">
             <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
             <Histogram friendTaste={friendTaste} taste={taste}/>
           </div> 
-          <h2>Your Top Genres</h2>
+          <h2>Do you listen to the same genres?</h2>
           <div className="Compare-GenreCharts">
             <GenreChart genres={genre_counts} height={55}/>
             <GenreChart genres={friendGenre_Counts} height={55}/>
           </div>
-          <h2>Were you born in the wrong era?</h2>
+          <h2>Were you and {friendName.split(" ")[0]} born in the same decade?</h2>
           <div className="Compare-Eras">   
             <Era decade={decade}/>
-            <Era decade={friendDecade}/>
+            <Era decade={friendDecade} name={friendName.split(" ")[0]}/>
           </div>
           <div className="Footer">
             <div className="DividerLine"/>
