@@ -41,18 +41,24 @@
 
         .Trendex:first-child {
             flex-grow: 1;
+            width: 37%;
+            margin-right: 0;
+
+            .TrendDescript {
+                display: none;
+            }
         }
     
         .Trendex:last-child {
-            margin-left: 3vw;
-           flex-grow: 8;
+            margin-left: 0;
+            flex-grow: 12;
         }
     }
 
     .Compare-GenreCharts {
         display: flex;
         flex-direction: column;
-        margin-bottom: 6vh;
+        margin-bottom: 10vh;
 
         .GenreChart:first-child {
             margin-top: 2vh;

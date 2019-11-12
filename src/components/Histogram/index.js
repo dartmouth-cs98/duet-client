@@ -10,14 +10,14 @@ const TasteHistogram = ({ taste, friendTaste }) => {
     const [currAttribute, setAttribute] = useState({ key: "energy", label: "energetic" });
 
     const dropdownOptions = [
-        { key: 'danceability', label: 'Danceable' },
-        { key: 'energy', label: 'Energetic' },
-        { key: 'speechiness', label: 'Speechy' },
-        { key: 'acousticness', label: 'Acoustic' },
-        { key: 'instrumentalness', label: 'Instrumental' },
-        { key: 'liveness', label: 'Live' },
-        { key: 'valence', label: 'Valence' },
-        { key: 'mode', label: 'Mode' },
+        { key: 'danceability', label: 'danceable' },
+        { key: 'energy', label: 'energetic' },
+        { key: 'speechiness', label: 'speechy' },
+        { key: 'acousticness', label: 'acoustic' },
+        { key: 'instrumentalness', label: 'instrumental' },
+        // { key: 'liveness', label: 'Live' },
+        { key: 'valence', label: 'happy' },
+        // { key: 'mode', label: 'Mode' },
     ];
 
     return (
