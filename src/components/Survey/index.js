@@ -64,7 +64,26 @@ const Survey = () => {
         {key: 'other', label: 'other'},
     ];
 
-    const hobbies = [];
+    const countries = [
+        {key: 'united states of america', label: 'united states of america'},
+        {key: 'canada', label: 'canada'},
+        {key: 'mexico', label: 'mexico'},
+    ]
+
+    const states = [
+        {key: 'california', label: 'california'},
+        {key: 'florida', label: 'florida'},
+        {key: 'new hampshite', label: 'new hampshite'},
+        {key: 'new york', label: 'new york'},
+        {key: 'texas', label: 'texas'},
+    ]
+
+    const hobbies = [
+        {key: 'reading', label: 'reading'},
+        {key: 'writing', label: 'writing'},
+        {key: 'television', label: 'television'},
+        {key: 'sports', label: 'sports'},
+    ];
 
     const mb = [
         {key: 'ENTJ', label: 'ENTJ'},
@@ -163,18 +182,18 @@ const Survey = () => {
                         />
                     </div>
                     <div className = "country-region">
-                    <div className="country">
+                    <div className="country-dropdown">
                         <p>Country:</p>
-                        <CountryDropdown className="country-dropdown"
-                            key={country}
-                            onSelect={(val) => setAttribute(this.setState({ country: val }))} />
+                        <Dropdown 
+                            options={countries}
+                            onSelect={(val) => setAttribute(countries.key)} />
+                            
                             </div>
-                     <div className="region">
+                     <div className="region-dropdown">
                             <p>Region:</p>
-                            <RegionDropdown className="region-dropdown"
-                            country ={country}
-                            key={region}
-                            onSelect={(val) => setAttribute(this.setState({ state: val}))} />
+                            <Dropdown
+                            options ={states}
+                            onSelect={(val) => setAttribute(states.key)} />
                      </div>
                      </div>
                      <div className="hobbies">
