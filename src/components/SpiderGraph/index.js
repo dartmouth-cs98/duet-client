@@ -59,7 +59,7 @@ const SpiderGraph = ( { avg_taste, friendTaste }) => {
             scales={3}
             options={
                 { 
-                    setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size + 100}`, 
+                    setViewBox: (options) => `-${options.captionMargin} 0 ${options.size + options.captionMargin * 2} ${options.size + 150}`, 
                     captionProps: () => ({ className: 'SpiderGraph-label', fontSize: 20 }),
                     scaleProps: () => ({ className: 'SpiderGraph-scale', fill: '#212034', stroke: '#FEEBDB' }),
                     axisProps: () => ({ className: 'SpiderGraph-axis', stroke: '#FEEBDB' }),
