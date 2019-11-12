@@ -73,7 +73,7 @@ const Survey = () => {
     const states = [
         {key: 'california', label: 'california'},
         {key: 'florida', label: 'florida'},
-        {key: 'new hampshite', label: 'new hampshite'},
+        {key: 'new hampshire', label: 'new hampshire'},
         {key: 'new york', label: 'new york'},
         {key: 'texas', label: 'texas'},
     ]
