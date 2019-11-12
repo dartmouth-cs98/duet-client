@@ -101,12 +101,16 @@
         color: #9BD6DC;
         text-align: center;
 
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        
+
         .WhatIsDuet {
-            position: absolute;
+            margin: 50px;
             width: 371px;
             height: 160px;
-            left: 717px;
-            top: 115px;
 
             h1 {
                 font-size: 26px;
@@ -120,11 +124,9 @@
         }
 
         .HowDuet {
-            position: absolute;
+            margin: 50px;
             width: 371px;
-            height: 284px;
-            left: 144px;
-            top: 218px;
+            height: 201;
 
             h1 {
                 font-size: 26px;
@@ -138,11 +140,9 @@
         }
 
         .WhatDoDuet {
-            position: absolute;
+            margin: 50px;
             width: 371px;
-            height: 159px;
-            left: 990px;
-            top: 275px;
+            height: 91px;
 
             h1 {
                 font-size: 26px;
@@ -156,11 +156,9 @@
         }
 
         .WhyDuet {
-            position: absolute;
+            margin: 50px;
             width: 371px;
-            height: 285px;
-            left: 373px;
-            top: 467px;      
+            height: 263px;
             
             h1 {
                 font-size: 26px;
@@ -174,11 +172,9 @@
         }
 
         .WhoDuet {
-            position: absolute;
+            margin: 50px;
             width: 371px;
-            height: 94px;
-            left: 830px;
-            top: 634px;
+            height: 139px;
 
             h1 {
                 font-size: 26px;

@@ -25,22 +25,18 @@ const Home = () => {
         <div className="AboutDuet" id="about">
           <div className="WhatIsDuet">
             <h1>what is duet?</h1>
-            <h2>duet is an international multi-media conglomorate destined to subjugate the masses via greater intelligence</h2>
+            <h2>duet is web based application that allows users to visually analyze their music taste and directly compare it to their friends and larger groups of people</h2>
           </div>
           <div className="HowDuet">
             <h1>how does duet work</h1>
-            <h2>duet uses state of the art ai intelligences to counter-induct large music data sets using the Moussorgski spin analysis algorithm- which causes the main aftermath from the voynichian reaction between a magnifying quadritangent and the colloidal dataspace synthesized when running a quantum transistor under a calibrated ruby-quartz vibrasion with an Eigen value of an inverted negatively nanofactored mobius strip (this is all of course reverberated through an epsilon-concave modulated space)</h2>
-          </div>
+            <h2>spotify provides a free api that allows users to access information about their music data- from your top 50 artists- to the many attributes of you music (such as key, tempo, etc.)</h2>          </div>
           <div className="WhatDoDuet">
             <h1>what does duet do?</h1>
-            <h2>duet takes your spotify data to validate all of your concerns that you are not nearly as special as you thought you were kevin</h2>
+            <h2>duet only stores the information offered by the spotify api</h2>
           </div>
           <div className="WhyDuet">
             <h1>why use duet?</h1>
-            <h2>duet will guide you.
-                duet will save you.
-                duet is love.
-                duet is god. </h2>
+            <h2>sometimes a list of your top genres isn’t enough to categorize the way you listen to music. we believe that being able to visually represent your music taste will help you make discoveries about your music preferences that might not have been apparent- as well as facilitate finding connections between you and your friends</h2>
           </div>
           <div className="WhoDuet">
             <h1>who are we?</h1>
