@@ -26,8 +26,10 @@ const Dropdown = ({ currOption, options, onSelect }) => {
     return (
         <div className="Dropdown">
             <div className="Dropdown-button" onClick={() => setShowDropdown(!showDropdown)}>
-        
-               
+                <h2>{currOption.label}</h2>
+                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 8L0.937822 0.5L13.0622 0.500001L7 8Z" fill="#F78D91"/>
+                </svg>
             </div>
             { showDropdown &&
                 <div className="Dropdown-options">
