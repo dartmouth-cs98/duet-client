@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchUserData } from '../../actions';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+
 const getHashParams = () => {
     const hashParams = {};
     let e; const r = /([^&;=]+)=?([^&;]*)/g;
@@ -20,7 +21,7 @@ const LoadingLoginPage = ({ history }) => {
     const token = params.access_token;
     const dispatch = useDispatch();
     dispatch(fetchUserData(token, "short_term"))
-    history.push('/dashboard/compare');
+    history.push('/dashboard/me');
     
     return (
         <h1>Logging you in...</h1>

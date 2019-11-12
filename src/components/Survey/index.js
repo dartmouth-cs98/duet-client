@@ -6,7 +6,7 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
 
 
 const Survey = () => {
-    const [attribute, setAttribute, state] = useState(null);
+    const [attribute, setAttribute, state] = useState('');
     const country = useState('');
     const region = useState('');
 
@@ -37,8 +37,8 @@ const Survey = () => {
 
     const createYears = () => {
         var years = [];
-        var start = 2019;
-        for (start; start>=1909; start=start-1){
+        var start = 1909;
+        for (start; start<2019; start=start+1){
             years[start] = start;
         }
 
@@ -48,127 +48,180 @@ const Survey = () => {
     const years = createYears();
 
     const genders = [
-        {value: 'male', label: 'male'},
-        {value: 'female', label: 'female'},
-        {value: 'other', label: 'other'},
+        {key: 'male', label: 'male'},
+        {key: 'female', label: 'female'},
+        {key: 'other', label: 'other'},
     ];
 
     const re = [
-        {value: 'white', label: 'white'},
-        {value: 'black or african american', label: 'black or african american'},
-        {value: 'american indian or alaskan native', label: 'american indian or alaskan native'},
-        {value: 'asian', label: 'asian'},
-        {value: 'native hawaiian or pacific islander', label: 'native hawaiian or pacific islander'},
-        {value: 'hispanic or latino', label: 'hispanic or latino'},
-        {value: 'two or more', label: 'two or more'},
-        {value: 'other', label: 'other'},
+        {key: 'white', label: 'white'},
+        {key: 'black or african american', label: 'black or african american'},
+        {key: 'american indian or alaskan native', label: 'american indian or alaskan native'},
+        {key: 'asian', label: 'asian'},
+        {key: 'native hawaiian or pacific islander', label: 'native hawaiian or pacific islander'},
+        {key: 'hispanic or latino', label: 'hispanic or latino'},
+        {key: 'two or more', label: 'two or more'},
+        {key: 'other', label: 'other'},
     ];
 
     const hobbies = [];
 
     const mb = [
-        {value: 'ENTJ', label: 'ENTJ'},
-        {value: 'ENTP', label: 'ENTP'},
-        {value: 'ENFP', label: 'ENFP'},
-        {value: 'ENFJ', label: 'ENFJ'},
-        {value: 'ESTP', label: 'ESTP'},
-        {value: 'ESTJ', label: 'ESTJ'},
-        {value: 'ESFP', label: 'ESFP'},
-        {value: 'ESFJ', label: 'ESFJ'},
-        {value: 'INTJ', label: 'INTJ'},
-        {value: 'INTP', label: 'INTP'},
-        {value: 'INFP', label: 'INFP'},
-        {value: 'INFJ', label: 'INFJ'},
-        {value: 'ISTP', label: 'ISTP'},
-        {value: 'ISTJ', label: 'ISTJ'},
-        {value: 'ISFP', label: 'ISFP'},
-        {value: 'ISFJ', label: 'ISFJ'},
+        {key: 'ENTJ', label: 'ENTJ'},
+        {key: 'ENTP', label: 'ENTP'},
+        {key: 'ENFP', label: 'ENFP'},
+        {key: 'ENFJ', label: 'ENFJ'},
+        {key: 'ESTP', label: 'ESTP'},
+        {key: 'ESTJ', label: 'ESTJ'},
+        {key: 'ESFP', label: 'ESFP'},
+        {key: 'ESFJ', label: 'ESFJ'},
+        {key: 'INTJ', label: 'INTJ'},
+        {key: 'INTP', label: 'INTP'},
+        {key: 'INFP', label: 'INFP'},
+        {key: 'INFJ', label: 'INFJ'},
+        {key: 'ISTP', label: 'ISTP'},
+        {key: 'ISTJ', label: 'ISTJ'},
+        {key: 'ISFP', label: 'ISFP'},
+        {key: 'ISFJ', label: 'ISFJ'},
     ];
 
     const pol = [
-        {value: 'conservative', label: 'conservative'},
-        {value: 'liberal', label: 'liberal'},
-        {value: 'other', label: 'other'},
+        {key: 'conservative', label: 'conservative'},
+        {key: 'liberal', label: 'liberal'},
+        {key: 'other', label: 'other'},
     ];
+
+    const createAS= () => {
+        var as = [];
+        var start= 0;
+        for (start; start<30; start=start+1){
+            as[start] = start;
+        }
+
+        return as;
+      };
+      const as = createAS();
+
+      const createIS= () => {
+        var intr = [];
+        var start= 0;
+        for (start; start<11; start=start+1){
+            intr[start] = start;
+        }
+
+        return intr;
+      };
+      const intr = createIS();
 
     return (
         <div>
             <div className="SurveyPage">
                 <div className="Main">
                     <h1>Tell Us About Yourself</h1>
+                    <div className='age'>
+                    <p>D.O.B:</p>
                     <div className="scrolling-wrapper">
-                        <div className="card">
-                            <p>Birth Month</p>
+                    
+                        <div className="monthcard">
                             <Dropdown 
                                 options={months} 
-                                onChange={(e) => setAttribute(months.value)} 
-                                value={months[0]} 
-                                placeholder="Select an option" 
+                                onSelect={(e) => setAttribute(months.key)} 
+                                currOption={months[0]}  
+                                placeholder= 'Month'
                             />
-                        </div>
-                        <div className="card">
-                            <p>Birth Day</p>
+                            </div>
+                        <div className="daycard">
                             <Dropdown 
                                 options={days} 
-                                onChange={(f) => setAttribute(days.value)} 
-                                value={days[0]} 
-                                placeholder="Select an option" 
+                             onSelect={(f) => setAttribute(days.key)} 
+                                currOption={days[0]}  
+                                placeholder= 'Day'
                             />
                         </div>
-                        <div className="card">
-                            <p>Birth Year</p>
+                        <div className="yearcard">
                             <Dropdown 
                                 options={years} 
-                                onChange={(g) => setAttribute(years.value)} 
-                                value={years[0]} 
-                                placeholder="Select an option" 
+                             onSelect={(g) => setAttribute(years.key)} 
+                                currOption={years[0]}  
+                                placeholder= 'Year'
                             />
                         </div>
                     </div>
-                    <p>Gender</p>
-                    <Dropdown 
-                        options={genders} 
-                        onChange={(h) => setAttribute(genders.value)} 
-                        value={genders[0]} 
-                        placeholder="Select an option" 
-                    />
-                    <p>Race/Ethnicity</p>
-                    <Dropdown 
-                        options={re} 
-                        onChange={(i) => setAttribute(re.value)} 
-                        value={re[0]} 
-                        placeholder="Select an option" 
-                    />
-                    <p>Country</p>
-                    <CountryDropdown
-                        value={country}
-                        onChange={(val) => setAttribute(this.setState({ country: val }))} />
-                    <p>Region</p>
-                    <RegionDropdown
-                        value={region}
-                        onChange={(val) => setAttribute(this.setState({ state: val}))} />
-                    <p>Hobbies</p>
-                    <Dropdown 
-                        options={hobbies} 
-                        onChange={(j) => setAttribute(hobbies.value)} 
-                        value={hobbies[0]} 
-                        placeholder="Select an option" 
-                    />
-                    <p>Political Affiliation</p>
-                    <Dropdown 
-                        options={pol} 
-                        onChange={(k) => setAttribute(pol.value)} 
-                        value={pol[0]} 
-                        placeholder="Select an option" 
-                    />
-                    <p>Myers Briggs (if youve taken it)</p>
-                    <Dropdown 
-                        options={mb} 
-                        onChange={(l) => setAttribute(mb.value)} 
-                        value={mb[0]} 
-                        placeholder="Select an option" 
-                    />
-                </div>
+                    </div>
+                    <div className= "gender">
+                        <p>Gender:</p>
+                        <Dropdown 
+                            options={genders} 
+                         onSelect={(h) => setAttribute(genders.key)} 
+                            currOption={genders[0]} /></div>
+                    <div className="race-ethnicity">
+                        <p>Race/Ethnicity:</p>
+                        <Dropdown 
+                            options={re} 
+                            onSelect={(i) => setAttribute(re.key)} 
+                            currOption={re[0]}
+                        />
+                    </div>
+                    <div className = "country-region">
+                    <div className="country">
+                        <p>Country:</p>
+                        <CountryDropdown className="country-dropdown"
+                            key={country}
+                            onSelect={(val) => setAttribute(this.setState({ country: val }))} />
+                            </div>
+                     <div className="region">
+                            <p>Region:</p>
+                            <RegionDropdown className="region-dropdown"
+                            country ={country}
+                            key={region}
+                            onSelect={(val) => setAttribute(this.setState({ state: val}))} />
+                     </div>
+                     </div>
+                     <div className="hobbies">
+                        <p>Hobbies:</p>
+                        <Dropdown 
+                            options={hobbies} 
+                            onSelect={(j) => setAttribute(hobbies.key)} 
+                            currOption={hobbies[0] }
+                        />
+                    </div>
+                    <div className="political-affiliation">
+                        <p>Political Affiliation:</p>
+                        <Dropdown 
+                            options={pol} 
+                            onSelect={(k) => setAttribute(pol.key)} 
+                            currOption={pol[0]}
+                        />
+                    </div>
+                    <div className="myers-briggs">
+                        <p>Myers Briggs (if youve taken it):</p>
+                        <Dropdown 
+                            options={mb} 
+                            onSelect={(l) => setAttribute(mb.key)} 
+                            currOption={mb[0]}
+                        />
+                    </div>
+                    <div className="artistic-scale">
+                        <p>Artistic Scale:</p>
+                        <Dropdown 
+                            options={as} 
+                            onSelect={(l) => setAttribute(as.key)} 
+                            currOption={as[0]}
+                        />
+                    </div>
+                    <div className="introversion-scale">
+                        <p>Introversion Scale:</p>
+                        <Dropdown 
+                            options={intr} 
+                            onSelect={(l) => setAttribute(intr.key)} 
+                            currOption={intr[0]}
+                        />
+                    </div>
+                    <button className='finishSurvey'>
+                        Finish Survey
+                        </button>
+                        
+                    </div>
             </div>
         </div>
     );
