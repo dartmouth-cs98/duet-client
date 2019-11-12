@@ -27,6 +27,10 @@ const Compare = () => {
             <Trendex trendex={trendex}/>
             <Trendex friend={friendName} trendex={friendTrendex}/>
           </div>
+          <div className="Compare-SpiderGraphAndHistogram">
+            <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
+            <Histogram friendTaste={friendTaste} taste={taste}/>
+          </div> 
           <h2>Your Top Genres</h2>
           <div className="Compare-GenreCharts">
             <GenreChart genres={genre_counts} height={55}/>
@@ -37,10 +41,6 @@ const Compare = () => {
             <Era decade={decade}/>
             <Era decade={friendDecade}/>
           </div>
-          <div className="Compare-SpiderGraphAndHistogram">
-            <SpiderGraph avg_taste={avg_taste} friend_avg_taste={friend_avg_taste}/>
-            <Histogram friendTaste={friendTaste} taste={taste}/>
-          </div> 
           <div className="Footer">
             <div className="DividerLine"/>
             <div className="FooterText">duet©</div>
