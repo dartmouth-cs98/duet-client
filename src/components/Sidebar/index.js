@@ -9,13 +9,14 @@ import { searchForUsers } from '../../utils/backendUtils';
 const Sidebar = ({ history }) => {
   const dispatch = useDispatch();
   const { id, friends } = useSelector((state) => state.user);
+  const { display_name } = useSelector((state) => state.friend);
 
   const [selectedButton, setSelectedButton] = useState("profile")
   const [showPopup, setShowPopup] = useState(false)
   const [searchResults, setSearchResults] = useState([])
 
   const renderFriend = (friend) => {
-    return <a key={friend.id} onClick={(e) => handleFriendClick(e, friend.id)}> {friend.display_name} </a>;
+    return <a key={friend.id} className={ (display_name == friend.display_name) ? "activeFriend" : ""} onClick={(e) => handleFriendClick(e, friend.id)}> {friend.display_name} </a>;
   }
 
   const highlightFriend = (e) => {
