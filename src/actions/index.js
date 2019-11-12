@@ -90,3 +90,16 @@ export const clearFriend = () => {
         dispatch({ type: types.CLEAR_FRIEND })
     }
 }
+
+export const clearAuth = () => {
+    return (dispatch) => {
+        dispatch({ type: types.CLEAR_AUTH })
+    }
+}
+
+export const clearUser = () => {
+    return (dispatch) => {
+        dispatch({ type: types.CLEAR_USER })
+    }
+}
+

@@ -11,3 +11,5 @@ export const FETCH_FRIEND = "FETCH_FRIEND";
 export const CLEAR_FRIEND = "CLEAR_FRIEND";
 export const STORE_USER = "STORE_USER";
 export const ADD_FRIEND = "ADD_FRIEND";
+export const CLEAR_AUTH = "CLEAR_AUTH";
+export const CLEAR_USER = "CLEAR_USER";

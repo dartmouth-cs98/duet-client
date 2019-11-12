@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import SearchField from 'react-search-field';
-import { fetchFriend, clearFriend, addFriend } from "../../actions";
+import { fetchFriend, clearFriend, addFriend, clearAuth, clearUser } from "../../actions";
 import { useSelector, useDispatch } from 'react-redux';
 import { searchForUsers } from '../../utils/backendUtils';
-// import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({ history }) => {
@@ -70,9 +69,11 @@ const Sidebar = ({ history }) => {
   //   e.target.classList.add('activeGroup');
   // }
 
-  // const logout = () => {
-
-  // }
+  const logout = () => {
+    dispatch(clearAuth());
+    dispatch(clearUser());
+    history.push('/')
+  }
 
   return (
     <div className="Sidebar">
@@ -154,7 +155,7 @@ const Sidebar = ({ history }) => {
       <div className="LinkGroup">
           <a href="/">home</a>
           <a href="/#about">about</a>
-          {/* <a onClick={logout} href="/">logout</a> */}
+          <a onClick={logout}>logout</a>
       </div>
     </div>
   )
