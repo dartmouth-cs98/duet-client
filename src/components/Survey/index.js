@@ -122,7 +122,7 @@ const Survey = () => {
                     <p>D.O.B:</p>
                     <div className="scrolling-wrapper">
                     
-                        <div className="card">
+                        <div className="monthcard">
                             <Dropdown 
                                 options={months} 
                                 onSelect={(e) => setAttribute(months.key)} 
@@ -130,7 +130,7 @@ const Survey = () => {
                                 placeholder= 'Month'
                             />
                             </div>
-                        <div className="card">
+                        <div className="daycard">
                             <Dropdown 
                                 options={days} 
                              onSelect={(f) => setAttribute(days.key)} 
@@ -138,7 +138,7 @@ const Survey = () => {
                                 placeholder= 'Day'
                             />
                         </div>
-                        <div className="card">
+                        <div className="yearcard">
                             <Dropdown 
                                 options={years} 
                              onSelect={(g) => setAttribute(years.key)} 
