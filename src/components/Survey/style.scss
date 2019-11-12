@@ -4,27 +4,325 @@
     background: #ffffff;
     height: 100vh;
     width: 100vw;
+    background-color: #212034;
+    
+    
     //font-family: 'moon';
 
     .Main {
-        width: 100vw;
+        width: 600px;
         height: 100vh;
         transform: translateY(-50px);
-
+        margin-top: 0px;
+        margin-left: 20%;
+        margin-right: 20%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        
         flex-direction: column;
-    }
-
-    .scrolling-wrapper {
-        overflow-x: scroll;
         overflow-y: scroll;
-        white-space: nowrap;
+
+        h1 {
+            color: #9BD6DC;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        p {
+            color: #F78D91;
+        }
+        .Dropdown-root{
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+        }
+
+    }
+    .age{
+        p{
+            float: left;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            margin-right: 10px;
+        }
+
+        .scrolling-wrapper {
+            overflow-x: scroll;
+            overflow-y: scroll;
+            white-space: nowrap;
+           
+            margin-bottom: 0px;
+            margin-top: 0px;
 
         .card {
             display: inline-block;
             margin-right: 10px;
+            width: 100px;
+            text-align: center;
+           
+
+            p{
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
           }
+    }
+}
+    .gender{
+
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 400px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+    
+    }
+
+    .race-ethnicity{
+
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 400px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 50px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+    
+    }
+    .country-region{
+        .country{
+            float: left;
+         p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .country-dropdown{
+            height: 25px;
+            width: 150px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 20px;
+            float: right;
+            
+            margin-bottom: 15px;
+            text-align: center;
+            background-color: #212034;
+            color: #FEEBDB;
+        }
+        }
+        .region{
+            float:right;
+            margin-right: 120px;
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .region-dropdown{
+            height: 25px;
+            width: 150px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 20px;
+            float: right;
+            margin-bottom: 0px;
+            text-align: center;
+            background-color: #212034;
+            color: #FEEBDB;
+        }
+    }
+}
+    .hobbies {
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 400px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+        
+    }
+    .political-affiliation{
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 200px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 200px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+    }
+    .myers-briggs{
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 200px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+    }
+    .artistic-scale{
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 360px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+
+    }
+    .introversion-scale{
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+        }
+        .Dropdown-root{
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            float: right;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            margin-right: 320px;
+            text-align: center;
+
+            .Dropdown-placeholder{
+                color: #FEEBDB;
+            }
+            .Dropdown-option{
+                color: #FEEBDB;
+            }
+        }
+
+    }
+    .finishSurvey{
+        float: right;
+        color: #FEEBDB;
+        width: 120px;
+        margin-left:430px;
+        border-style: solid;
+            border-width: 1px;
+            border-color: #FEEBDB;
+            border-radius: 10px;
+            background-color: #F78D91;
     }
 }
