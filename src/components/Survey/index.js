@@ -2,26 +2,29 @@
 // // MainForm.jsx
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
+import { useSelector } from 'react-redux';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
 const Survey = () => {
-    const [attribute, setAttribute, state] = useState('');
-    const country = useState('');
-    const region = useState('');
+    const [month, setMonth] = useState('');
+    const [day, setDay] = useState('');
+    const [year, setYear] = useState('');
+    const [gender, setGender] = useState('');
+    const [raceethnicity, setRe] = useState('');
+    const [country, setCountry] = useState('');
+    const [region, setRegion] = useState('');
+    const [hobbieslist, setHobbies] = useState([]);
+    const [pa, setPa] = useState('');
+    const [myersbriggs, setMb] = useState('');
+    const [art, setArt] = useState('');
+    const [intExt, setIe] = useState('');
 
-    const createMonths = () => {
-        const mths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        var months = [];
-        var start = 0;
-        for(start; start<=11; start = start+1){
-            const i = mths[start];
-            months[start] = i;
-        }
-        return months;
-      };
-
-    const months = createMonths();
+    const months = [
+        {key: 'jan', label: 'jan'},
+        {key: 'feb', label: 'feb'},
+        {key: 'mar', label: 'mar'},
+    ];
 
     const createDays = () => {
         var days = [];
@@ -194,6 +197,98 @@ const Survey = () => {
       };
       const intr = createIS();
 
+    //this._onSelect = this._onSelect.bind(this);
+    const _onSelectMonth = (option) => {
+        console.log('You selected ', option.label);
+        setMonth({month: option.label});
+        console.log(month);
+    }
+
+    const _onSelectDay = (option) => {
+        console.log('You selected ', option.label);
+        setDay({day: option.label});
+        console.log(day);
+    }
+
+    const _onSelectYear = (option) => {
+        console.log('You selected ', option.label);
+        setYear({year: option.label});
+        console.log(year);
+    }
+
+    const _onSelectGender = (option) => {
+        console.log('You selected ', option.label);
+        setGender({gender: option.label});
+        console.log(gender);
+    }
+
+    const _onSelectRe = (option) => {
+        console.log('You selected ', option.label);
+        setRe({raceethnicity: option.label});
+        console.log(raceethnicity);
+    }
+
+    const _onSelectCountry = (option) => {
+        console.log('You selected ', option.label);
+        setCountry({country: option.label});
+        console.log(country);
+    }
+
+    const _onSelectRegion = (option) => {
+        console.log('You selected ', option.label);
+        setRegion({region: option.label});
+        console.log(region);
+    }
+
+    const _onSelectHobbies= (option) => {
+        console.log('You selected ', option.label);
+        setHobbies({hobbies: option.label});
+        console.log(hobbies);
+    }
+
+    const _onSelectPa = (option) => {
+        console.log('You selected ', option.label);
+        setPa({pa: option.label});
+        console.log(pa);
+    }
+
+    const _onSelectMb = (option) => {
+        console.log('You selected ', option.label);
+        setMb({myersbriggs: option.label});
+        console.log(myersbriggs);
+    }
+
+    const _onSelectArt = (option) => {
+        console.log('You selected ', option.label);
+        setArt({art: option.label});
+        console.log(art);
+    }
+
+    const _onSelectIe = (option) => {
+        console.log('You selected ', option.label);
+        setIe({intExt: option.label});
+        console.log(intExt);
+    }
+    
+    const createUserMap= () =>{
+        var userMap =  {
+            'month': month,
+            'day': day,
+            'year': year,
+            'gender': gender,
+            're': raceethnicity,
+            'country': country,
+            'region': region,
+            'hobbies': hobbieslist,
+            'pa': pa,
+            'myersbriggs': myersbriggs,
+            'artistic': art,
+            'intExt': intExt,
+        };
+        console.log(userMap);
+        return userMap;
+    }
+
     return (
         <div>
             <div className="SurveyPage">
@@ -202,27 +297,26 @@ const Survey = () => {
                     <div className='age'>
                     <p>D.O.B:</p>
                     <div className="scrolling-wrapper">
-                    
-                        <div className="monthcard">
+                        <div className="monthcard">                            
                             <Dropdown 
                                 options={months} 
-                                onSelect={(e) => setAttribute(months.key)} 
-                                currOption={months[0]}  
+                                onChange={_onSelectMonth} 
+                                value={months[0]}  
                                 placeholder= 'Month'
                             />
                             </div>
                         <div className="daycard">
                             <Dropdown 
                                 options={days} 
-                             onSelect={(f) => setAttribute(days.key)} 
-                                currOption={days[0]}  
+                                onChange={_onSelectDay} 
+                                currOption={day}  
                                 placeholder= 'Day'
                             />
                         </div>
                         <div className="yearcard">
                             <Dropdown 
                                 options={years} 
-                             onSelect={(g) => setAttribute(years.key)} 
+                                onChange={_onSelectYear} 
                                 currOption={years[0]}  
                                 placeholder= 'Year'
                             />
@@ -233,13 +327,13 @@ const Survey = () => {
                         <p>Gender:</p>
                         <Dropdown 
                             options={genders} 
-                         onSelect={(h) => setAttribute(genders.key)} 
+                         onChange={_onSelectGender} 
                             currOption={genders[0]} /></div>
                     <div className="race-ethnicity">
                         <p>Race/Ethnicity:</p>
                         <Dropdown 
                             options={re} 
-                            onSelect={(i) => setAttribute(re.key)} 
+                            onChange={_onSelectRe} 
                             currOption={re[0]}
                         />
                     </div>
@@ -248,21 +342,21 @@ const Survey = () => {
                         <p>Country:</p>
                         <Dropdown 
                             options={countries}
-                            onSelect={(val) => setAttribute(countries.key)} />
+                            onChange={_onSelectCountry} />
                             
                             </div>
                      <div className="region-dropdown">
                             <p>Region:</p>
                             <Dropdown
                             options ={states}
-                            onSelect={(val) => setAttribute(states.key)} />
+                            onChange={_onSelectRegion} />
                      </div>
                      </div>
                      <div className="hobbies">
                         <p>Hobbies:</p>
                         <Dropdown 
                             options={hobbies} 
-                            onSelect={(j) => setAttribute(hobbies.key)} 
+                            onChange={_onSelectHobbies} 
                             currOption={hobbies[0] }
                         />
                     </div>
@@ -270,7 +364,7 @@ const Survey = () => {
                         <p>Political Affiliation:</p>
                         <Dropdown 
                             options={pol} 
-                            onSelect={(k) => setAttribute(pol.key)} 
+                            onChange={_onSelectPa} 
                             currOption={pol[0]}
                         />
                     </div>
@@ -278,7 +372,7 @@ const Survey = () => {
                         <p>Myers Briggs (if youve taken it):</p>
                         <Dropdown 
                             options={mb} 
-                            onSelect={(l) => setAttribute(mb.key)} 
+                            onChange={_onSelectMb} 
                             currOption={mb[0]}
                         />
                     </div>
@@ -286,7 +380,7 @@ const Survey = () => {
                         <p>Artistic Scale:</p>
                         <Dropdown 
                             options={as} 
-                            onSelect={(l) => setAttribute(as.key)} 
+                            onChange={_onSelectArt} 
                             currOption={as[0]}
                         />
                     </div>
@@ -294,12 +388,14 @@ const Survey = () => {
                         <p>Introversion Scale:</p>
                         <Dropdown 
                             options={intr} 
-                            onSelect={(l) => setAttribute(intr.key)} 
+                            onChange={_onSelectIe} 
                             currOption={intr[0]}
                         />
                     </div>
-                    <button className='finishSurvey'>
+                    <button className='finishSurvey'
+                    onClick = {createUserMap}>
                         Finish Survey
+                       
                         </button>
                         
                     </div>
