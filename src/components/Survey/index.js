@@ -78,12 +78,74 @@ const Survey = () => {
         {key: 'texas', label: 'texas'},
     ]
 
-    const hobbies = [
-        {key: 'reading', label: 'reading'},
-        {key: 'writing', label: 'writing'},
-        {key: 'television', label: 'television'},
-        {key: 'sports', label: 'sports'},
-    ];
+    const hobbies = [{
+        key: 'writing',
+        label: 'writing'
+      },
+      {
+          name: 'reading',
+          value: 'reading'
+        },
+        {
+          key: 'playing a sport',
+          label: 'playing a sport'
+        },
+        {
+          key: 'playing an instrument',
+          label: 'playing an instrument'
+        },
+        {
+          key: 'singing',
+          label: 'singing'
+        },
+        {
+          key: 'dancing',
+          label: 'dancing'
+        }, 
+        {
+            key: 'art',
+            label: 'art'
+          },
+          {
+            key: 'video games',
+            label: 'video games'
+          },
+          {
+            key: 'running',
+            label: 'running'
+          },
+          {
+            key: 'coding',
+            label: 'coding'
+          },
+          {
+            key: 'photography',
+            label: 'photography'
+          },
+          {
+            key: 'cooking',
+            label: 'cooking'
+          },
+          {
+            key: 'hiking',
+            label: 'hiking'
+          },
+          {
+            key: 'biking',
+            label: 'biking'
+          },
+          {
+            key: 'swimming',
+            label: 'swimming'
+          },
+          {
+            key: 'television',
+            label: 'television'
+          },
+          {
+            key: 'travelling',
+            label: 'travelling'
+          },];
 
     const mb = [
         {key: 'ENTJ', label: 'ENTJ'},
