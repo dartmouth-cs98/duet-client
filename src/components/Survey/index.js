@@ -21,34 +21,35 @@ const Survey = () => {
     const [intExt, setIe] = useState('');
 
     const months = [
-        {key: 'jan', label: 'jan'},
-        {key: 'feb', label: 'feb'},
-        {key: 'mar', label: 'mar'},
+        {key: 'jan', label: 'january'},
+        {key: 'feb', label: 'february'},
+        {key: 'mar', label: 'march'},
+        {key: 'apr', label: 'april'},
+        {key: 'may', label: 'may'},
+        {key: 'june', label: 'june'},
+        {key: 'july', label: 'july'},
+        {key: 'aug', label: 'august'},
+        {key: 'sept', label: 'september'},
+        {key: 'oct', label: 'october'},
+        {key: 'nov', label: 'november'},
+        {key: 'dec', label: 'december'},
     ];
 
-    const createDays = () => {
-        var days = [];
-        var start = 31;
-        for (start; start>=1; start=start-1){
-            days[start] = start;
-        }
+    const days = [
+        {key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
+        {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10},{key: '11', label: 11},{key: '12', label: 12},
+        {key: '13', label: 13},{key: '14', label: 14},{key: '15', label: 15},{key: '16', label: 16},{key: '17', label: 17},{key: '18', label: 18},
+        {key: '19', label: 19},{key: '20', label: 20},{key: '21', label: 21},{key: '22', label: 22},{key: '23', label: 23},
+        {key: '24', label: 24},{key: '25', label: 25},{key: '26', label: 26},{key: '27', label: 27},{key: '28', label: 28},
+        {key: '29', label: 29},{key: '30', label: 30},{key: '31', label: 31}];
 
-        return days;
-      };
-
-    const days = createDays();
-
-    const createYears = () => {
-        var years = [];
-        var start = 1909;
-        for (start; start<2019; start=start+1){
-            years[start] = start;
-        }
-
-        return years;
-      };
-
-    const years = createYears();
+    const years = [
+        {key: '2010', label: 2010},{key: '2009', label: 2009},{key: '2008', label: 2008},{key: '2007', label: 2007},{key: '2006', label: 2006},{key: '2005', label: 2005},
+        {key: '2004', label: 2004},{key: '2003', label: 2003},{key: '2002', label: 2002},{key: '2001', label: 2001},{key: '2000', label: 2000},{key: '1999', label: 1999},
+        {key: '1998', label: 1998},{key: '1997', label: 1997},{key: '1996', label: 1996},{key: '1995', label: 1995},{key: '1994', label: 1994},{key: '1993', label: 1993},
+        {key: '1992', label: 1992},{key: '1991', label: 1991},{key: '1990', label: 1990},{key: '1980', label: 1980},{key: '1979', label: 1979},
+        {key: '1978', label: 1978},{key: '1977', label: 1977},{key: '1976', label: 1976},{key: '1975', label: 1975},{key: '1974', label: 1974},
+        {key: '1973', label: 1973},{key: '1972', label: 1972},{key: '1971', label: 1971}];
 
     const genders = [
         {key: 'male', label: 'male'},
@@ -81,74 +82,18 @@ const Survey = () => {
         {key: 'texas', label: 'texas'},
     ]
 
-    const hobbies = [{
-        key: 'writing',
-        label: 'writing'
-      },
-      {
-          name: 'reading',
-          value: 'reading'
-        },
-        {
-          key: 'playing a sport',
-          label: 'playing a sport'
-        },
-        {
-          key: 'playing an instrument',
-          label: 'playing an instrument'
-        },
-        {
-          key: 'singing',
-          label: 'singing'
-        },
-        {
-          key: 'dancing',
-          label: 'dancing'
-        }, 
-        {
-            key: 'art',
-            label: 'art'
-          },
-          {
-            key: 'video games',
-            label: 'video games'
-          },
-          {
-            key: 'running',
-            label: 'running'
-          },
-          {
-            key: 'coding',
-            label: 'coding'
-          },
-          {
-            key: 'photography',
-            label: 'photography'
-          },
-          {
-            key: 'cooking',
-            label: 'cooking'
-          },
-          {
-            key: 'hiking',
-            label: 'hiking'
-          },
-          {
-            key: 'biking',
-            label: 'biking'
-          },
-          {
-            key: 'swimming',
-            label: 'swimming'
-          },
-          {
-            key: 'television',
-            label: 'television'
-          },
-          {
-            key: 'travelling',
-            label: 'travelling'
-          },];
+    const hobbies = [{key: 'writing',label: 'writing'},{name: 'reading',value: 'reading'},{key: 'soccer',label: 'soccer'},{key: 'baseball',label: 'baseball'},
+        {key: 'basketball',label: 'basketball'}, {key: 'bowling',label: 'bowling'}, {key: 'boxing',label: 'boxing'},{key: 'cricket',label: 'cricket'}, {key: 'football',label: 'football'},
+        {key: 'cycling',label: 'cycling'},{key: 'darts',label: 'darts'},{key: 'eSports',label: 'eSports'}, {key: 'golf',label: 'golf'}, {key: 'horse racing',label: 'horse racing'},
+        {key: 'ice hockey',label: 'ice hockey'},{key: 'lacrosse',label: 'lacrosse'},{key: 'rugby',label: 'rugby'}, {key: 'handball',label: 'handball'},{key: 'tennis',label: 'tennis'},
+        {key: 'bull riding',label: 'bull riding'}, {key: 'running',label: 'running'},{key: 'swimming',label: 'swimming'},
+        {key: 'frisbee',label: 'frisbee'},{key: 'singing',label: 'singing'},{key: 'dancing',label: 'dancing'}, {key: 'guitar',label: 'guitar'},{key: 'cello',label: 'cello'},
+        {key: 'clarinet',label: 'clarinet'}, {key: 'drum',label: 'drum'}, {key: 'flute',label: 'flute'}, {key: 'harp',label: 'harp'},
+        {key: 'piano',label: 'piano'}, {key: 'saxophone',label: 'synthesizer'}, {key: 'tambourine',label: 'tambourine'}, {key: 'ukulele',label: 'ukulele'}, 
+        {key: 'viola',label: 'viola'},{key: 'violin',label: 'violin'},{key: 'xylophone',label: 'xylophone'},
+        {key: 'art',label: 'art'},{key: 'video games',label: 'video games'},{key: 'coding',label: 'coding'},
+        {key: 'photography',label: 'photography'},{key: 'cooking',label: 'cooking'},{key: 'hiking',label: 'hiking'},{key: 'biking',label: 'biking'},
+        {key: 'television',label: 'television'},{key: 'travelling',label: 'travelling'}];
 
     const mb = [
         {key: 'ENTJ', label: 'ENTJ'},
@@ -175,27 +120,14 @@ const Survey = () => {
         {key: 'other', label: 'other'},
     ];
 
-    const createAS= () => {
-        var as = [];
-        var start= 0;
-        for (start; start<30; start=start+1){
-            as[start] = start;
-        }
 
-        return as;
-      };
-      const as = createAS();
+      const as = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
+        {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
+      ];
 
-      const createIS= () => {
-        var intr = [];
-        var start= 0;
-        for (start; start<11; start=start+1){
-            intr[start] = start;
-        }
-
-        return intr;
-      };
-      const intr = createIS();
+      const intr = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
+        {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
+      ];
 
     //this._onSelect = this._onSelect.bind(this);
     const _onSelectMonth = (option) => {
@@ -301,7 +233,7 @@ const Survey = () => {
                             <Dropdown 
                                 options={months} 
                                 onChange={_onSelectMonth} 
-                                value={months[0]}  
+                                currOption={month}
                                 placeholder= 'Month'
                             />
                             </div>
