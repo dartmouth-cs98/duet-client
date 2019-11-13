@@ -201,7 +201,13 @@ const Survey = () => {
         setIe({intExt: option.label});
         console.log(intExt);
     }
-    
+
+    /* React.useEffect((option) => {
+        if (raceethnicity != ''){
+            _onSelectRe(option);
+        }
+    }, [raceethnicity])
+     */
     const createUserMap= () =>{
         var userMap =  {
             'month': month,
@@ -220,6 +226,8 @@ const Survey = () => {
         console.log(userMap);
         return userMap;
     }
+
+    var optRe;
 
     return (
         <div>
@@ -265,23 +273,24 @@ const Survey = () => {
                         <p>Race/Ethnicity:</p>
                         <Dropdown 
                             options={re} 
-                            onChange={_onSelectRe} 
-                            currOption={re[0]}
+                            //value = {raceethnicity}
+                            onChange={_onSelectRe}
+                            onClick={_onSelectRe}
                         />
                     </div>
                     <div className = "country-region">
-                    <div className="country-dropdown">
+                        <div className="country">
                         <p>Country:</p>
-                        <Dropdown 
-                            options={countries}
-                            onChange={_onSelectCountry} />
-                            
+                        <CountryDropdown className = "country-dropdown"
+                            value={country}
+                            onChange={(val) => setCountry(val)} />
                             </div>
-                     <div className="region-dropdown">
+                     <div className="region">
                             <p>Region:</p>
-                            <Dropdown
-                            options ={states}
-                            onChange={_onSelectRegion} />
+                            <RegionDropdown className="region-dropdown"
+                                country={country}
+                                value={region}
+                                onChange={(val) => setRegion(val)} />
                      </div>
                      </div>
                      <div className="hobbies">
