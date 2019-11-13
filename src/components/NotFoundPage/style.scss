@@ -1,0 +1,122 @@
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+.NotFoundPage {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    transform: translateX(-2vw);
+    
+    .Record {
+        width: 90vh;
+        height: 90vh;
+
+        .Base {
+            position: absolute;
+            width: 90vh;
+            height: 90vh;
+        }
+
+        .Spin {
+            position: absolute;
+            animation: rotation 10s infinite linear;
+            width: 90vh;
+            height: 90vh;
+        }
+
+    }
+
+    .Body {
+        width: 486px;
+        height: 437px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+        color: #FEEBDB;
+        
+        .DuetLogo {
+            transform: translateY(-20px);
+        }
+
+        .HomeLink {
+            margin: 20px;
+            color: #E5277B;
+            font-size: 24px;
+        }
+    }
+
+}
+
+// .NotFoundPage {
+//         position: relative;
+//         overflow: hidden;
+//         height: 100vh;
+//         width: 100vw;
+    
+//         display: flex;
+//         justify-content: space-evenly;
+//         align-items: center;
+//         flex-direction: row-reverse;
+        
+//         .Record {
+//             pos
+//             width: 150vh;
+//             height: 150vh;
+//             left: -65vh;
+    
+//             .Base {
+//                 position: absolute;
+//                 width: 150vh;
+//                 height: 150vh;
+//                 left: -65vh;
+//             }
+    
+//             .Spin {
+//                 position: absolute;
+//                 animation: rotation 10s infinite linear;
+//                 width: 150vh;
+//                 height: 150vh;
+//                 left: -65vh;
+//             }
+    
+//         }
+    
+//         .Body {
+//             width: 486px;
+//             height: 437px;
+    
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+    
+//             text-align: center;
+//             color: #FEEBDB;
+            
+//             .DuetLogo {
+//                 transform: translateY(-20px);
+//             }
+    
+//             .HomeLink {
+//                 margin: 20px;
+//                 color: #E5277B;
+//                 font-size: 24px;
+//             }
+//         }
+    
+//     }
