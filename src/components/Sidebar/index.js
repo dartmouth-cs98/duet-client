@@ -156,6 +156,7 @@ const Sidebar = ({ history }) => {
       <div className="LinkGroup">
           <a href="/">home</a>
           <a href="/#about">about</a>
+          <a href="/survey">survey</a>
           <a onClick={logout}>logout</a>
       </div>
     </div>
