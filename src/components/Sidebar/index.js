@@ -75,6 +75,10 @@ const Sidebar = ({ history }) => {
     dispatch(clearUser());
     history.push('/')
   }
+  
+  const toSurvey = () => {
+    history.push('/survey')
+  }
 
   return (
     <div className="Sidebar">
@@ -156,6 +160,7 @@ const Sidebar = ({ history }) => {
       <div className="LinkGroup">
           <a href="/">home</a>
           <a href="/#about">about</a>
+          <a onClick={toSurvey}>survey</a>
           <a onClick={logout}>logout</a>
       </div>
     </div>
