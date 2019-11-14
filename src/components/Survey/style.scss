@@ -266,29 +266,55 @@
         p {
             color: #F78D91;
             float:left;
+            margin-top: 15px;
             margin-right: 10px;
-        }
-        .Dropdown-root{
-            width: 100px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: #FEEBDB;
-            border-radius: 10px;
-            float: right;
-            margin-top: 16px;
-            margin-bottom: 16px;
-            margin-right: 400px;
             text-align: center;
-            position: absolute;
-            display: inline;
-
-            .Dropdown-placeholder{
-                color: #FEEBDB;
-            }
-            .Dropdown-option{
-                color: #FEEBDB;
-            }
         }
+
+        .multiSelect {
+            float: right;
+            margin-top: 0px;
+
+            .chip {
+              
+                
+
+                .chip-body {
+                    text-align: center;
+                    background-color: #212034;
+                    border-color: #F78D91;
+                    border-style: solid;
+                    border-width: 1px;
+
+                    .chip-text{
+                        margin-top: 0px;
+            
+                        color: #FEEBDB;
+                    }
+
+                }
+                }
+        .input-box{
+            background-color: #212034;
+            border-color: #F78D91;
+            color: #FEEBDB;
+
+        }
+        .search-result {
+
+            .list-result {
+
+                .container {
+                    background-color: #ffffff;
+                    border-color: #F78D91;
+                    color: #F78D91;
+                    margin-bottom: 0px;
+                }
+
+            }
+
+        }
+    }
         
     }
     .political-affiliation{
