@@ -2,23 +2,25 @@
 // // MainForm.jsx
 import React, { useState } from 'react';
 import Dropdown from '../Dropdown';
+import MultiSelectDropdown from '../MultiDropdown';
+import 'semantic-ui-css/semantic.min.css';
 import { useSelector } from 'react-redux';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
 const Survey = () => {
-    const [month, setMonth] = useState({key: 'select month...', label: 'select month...'});
-    const [day, setDay] = useState({key: 'select day...', label: 'select day...'});
-    const [year, setYear] = useState({key: 'select year...', label: 'select year...'});
-    const [gender, setGender] = useState({key: 'select...', label: 'select...'});
-    const [raceethnicity, setRe] = useState({key: 'select...', label: 'select...'});
-    const [country, setCountry] = useState({key: 'select...', label: 'select...'});
-    const [region, setRegion] = useState({key: 'select...', label: 'select...'});
-    const [hobbieslist, setHobbies] = useState({key: 'select...', label: 'select...'});
-    const [pa, setPa] = useState({key: 'select...', label: 'select...'});
-    const [myersbriggs, setMb] = useState({key: 'select...', label: 'select...'});
-    const [art, setArt] = useState({key: 'select...', label: 'select...'});
-    const [intExt, setIe] = useState({key: 'select...', label: 'select...'});
+    const [month, setMonth] = useState({key: 'month', label: 'month'});
+    const [day, setDay] = useState({key: 'day', label: 'day'});
+    const [year, setYear] = useState({key: 'year', label: 'year'});
+    const [gender, setGender] = useState({key: 'select', label: 'select'});
+    const [raceethnicity, setRe] = useState({key: 'select', label: 'select'});
+    const [country, setCountry] = useState({key: 'select', label: 'select'});
+    const [region, setRegion] = useState({key: 'select', label: 'select'});
+    const [hobbieslist, setHobbies] = useState({key: 'select', label: 'select'});
+    const [pa, setPa] = useState({key: 'select', label: 'select'});
+    const [myersbriggs, setMb] = useState({key: 'select', label: 'select'});
+    const [art, setArt] = useState({key: 'select', label: 'select'});
+    const [intExt, setIe] = useState({key: 'select', label: 'select'});
 
     const months = [
         {key: 'jan', label: 'january'},
@@ -271,10 +273,8 @@ const Survey = () => {
                      </div>
                      <div className="hobbies">
                         <p>Hobbies:</p>
-                        <Dropdown 
+                        <MultiSelectDropdown 
                             options={hobbies} 
-                            onSelect={_onSelectHobbies} 
-                            currOption={hobbieslist}
                         />
                     </div>
                     <div className="political-affiliation">
