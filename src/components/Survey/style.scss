@@ -5,7 +5,9 @@
     height: 100vh;
     width: 100vw;
     background-color: #212034;
-    
+
+    display: flex;
+    flex-direction: column;
     
     //font-family: 'moon';
 
@@ -22,13 +24,34 @@
         flex-direction: column;
         overflow-y: scroll;
 
+        align-items: center;
+        z-index: 10;
+
         h1 {
             color: #9BD6DC;
             margin-bottom: 60px;
             text-align: center;
         }
+
+        h2{
+            color: #FEEBDB;
+            font-size: 18px;
+            margin: 0;
+            padding: 7px;
+            padding-left: 0;
+            margin-bottom: 5px;
+            font-family: 'Raleway', sans-serif;
+        }
         p {
             color: #F78D91;
+        }
+
+        h6 {
+            background-color: #FEEBDB;
+            border: 1px solid #F78D91;
+            padding: 0 20px;
+            margin: 0 10px;
+            font-size: 12px;
         }
         .Dropdown-root{
             border-style: solid;
