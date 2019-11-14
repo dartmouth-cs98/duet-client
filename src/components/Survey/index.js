@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
 // // MainForm.jsx
 import React, { useState } from 'react';
-import Dropdown from 'react-dropdown';
+import Dropdown from '../Dropdown';
 import { useSelector } from 'react-redux';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
 const Survey = () => {
-    const [month, setMonth] = useState('');
-    const [day, setDay] = useState('');
-    const [year, setYear] = useState('');
-    const [gender, setGender] = useState('');
-    const [raceethnicity, setRe] = useState('');
-    const [country, setCountry] = useState('');
-    const [region, setRegion] = useState('');
-    const [hobbieslist, setHobbies] = useState([]);
-    const [pa, setPa] = useState('');
-    const [myersbriggs, setMb] = useState('');
-    const [art, setArt] = useState('');
-    const [intExt, setIe] = useState('');
+    const [month, setMonth] = useState({key: 'select month...', label: 'select month...'});
+    const [day, setDay] = useState({key: 'select day...', label: 'select day...'});
+    const [year, setYear] = useState({key: 'select year...', label: 'select year...'});
+    const [gender, setGender] = useState({key: 'select...', label: 'select...'});
+    const [raceethnicity, setRe] = useState({key: 'select...', label: 'select...'});
+    const [country, setCountry] = useState({key: 'select...', label: 'select...'});
+    const [region, setRegion] = useState({key: 'select...', label: 'select...'});
+    const [hobbieslist, setHobbies] = useState({key: 'select...', label: 'select...'});
+    const [pa, setPa] = useState({key: 'select...', label: 'select...'});
+    const [myersbriggs, setMb] = useState({key: 'select...', label: 'select...'});
+    const [art, setArt] = useState({key: 'select...', label: 'select...'});
+    const [intExt, setIe] = useState({key: 'select...', label: 'select...'});
 
     const months = [
         {key: 'jan', label: 'january'},
@@ -131,74 +131,62 @@ const Survey = () => {
 
     //this._onSelect = this._onSelect.bind(this);
     const _onSelectMonth = (option) => {
-        console.log('You selected ', option.label);
-        setMonth({month: option.label});
+        console.log('You selected ', option);
+        setMonth(option);
         console.log(month);
     }
 
     const _onSelectDay = (option) => {
-        console.log('You selected ', option.label);
-        setDay({day: option.label});
+        console.log(option);
+        setDay(option);
         console.log(day);
     }
 
     const _onSelectYear = (option) => {
-        console.log('You selected ', option.label);
-        setYear({year: option.label});
+        console.log(option);
+        setYear(option);
         console.log(year);
     }
 
     const _onSelectGender = (option) => {
-        console.log('You selected ', option.label);
-        setGender({gender: option.label});
+        console.log('You selected ', option);
+        setGender(option);
         console.log(gender);
     }
 
     const _onSelectRe = (option) => {
-        console.log('You selected ', option.label);
-        setRe({raceethnicity: option.label});
+        console.log('You selected ', option);
+        setRe(option);
         console.log(raceethnicity);
     }
 
-    const _onSelectCountry = (option) => {
-        console.log('You selected ', option.label);
-        setCountry({country: option.label});
-        console.log(country);
-    }
-
-    const _onSelectRegion = (option) => {
-        console.log('You selected ', option.label);
-        setRegion({region: option.label});
-        console.log(region);
-    }
-
     const _onSelectHobbies= (option) => {
-        console.log('You selected ', option.label);
-        setHobbies({hobbies: option.label});
+        console.log('You selected ', option);
+        setHobbies(option);
         console.log(hobbies);
     }
 
     const _onSelectPa = (option) => {
-        console.log('You selected ', option.label);
-        setPa({pa: option.label});
+        console.log('You selected ', option);
+        setPa(option);
         console.log(pa);
     }
 
     const _onSelectMb = (option) => {
-        console.log('You selected ', option.label);
-        setMb({myersbriggs: option.label});
+        console.log('You selected ', option);
+        setMb(option);
         console.log(myersbriggs);
     }
 
     const _onSelectArt = (option) => {
-        console.log('You selected ', option.label);
-        setArt({art: option.label});
+        console.log('You selected ', option);
+        setArt(option);
         console.log(art);
     }
 
     const _onSelectIe = (option) => {
-        console.log('You selected ', option.label);
-        setIe({intExt: option.label});
+        console.log('You selected ', option);
+        setIe(option);
         console.log(intExt);
     }
 
@@ -236,46 +224,34 @@ const Survey = () => {
                     <h1>Tell Us About Yourself</h1>
                     <div className='age'>
                     <p>D.O.B:</p>
-                    <div className="scrolling-wrapper">
-                        <div className="monthcard">                            
                             <Dropdown 
                                 options={months} 
-                                onChange={_onSelectMonth} 
+                                onSelect={_onSelectMonth} 
                                 currOption={month}
-                                placeholder= 'Month'
                             />
-                            </div>
-                        <div className="daycard">
                             <Dropdown 
                                 options={days} 
-                                onChange={_onSelectDay} 
+                                onSelect={_onSelectDay} 
                                 currOption={day}  
-                                placeholder= 'Day'
                             />
-                        </div>
-                        <div className="yearcard">
                             <Dropdown 
                                 options={years} 
-                                onChange={_onSelectYear} 
-                                currOption={years[0]}  
-                                placeholder= 'Year'
+                                onSelect={_onSelectYear} 
+                                currOption={year}  
                             />
-                        </div>
-                    </div>
                     </div>
                     <div className= "gender">
                         <p>Gender:</p>
                         <Dropdown 
                             options={genders} 
-                         onChange={_onSelectGender} 
-                            currOption={genders[0]} /></div>
+                            onSelect={_onSelectGender} 
+                            currOption={gender} /></div>
                     <div className="race-ethnicity">
                         <p>Race/Ethnicity:</p>
                         <Dropdown 
                             options={re} 
-                            //value = {raceethnicity}
-                            onChange={_onSelectRe}
-                            onClick={_onSelectRe}
+                            currOption = {raceethnicity}
+                            onSelect={_onSelectRe}
                         />
                     </div>
                     <div className = "country-region">
@@ -297,40 +273,40 @@ const Survey = () => {
                         <p>Hobbies:</p>
                         <Dropdown 
                             options={hobbies} 
-                            onChange={_onSelectHobbies} 
-                            currOption={hobbies[0] }
+                            onSelect={_onSelectHobbies} 
+                            currOption={hobbieslist}
                         />
                     </div>
                     <div className="political-affiliation">
                         <p>Political Affiliation:</p>
                         <Dropdown 
                             options={pol} 
-                            onChange={_onSelectPa} 
-                            currOption={pol[0]}
+                            onSelect={_onSelectPa} 
+                            currOption={pa}
                         />
                     </div>
                     <div className="myers-briggs">
                         <p>Myers Briggs (if youve taken it):</p>
                         <Dropdown 
                             options={mb} 
-                            onChange={_onSelectMb} 
-                            currOption={mb[0]}
+                            onSelect={_onSelectMb} 
+                            currOption={myersbriggs}
                         />
                     </div>
                     <div className="artistic-scale">
                         <p>Artistic Scale:</p>
                         <Dropdown 
                             options={as} 
-                            onChange={_onSelectArt} 
-                            currOption={as[0]}
+                            onSelect={_onSelectArt} 
+                            currOption={art}
                         />
                     </div>
                     <div className="introversion-scale">
                         <p>Introversion Scale:</p>
                         <Dropdown 
                             options={intr} 
-                            onChange={_onSelectIe} 
-                            currOption={intr[0]}
+                            onSelect={_onSelectIe} 
+                            currOption={intExt}
                         />
                     </div>
                     <button className='finishSurvey'
