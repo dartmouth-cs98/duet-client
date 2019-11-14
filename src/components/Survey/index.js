@@ -2,9 +2,7 @@
 // // MainForm.jsx
 import React, { useState } from 'react';
 import Dropdown from '../Dropdown';
-import MultiSelectDropdown from '../MultiDropdown';
 import Multiselect from 'multiselect-dropdown-react';
-import 'semantic-ui-css/semantic.min.css';
 import { useSelector } from 'react-redux';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
@@ -109,14 +107,13 @@ const Survey = ({ history }) => {
         {key: 'other', label: 'other'},
     ];
 
+    const as = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
+    {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
+    ];
 
-      const as = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
-        {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
-      ];
-
-      const intr = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
-        {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
-      ];
+    const intr = [{key: '1', label: 1},{key: '2', label: 2},{key: '3', label: 3},{key: '4', label: 4},{key: '5', label: 5},{key: '6', label: 6},
+    {key: '7', label: 7},{key: '8', label: 8},{key: '9', label: 9},{key: '10', label: 10}
+    ];
 
     const _onSelectMonth = (option) => {
         setMonth(option);
@@ -136,10 +133,6 @@ const Survey = ({ history }) => {
 
     const _onSelectRe = (option) => {
         setRe(option);
-    }
-
-    const _onSelectHobbies= (option) => {
-        setHobbies(option);
     }
 
     const _onSelectPa = (option) => {
@@ -179,6 +172,7 @@ const Survey = ({ history }) => {
 
     const goBack = () => {
         history.push('/dashboard/me');
+    }
 
     const dothis = (option) => {
         setHobbies(option);
@@ -258,5 +252,3 @@ const Survey = ({ history }) => {
 }
 
 export default Survey;
-
-
