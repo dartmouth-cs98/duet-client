@@ -142,11 +142,13 @@
     }
 }
     .gender{
+        margin-top: 20px;
 
         p {
             color: #F78D91;
             float:left;
             margin-right: 10px;
+            
         }
         .Dropdown-root{
             width: 100px;
@@ -217,7 +219,7 @@
             width: 150px;
             border-style: solid;
             border-width: 1px;
-            border-color: #FEEBDB;
+            border-color: #F78D91;
             border-radius: 20px;
             float: right;
             
@@ -243,7 +245,7 @@
             width: 150px;
             border-style: solid;
             border-width: 1px;
-            border-color: #FEEBDB;
+            border-color:#F78D91;
             border-radius: 20px;
             float: right;
             margin-bottom: 0px;
