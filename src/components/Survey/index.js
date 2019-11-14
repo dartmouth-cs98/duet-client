@@ -2,6 +2,9 @@
 // // MainForm.jsx
 import React, { useState } from 'react';
 import Dropdown from '../Dropdown';
+import MultiSelectDropdown from '../MultiDropdown';
+import Multiselect from 'multiselect-dropdown-react';
+import 'semantic-ui-css/semantic.min.css';
 import { useSelector } from 'react-redux';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
@@ -68,32 +71,18 @@ const Survey = ({ history }) => {
         {key: 'other', label: 'other'},
     ];
 
-    const countries = [
-        {key: 'united states of america', label: 'united states of america'},
-        {key: 'canada', label: 'canada'},
-        {key: 'mexico', label: 'mexico'},
-    ]
-
-    const states = [
-        {key: 'california', label: 'california'},
-        {key: 'florida', label: 'florida'},
-        {key: 'new hampshire', label: 'new hampshire'},
-        {key: 'new york', label: 'new york'},
-        {key: 'texas', label: 'texas'},
-    ]
-
-    const hobbies = [{key: 'writing',label: 'writing'},{name: 'reading',value: 'reading'},{key: 'soccer',label: 'soccer'},{key: 'baseball',label: 'baseball'},
-        {key: 'basketball',label: 'basketball'}, {key: 'bowling',label: 'bowling'}, {key: 'boxing',label: 'boxing'},{key: 'cricket',label: 'cricket'}, {key: 'football',label: 'football'},
-        {key: 'cycling',label: 'cycling'},{key: 'darts',label: 'darts'},{key: 'eSports',label: 'eSports'}, {key: 'golf',label: 'golf'}, {key: 'horse racing',label: 'horse racing'},
-        {key: 'ice hockey',label: 'ice hockey'},{key: 'lacrosse',label: 'lacrosse'},{key: 'rugby',label: 'rugby'}, {key: 'handball',label: 'handball'},{key: 'tennis',label: 'tennis'},
-        {key: 'bull riding',label: 'bull riding'}, {key: 'running',label: 'running'},{key: 'swimming',label: 'swimming'},
-        {key: 'frisbee',label: 'frisbee'},{key: 'singing',label: 'singing'},{key: 'dancing',label: 'dancing'}, {key: 'guitar',label: 'guitar'},{key: 'cello',label: 'cello'},
-        {key: 'clarinet',label: 'clarinet'}, {key: 'drum',label: 'drum'}, {key: 'flute',label: 'flute'}, {key: 'harp',label: 'harp'},
-        {key: 'piano',label: 'piano'}, {key: 'saxophone',label: 'synthesizer'}, {key: 'tambourine',label: 'tambourine'}, {key: 'ukulele',label: 'ukulele'}, 
-        {key: 'viola',label: 'viola'},{key: 'violin',label: 'violin'},{key: 'xylophone',label: 'xylophone'},
-        {key: 'art',label: 'art'},{key: 'video games',label: 'video games'},{key: 'coding',label: 'coding'},
-        {key: 'photography',label: 'photography'},{key: 'cooking',label: 'cooking'},{key: 'hiking',label: 'hiking'},{key: 'biking',label: 'biking'},
-        {key: 'television',label: 'television'},{key: 'travelling',label: 'travelling'}];
+    const hobbies = [{name: 'writing',value: 'writing'},{name: 'reading',value: 'reading'},{name: 'soccer',value: 'soccer'},{name: 'baseball',value: 'baseball'},
+        {name: 'basketball',value: 'basketball'}, {name: 'bowling',value: 'bowling'}, {name: 'boxing',value: 'boxing'},{name: 'cricket',value: 'cricket'}, {name: 'football',value: 'football'},
+        {name: 'cycling',value: 'cycling'},{name: 'darts',value: 'darts'},{name: 'eSports',value: 'eSports'}, {name: 'golf',value: 'golf'}, {name: 'horse racing',value: 'horse racing'},
+        {name: 'ice hockey',value: 'ice hockey'},{name: 'lacrosse',value: 'lacrosse'},{name: 'rugby',value: 'rugby'}, {name: 'handball',value: 'handball'},{name: 'tennis',value: 'tennis'},
+        {name: 'bull riding',value: 'bull riding'}, {name: 'running',value: 'running'},{name: 'swimming',value: 'swimming'},
+        {name: 'frisbee',value: 'frisbee'},{name: 'singing',value: 'singing'},{name: 'dancing',value: 'dancing'}, {name: 'guitar',value: 'guitar'},{name: 'cello',value: 'cello'},
+        {name: 'clarinet',value: 'clarinet'}, {name: 'drum',value: 'drum'}, {name: 'flute',value: 'flute'}, {name: 'harp',value: 'harp'},
+        {name: 'piano',value: 'piano'}, {name: 'saxophone',value: 'synthesizer'}, {name: 'tambourine',value: 'tambourine'}, {name: 'ukulele',value: 'ukulele'}, 
+        {name: 'viola',value: 'viola'},{name: 'violin',value: 'violin'},{name: 'xylophone',value: 'xylophone'},
+        {name: 'art',value: 'art'},{name: 'video games',value: 'video games'},{name: 'coding',value: 'coding'},
+        {name: 'photography',value: 'photography'},{name: 'cooking',value: 'cooking'},{name: 'hiking',value: 'hiking'},{name: 'biking',value: 'biking'},
+        {name: 'television',value: 'television'},{name: 'travelling',value: 'travelling'}];
 
     const mb = [
         {key: 'ENTJ', label: 'ENTJ'},
@@ -190,6 +179,9 @@ const Survey = ({ history }) => {
 
     const goBack = () => {
         history.push('/dashboard/me');
+
+    const dothis = (option) => {
+        setHobbies(option);
     }
 
     return (
@@ -232,7 +224,7 @@ const Survey = ({ history }) => {
 
                     <div className="Question" id="hobbies">
                         <p>Hobbies:</p>
-                        <Dropdown options={hobbies} onSelect={_onSelectHobbies} currOption={hobbieslist} />
+                        <Multiselect options = {hobbies} onSelectOptions = {dothis} />
                     </div>
 
                     <div className="Question" id="political-affiliation">

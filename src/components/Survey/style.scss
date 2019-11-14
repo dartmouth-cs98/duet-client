@@ -67,10 +67,17 @@
         font-weight: normal;
         font-size: 16px;
     }
+}
+    .gender{
+        margin-top: 20px;
 
     #region {
         p {
             margin-left: 20px;
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+            
         }
     }
 
@@ -104,13 +111,119 @@
     #introversion-scale, #artistic-scale {
         .Dropdown-options {
             max-height: 90px;
+      }
+    }
+    .country-region{
+        .country{
+            float: left;
+         p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .country-dropdown{
+            height: 25px;
+            width: 150px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #F78D91;
+            border-radius: 20px;
+            float: right;
+            
+            margin-bottom: 15px;
+            text-align: center;
+            background-color: #212034;
+            color: #FEEBDB;
+            
+        }
+        }
+        .region{
+            float:right;
+            margin-right: 120px;
+        p {
+            color: #F78D91;
+            float:left;
+            margin-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .region-dropdown{
+            height: 25px;
+            width: 150px;
+            border-style: solid;
+            border-width: 1px;
+            border-color:#F78D91;
+            border-radius: 20px;
+            float: right;
+            margin-bottom: 0px;
+            text-align: center;
+            background-color: #212034;
+            color: #FEEBDB;
         }
     }
+
 
     #race-ethnicity {
         .Dropdown-button {
             width: 250px;
         }
+}
+    .hobbies {
+        p {
+            color: #F78D91;
+            float:left;
+            margin-top: 15px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .multiSelect {
+            float: right;
+            margin-top: 0px;
+
+            .chip {
+              
+                
+
+                .chip-body {
+                    text-align: center;
+                    background-color: #212034;
+                    border-color: #F78D91;
+                    border-style: solid;
+                    border-width: 1px;
+
+                    .chip-text{
+                        margin-top: 0px;
+            
+                        color: #FEEBDB;
+                    }
+
+                }
+                }
+        .input-box{
+            background-color: #212034;
+            border-color: #F78D91;
+            color: #FEEBDB;
+
+        }
+        .search-result {
+
+            .list-result {
+
+                .container {
+                    background-color: #ffffff;
+                    border-color: #F78D91;
+                    color: #F78D91;
+                    margin-bottom: 0px;
+                }
+
+            }
+
+        }
+    }
+
     }
 
     #age, #country-region {

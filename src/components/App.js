@@ -4,6 +4,7 @@ import Login from "./Login";
 import NotFoundPage from "./NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
+import 'semantic-ui-css/semantic.min.css';
 import { hot } from "react-hot-loader";
 import AuthRedirect from './AuthRedirect';
 import Survey from './Survey';
