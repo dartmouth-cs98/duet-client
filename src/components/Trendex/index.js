@@ -12,7 +12,7 @@ const Trendex = ({ trendex, friend }) => {
             <p className="TrendDescript">Your trendex measures how popular your top songs are. A score of 100 means 
                 you listen to exclusively top hits and zero means you only listen to that one 
                 friend from your high school who is still trying to be a rapper. The popularity of your tracks 
-                is calculated by Spotify's algorithm, but is mostly based on how many times the track is played and
+                is calculated by Spotify&apos;s algorithm, but is mostly based on how many times the track is played and
                 how recent those plays are.
             </p>
             </div>

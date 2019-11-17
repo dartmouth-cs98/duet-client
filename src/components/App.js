@@ -25,7 +25,7 @@ const App = () => {
         <Route exact path="/" component={Login} />
         <Route path="/login" component={AuthRedirect} />
         <Route path="/dashboard" component={authOnly(Dashboard)} />
-        <Route path="/survey" component={Survey} />
+        <Route path="/survey" component={authOnly(Survey)} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

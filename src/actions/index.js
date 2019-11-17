@@ -82,4 +82,3 @@ export const clearUser = () => {
         dispatch({ type: types.CLEAR_USER })
     }
 }
-
