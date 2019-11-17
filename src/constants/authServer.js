@@ -1,1 +1,1 @@
-export const AUTH_SERVER_URL = "https://cs98-duet-auth-server.herokuapp.com/login";
+export const AUTH_SERVER_URL = "http://localhost:8081/login";
