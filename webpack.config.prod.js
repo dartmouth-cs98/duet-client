@@ -58,7 +58,8 @@ export default {
       trackJSToken: ''
     }),
     new HtmlWebpackPlugin({
-      template: 'src/200.html',
+      template: 'src/index.html',
+      filename: './200.html',
       favicon: 'src/favicon.ico',
       minify: {
         removeComments: true,
