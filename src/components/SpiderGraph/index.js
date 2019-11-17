@@ -49,11 +49,22 @@ const SpiderGraph = ( { avg_taste, friendTaste }) => {
         // mode: avg_taste ? "Mode: " + avg_taste.mode.toFixed(2):  "",
     };
 
+    const compareCaptions = {
+        danceability: avg_taste ? "Danceability" :  "",
+        energy: avg_taste ? "Energy" :  "",
+        // speechiness: avg_taste ? "Speechiness" :  "",
+        acousticness: avg_taste ? "Acousticness" :  "",
+        // instrumentalness: avg_taste ? "Instrumentalness" :  "",
+        liveness: avg_taste ? "Liveness" :  "",
+        valence: avg_taste ? "Happiness" :  "",
+        // mode: avg_taste ? "Mode" :  "",
+    };
+
     return (
         <div className="SpiderGraph">
             <h2>What is the shape of your music?</h2>
             <RadarChart
-            captions={captions}
+            captions={friendTaste ? compareCaptions : captions}
             data={data}
             size={450}
             scales={3}
