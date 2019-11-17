@@ -4,8 +4,8 @@ import SearchField from 'react-search-field';
 import { fetchFriend, clearFriend, addFriend, clearAuth, clearUser } from "../../actions";
 import { useSelector, useDispatch } from 'react-redux';
 import { searchForUsers } from '../../utils/backendUtils';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
-// eslint-disable-next-line react/prop-types
 const Sidebar = ({ history }) => {
   const dispatch = useDispatch();
   const { id, friends } = useSelector((state) => state.user);
@@ -165,6 +165,10 @@ const Sidebar = ({ history }) => {
       </div>
     </div>
   )
+}
+
+Sidebar.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default Sidebar;

@@ -48,3 +48,9 @@ export const searchForUsers = (query) => {
         })
     })
 }
+
+export const storeSurveyData = (data, id) => {
+    return new Promise((resolve) => {
+        axios.post(`https://cs98-duet.herokuapp.com/postusersurvey/${id}`, data).then((response) => resolve(response.data));
+    })
+}

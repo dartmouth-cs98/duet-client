@@ -4,9 +4,8 @@ import NotFoundPage from '../NotFoundPage';
 import Me from '../Me';
 import Compare from '../Compare';
 import { Route, Switch } from "react-router-dom";
-// import { useSelector } from 'react-redux';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
-// eslint-disable-next-line react/prop-types
 const Dashboard = ({ history }) => { 
 
   return (
@@ -20,5 +19,9 @@ const Dashboard = ({ history }) => {
     </div>
   );
 };
+
+Dashboard.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+}
 
 export default Dashboard;
