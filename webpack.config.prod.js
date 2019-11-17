@@ -38,7 +38,27 @@ export default {
 
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
-      template: 'src/index.ejs',
+      template: 'src/index.html',
+      favicon: 'src/favicon.ico',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      },
+      inject: true,
+      // Note that you can add custom options here if you need to handle other custom logic in index.html
+      // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
+      trackJSToken: ''
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/200.html',
       favicon: 'src/favicon.ico',
       minify: {
         removeComments: true,
