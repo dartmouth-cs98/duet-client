@@ -1,1 +1,1 @@
-export const AUTH_SERVER_URL = "https://cs98-duet.surge.sh/login";
+export const AUTH_SERVER_URL = "https://cs98-duet-auth-server.herokuapp.com/login";
