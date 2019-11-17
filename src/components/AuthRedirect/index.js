@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUserData } from '../../actions';
 import ReactRouterPropTypes from 'react-router-prop-types';
-
+import { storeToken } from '../../utils/tokenUtils';
 
 const getHashParams = () => {
     const hashParams = {};
@@ -20,6 +20,7 @@ const LoadingLoginPage = ({ history }) => {
     const params = getHashParams();
     const token = params.access_token;
     const dispatch = useDispatch();
+    storeToken(token);
     dispatch(fetchUserData(token, "short_term"))
     history.push(token ? '/dashboard/me' : '/');
     

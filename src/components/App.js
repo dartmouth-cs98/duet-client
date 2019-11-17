@@ -15,10 +15,13 @@ import { useSelector } from "react-redux";
 // component at the top-level.
 
 const App = () => {
+
   const { loggedIn } = useSelector((state) => state.auth);
+
   const authOnly = (Component) => {
     return loggedIn ? Component : Login;
   }
+
   return (
     <div>
       <Switch>
