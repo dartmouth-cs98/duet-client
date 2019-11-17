@@ -3,7 +3,7 @@ import initialState from './initialState';
 
 function authReducer(state = initialState.auth, action) {
   switch (action.type) {
-    case types.FETCH_TOKEN:
+    case types.STORE_TOKEN:
       return {loggedIn: !!action.token, token: action.token}
     case types.CLEAR_AUTH:
       return {loggedIn: false, token: null}

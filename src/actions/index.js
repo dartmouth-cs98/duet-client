@@ -6,7 +6,7 @@ import { getUser, addUser, addNewFriend } from '../utils/backendUtils';
 
 export const fetchUserData = (token, time_range) => {
     return (dispatch) => {
-        dispatch({ type: types.FETCH_TOKEN, token })
+        dispatch({ type: types.STORE_TOKEN, token })
 
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(token);
