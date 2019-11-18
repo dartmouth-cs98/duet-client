@@ -63,7 +63,7 @@ const Sidebar = ({ history }) => {
     history.push('/dashboard/compare')
   }
 
-    // const onGroupPress = (e) => {
+  // const onGroupPress = (e) => {
   //   var activeGroups = document.getElementsByClassName("activeGroup");
   //   while (activeGroups.length)
   //       activeGroups[0].classList.remove("activeGroup");
