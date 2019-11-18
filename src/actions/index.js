@@ -53,7 +53,7 @@ export const fetchUserData = (token, time_range) => {
 export const addFriend = (userId, friend) => {
     return (dispatch) => {
         addNewFriend(userId, friend.id);
-        dispatch({ type: types.ADD_FRIEND,  friend })
+        dispatch({ type: types.ADD_FRIEND, friend })
     }
 }
 

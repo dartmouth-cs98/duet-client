@@ -11,7 +11,7 @@ export default {
         decade: null,
         genre_counts: null,
         trendex: null,
-        friends: null, 
+        friends: [], 
     },
     auth: {
         token: null,
