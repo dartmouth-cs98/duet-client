@@ -55,6 +55,30 @@
         align-items: center;
     }
 
+    .SidebarButton-ProfileIcon {
+        content: url(../images/profile.svg);
+    }
+
+    .SidebarButton-ProfileIcon-Active {
+        content: url(../images/profile-active.svg);
+    }
+
+    .SidebarButton-FriendIcon {
+        content: url(../images/friend.svg);
+    }
+
+    .SidebarButton-FriendIcon-Active {
+        content: url(../images/friend-active.svg);
+    }
+
+    .SidebarButton-GroupIcon {
+        content: url(../images/group.svg);
+    }
+
+    .SidebarButton-GroupIcon-Active {
+        content: url(../images/group-active.svg);
+    }
+
     .LinkGroup {
         display: flex;
         flex-direction: column;
