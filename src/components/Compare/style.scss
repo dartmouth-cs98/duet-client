@@ -83,6 +83,42 @@
         justify-content: space-between;     
     }
 
+    .Key {
+        display: inline-block;
+        width: 200px;
+        border: 1px solid #FEEBDB;
+        text-align: center; margin-left: 40%;
+
+        .line{
+            display:inline-block; 
+            margin-top: 10px;
+        }
+
+        p{
+            text-align:left; 
+            margin-left: 5px; 
+            position: absolute;
+        }
+
+        .youBox{
+            height: 12px; 
+            width: 12px; 
+            border-color: #f78d91; 
+            background-color: #C27B80; 
+            margin-left: 150px; 
+            border-style: solid;
+        }
+        
+        .friendBox{
+            height: 12px; 
+            width: 12px; 
+            border-color: #e5277b; 
+            background-color: #5B274D; 
+            margin-left: 150px; 
+            border-style: solid;
+        }
+    }
+
     .DividerLine {
         width: 100%;
         height: 1px;
