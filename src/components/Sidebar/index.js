@@ -88,10 +88,10 @@ const Sidebar = ({ history }) => {
 
       <div className="ButtonGroup">
         <a className={["SidebarButton", selectedButton == "profile" ? 'active' : ''].join(' ')} id="profile" onClick={(e) => handleMeClick(e)}>
-          <img className="icon" src={selectedButton == "profile" ? '../images/profile-active.svg' : '../images/profile.svg'}/>
+          <img className={selectedButton == "profile" ? "SidebarButton-ProfileIcon-Active" : "SidebarButton-ProfileIcon" }></img>
         </a>
         <a className={["SidebarButton", selectedButton == "friend" ? 'active' : ''].join(' ')} id="friend" onClick={onButtonPress}>
-          <img className="icon" src={selectedButton == "friend" ? '../images/friend-active.svg' : '../images/friend.svg'}/>
+          <img className={selectedButton == "friend" ? "SidebarButton-FriendIcon-Active" : "SidebarButton-FriendIcon" }></img>
         </a>
         { selectedButton == "friend"
               ? (
@@ -135,7 +135,7 @@ const Sidebar = ({ history }) => {
               )
           }
         <a className={["SidebarButton", selectedButton == "group" ? 'active' : ''].join(' ')} id="group" /*onClick={onButtonPress}*/>
-          <img className="icon" src={selectedButton == "group" ? '../images/group-active.svg' : '../images/group.svg'}/>
+          <img className={selectedButton == "group" ? "SidebarButton-GroupIcon-Active" : "SidebarButton-GroupIcon" }></img>
           <div id="stayTuned">Stay Tuned!</div>
         </a>
         {/* {selectedButton == "group"
