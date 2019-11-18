@@ -38,20 +38,15 @@ const Compare = () => {
             border: 1px solid #FEEBDB;
             text-align: center; margin-left: 40%;
             ">
-              <br></br>
-              <div style="display:inline-block;">
+              <div style="display:inline-block; margin-top: 10px;">
                 <p style="text-align:left; margin-left: 5px; position: absolute;"> You: </p>
                 <div style="height: 12px; width: 12px; border-color: #f78d91; background-color: #C27B80; margin-left: 150px; border-style: solid;"></div>
               </div>
-            <br></br>
 
             <div style="display: inline-block;">
                 <p style="text-align:left; margin-left: 5px; position: absolute;"> {friendName}: </p>
-                <div style="height: 12px; width: 12px; border-color: #e5277b; background-color: #5B274D; margin-left: 150px; border-style: solid;">
-                </div>
+                <div style="height: 12px; width: 12px; border-color: #e5277b; background-color: #5B274D; margin-left: 150px; border-style: solid;"></div>
             </div>
-
-            <br></br>
           </div>
           <h2>Do you listen to the same genres?</h2>
           <div className="Compare-GenreCharts">
