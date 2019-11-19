@@ -5,7 +5,7 @@ import {
     Histogram, BarSeries, XAxis 
   } from '@data-ui/histogram';
 
-const TasteHistogram = ({ taste, friendTaste }) => {
+const TasteHistogram = ({ taste, friendTaste, friendName }) => {
 
     const [currAttribute, setAttribute] = useState({ key: "energy", label: "energetic" });
 
@@ -30,6 +30,12 @@ const TasteHistogram = ({ taste, friendTaste }) => {
                     onSelect={(attribute) => setAttribute(attribute)}
                 />
                 <h2> is your music?</h2>
+            </div>
+            <div className="Key">
+                <div className="Box" id="youBox"></div>
+                <p>You</p>
+                <div className="Box" id="friendBox"></div>
+                <p>{friendName}</p>
             </div>
             <div className="Histogram-graph"> 
                 <Histogram
