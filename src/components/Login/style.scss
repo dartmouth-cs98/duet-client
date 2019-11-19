@@ -26,6 +26,7 @@
             width: 250px;
             height: 153px;
             margin: 20px;
+            margin-top: 60px;
         }
 
         .LoginPage-LoginButton {
@@ -95,95 +96,32 @@
     .AboutDuet {
         width: 100vw;
         height: 100vh;
+        padding: 40px;
         background: #212034;
         position: absolute;
-        
         color: #9BD6DC;
         text-align: center;
-
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-wrap: wrap;
-        
-
-        .WhatIsDuet {
-            margin: 50px;
-            width: 371px;
-            height: 160px;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+    
+        .Question {
+            text-align: left;
+            width: 95%;
 
             h1 {
                 font-size: 26px;
                 line-height: 31px;
             }
 
+            h1:hover {
+                color: #F78D91;
+            }
+
             h2 {
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 22px;
-            }
-        }
-
-        .HowDuet {
-            margin: 50px;
-            width: 371px;
-            height: 201;
-
-            h1 {
-                font-size: 26px;
-                line-height: 31px;
-            }
-
-            h2 {
-                font-size: 13px;
-                line-height: 16px;
-            }
-        }
-
-        .WhatDoDuet {
-            margin: 50px;
-            width: 371px;
-            height: 91px;
-
-            h1 {
-                font-size: 26px;
-                line-height: 31px;
-            }
-
-            h2 {
-                font-size: 18px;
-                line-height: 22px;
-            }
-        }
-
-        .WhyDuet {
-            margin: 50px;
-            width: 371px;
-            height: 263px;
-            
-            h1 {
-                font-size: 26px;
-                line-height: 31px;
-            }
-
-            h2 {
-                font-size: 15px;
-                line-height: 18px;
-            }
-        }
-
-        .WhoDuet {
-            margin: 50px;
-            width: 371px;
-            height: 139px;
-
-            h1 {
-                font-size: 26px;
-                line-height: 31px;
-            }
-
-            h2 {
-                font-size: 15px;
-                line-height: 18px;
             }
         }
     }

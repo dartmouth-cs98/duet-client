@@ -35,22 +35,22 @@ const Login = ({ history }) => {
             <h1>welcome to duet- we offer things and stuff that make the music pictures with friendos</h1>
         </div>   
         <div className="AboutDuet" id="about">
-          <div className="WhatIsDuet">
+          <div className="Question" id="WhatIsDuet">
             <h1>what is duet?</h1>
             <h2>duet is web based application that allows users to visually analyze their music taste and directly compare it to their friends and larger groups of people</h2>
           </div>
-          <div className="HowDuet">
-            <h1>how does duet work</h1>
+          <div className="Question" id="HowDuet">
+            <h1>how does duet work?</h1>
             <h2>spotify provides a free api that allows users to access information about their music data- from your top 50 artists- to the many attributes of you music (such as key, tempo, etc.)</h2>          </div>
-          <div className="WhatDoDuet">
-            <h1>what does duet do?</h1>
+          <div className="Question" id="WhatDoDuet">
+            <h1>what does duet store?</h1>
             <h2>duet only stores the information offered by the spotify api</h2>
           </div>
-          <div className="WhyDuet">
+          <div className="Question" id="WhyDuet">
             <h1>why use duet?</h1>
             <h2>sometimes a list of your top genres isn’t enough to categorize the way you listen to music. we believe that being able to visually represent your music taste will help you make discoveries about your music preferences that might not have been apparent- as well as facilitate finding connections between you and your friends</h2>
           </div>
-          <div className="WhoDuet">
+          <div className="Question" id="WhoDuet">
             <h1>who are we?</h1>
             <h2>duet was created by a team of dartmouth undergraduates and Xorgolth- the 2nd prince of the 8th circle of hell</h2>
           </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
  
-const SpiderGraph = ( { avg_taste, friendTaste }) => {
+const SpiderGraph = ( { avg_taste, friendTaste, friendName }) => {
 
     let data = [
         {
@@ -63,6 +63,12 @@ const SpiderGraph = ( { avg_taste, friendTaste }) => {
     return (
         <div className="SpiderGraph">
             <h2>What is the shape of your music?</h2>
+            <div className="Key">
+                <div className="Box" id="youBox"></div>
+                <p>You</p>
+                <div className="Box" id="friendBox"></div>
+                <p>{friendName}</p>
+            </div>
             <RadarChart
             captions={friendTaste ? compareCaptions : captions}
             data={data}

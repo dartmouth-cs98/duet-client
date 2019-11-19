@@ -80,42 +80,42 @@
         width: 100%;
         margin-top: 30px;
         display: flex;
-        justify-content: space-between;     
+        justify-content: space-between;    
+    }
+
+    .Histogram {
+        .Key {
+            margin-left: 42px;
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
     }
 
     .Key {
-        display: inline-block;
-        width: 200px;
-        border: 1px solid #FEEBDB;
-        text-align: center; margin-left: 40%;
+        margin-bottom: 30px;
+        align-self: flex-start;
+        display: flex;
 
-        .line{
-            display:inline-block; 
-            margin-top: 10px;
+        p {
+            margin-right: 20px;
         }
 
-        p{
-            text-align:left; 
-            margin-left: 5px; 
-            position: absolute;
-        }
-
-        .youBox{
+        .Box {
             height: 12px; 
             width: 12px; 
-            border-color: #f78d91; 
-            background-color: #C27B80; 
-            margin-left: 150px; 
             border-style: solid;
+            margin-right: 10px;
+        }
+
+        #youBox {
+            border-color: #f78d91; 
+            background-color: rgba(247, 141, 145, .7);
         }
         
-        .friendBox{
-            height: 12px; 
-            width: 12px; 
+        #friendBox {
             border-color: #e5277b; 
-            background-color: #5B274D; 
-            margin-left: 150px; 
-            border-style: solid;
+            background-color: rgba(229, 39, 123, .7); 
+
         }
     }
 
