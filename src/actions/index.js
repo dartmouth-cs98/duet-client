@@ -44,7 +44,8 @@ export const fetchUserData = (token, time_range) => {
 
             // check if user exists in database
             getUser(id).then((user) => {
-                dispatch({ type: types.FETCH_USER_FRIENDS, friends: user.friends });
+                if (user.friends)
+                    dispatch({ type: types.FETCH_USER_FRIENDS, friends: user.friends });
             })
         });
     }
