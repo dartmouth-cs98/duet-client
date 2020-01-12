@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
@@ -46,6 +47,10 @@ export default {
         collapseWhitespace: true
       },
       inject: true
+    }),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
     })
   ],
   module: {

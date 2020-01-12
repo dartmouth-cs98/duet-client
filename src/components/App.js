@@ -8,6 +8,7 @@ import { hot } from "react-hot-loader";
 import AuthRedirect from './AuthRedirect';
 import Survey from './Survey';
 import Dashboard from "./Dashboard";
+import Story from './Story';
 import { useSelector } from "react-redux";
 
 // This is a class-based component because the current
@@ -26,6 +27,7 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route path="/story" component={Story} />
         <Route path="/login" component={AuthRedirect} />
         <Route path="/dashboard" component={authOnly(Dashboard)} />
         <Route path="/survey" component={authOnly(Survey)} />

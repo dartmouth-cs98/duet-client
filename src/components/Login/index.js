@@ -1,5 +1,4 @@
 import React from "react";
-import { AUTH_SERVER_URL } from '../../constants/authServer';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { fetchUserData } from '../../actions';
 import { useDispatch } from 'react-redux';
@@ -15,8 +14,9 @@ const Login = ({ history }) => {
       dispatch(fetchUserData(token, "short_term"));
       history.push('/dashboard/me');  
     }
-    else 
-      window.open(AUTH_SERVER_URL, "_self");
+    else {
+      window.open(process.env.AUTH_SERVER_URL, "_self");
+    }
   }
 
   return (
