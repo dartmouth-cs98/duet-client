@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
+import Page from '../Page';
+import TopArists from '../DataStories/TopArtists';
+import Decades from '../DataStories/Decades';
+import HeatMap from '../DataStories/HeatMap';
+import MusicalAttr from '../DataStories/MusicalAttr';
+import TopGenres from '../DataStories/TopGenres';
+import Trendex from '../DataStories/Trendex';
 
 const Login = ({ jumpToPage }) => {
     return (
@@ -28,54 +35,6 @@ const ComparePage = ({ jumpToPage }) => {
     )
 }
 
-const DataStory1 = () => {
-    return (
-        <Page background={'lightblue'} numPages={6} pageNum={0}>
-            Data Story 1
-        </Page>
-    )
-}
-
-const DataStory2 = () => {
-    return (
-        <Page background={'yellow'} numPages={6} pageNum={1}>
-            Data Story 2
-        </Page>
-    )
-}
-
-const DataStory3 = () => {
-    return (
-        <Page background={'red'} numPages={6} pageNum={2}>
-            Data Story 3
-        </Page>
-    )
-}
-
-const DataStory4 = () => {
-    return (
-        <Page background={'orange'} numPages={6} pageNum={3}>
-            Data Story 4
-        </Page>
-    )
-}
-
-const DataStory5 = () => {
-    return (
-        <Page background={'pink'} numPages={6} pageNum={4}>
-            Data Story 5
-        </Page>
-    )
-}
-
-const DataStory6 = () => {
-    return (
-        <Page background={'purple'} numPages={6} pageNum={5}>
-            Data Story 6
-        </Page>
-    )
-}
-
 const MembersScreen = () => {
     return (
         <Page background={'white'}>
@@ -90,28 +49,6 @@ const SharePage = ({ jumpToPage }) => {
             Share Page
             <button onClick={() => jumpToPage(2)}>compare again!</button>
         </Page>
-    )
-}
-
-const Page = ({ background, numPages, pageNum, children }) => {
-    return (
-        <div className="Page" style={{ background }}>
-            { typeof numPages  !== 'undefined' & typeof pageNum !== 'undefined' 
-            ? ( <div className="Story-progress">
-                {_.range(numPages).map((i) => 
-                    <div 
-                        className="Story-progress-bar" 
-                        key={i}
-                        style={{
-                                width: `${100/numPages}%`,
-                                background: pageNum == i ? 'orange' : 'white',
-                            }} 
-                    />
-            )}
-            </div>) : <div/> }
-            
-            {children}
-        </div>  
     )
 }
 
@@ -142,27 +79,27 @@ const Story = () => {
             pagination: NONE,
         },
         {   // page 3
-            component: <DataStory1 key="datastory1"/>,
+            component: <TopArists key="topartists"/>,
             pagination: NEXT_ONLY,
         },
         {   // page 4
-            component: <DataStory2 key="datastory2"/>,
+            component: <Trendex key="trendex"/>,
             pagination: ALL,
         },
         {   // page 5
-            component: <DataStory3 key="datastory3"/>,
+            component: <TopGenres key="topgenres"/>,
             pagination: ALL,
         },
         {   // page 6
-            component: <DataStory4 key="datastory4"/>,
+            component: <MusicalAttr key="musicalattr"/>,
             pagination: ALL,
         },
         {   // page 7
-            component: <DataStory5 key="datastory5"/>,
+            component: <Decades key="decades"/>,
             pagination: ALL,
         },
         {   // page 8
-            component: <DataStory6 key="datastory6"/>,
+            component: <HeatMap key="heatmap"/>,
             pagination: ALL,
         },
         {   // page 9
