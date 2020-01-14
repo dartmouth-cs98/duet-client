@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import _ from 'lodash';
 
 const Page = ({ background, numPages, pageNum, children }) => {
     return (
