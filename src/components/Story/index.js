@@ -11,7 +11,7 @@ import Trendex from '../DataStories/Trendex';
 
 const Login = ({ jumpToPage }) => {
     return (
-        <Page background={'white'}>
+        <Page background={'#9BD6DC'}>
             Login Page
             <button onClick={() => jumpToPage(1)}>login</button>
         </Page>

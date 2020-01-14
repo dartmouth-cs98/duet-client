@@ -3,7 +3,7 @@ import Page from '../../Page';
 
 const TopGenres = () => {
     return (
-        <Page background={'lightblue'} numPages={6} pageNum={1}>
+        <Page background={'lightblue'} numPages={6} pageNum={2}>
             Top Genres
         </Page>
     )

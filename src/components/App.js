@@ -26,11 +26,11 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/story" component={Story} />
-        <Route path="/login" component={AuthRedirect} />
-        <Route path="/dashboard" component={authOnly(Dashboard)} />
-        <Route path="/survey" component={authOnly(Survey)} />
+        <Route exact path="/" component={Story} />
+        // <Route path="/story" component={Story} />
+        // <Route path="/login" component={AuthRedirect} />
+        // <Route path="/dashboard" component={authOnly(Dashboard)} />
+        // <Route path="/survey" component={authOnly(Survey)} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
