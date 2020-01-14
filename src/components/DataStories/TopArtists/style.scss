@@ -1,57 +1,93 @@
 .TopPage{
     position: absolute;
 
-    h1 {
+    .title{
+        position: relative;
         width: 303px;
         height: 89px;
         left: 21px;
         top: 11px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 50px;
-        /* or 250% */
-        letter-spacing: 0.09em;
+        h1 {
+            width: 303px;
+            height: 89px;
+            left: 21px;
+            top: 11px;
 
-        color: #212034;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 50px;
+            /* or 250% */
+            letter-spacing: 0.09em;
+
+            color: #212034;
+        }
+
+        h3{
+            /* top artists */
+
+            width: 303px;
+            height: 89px;
+            left: 17px;
+            top: 11px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 50px;
+            /* or 250% */
+            letter-spacing: 0.09em;
+
+            /* Neon Pink */
+            color: #E5277B;
+        }
     }
 
-    h3{
-        /* top artists */
+    .yourArtists{
+        position: absolute;
 
-        width: 303px;
-        height: 89px;
-        left: 17px;
-        top: 11px;
+        h2{
+            width: 222px;
+            height: 377px;
+            left: 168px;
+            top: 127px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 50px;
-        /* or 250% */
-        letter-spacing: 0.09em;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 29px;
+            text-align: right;
+            letter-spacing: 0.09em;
 
-        /* Neon Pink */
-        color: #E5277B;
+            /* Base Blue */
+            color: #E5277B;
+        }
+
+        h1{
+            width: 222px;
+            height: 377px;
+            left: 168px;
+            top: 127px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 29px;
+            text-align: right;
+            letter-spacing: 0.09em;
+
+            /* Base Blue */
+            color: #212034;
+        }
+
     }
 
-    h2{
-        width: 303px;
-        height: 89px;
-        left: 21px;
-        top: 11px;
+    .theirArtists{
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 50px;
-        /* or 250% */
-        letter-spacing: 0.09em;
-        
-        color: #212034;
     }
 }

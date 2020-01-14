@@ -24,13 +24,22 @@ const TopArtists = () => {
         { key: 'Dan + Shay', label: 'Dan + Shay' }
     ];
 
+    const renderArtists = (topArtists) => {
+        const items = topArtists.map((item, key) =>
+        <li key={item.key}>{item.label}</li>);
+    };
     return (
         <Page background={'white'} numPages={6} pageNum={0}>
             <div className="TopPage">
-                <h1>You and Sig Ep share top artists</h1>
-                <h3>top artists</h3>
+                <div className="title">
+                    <h1>You and Sig Ep share top artists</h1>
+                    <h3>top artists</h3>
+                </div>
+                <div className="yourArtists">
+                    <h2>you</h2>
+                    <h1>{artists => renderArtists(yourTopArtists)}</h1>
+                </div>
             </div>
-
         </Page>
     )
 }
