@@ -2,13 +2,13 @@
 import React from 'react';
 import Page from '../../Page';
 
-const Login = ({jumpToPage}) => {
+const Share = ({jumpToPage}) => {
     return (
         <Page background={'lightblue'}>
-            Login
-            <button onClick={() => jumpToPage(1)}>Login</button>
+            Share
+            <button onClick={() => jumpToPage(2)}>compare again</button>
         </Page>
     )
 }
 
-export default Login;
+export default Share;

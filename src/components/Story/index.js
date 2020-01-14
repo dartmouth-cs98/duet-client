@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import Page from '../Page';
 import TopArists from '../DataStories/TopArtists';
 import Decades from '../DataStories/Decades';
 import HeatMap from '../DataStories/HeatMap';
@@ -8,40 +7,10 @@ import MusicalAttr from '../DataStories/MusicalAttr';
 import TopGenres from '../DataStories/TopGenres';
 import Trendex from '../DataStories/Trendex';
 import Login from '../OtherStories/Login';
-
-const InfoPage = () => {
-    return (
-        <Page background={'white'}>
-            Info Page
-        </Page>
-    )
-}
-
-const ComparePage = ({ jumpToPage }) => {
-    return (
-        <Page background={'white'}>
-            Compare Page
-            <button onClick={() => jumpToPage(3)}>go!</button>
-        </Page>
-    )
-}
-
-const MembersScreen = () => {
-    return (
-        <Page background={'white'}>
-            Members Screen
-        </Page>
-    )
-}
-
-const SharePage = ({ jumpToPage }) => {
-    return (
-        <Page background={'white'}>
-            Share Page
-            <button onClick={() => jumpToPage(2)}>compare again!</button>
-        </Page>
-    )
-}
+import Members from '../OtherStories/Members';
+import Compare from '../OtherStories/Compare';
+import Info from '../OtherStories/Info';
+import Share from '../OtherStories/Share';
 
 const Story = () => {
 
@@ -62,11 +31,11 @@ const Story = () => {
             pagination: NONE,
         },
         {   // page 1
-            component: <InfoPage key="infopage"/>, 
+            component: <Info key="infopage"/>, 
             pagination: NEXT_ONLY,
         },
         {   // page 2
-            component: <ComparePage key="comparepage" jumpToPage={(page) => jumpToPage(page)}/>, 
+            component: <Compare key="comparepage" jumpToPage={(page) => jumpToPage(page)}/>, 
             pagination: NONE,
         },
         {   // page 3
@@ -94,11 +63,11 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 9
-            component: <MembersScreen key="membersscreen"/>,
+            component: <Members key="membersscreen"/>,
             pagination: NEXT_ONLY,
         },
         {   // page 10
-            component: <SharePage key="sharepage" jumpToPage={(page) => jumpToPage(page)}/>,
+            component: <Share key="sharepage" jumpToPage={(page) => jumpToPage(page)}/>,
             pagination: NONE,
         },
     ];
