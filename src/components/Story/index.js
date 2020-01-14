@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
 import Page from '../Page';
 import TopArists from '../DataStories/TopArtists';
 import Decades from '../DataStories/Decades';
@@ -8,15 +7,7 @@ import HeatMap from '../DataStories/HeatMap';
 import MusicalAttr from '../DataStories/MusicalAttr';
 import TopGenres from '../DataStories/TopGenres';
 import Trendex from '../DataStories/Trendex';
-
-const Login = ({ jumpToPage }) => {
-    return (
-        <Page background={'#9BD6DC'}>
-            Login Page
-            <button onClick={() => jumpToPage(1)}>login</button>
-        </Page>
-    )
-}
+import Login from '../OtherStories/Login';
 
 const InfoPage = () => {
     return (
