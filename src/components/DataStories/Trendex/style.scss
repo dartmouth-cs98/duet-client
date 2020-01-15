@@ -1,0 +1,107 @@
+.TrendexPage{
+    h1{
+        position: absolute;
+        width: 291px;
+        height: 86px;
+        left: 41px;
+        top: 34px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 37px;
+        line-height: 43px;
+        letter-spacing: 0.09em;
+
+        /* Base Blue */
+        color: #212034;
+    }
+
+    h2{
+        position: absolute;
+        width: 320px;
+        height: 126px;
+        left: 47px;
+        top: 200px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 140px;
+        line-height: 40px;
+        /* or 29% */
+        text-align: center;
+        letter-spacing: 0.09em;
+
+        color: #E5277B;
+    }
+
+    h3{
+        position: absolute;
+        width: 320px;
+        height: 126px;
+        left: 47px;
+        top: 200px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 27px;
+        /* or 90% */
+        text-align: center;
+        letter-spacing: 0.09em;
+
+        color: #212034;
+    }
+
+    .bottomSquare{
+        position: absolute;
+        width: 428px;
+        height: 374px;
+        left: 0px;
+        top: 401px;
+
+        /* Base Blue */
+        background: #212034;
+
+        h2{
+            position: absolute;
+    
+            width: 320px;
+            height: 126px;
+            left: 47px;
+            top: 100px;
+    
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 140px;
+            line-height: 40px;
+            /* or 29% */
+            text-align: center;
+            letter-spacing: 0.09em;
+    
+            color: #E5277B;
+        }    
+
+        h3{
+            position: absolute;
+            width: 320px;
+            height: 126px;
+            left: 47px;
+            top: 100px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 27px;
+            /* or 90% */
+            text-align: center;
+            letter-spacing: 0.09em;
+
+            color: #FFFFFF;
+        }
+    }
+}
