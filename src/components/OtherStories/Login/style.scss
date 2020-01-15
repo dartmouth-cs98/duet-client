@@ -1,0 +1,44 @@
+.Page {
+    display: flex;
+    align-items: center;
+    color: $SECONDARY;
+}
+
+#background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/LoginScreen.png");
+    background-size: 100% 100%;
+}
+
+.DuetLogo{
+    transform: scale(.6);
+    display: flex;
+    justify-content: center;
+    margin-top: 13vh;
+}
+
+button {
+    font-size: 20px;
+    color: $SECONDARY;
+    border: 1px solid $SECONDARY;
+    border-radius: 5px;
+    background: transparent;
+    height: 40px;
+    width: 280px;
+    z-index: 99;
+}
+
+#infobox {
+    height: 40px;
+    width: 260px;
+    text-align: center;
+}
+
+#smallLink {
+    color: $SECONDARY;
+    border: none;
+    font-size: 14px;
+    margin-top: 21vh;
+}

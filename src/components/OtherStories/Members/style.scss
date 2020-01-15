@@ -1,0 +1,45 @@
+#Members {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    #memberlist {
+        height: 60vh;
+        align-items: flex-start;
+        width: 100%;
+        overflow: scroll;
+
+        ul {
+            padding-left: 6px;
+        }
+
+        li {
+            list-style: none;
+            font-weight: bold;
+            margin-bottom: 15px;
+
+            span {
+                background-color: $PRIMARY;
+            }
+        }
+    }
+
+    button {
+        background-color: $SECONDARY;
+        color: $PRIMARY;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        margin-bottom: 6px;
+    }
+}
