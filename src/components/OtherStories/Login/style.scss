@@ -1,24 +1,22 @@
-html {
-    overflow: hidden;  
-}
-
 .Page {
     display: flex;
     align-items: center;
     color: $SECONDARY;
-    overflow: hidden;
 }
 
-.Squigs {
-    position:absolute;
-    transform: scale(.8) translateY(-30%);
+#background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/LoginScreen.png");
+    background-size: 100% 100%;
 }
 
 .DuetLogo{
     transform: scale(.6);
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 13vh;
 }
 
 button {
@@ -42,5 +40,5 @@ button {
     color: $SECONDARY;
     border: none;
     font-size: 14px;
-    margin-top: 28vh;
+    margin-top: 21vh;
 }
