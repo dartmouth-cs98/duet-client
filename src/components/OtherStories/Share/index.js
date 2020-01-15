@@ -4,9 +4,13 @@ import Page from '../../Page';
 
 const Share = ({jumpToPage}) => {
     return (
-        <Page background={'lightblue'}>
-            Share
-            <button onClick={() => jumpToPage(2)}>compare again</button>
+        <Page background={'#9BD6DC'}>
+            <div id="Share">
+                <div id="shareimage"></div>
+                <div id="sharebuttons"></div>
+                <button onClick={() => jumpToPage(2)}>invite your friends</button>
+                <button onClick={() => jumpToPage(2)}>compare again</button>
+            </div>
         </Page>
     )
 }
