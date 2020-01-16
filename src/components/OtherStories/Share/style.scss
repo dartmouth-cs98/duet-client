@@ -1,13 +1,32 @@
 #Share {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     button {
         background-color: $SECONDARY;
         color: $PRIMARY;
         font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    button:last-of-type {
+        margin-bottom: 40px;
+    }
+
+
+    button:first-of-type {
+        margin-top: 60px;
+    }
+
+    #shareimage {
+        width: 225px;
+        height: 225px;
+        background-color: white;
         margin-bottom: 20px;
     }
 }

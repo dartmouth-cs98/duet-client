@@ -103,6 +103,7 @@ const Story = () => {
             }
         }  
     }
+    
     const jumpToPage = (page) => {
         setCurrPage(page);
     }

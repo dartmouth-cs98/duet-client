@@ -7,7 +7,7 @@ const Share = ({jumpToPage}) => {
         <Page background={'#9BD6DC'}>
             <div id="Share">
                 <div id="shareimage"></div>
-                <div id="sharebuttons"></div>
+                <button onClick={() => jumpToPage(2)}>save to share</button>
                 <button onClick={() => jumpToPage(2)}>invite your friends</button>
                 <button onClick={() => jumpToPage(2)}>compare again</button>
             </div>
