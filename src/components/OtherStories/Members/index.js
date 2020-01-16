@@ -1,8 +1,26 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import Page from '../../Page';
 
 const Members = ({jumpToPage}) => {
+
+    const [showPopup, setShowPopup] = useState(false);
+
+    const renderPopup = () => {
+        return (
+            <div id="PopupBackground">
+                <p>We are a group of college people doing stuff. We are not professionals so don&apos;t treat us as such. Thanks for clicking this teeny button.</p>
+                <p id="close">click anywhere to close</p>
+            </div>
+        )
+    }
+
+    const handleClick = () => {
+        if (showPopup) {
+            setShowPopup(!showPopup);
+        } 
+    }
+
     return (
         <Page background={'#ffffff'}>
             <div id="Members">
@@ -27,8 +45,14 @@ const Members = ({jumpToPage}) => {
                     </ul>
                 </div>
                 <h4>Are you a member of BLANK?</h4>
-                <button onClick={() => jumpToPage(1)}>join the group</button>
-                <i className="arrow right"></i>
+                <button onClick={() => setShowPopup(!showPopup)}>join the group</button>
+                <i className="arrow right" onClick={() => jumpToPage(10)}></i>
+
+                { showPopup &&
+                <div className="popup" onClick={handleClick}>
+                    {renderPopup()}
+                </div>
+            }
             </div>
         </Page>
     )
