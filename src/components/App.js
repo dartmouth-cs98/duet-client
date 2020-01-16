@@ -27,7 +27,6 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path="/" component={Story} />
-        <Route path="/story" component={Story} />
         <Route path="/login" component={AuthRedirect} />
         {/* <Route path="/dashboard" component={authOnly(Dashboard)} />
         <Route path="/survey" component={authOnly(Survey)} />
