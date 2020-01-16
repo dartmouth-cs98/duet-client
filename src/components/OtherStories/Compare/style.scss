@@ -1,0 +1,50 @@
+#background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/LoginScreen.png");
+    background-size: 100% 100%;
+}
+
+h4 {
+    color: $SECONDARY;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin-top: 17vh;
+}
+
+input {
+    border: 1px solid $SECONDARY;
+    border-radius: 5px;
+    background: transparent;
+    height: 30px;
+    width: 280px;
+    color: $SECONDARY
+}
+
+button {
+    font-size: 16px;
+    color: $PRIMARY;
+    border-radius: 5px;
+    background: $SECONDARY;
+    height: 30px;
+    width: 80px;
+    z-index: 99;
+    outline:none;
+    margin-top: 30px;
+}
+
+#smallLink {
+    color: $SECONDARY;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    width: auto;
+    margin-top: 10px;
+}
