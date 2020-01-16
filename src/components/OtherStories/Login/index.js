@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import Page from '../../Page';
 import { fetchUserData } from '../../../actions';
 import { getToken } from '../../../utils/tokenUtils';
@@ -19,6 +19,23 @@ const Login = ({ jumpToPage }) => {
             window.open(process.env.AUTH_SERVER_URL, "_self");
         }
     }
+    
+    const [showPopup, setShowPopup] = useState(false);
+
+    const renderPopup = () => {
+        return (
+            <div id="PopupBackground">
+                <p>We are a group of college people doing stuff. We are not professionals so don&apos;t treat us as such. Thanks for clicking this teeny button.</p>
+                <p id="close">click anywhere to close</p>
+            </div>
+        )
+    }
+
+    const handleClick = () => {
+        if (showPopup) {
+            setShowPopup(!showPopup);
+        } 
+    }
 
     return (
         <Page background={'#9BD6DC'}>
@@ -28,7 +45,13 @@ const Login = ({ jumpToPage }) => {
             </div>
             <button onClick={handleLogin}>login with spotify</button>
             <p id="infobox">duet compares your spotify data with friends and groups</p>
-            <button id="smallLink">learn more</button>
+            <button id="smallLink" onClick={() => setShowPopup(!showPopup)}>learn more</button>
+
+            { showPopup &&
+                <div className="popup" onClick={handleClick}>
+                    {renderPopup()}
+                </div>
+            }
         </Page>
     )
 }

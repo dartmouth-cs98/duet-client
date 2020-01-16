@@ -42,4 +42,18 @@
     h4 {
         margin-bottom: 6px;
     }
+
+    i {
+        border: solid $SECONDARY;
+        border-width: 0 7px 7px 0;
+        padding: 7px;
+        position: absolute;
+        left: 89vw;
+        top: 94vh;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
 }

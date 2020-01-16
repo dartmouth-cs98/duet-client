@@ -63,8 +63,8 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 9
-            component: <Members key="membersscreen"/>,
-            pagination: NEXT_ONLY,
+            component: <Members key="membersscreen" jumpToPage={(page) => jumpToPage(page)}/>,
+            pagination: NONE,
         },
         {   // page 10
             component: <Share key="sharepage" jumpToPage={(page) => jumpToPage(page)}/>,
@@ -103,6 +103,7 @@ const Story = () => {
             }
         }  
     }
+    
     const jumpToPage = (page) => {
         setCurrPage(page);
     }
