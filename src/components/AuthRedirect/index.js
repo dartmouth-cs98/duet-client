@@ -22,7 +22,7 @@ const LoadingLoginPage = ({ history }) => {
     const dispatch = useDispatch();
     storeToken(token);
     dispatch(fetchUserData(token, "short_term"))
-    history.push(token ? '/dashboard/me' : '/');
+    history.push(token ? '/' : '/');
     
     return (
         <h1>Logging you in...</h1>
