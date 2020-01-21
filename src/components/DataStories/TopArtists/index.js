@@ -18,7 +18,7 @@ const TopArtists = () => {
         { key: 'Billie Eilish', label: 'Billie Eilish' },
         { key: 'Drake', label: 'Drake' },
         { key: 'Post Malone', label: 'Post Malone' },
-        { key: 'Justin Beiber', label: 'Justin Beatles' },
+        { key: 'Justin Beiber', label: 'Justin Beiber' },
         { key: 'The Jonas Brothers', label: 'The Jonas Brothers' },
         { key: 'The Eagles', label: 'The Eagles' },
         { key: 'Dan + Shay', label: 'Dan + Shay' }
@@ -31,14 +31,34 @@ const TopArtists = () => {
     return (
         <Page background={'white'} numPages={6} pageNum={0}>
             <div className="TopPage">
-                <div className="title">
-                    <h1>You and Sig Ep share top artists</h1>
-                    <h3>top artists</h3>
+                <div className="title"> 
+                    <h1>You and Sig Ep share</h1>
+                    {/* <img src="../images/topartists.svg"> </img> */}
+                    <div id="topArtists"/>
                 </div>
                 <div className="yourArtists">
-                    <h2>you</h2>
-                    <h1>{artists => renderArtists(yourTopArtists)}</h1>
+                    <h2>You</h2>
+                    <h1>Ariana Grande</h1>
+                    <h1><mark>Billie Eilish</mark></h1>
+                    <h1>Michael Jackson</h1>
+                    <h1><mark>Post Malone</mark></h1>
+                    <h1>The Beatles</h1>
+                    <h1><mark>The Eagles</mark></h1>
+                    <h1>Elvis Presley</h1>
+                    <h1>Paul Simon</h1>
                 </div>
+                <div className="theirArtists">
+                    <h2>Sig Ep</h2>
+                    <h1>Taylor Swift</h1>
+                    <h1><mark>Billie Eilish</mark></h1>
+                    <h1>Drake</h1>
+                    <h1><mark>Post Malone</mark></h1>
+                    <h1>Justin Beiber</h1>
+                    <h1>The Jonas Brothers</h1>
+                    <h1><mark>The Eagles</mark></h1>
+                    <h1>Dan + Shay</h1>
+                </div>
+                <div id="arrow"/>
             </div>
         </Page>
     )
