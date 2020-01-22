@@ -1,22 +1,155 @@
-#popup {
-    width: 80vw;
-    height: auto;
-
-    img {
-        height: 100%;
-        width: 100%;
+.TrendexPage{
+    #popup {
+        width: 80vw;
+        height: auto;
+    
+        img {
+            height: 100%;
+            width: 100%;
+        }
     }
-}
+    
+    #popup-background {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(.9, .9, .9, .5);
+        z-index: -1;    
+    }
 
-#popup-background {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(.9, .9, .9, .5);
-    z-index: -1;
+    h1{
+        position: absolute;
+        width: 291px;
+        left: 41px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 31px;
+        line-height: 50px;
+        letter-spacing: 0.12em;
+
+        /* Base Blue */
+        color: #212034;
+    }
+
+    mark{
+        background-color: white;
+        color: black;
+    }
+
+    h2{
+        position: absolute;
+        left: 50px;
+        top: 12%;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 130px;
+        line-height: 40px;
+        /* or 29% */
+        text-align: center;
+        letter-spacing: 0.1em;
+
+        color: #E5277B;
+    }
+
+    h3{
+        position: absolute;
+        width: 320px;
+        height: 126px;
+        left: 50px;
+        top: 250px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 27px;
+        /* or 90% */
+        text-align: center;
+        letter-spacing: 0.09em;
+
+        color: #212034;
+    }
+
+    .bottomSquare{
+        position: absolute;
+        width: 428px;
+        height: 45%;
+        left: 0px;
+        top: 330px;
+
+        /* Base Blue */
+        background: #212034;
+
+        h1{
+            left: -20px;
+            top: -30px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 27px;
+            /* or 90% */
+            text-align: center;
+            letter-spacing: 0.09em;
+
+            color: #FFFFFF;
+        }
+
+        h2{
+            position: absolute;
+            width: 320px;
+            height: 126px;
+            left: 47px;
+            top: -20px;
+    
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 130px;
+            line-height: 40px;
+            /* or 29% */
+            text-align: center;
+            letter-spacing: 0.09em;
+            color: #E5277B;
+        }    
+
+        h3{
+            position: absolute;
+            width: 320px;
+            height: 126px;
+            left: 47px;
+            top: 160px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 27px;
+            /* or 90% */
+            text-align: center;
+            letter-spacing: 0.09em;
+
+            color: #FFFFFF;
+        }
+
+        #arrow {
+            position: relative;
+            left: 80%;
+            top: 77%;
+            width: 33px;
+            height: 33px;
+            background-image: url("../images/arrow-drodpdown-blue.svg");
+            background-size: 100% 100%;
+        }
+    }
 }
