@@ -33,7 +33,6 @@ const TopArtists = () => {
             <div className="TopPage">
                 <div className="title"> 
                     <h1>You and Sig Ep share</h1>
-                    {/* <img src="../images/topartists.svg"> </img> */}
                     <div id="topArtists"/>
                 </div>
                 <div className="yourArtists">

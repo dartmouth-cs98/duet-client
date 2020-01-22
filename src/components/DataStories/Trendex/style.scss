@@ -2,36 +2,37 @@
     h1{
         position: absolute;
         width: 291px;
-        height: 86px;
         left: 41px;
-        top: 34px;
 
         font-family: Roboto;
         font-style: normal;
-        font-weight: bold;
-        font-size: 37px;
-        line-height: 43px;
-        letter-spacing: 0.09em;
+        font-weight: 600;
+        font-size: 31px;
+        line-height: 50px;
+        letter-spacing: 0.12em;
 
         /* Base Blue */
         color: #212034;
     }
 
+    mark{
+        background-color: white;
+        color: black;
+    }
+
     h2{
         position: absolute;
-        width: 320px;
-        height: 126px;
-        left: 47px;
-        top: 200px;
+        left: 50px;
+        top: 12%;
 
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
-        font-size: 140px;
+        font-size: 130px;
         line-height: 40px;
         /* or 29% */
         text-align: center;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.1em;
 
         color: #E5277B;
     }
@@ -40,13 +41,13 @@
         position: absolute;
         width: 320px;
         height: 126px;
-        left: 47px;
-        top: 200px;
+        left: 50px;
+        top: 250px;
 
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 25px;
         line-height: 27px;
         /* or 90% */
         text-align: center;
@@ -58,12 +59,28 @@
     .bottomSquare{
         position: absolute;
         width: 428px;
-        height: 374px;
+        height: 45%;
         left: 0px;
-        top: 401px;
+        top: 330px;
 
         /* Base Blue */
         background: #212034;
+
+        h1{
+            left: -20px;
+            top: -30px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 27px;
+            /* or 90% */
+            text-align: center;
+            letter-spacing: 0.09em;
+
+            color: #FFFFFF;
+        }
 
         h2{
             position: absolute;
@@ -71,12 +88,12 @@
             width: 320px;
             height: 126px;
             left: 47px;
-            top: 100px;
+            top: -20px;
     
             font-family: Roboto;
             font-style: normal;
             font-weight: bold;
-            font-size: 140px;
+            font-size: 130px;
             line-height: 40px;
             /* or 29% */
             text-align: center;
@@ -90,18 +107,28 @@
             width: 320px;
             height: 126px;
             left: 47px;
-            top: 100px;
+            top: 160px;
 
             font-family: Roboto;
             font-style: normal;
             font-weight: bold;
-            font-size: 30px;
+            font-size: 25px;
             line-height: 27px;
             /* or 90% */
             text-align: center;
             letter-spacing: 0.09em;
 
             color: #FFFFFF;
+        }
+
+        #arrow {
+            position: relative;
+            left: 80%;
+            top: 77%;
+            width: 33px;
+            height: 33px;
+            background-image: url("../images/arrow-drodpdown-blue.svg");
+            background-size: 100% 100%;
         }
     }
 }
