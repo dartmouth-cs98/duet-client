@@ -75,10 +75,12 @@ const Story = () => {
     const [currPage, setCurrPage] = useState(0);
     
     const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
 
       useEffect(() => {
         const handleResize = () => {
           setWidth(window.innerWidth)
+          setHeight(window.innerHeight)
         }
         window.addEventListener("resize", handleResize)
         return () => { window.removeEventListener("resize", handleResize) }
@@ -86,9 +88,12 @@ const Story = () => {
 
     const handleClick = (e) => {
         const pagination = pages[currPage].pagination;
+        if(e.clientY > (height - 200)) {
+            return;
+        }
         if (pagination != NONE) {
             if (pagination == ALL) {
-                if (e.clientX > (width / 2)) {
+                if (e.clientX > (width / 3)) {
                     if (currPage < numPages - 1) 
                         setCurrPage(currPage + 1)
                 } else {

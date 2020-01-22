@@ -1,33 +1,21 @@
 import React from 'react';
 import Page from '../../Page';
+import html2canvas from 'html2canvas';
 
 const TopArtists = () => {
-    const yourTopArtists = [
-        { key: 'Ariana Grande', label: 'Ariana Grande' },
-        { key: 'Billie Eilish', label: 'Billie Eilish' },
-        { key: 'Michael Jackson', label: 'Michael Jackson' },
-        { key: 'Post Malone', label: 'Post Malone' },
-        { key: 'The Beatles', label: 'The Beatles' },
-        { key: 'The Eagles', label: 'The Eagles' },
-        { key: 'Elvis Presley', label: 'Elvis Presley' },
-        { key: 'Paul Simon', label: 'Paul Simon' }
-    ];
+    const saveScreen = () => {
+        html2canvas(document.body).then(function(canvas) {
+            var canvasData = canvas.toDataURL();
+            document.getElementById("popup-background").style.zIndex = "99";
+            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
+        })
+    }
 
-    const theirTopArtists = [
-        { key: 'Taylor Swift', label: 'Taylor Swift' },
-        { key: 'Billie Eilish', label: 'Billie Eilish' },
-        { key: 'Drake', label: 'Drake' },
-        { key: 'Post Malone', label: 'Post Malone' },
-        { key: 'Justin Beiber', label: 'Justin Beiber' },
-        { key: 'The Jonas Brothers', label: 'The Jonas Brothers' },
-        { key: 'The Eagles', label: 'The Eagles' },
-        { key: 'Dan + Shay', label: 'Dan + Shay' }
-    ];
+    const handleClick = () => {
+        document.getElementById("popup-background").style.zIndex = "-1";
+        document.getElementById("popup").innerHTML = "";
+    }
 
-    const renderArtists = (topArtists) => {
-        const items = topArtists.map((item, key) =>
-        <li key={item.key}>{item.label}</li>);
-    };
     return (
         <Page background={'white'} numPages={6} pageNum={0}>
             <div className="TopPage">
@@ -59,6 +47,13 @@ const TopArtists = () => {
                     <h1>Dan + Shay</h1>
                 </div>
                 <div id="arrow"/>
+            </div>
+
+            <button id="share" onClick={() => saveScreen()}>...</button>
+
+            <div id="popup-background">
+                <div id="popup" onClick={() => handleClick()}>
+                </div>
             </div>
         </Page>
     )
