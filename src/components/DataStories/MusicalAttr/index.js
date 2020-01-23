@@ -17,13 +17,21 @@ const MusicalAttr = () => {
     }
 
     return (
-        <Page background={'lightblue'} numPages={6} pageNum={3}>
-            Top Artists
+        <Page background={'white'} numPages={6} pageNum={3}>
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
                 <div id="popup" onClick={() => handleClick()}>
                 </div>
+            </div>
+            <div id="histoBackground"/>
+            <div className="histo">
+                <h1>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</h1>
+                <div className="posBox"></div>
+                <div className="negBox"></div>
+                <div className="negBox2"></div>
+                <div className="posBox2"></div>
+                <div className="posBox3"></div>
             </div>
         </Page>
     )

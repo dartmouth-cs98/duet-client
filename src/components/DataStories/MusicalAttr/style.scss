@@ -20,3 +20,101 @@
     background-color: rgba(.9, .9, .9, .5);
     z-index: -1;
 }
+
+#histoBackground {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/histogram_background.png");
+    background-size: 100% 100%;
+}
+
+.histo{
+
+    h1{
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        left: 217.7px;
+        top: 6%;
+    
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 27px;
+        /* or 142% */
+        text-align: center;
+        letter-spacing: 0.09em;
+    
+        /* Base Blue */
+        color: $SECONDARY;
+        transform: rotate(90deg);
+    }
+
+    .posBox{
+        position: relative;
+        width: 48.71px;
+        height: 93.2px;
+        top: 12%;
+        left: 130%;
+
+        /* Neon Pink */
+        background: $ACCENT;
+        border-radius: 5px;
+        transform: rotate(90deg);
+    }
+
+    .negBox{
+        position: relative;
+        width: 48.71px;
+        height: 104.58px;
+        left: -130%;
+        top: 11%;
+
+        /* Base Blue */
+        background: $SECONDARY;
+        border-radius: 5px;
+        transform: rotate(90deg);
+    }
+
+    .negBox2{
+        position: relative;
+        width: 48.71px;
+        height: 140.86px;
+        left: -167%;
+        top: 10%;
+
+        /* Base Blue */
+        background: $SECONDARY;
+        border-radius: 5px;
+        transform: rotate(90deg);
+    }
+
+    .posBox2{
+        position: relative;
+        width: 48.71px;
+        height: 148.69px;
+        top: 5%;
+        left: 185%;
+
+        /* Neon Pink */
+        background: $ACCENT;
+        border-radius: 5px;
+        transform: rotate(90deg);
+    }
+
+    .posBox3{
+        position: relative;
+        width: 48.71px;
+        height: 140.86px;
+        top: 0%;
+        left: 175%;
+
+        /* Neon Pink */
+        background: $ACCENT;
+        border-radius: 5px;
+        transform: rotate(90deg);
+    }
+
+}
