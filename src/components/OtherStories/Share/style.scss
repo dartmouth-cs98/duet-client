@@ -13,6 +13,25 @@
         font-weight: bold;
         margin-bottom: 20px;
     }
+    
+    a {
+        font-size: 20px;
+        font-family: Helvetica, sans-serif;
+        text-decoration: none;
+        border: 1px solid $SECONDARY;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 280px;
+        outline: none;
+        background-color: $SECONDARY;
+        color: $PRIMARY;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
     button:last-of-type {
         margin-bottom: 40px;

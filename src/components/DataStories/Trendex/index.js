@@ -25,7 +25,7 @@ const Trendex = () => {
                 </div>
                 <h1><mark>sig ep is trendier than u</mark></h1>
                 <h2>78.0</h2>
-                <h3>sig ep's trendex</h3>
+                <h3>sig ep&apos;s trendex</h3>
                 <div className="bottomSquare">
                     <h1>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</h1>
                     <h2>39.0</h2>
