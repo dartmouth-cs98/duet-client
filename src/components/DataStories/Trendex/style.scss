@@ -1,4 +1,6 @@
 .TrendexPage{
+    overflow: hidden;
+
     #popup {
         width: 80vw;
         height: auto;
@@ -38,7 +40,7 @@
         color: #212034;
     }
 
-    mark{
+    mark {
         background-color: white;
         color: black;
     }
