@@ -21,13 +21,19 @@ const Decades = () => {
     }
 
     return (
-        <Page background={'lightblue'} numPages={6} pageNum={4}>
-            Decades
+        <Page background={'#212034'} numPages={6} pageNum={4}>
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
                 <div id="popup" onClick={() => handleClick()}>
                 </div>
+            </div>
+
+            <div className="decadesPage">
+                <div className="dectitle">
+                    <div id="decades"></div>
+                </div>
+
             </div>
         </Page>
     )
