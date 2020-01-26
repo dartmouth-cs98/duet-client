@@ -52,6 +52,21 @@
         transform: rotate(90deg);
     }
 
+    h2{
+        position: absolute;
+        left: 221px;
+        top: 45px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0.09em;
+
+        color: #E5277B;
+    }
+
     .posBox{
         position: relative;
         width: 48.71px;
@@ -63,6 +78,25 @@
         background: $ACCENT;
         border-radius: 5px;
         transform: rotate(90deg);
+    }
+
+    h3{
+        position: absolute;
+        width: 150px;
+        height: 57px;
+        left: 38px;
+        top: 120px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: right;
+        letter-spacing: 0.09em;
+
+        /* Base Blue */
+        color: #212034;
     }
 
     .negBox{
@@ -78,6 +112,25 @@
         transform: rotate(90deg);
     }
 
+    h4{
+        position: absolute;
+        width: 150px;
+        height: 57px;
+        left: 38px;
+        top: 232px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: right;
+        letter-spacing: 0.09em;
+
+        /* Base Blue */
+        color: #212034;
+    }
+
     .negBox2{
         position: relative;
         width: 48.71px;
@@ -89,6 +142,23 @@
         background: $SECONDARY;
         border-radius: 5px;
         transform: rotate(90deg);
+    }
+
+    h5{
+        position: absolute;
+        width: 146px;
+        height: 57px;
+        left: 221px;
+        top: 336px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0.09em;
+
+        color: #E5277B;
     }
 
     .posBox2{
@@ -104,6 +174,23 @@
         transform: rotate(90deg);
     }
 
+    h6{
+        position: absolute;
+        width: 141px;
+        height: 57px;
+        left: 221px;
+        top: 443px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0.09em;
+
+        color: #E5277B;
+    }
+
     .posBox3{
         position: relative;
         width: 48.71px;
@@ -115,6 +202,16 @@
         background: $ACCENT;
         border-radius: 5px;
         transform: rotate(90deg);
+    }
+
+    #arrow {
+        position: relative;
+        left: 370%;
+        top: -5%;
+        width: 33px;
+        height: 33px;
+        background-image: url("../images/arrow-drodpdown-blue.svg");
+        background-size: 100% 100%;
     }
 
 }
