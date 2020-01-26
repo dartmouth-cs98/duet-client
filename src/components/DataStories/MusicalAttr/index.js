@@ -27,11 +27,17 @@ const MusicalAttr = () => {
             <div id="histoBackground"/>
             <div className="histo">
                 <h1>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</h1>
+                <h2>sig ep’s music is happier than yours</h2>
                 <div className="posBox"></div>
+                <h3>your music is more danceable than sig ep’s</h3>
                 <div className="negBox"></div>
+                <h4>your music is more acoustic than sig ep’s</h4>
                 <div className="negBox2"></div>
+                <h5>sig ep’s music is more energetic than yours</h5>
                 <div className="posBox2"></div>
+                <h6>sig ep’s music is speechier than yours</h6>
                 <div className="posBox3"></div>
+                <div id="arrow"/>
             </div>
         </Page>
     )
