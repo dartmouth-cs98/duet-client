@@ -37,11 +37,11 @@
         letter-spacing: 0.12em;
 
         /* Base Blue */
-        color: #212034;
+        color: $SECONDARY;
     }
 
-    mark {
-        background-color: white;
+    mark{
+        background-color: $WHITE;
         color: black;
     }
 
@@ -59,7 +59,7 @@
         text-align: center;
         letter-spacing: 0.1em;
 
-        color: #E5277B;
+        color: $ACCENT;
     }
 
     h3{
@@ -78,18 +78,18 @@
         text-align: center;
         letter-spacing: 0.09em;
 
-        color: #212034;
+        color: $SECONDARY;
     }
 
     .bottomSquare{
         position: absolute;
         width: 428px;
-        height: 45%;
+        height: 50%;
         left: 0px;
         top: 330px;
 
         /* Base Blue */
-        background: #212034;
+        background: $SECONDARY;
 
         h1{
             left: -20px;
@@ -104,7 +104,7 @@
             text-align: center;
             letter-spacing: 0.09em;
 
-            color: #FFFFFF;
+            color: $WHITE;
         }
 
         h2{
@@ -122,7 +122,7 @@
             /* or 29% */
             text-align: center;
             letter-spacing: 0.09em;
-            color: #E5277B;
+            color: $ACCENT;
         }    
 
         h3{
@@ -141,7 +141,7 @@
             text-align: center;
             letter-spacing: 0.09em;
 
-            color: #FFFFFF;
+            color: $WHITE;
         }
 
         #arrow {

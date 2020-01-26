@@ -50,7 +50,7 @@
             /* or 250% */
             letter-spacing: 0.09em;
 
-            color: #212034;
+            color: $SECONDARY;
         }
 
     }
@@ -68,7 +68,7 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #E5277B;
+            color: $ACCENT;
         }
 
         h1{
@@ -81,11 +81,11 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #212034;
+            color: $SECONDARY;
         }
 
         mark {
-            background-color: #9BD6DC;
+            background-color: $PRIMARY;
             color: black;
           }          
     }
@@ -103,7 +103,7 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #E5277B;
+            color: $ACCENT;
         }
 
         h1{
@@ -116,11 +116,11 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #212034;
+            color: $SECONDARY;
         }
 
         mark {
-            background-color:#9BD6DC;
+            background-color:$PRIMARY;
             color: black;
           }        
 
