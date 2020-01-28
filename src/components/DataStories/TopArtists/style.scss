@@ -1,3 +1,26 @@
+#popup {
+    width: 80vw;
+    height: auto;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#popup-background {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(.9, .9, .9, .5);
+    z-index: -1;
+}
+
 .TopPage{
 
     .title{
@@ -27,7 +50,7 @@
             /* or 250% */
             letter-spacing: 0.09em;
 
-            color: #212034;
+            color: $SECONDARY;
         }
 
     }
@@ -45,7 +68,7 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #E5277B;
+            color: $ACCENT;
         }
 
         h1{
@@ -58,11 +81,11 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #212034;
+            color: $SECONDARY;
         }
 
         mark {
-            background-color: lightblue;
+            background-color: $PRIMARY;
             color: black;
           }          
     }
@@ -80,7 +103,7 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #E5277B;
+            color: $ACCENT;
         }
 
         h1{
@@ -93,11 +116,11 @@
             letter-spacing: 0.09em;
 
             /* Base Blue */
-            color: #212034;
+            color: $SECONDARY;
         }
 
         mark {
-            background-color: lightblue;
+            background-color:$PRIMARY;
             color: black;
           }        
 

@@ -8,7 +8,7 @@ const Share = ({jumpToPage}) => {
             <div id="Share">
                 <div id="shareimage"></div>
                 <button onClick={() => jumpToPage(2)}>save to share</button>
-                <button onClick={() => jumpToPage(2)}>invite your friends</button>
+                <a href="sms:&body=Hey%20join%20duet!">invite your friends</a>
                 <button onClick={() => jumpToPage(2)}>compare again</button>
             </div>
         </Page>
@@ -16,3 +16,4 @@ const Share = ({jumpToPage}) => {
 }
 
 export default Share;
+
