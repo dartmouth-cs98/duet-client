@@ -31,8 +31,9 @@ export const fetchUserData = (token, time_range) => {
             const audioFeaturesPromise = spotifyApi.getAudioFeaturesForTracks(trackIds);
         
             // TOP ARTISTS STUFF
-            const genreCounts = getGenreCount(topArtists.items);
-            dispatch({ type: types.FETCH_TOP_GENRES, genre_counts: genreCounts })
+            getGenreCount(token, topTracks.items).then((genreCounts) => {
+                dispatch({ type: types.FETCH_TOP_GENRES, genre_counts: genreCounts })
+            })
 
             // TODO: get rid of name once it's no longer required by backend
             audioFeaturesPromise.then((tracks) => {

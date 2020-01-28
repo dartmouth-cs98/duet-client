@@ -11,8 +11,12 @@ import Members from '../OtherStories/Members';
 import Compare from '../OtherStories/Compare';
 import Info from '../OtherStories/Info';
 import Share from '../OtherStories/Share';
+import { useSelector } from 'react-redux';
 
 const Story = () => {
+
+    // pass these as props to components
+    const { trendex, decade, avg_taste, taste, genre_counts } = useSelector((state) => state.user);
 
     /* pagination options:
         - NONE: can only exit this page using a button (see Login)
@@ -47,7 +51,7 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 5
-            component: <TopGenres key="topgenres"/>,
+            component: <TopGenres topGenres={genre_counts} key="topgenres"/>,
             pagination: ALL,
         },
         {   // page 6
