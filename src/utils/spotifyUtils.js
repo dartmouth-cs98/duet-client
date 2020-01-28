@@ -1,5 +1,8 @@
 import { getAvgObjectInArray } from './arrayUtils';
+import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
+import { flattenedGenres } from '../constants/flattenedGenres';
+import TopGenres from '../components/DataStories/TopGenres';
 
 export const getCurrentUserProfile = (token) => {
     return new Promise((resolve) => {
@@ -102,28 +105,61 @@ export const getAvgTaste = (audioFeatures) => {
     return avgTaste;
 }
 
-export const getGenreCount = (artists) => {
-    let genreToCount = new Map();
-    artists.forEach((artist) => {
-        const genres = artist.genres;
+export const getGenreCount = (token, tracks) => {
+    
+    const spotifyApi = new SpotifyWebApi();
+    spotifyApi.setAccessToken(token);
 
-        genres.forEach((genre) => {
-            if (genreToCount.has(genre)) {
-                genreToCount.set(genre, genreToCount.get(genre) + 1);
-            }
-            else {
-                genreToCount.set(genre, 1);
-            }
+    let promises1 = tracks.map((track) => 
+        new Promise((resolve) => {
+            let promises2 = track.artists.map((artist) => 
+                new Promise((resolve) => {
+                    spotifyApi.getArtist(artist.id).then((response) => resolve(response.genres))
+                })
+            )
+            Promise.all(promises2).then((genreLists) => {
+                let genres = new Set();
+                genreLists.forEach((genreList) => {
+                    genreList.forEach((genre) => genres.add(genre))
+                })
+                resolve({genres, artist: track.artists[0], track: track.name});
+            })
         })
+    )
+
+    return Promise.all(promises1).then((genreObjects) => {
+        let topGenres = new Map();
+        genreObjects.forEach((genreObject) => {
+            const { genres } = genreObject;
+        
+            let flattenedCount = new Map();
+            genres.forEach((genre) => {
+                const flattened = flattenedGenres[genre];
+                if (flattenedCount.has(genre)) {
+                    flattenedCount.set(flattened, flattenedCount.get(genre) + 1);
+                } else {
+                    flattenedCount.set(flattened, 1);
+                }
+            })
+
+            let topGenre = '';
+            const topCount = 0;
+            flattenedCount.forEach((count, genre) => {
+                // if (count == topCount) {
+                //     console.log('we have a tie',genre, topGenre);
+                // }
+                if (count > topCount) {
+                    topGenre = genre;
+                }
+            })
+            if (topGenre !== undefined && topGenre !== "") {
+                if (topGenres.has(topGenre)) {
+                    topGenres.set(topGenre, topGenres.get(topGenre) + 1);
+                } else {
+                    topGenres.set(topGenre, 1)
+                }
+            } 
+        })
+        return [...topGenres];
     })
-    const topNumber = 6;
-
-    let genreCounts = [];
-    genreToCount.forEach((count, genre) =>  {
-        genreCounts = [...genreCounts, { label: genre, count } ]
-    })
-
-    genreCounts.sort((a, b) => b.count - a.count);
-
-    return genreCounts.slice(0, topNumber);
 }

@@ -21,7 +21,7 @@ const LoadingLoginPage = ({ history }) => {
     const token = params.access_token;
     const dispatch = useDispatch();
     storeToken(token);
-    dispatch(fetchUserData(token, "short_term"))
+    dispatch(fetchUserData(token, "long_term"))
     history.push(token ? '/' : '/');
     
     return (
