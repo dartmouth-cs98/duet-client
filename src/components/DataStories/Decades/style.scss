@@ -37,13 +37,220 @@
         #decades {
             position: relative;
             bottom: 50%;
-            top: -40px;
+            top: 30px;
             right: 20%;
             width: 60vh;
             height: 10vh;
             background-image: url("../images/decadesTitle.svg");
             background-size: 100% 100%;
         }
+
+        h1{
+            position: absolute;
+            width: 289px;
+            height: 21px;
+            top: 85px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            /* identical to box height */
+            letter-spacing: 0.09em;
+
+            /* #FFFFFF - White */
+            color: $WHITE;
+        }
+
+        h2{
+            position: absolute;
+            width: 326px;
+            height: 27px;
+            left: 30vh;
+            top: 0vh;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 27px;
+            /* identical to box height, or 135% */
+            text-align: center;
+            letter-spacing: 0.09em;
+
+            /* #FFFFFF - White */
+            color: $WHITE;
+            transform: rotate(90deg);
+        }
+    }
+
+    .youGraph{
+        height: 20vh;
+        top: 13vh;
+
+        h1{
+            position: absolute;
+            width: 38px;
+            height: 23px;
+            left: 2vh;
+            top: 24vh;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 23px;
+            letter-spacing: 0.09em;
+
+            /* Bright Blue */
+            color: $PRIMARY;
+        }
+
+        .underline{
+            position: absolute;
+            width: 62px;
+            height: 4px;
+            left: 0px;
+            top: 30vh;
+
+            /* #FFFFFF - White */
+            background: $WHITE;
+            transform: matrix(1, 0, 0, -1, 0, 0);
+        }
+
+        .timeLine{
+            .line{
+                position: absolute;
+                width: 268.49px;
+                height: 0px;
+                left: 10vh;
+                top: 48vh;
+
+                /* Neon Pink */
+                background: $ACCENT;
+                /* #FFFFFF - White */
+                border: 1px solid $WHITE;
+                transform: rotate(180deg);
+            }
+
+            h4{
+                position: absolute;
+                width: 293px;
+                height: 21px;
+                left: 60px;
+                top: 46vh;
+                
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 17px;
+                line-height: 21px;
+                /* identical to box height */
+                letter-spacing: 0.12em;
+                
+                /* Bright Blue */
+                color: $PRIMARY;
+            }
+        }
+    }
+
+    .theirGraph{
+        top:40vh;
+
+        h1{
+            position: absolute;
+            height: 23px;
+            left: 2vh;
+            top: 55vh;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 23px;
+            letter-spacing: 0.09em;
+
+            /* Bright Blue */
+            color: $PRIMARY;
+        }
+
+        .underline{
+            position: absolute;
+            width: 88px;
+            height: 4px;
+            left: 0px;
+            top: 62vh;
+
+            /* #FFFFFF - White */
+            background: $WHITE;
+            transform: matrix(1, 0, 0, -1, 0, 0);
+        }
+
+        .timeLine{
+            .line{
+                position: absolute;
+                width: 268.49px;
+                height: 0px;
+                left: 10vh;
+                top: 82vh;
+
+                /* Neon Pink */
+                background: $ACCENT;
+                /* #FFFFFF - White */
+                border: 1px solid $WHITE;
+                transform: rotate(180deg);
+            }
+
+            h4{
+                position: absolute;
+                width: 293px;
+                height: 21px;
+                left: 60px;
+                top: 80vh;
+                
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 17px;
+                line-height: 21px;
+                /* identical to box height */
+                letter-spacing: 0.12em;
+                
+                /* Bright Blue */
+                color: $PRIMARY;
+            }
+        }
+    }
+
+    h3{
+        position: absolute;
+        width: 326px;
+        height: 27px;
+        left: -40px;
+        top: 88vh;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 27px;
+        /* identical to box height, or 135% */
+        text-align: center;
+        letter-spacing: 0.09em;
+
+        /* #FFFFFF - White */
+        color: $WHITE;
+    }
+
+    #arrow {
+        position: relative;
+        left: 55vh;
+        top: 88vh;
+        width: 33px;
+        height: 33px;
+        background-image: url("../images/arrow-drodpdown-blue.svg");
+        background-size: 100% 100%;
     }
 
 }
