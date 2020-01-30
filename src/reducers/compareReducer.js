@@ -1,7 +1,7 @@
 import initialState from './initialState';
 import * as types from "../constants/actionTypes";
 
-const friendReducer = (state = initialState.friend, action) => {
+const compareReducer = (state = initialState.compare, action) => {
   switch(action.type) {
     case types.FETCH_FRIEND:
       return action.friend;
@@ -12,4 +12,4 @@ const friendReducer = (state = initialState.friend, action) => {
   }
 };
 
-export default friendReducer;
+export default compareReducer;

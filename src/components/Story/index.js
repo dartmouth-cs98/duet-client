@@ -17,6 +17,7 @@ const Story = () => {
 
     // pass these as props to components
     const { trendex, decade, avg_taste, taste, genre_counts } = useSelector((state) => state.user);
+    const { taste: compareTaste, name: compareName } = useSelector((state) => state.compare);
 
     /* pagination options:
         - NONE: can only exit this page using a button (see Login)
@@ -24,6 +25,7 @@ const Story = () => {
         - NEXT_ONLY: can only move forward
         - PREV_ONLY: can only move backward
     */
+
     const NONE = 'NONE';
     const ALL = 'ALL';
     const NEXT_ONLY = 'NEXT_ONLY';
@@ -55,7 +57,7 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 6
-            component: <MusicalAttr key="musicalattr"/>,
+            component: <MusicalAttr taste={avg_taste} compareTaste={compareTaste} compareName={compareName} key="musicalattr"/>,
             pagination: ALL,
         },
         {   // page 7
