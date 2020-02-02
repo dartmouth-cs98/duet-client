@@ -12,6 +12,8 @@ const userReducer = (state = initialState.user, action) => {
       } = action.profile;
       return {...state, id, display_name, email, images }
     }
+    case types.FETCH_USER_TOP_ARTISTS:
+      return { ...state, topArtists: action.topArtists }
     case types.FETCH_USER_FRIENDS:
       return { ...state, friends: action.friends }
     case types.FETCH_USER_TASTE:
