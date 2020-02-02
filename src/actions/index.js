@@ -11,6 +11,7 @@ export const fetchUserData = (token, time_range) => {
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(token);
 
+        console.log(time_range);
         const userProfilePromise = getCurrentUserProfile(token)
         const topTracksPromise = spotifyApi.getMyTopTracks({limit: 50, time_range}) 
         const topArtistsPromise = spotifyApi.getMyTopArtists({limit: 50, time_range})
@@ -29,8 +30,12 @@ export const fetchUserData = (token, time_range) => {
             dispatch({ type: types.FETCH_TRENDEX, trendex: popularity });
 
             const audioFeaturesPromise = spotifyApi.getAudioFeaturesForTracks(trackIds);
-        
-            // TOP ARTISTS STUFF
+
+            const artistNamesAndIds = topArtists.items.map((artist) => ({ name: artist.name, id: artist.id }))
+            dispatch({ type: types.FETCH_USER_TOP_ARTISTS, topArtists: artistNamesAndIds })
+            console.log(topArtists);
+
+            // top genre stuff
             getGenreCount(token, topTracks.items).then((genreCounts) => {
                 dispatch({ type: types.FETCH_TOP_GENRES, genre_counts: genreCounts })
             })

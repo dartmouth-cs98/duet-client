@@ -12,7 +12,7 @@ const Login = ({ jumpToPage }) => {
 
     const handleLogin = () => { 
         if (token)  {
-            dispatch(fetchUserData(token, "short_term"));
+            dispatch(fetchUserData(token, "medium_term"));
             jumpToPage(1) 
         }
         else {

@@ -16,8 +16,8 @@ import { useSelector } from 'react-redux';
 const Story = () => {
 
     // pass these as props to components
-    const { trendex, decade, avg_taste, taste, genre_counts } = useSelector((state) => state.user);
-    const { taste: compareTaste, name: compareName } = useSelector((state) => state.compare);
+    const { trendex, decade, avg_taste, taste, genre_counts, topArtists } = useSelector((state) => state.user);
+    const { taste: compareTaste, name: compareName, topArtists: compareTopArtists, trendex: compareTrendex } = useSelector((state) => state.compare);
 
     /* pagination options:
         - NONE: can only exit this page using a button (see Login)
@@ -45,11 +45,11 @@ const Story = () => {
             pagination: NONE,
         },
         {   // page 3
-            component: <TopArists key="topartists"/>,
+            component: <TopArists topArtists={topArtists} compareTopArtists={compareTopArtists} key="topartists"/>,
             pagination: NEXT_ONLY,
         },
         {   // page 4
-            component: <Trendex key="trendex"/>,
+            component: <Trendex trendex={trendex} compareTrendex={compareTrendex} compareName={compareName} key="trendex"/>,
             pagination: ALL,
         },
         {   // page 5

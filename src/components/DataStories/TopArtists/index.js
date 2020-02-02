@@ -1,8 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const TopArtists = () => {
+const TopArtists = ({ topArtists, compareTopArtists }) => {
+    const NUM_ARTISTS_TO_DISPLAY = 8;
+
+    const truncated = topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    const compareTruncated = compareTopArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    let shared = [];
+
+    truncated.forEach((artist) => {
+        if (compareTruncated.indexOf(artist) >= 0) {
+            shared = [...shared, artist];
+        }
+    })
+
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
             var canvasData = canvas.toDataURL();
@@ -25,25 +38,23 @@ const TopArtists = () => {
                 </div>
                 <div className="yourArtists">
                     <h2>You</h2>
-                    <h1>Ariana Grande</h1>
-                    <h1><mark>Billie Eilish</mark></h1>
-                    <h1>Michael Jackson</h1>
-                    <h1><mark>Post Malone</mark></h1>
-                    <h1>The Beatles</h1>
-                    <h1><mark>The Eagles</mark></h1>
-                    <h1>Elvis Presley</h1>
-                    <h1>Paul Simon</h1>
+                    {truncated.map((artist) => {
+                        if (shared.indexOf(artist) < 0) {
+                            return <h1 key={artist}>{artist}</h1>;
+                        } else {
+                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                        }   
+                    })}
                 </div>
                 <div className="theirArtists">
                     <h2>Sig Ep</h2>
-                    <h1>Taylor Swift</h1>
-                    <h1><mark>Billie Eilish</mark></h1>
-                    <h1>Drake</h1>
-                    <h1><mark>Post Malone</mark></h1>
-                    <h1>Justin Beiber</h1>
-                    <h1>The Jonas Brothers</h1>
-                    <h1><mark>The Eagles</mark></h1>
-                    <h1>Dan + Shay</h1>
+                    {compareTruncated.map((artist) => {
+                         if (shared.indexOf(artist) < 0) {
+                            return <h1 key={artist}>{artist}</h1>;
+                        } else {
+                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                        }  
+                    })}
                 </div>
                 <div id="arrow"/>
             </div>

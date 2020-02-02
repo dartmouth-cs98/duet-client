@@ -11,7 +11,7 @@ const Login = ({ history }) => {
   
   const handleLogin = () => { 
     if (token)  {
-      dispatch(fetchUserData(token, "short_term"));
+      dispatch(fetchUserData(token, "medium_term"));
       history.push('/dashboard/me');  
     }
     else {

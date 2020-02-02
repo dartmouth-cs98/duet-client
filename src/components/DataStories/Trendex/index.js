@@ -2,7 +2,7 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const Trendex = () => {
+const Trendex = ({ trendex, compareTrendex, compareName }) => {
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
             var canvasData = canvas.toDataURL();
@@ -23,12 +23,14 @@ const Trendex = () => {
                 <div id="popup-background">
                     <div id="popup" onClick={() => handleClick()}></div>
                 </div>
-                <h1><mark>sig ep is trendier than u</mark></h1>
-                <h2>78.0</h2>
+                {trendex > compareTrendex && <h1><mark>you&apos;re trendier than {compareName}</mark></h1>}
+                {trendex < compareTrendex && <h1><mark>{compareName} is trendier than you</mark></h1>}
+                {trendex == compareTrendex && <h1><mark>you and {compareName} are equally trendy</mark></h1>}
+                <h2>{compareTrendex}</h2>
                 <h3>sig ep&apos;s trendex</h3>
                 <div className="bottomSquare">
                     <h1>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</h1>
-                    <h2>39.0</h2>
+                    <h2>{trendex}</h2>
                     <h3>your trendex</h3>
                     <div id="arrow"></div>
                 </div>
