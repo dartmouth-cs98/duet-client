@@ -6,7 +6,7 @@ import html2canvas from 'html2canvas';
 const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compareName }) => {
     const difference = compareAttribute - attribute;
     const average = (attribute + compareAttribute) / 2;
-    const percentageDifference = (Math.round((difference / average) * 100) / 100) * 100;
+    const percentageDifference = Math.round((Math.round((difference / average) * 100) / 100) * 100);
     const userIsGreater = percentageDifference > 0;
 
     const leftWidth = userIsGreater ? '100%' : `${50 * (Math.abs(percentageDifference) / 100)}%`;
@@ -18,9 +18,9 @@ const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compare
     const justifyContent = userIsGreater ? 'flex-start' : 'flex-end';
 
     return (
-        <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent }}>
+        <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent, paddingTop: '0px' }}>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-end', width: '50vw', paddingRight: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
+                <h1 style={{ fontFamily: 'Roboto', fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
                     your music is {-percentageDifference}% {comparePhrase} than {compareName}&apos;s
                 </h1>
                 <div 
@@ -29,7 +29,7 @@ const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compare
                 />
             </div>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-start', width: '50vw', paddingLeft: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
+                <h1 style={{ fontFamily: 'Roboto', fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
                     {compareName}&apos; music is {percentageDifference}% {comparePhrase} than yours
                 </h1>
                 <div 
