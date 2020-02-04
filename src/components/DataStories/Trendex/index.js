@@ -24,8 +24,8 @@ const Trendex = ({ trendex, compareTrendex, compareName }) => {
                     <div id="popup" onClick={() => handleClick()}></div>
                 </div>
                 {trendex > compareTrendex && <h1><mark>you&apos;re trendier than {compareName}</mark></h1>}
-                {trendex < compareTrendex && <h1><mark>{compareName} is trendier than you</mark></h1>}
-                {trendex == compareTrendex && <h1><mark>you and {compareName} are equally trendy</mark></h1>}
+                {trendex < compareTrendex && <h1><mark>{compareName} is trendier than u</mark></h1>}
+                {trendex == compareTrendex && <h1><mark>u and {compareName} are equally trendy</mark></h1>}
                 <h2>{compareTrendex}</h2>
                 <h3>sig ep&apos;s trendex</h3>
                 <div className="bottomSquare">
