@@ -1,3 +1,11 @@
+#background1 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/histogram_background.png");
+    background-size: 100% 100%;
+}
+
 .MusicalAttr-Box-left {
     border-radius: 5px;
     height: 50px;
@@ -11,8 +19,8 @@
 }
 
 .MusicalAttr-Boxes {
+    background-image: url("../images/histogram_background.png");
     width: 100vw;
-    height: 80vh;
     display: flex;
     flex-direction: column;
 }
@@ -20,6 +28,7 @@
 .MusicalAttr-PercentDifference {
     display: flex;
     width: 100%;
+    height: 100%;
 }
 
 .MusicalAttr-Divider {

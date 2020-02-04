@@ -27,7 +27,7 @@ const Trendex = ({ trendex, compareTrendex, compareName }) => {
                 {trendex < compareTrendex && <h1><mark>{compareName} is trendier than u</mark></h1>}
                 {trendex == compareTrendex && <h1><mark>u and {compareName} are equally trendy</mark></h1>}
                 <h2>{compareTrendex}</h2>
-                <h3>sig ep&apos;s trendex</h3>
+                <h3>{compareName}&apos;s trendex</h3>
                 <div className="bottomSquare">
                     <h1>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</h1>
                     <h2>{trendex}</h2>
