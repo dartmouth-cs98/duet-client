@@ -31,32 +31,32 @@ const TopArtists = ({ user_1, user_2 }) => {
 
     return (
         <Page background={'white'} numPages={6} pageNum={0}>
-            <div className="TopPage">
-                <div className="title"> 
+            <div className="TopArtists-Page">
+                <div className="TopArtists-Title"> 
                     <h1>You and Sig Ep share</h1>
-                    <div id="topArtists"/>
+                    <h2 className="TopArtists-TextShadow">top artists</h2>
                 </div>
-                <div className="yourArtists">
-                    <h2>You</h2>
+                <div className="TopArtists-List">
+                    <h1 className="right-align">You</h1>
                     {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
-                            return <h1 key={artist}>{artist}</h1>;
+                            return <h2 className="right-align" key={artist}>{artist}</h2>;
                         } else {
-                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
                         }   
                     })}
                 </div>
-                <div className="theirArtists">
-                    <h2>Sig Ep</h2>
+                <div className="TopArtists-List">
+                    <h1 className="left-align">Sig Ep</h1>
                     {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
-                            return <h1 key={artist}>{artist}</h1>;
+                            return <h2 className="left-align" key={artist}>{artist}</h2>;
                         } else {
-                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
                         }  
                     })}
                 </div>
-                <div id="arrow"/>
+                {/* <div id="arrow"/> */}
             </div>
 
             <button id="share" onClick={() => saveScreen()}>...</button>
