@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Page from '../../Page';
-import { fetchUserData } from '../../../actions';
+import { fetchMeData } from '../../../actions';
 import { getToken } from '../../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 
@@ -12,7 +12,7 @@ const Login = ({ jumpToPage }) => {
 
     const handleLogin = () => { 
         if (token)  {
-            dispatch(fetchUserData(token, "medium_term"));
+            dispatch(fetchMeData(token, "medium_term"));
             jumpToPage(1) 
         }
         else {

@@ -8,9 +8,13 @@ export const FETCH_USER_TOP_ARTISTS = "FETCH_USER_TOP_ARTISTS";
 export const FETCH_DECADE = "FETCH_DECADE";
 export const FETCH_TRENDEX = "FETCH_TRENDEX";
 export const STORE_TOKEN = "STORE_TOKEN";
-export const FETCH_FRIEND = "FETCH_FRIEND";
-export const CLEAR_FRIEND = "CLEAR_FRIEND";
+export const SET_COMPARE = "SET_COMPARE";
 export const STORE_USER = "STORE_USER";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const CLEAR_AUTH = "CLEAR_AUTH";
 export const CLEAR_USER = "CLEAR_USER";
+
+
+// new types
+export const FETCH_USER_1 = "FETCH_USER_1";
+export const FETCH_USER_2 = "FETCH_USER_2";

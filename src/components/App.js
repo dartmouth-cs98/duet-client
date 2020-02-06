@@ -16,21 +16,11 @@ import Story from './Story';
 // component at the top-level.
 
 const App = () => {
-
-  // const { loggedIn } = useSelector((state) => state.auth);
-
-  // const authOnly = (Component) => {
-  //   return loggedIn ? Component : Login;
-  // }
-
   return (
     <div>
       <Switch>
         <Route exact path="/" component={Story} />
         <Route path="/login" component={AuthRedirect} />
-        {/* <Route path="/dashboard" component={authOnly(Dashboard)} />
-        <Route path="/survey" component={authOnly(Survey)} />
-        <Route component={NotFoundPage} /> */}
       </Switch>
     </div>
   );

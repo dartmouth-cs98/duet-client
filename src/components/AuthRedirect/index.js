@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUserData } from '../../actions';
+import { fetchMeData } from '../../actions';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { storeToken } from '../../utils/tokenUtils';
 
@@ -21,7 +21,7 @@ const LoadingLoginPage = ({ history }) => {
     const token = params.access_token;
     const dispatch = useDispatch();
     storeToken(token);
-    dispatch(fetchUserData(token, "medium_term"))
+    dispatch(fetchMeData(token, "medium_term"))
     history.push(token ? '/' : '/');
     
     return (

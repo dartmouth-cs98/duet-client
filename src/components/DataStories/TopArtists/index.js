@@ -3,15 +3,15 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const TopArtists = ({ topArtists, compareTopArtists }) => {
+const TopArtists = ({ user_1, user_2 }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
 
-    const truncated = topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
-    const compareTruncated = compareTopArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     let shared = [];
 
-    truncated.forEach((artist) => {
-        if (compareTruncated.indexOf(artist) >= 0) {
+    user1TruncatedArtists.forEach((artist) => {
+        if (user2TruncatedArtists.indexOf(artist) >= 0) {
             shared = [...shared, artist];
         }
     })
@@ -38,7 +38,7 @@ const TopArtists = ({ topArtists, compareTopArtists }) => {
                 </div>
                 <div className="yourArtists">
                     <h2>You</h2>
-                    {truncated.map((artist) => {
+                    {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
                             return <h1 key={artist}>{artist}</h1>;
                         } else {
@@ -48,7 +48,7 @@ const TopArtists = ({ topArtists, compareTopArtists }) => {
                 </div>
                 <div className="theirArtists">
                     <h2>Sig Ep</h2>
-                    {compareTruncated.map((artist) => {
+                    {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
                             return <h1 key={artist}>{artist}</h1>;
                         } else {
