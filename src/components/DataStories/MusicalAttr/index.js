@@ -3,10 +3,10 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compareName }) => {
-    const difference = compareAttribute - attribute;
-    const average = (attribute + compareAttribute) / 2;
-    const percentageDifference = Math.round((Math.round((difference / average) * 100) / 100) * 100);
+const PercentDifference = ({ comparePhrase, user1Attribute, user2Attribute, user2Name }) => {
+    const difference = user2Attribute - user1Attribute;
+    const average = (user1Attribute + user2Attribute) / 2;
+    const percentageDifference = (Math.round((difference / average) * 100) / 100) * 100;
     const userIsGreater = percentageDifference > 0;
 
     const leftWidth = userIsGreater ? '100%' : `${50 * (Math.abs(percentageDifference) / 100)}%`;
@@ -20,8 +20,8 @@ const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compare
     return (
         <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent, paddingTop: '0px' }}>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-end', width: '50vw', paddingRight: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontFamily: 'Roboto', fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
-                    your music is {-percentageDifference}% {comparePhrase} than {compareName}&apos;s
+                <h1 style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
+                    your music is {-percentageDifference}% {comparePhrase} than {user2Name}&apos;s
                 </h1>
                 <div 
                 className="MusicalAttr-Box-left"
@@ -29,8 +29,8 @@ const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compare
                 />
             </div>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-start', width: '50vw', paddingLeft: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontFamily: 'Roboto', fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
-                    {compareName}&apos; music is {percentageDifference}% {comparePhrase} than yours
+                <h1 style={{ fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
+                    {user2Name}&apos; music is {percentageDifference}% {comparePhrase} than yours
                 </h1>
                 <div 
                 className="MusicalAttr-Box-right"
@@ -41,7 +41,10 @@ const PercentDifference = ({ comparePhrase, attribute, compareAttribute, compare
     )
 }
 
-const MusicalAttr = ({ taste, compareTaste, compareName }) => {
+const MusicalAttr = ({ user_1, user_2 }) => {
+    
+    const { taste: user1Taste } = user_1;
+    const { taste: user2Taste, display_name: user2Name } = user_2;
 
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
@@ -96,9 +99,9 @@ const MusicalAttr = ({ taste, compareTaste, compareName }) => {
                         <PercentDifference 
                             key={name} 
                             comparePhrase={comparePhrase} 
-                            attribute={taste[name]} 
-                            compareAttribute={compareTaste[name]} 
-                            compareName={compareName}
+                            user1Attribute={user1Taste[name]} 
+                            user2Attribute={user2Taste[name]} 
+                            user2Name={user2Name}
                         />
                     )
                 })}

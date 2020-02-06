@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import TopArists from '../DataStories/TopArtists';
 import Decades from '../DataStories/Decades';
-import HeatMap from '../DataStories/HeatMap';
 import MusicalAttr from '../DataStories/MusicalAttr';
 import TopGenres from '../DataStories/TopGenres';
 import Trendex from '../DataStories/Trendex';
@@ -13,23 +12,20 @@ import Info from '../OtherStories/Info';
 import Share from '../OtherStories/Share';
 import { useSelector } from 'react-redux';
 
-const Story = () => {
-
-    // pass these as props to components
-    const { trendex, decade, avg_taste, taste, genre_counts, topArtists } = useSelector((state) => state.user);
-    const { taste: compareTaste, name: compareName, topArtists: compareTopArtists, trendex: compareTrendex } = useSelector((state) => state.compare);
-
-    /* pagination options:
+/* pagination options:
         - NONE: can only exit this page using a button (see Login)
         - ALL: can pagination forwards or backwards
         - NEXT_ONLY: can only move forward
         - PREV_ONLY: can only move backward
     */
+   
+const NONE = 'NONE';
+const ALL = 'ALL';
+const NEXT_ONLY = 'NEXT_ONLY';
+const PREV_ONLY = 'PREV_ONLY';
 
-    const NONE = 'NONE';
-    const ALL = 'ALL';
-    const NEXT_ONLY = 'NEXT_ONLY';
-    const PREV_ONLY = 'PREV_ONLY';
+const Story = () => {
+    const { user_1, user_2 } = useSelector((state) => state.users);
 
     const pages = [
         {   // page 0
@@ -45,19 +41,19 @@ const Story = () => {
             pagination: NONE,
         },
         {   // page 3
-            component: <TopArists topArtists={topArtists} compareTopArtists={compareTopArtists} key="topartists"/>,
+            component: <TopArists user_1={user_1} user_2={user_2} key="topartists"/>,
             pagination: NEXT_ONLY,
         },
         {   // page 4
-            component: <Trendex trendex={trendex} compareTrendex={compareTrendex} compareName={compareName} key="trendex"/>,
+            component: <Trendex user_1={user_1} user_2={user_2} key="trendex"/>,
             pagination: ALL,
         },
         {   // page 5
-            component: <TopGenres topGenres={genre_counts} key="topgenres"/>,
+            component: <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>,
             pagination: ALL,
         },
         {   // page 6
-            component: <MusicalAttr taste={avg_taste} compareTaste={compareTaste} compareName={compareName} key="musicalattr"/>,
+            component: <MusicalAttr user_1={user_1} user_2={user_2} key="musicalattr"/>,
             pagination: ALL,
         },
         {   // page 7
@@ -65,18 +61,15 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 8
-            component: <HeatMap key="heatmap"/>,
-            pagination: ALL,
-        },
-        {   // page 9
             component: <Members key="membersscreen" jumpToPage={(page) => jumpToPage(page)}/>,
             pagination: NONE,
         },
-        {   // page 10
+        {   // page 9
             component: <Share key="sharepage" jumpToPage={(page) => jumpToPage(page)}/>,
             pagination: NONE,
         },
     ];
+
     const numPages = pages.length;
     const [currPage, setCurrPage] = useState(0);
     
