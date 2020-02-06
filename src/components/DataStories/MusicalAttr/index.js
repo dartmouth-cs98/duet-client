@@ -18,7 +18,7 @@ const PercentDifference = ({ comparePhrase, user1Attribute, user2Attribute, user
     const justifyContent = userIsGreater ? 'flex-start' : 'flex-end';
 
     return (
-        <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent }}>
+        <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent, paddingTop: '0px' }}>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-end', width: '50vw', paddingRight: '20px', boxSizing: 'content-box'}}>
                 <h1 style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
                     your music is {-percentageDifference}% {comparePhrase} than {user2Name}&apos;s
