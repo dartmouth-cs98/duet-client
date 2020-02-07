@@ -1,5 +1,8 @@
-.TrendexPage{
-    overflow: hidden;
+.Trendex-Page {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     #popup {
         width: 80vw;
@@ -10,7 +13,7 @@
             width: 100%;
         }
     }
-    
+ 
     #popup-background {
         position: absolute;
         display: flex;
@@ -24,134 +27,92 @@
         z-index: -1;    
     }
 
-    h1{
-        position: absolute;
-        width: 291px;
-        left: 41px;
-
+    .Trendex-Description {
         font-family: Roboto;
         font-style: normal;
         font-weight: 600;
-        font-size: 31px;
-        line-height: 50px;
+        font-size: 7vw;
+        line-height: 100%;
         letter-spacing: 0.12em;
-
-        /* Base Blue */
         color: $SECONDARY;
+        margin: 0;
+        mark {
+            background: $WHITE;
+        }
     }
 
-    mark{
-        background-color: $WHITE;
-        color: black;
-    }
-
-    h2{
-        position: absolute;
-        left: 50px;
-        top: 12%;
-
+    .Trendex-Score {
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
-        font-size: 130px;
-        line-height: 40px;
-        /* or 29% */
+        font-size: 25vw;
+        line-height: 100%;
         text-align: center;
         letter-spacing: 0.1em;
-
+        margin: 0;
         color: $ACCENT;
     }
 
-    h3{
-        position: absolute;
-        width: 320px;
-        height: 126px;
-        left: 50px;
-        top: 250px;
-
+    .Trendex-Score-Label {
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
-        font-size: 25px;
-        line-height: 27px;
-        /* or 90% */
+        font-size: 6vw;
+        line-height: 100%;
         text-align: center;
         letter-spacing: 0.09em;
-
-        color: $SECONDARY;
+        margin: 0;
     }
 
-    .bottomSquare{
-        position: absolute;
-        width: 428px;
-        height: 50%;
-        left: 0px;
-        top: 330px;
-
-        /* Base Blue */
-        background: $SECONDARY;
-
-        h1{
-            left: -20px;
-            top: -30px;
-
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 25px;
-            line-height: 27px;
-            /* or 90% */
-            text-align: center;
-            letter-spacing: 0.09em;
-
-            color: $WHITE;
-        }
-
-        h2{
-            position: absolute;
-            width: 320px;
-            height: 126px;
-            left: 47px;
-            top: -20px;
-    
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 130px;
-            line-height: 40px;
-            /* or 29% */
-            text-align: center;
-            letter-spacing: 0.09em;
-            color: $ACCENT;
-        }    
-
-        h3{
-            position: absolute;
-            width: 320px;
-            height: 126px;
-            left: 47px;
-            top: 160px;
-
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 25px;
-            line-height: 27px;
-            /* or 90% */
-            text-align: center;
-            letter-spacing: 0.09em;
-
-            color: $WHITE;
-        }
-
-        #arrow {
-            position: relative;
-            left: 80%;
-            top: 77%;
-            width: 33px;
-            height: 33px;
-            background-image: url("../images/arrow-drodpdown-blue.svg");
-            background-size: 100% 100%;
+    .Trendex-TopSquare {
+        background-color: $PRIMARY;
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10%;
+        box-sizing: border-box;
+        .Trendex-Score-Label {
+            color: $SECONDARY;
         }
     }
+
+    .Trendex-BottomSquare {
+        background-color: $SECONDARY;
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20%;
+        box-sizing: border-box;
+        .Trendex-Score-Label {
+            color: $WHITE;
+        }
+    }
+
+    .Trendex-Divider {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 6vw;
+        letter-spacing: 0.12em;
+        color: $WHITE;
+        transform: translateY(10px);
+    }
+
+    @media screen and (min-width: 600px) {
+        .Trendex-Description {
+            font-size: 30px;
+        }
+        .Trendex-Score {
+           font-size: 130px;
+        }
+        .Trendex-Score-Label {
+            font-size: 30px;
+        }
+      }
 }

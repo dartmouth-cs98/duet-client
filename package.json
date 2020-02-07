@@ -56,6 +56,7 @@
     "react-country-region-selector": "1.4.5",
     "react-dom": "16.8.6",
     "react-dropdown": "1.6.4",
+    "react-filter-search": "1.0.9",
     "react-minimal-pie-chart": "6.0.1",
     "react-redux": "7.1.1",
     "react-router-dom": "5.0.0",

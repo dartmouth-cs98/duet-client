@@ -3,15 +3,15 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const TopArtists = ({ topArtists, compareTopArtists }) => {
+const TopArtists = ({ user_1, user_2 }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
 
-    const truncated = topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
-    const compareTruncated = compareTopArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
+    const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     let shared = [];
 
-    truncated.forEach((artist) => {
-        if (compareTruncated.indexOf(artist) >= 0) {
+    user1TruncatedArtists.forEach((artist) => {
+        if (user2TruncatedArtists.indexOf(artist) >= 0) {
             shared = [...shared, artist];
         }
     })
@@ -31,32 +31,32 @@ const TopArtists = ({ topArtists, compareTopArtists }) => {
 
     return (
         <Page background={'white'} numPages={6} pageNum={0}>
-            <div className="TopPage">
-                <div className="title"> 
+            <div className="TopArtists-Page">
+                <div className="TopArtists-Title"> 
                     <h1>You and Sig Ep share</h1>
-                    <div id="topArtists"/>
+                    <h2 className="TopArtists-TextShadow">top artists</h2>
                 </div>
-                <div className="yourArtists">
-                    <h2>You</h2>
-                    {truncated.map((artist) => {
+                <div className="TopArtists-List">
+                    <h1 className="right-align">You</h1>
+                    {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
-                            return <h1 key={artist}>{artist}</h1>;
+                            return <h2 className="right-align" key={artist}>{artist}</h2>;
                         } else {
-                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
                         }   
                     })}
                 </div>
-                <div className="theirArtists">
-                    <h2>Sig Ep</h2>
-                    {compareTruncated.map((artist) => {
+                <div className="TopArtists-List">
+                    <h1 className="left-align">Sig Ep</h1>
+                    {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
-                            return <h1 key={artist}>{artist}</h1>;
+                            return <h2 className="left-align" key={artist}>{artist}</h2>;
                         } else {
-                            return <h1 key={artist}><mark>{artist}</mark></h1>;
+                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
                         }  
                     })}
                 </div>
-                <div id="arrow"/>
+                {/* <div id="arrow"/> */}
             </div>
 
             <button id="share" onClick={() => saveScreen()}>...</button>
