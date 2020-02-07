@@ -24,6 +24,15 @@ export const getAllUsers = () => {
     })
 }
 
+export const search = (id_) => {
+    return new Promise((resolve) => {
+        axios({
+            method: 'get', 
+            url: `https://cs98-duet.herokuapp.com/search/${id_}`,
+        }).then((response) => resolve(response.data));
+    })
+}
+
 export const addNewFriend = (userId, friendId) => {
     return new Promise((resolve) => {
         axios.post(`https://cs98-duet.herokuapp.com/addFriend`, {
