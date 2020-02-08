@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useWindowSize } from '../../../utils/useWindowSize';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
-import _ from 'lodash';
 
 const Decades = ({ user_1, user_2 }) => {
 

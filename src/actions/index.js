@@ -53,7 +53,7 @@ export const queryUsers = (query) => {
             trendex: '59.8',
             topArtists: [
               {
-                name: 'ABBA',
+                name: 'The Beatles',
                 id: '0LcJLqbBmaGUft1e9Mm8HV'
               },
               {

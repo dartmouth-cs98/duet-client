@@ -1,49 +1,46 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { useWindowSize } from '../../../utils/useWindowSize';
 
-const PercentDifference = ({ comparePhrase, user1Attribute, user2Attribute, user2Name }) => {
-    const difference = user2Attribute - user1Attribute;
-    const average = (user1Attribute + user2Attribute) / 2;
-    const percentageDifference = (Math.round((difference / average) * 100) / 100) * 100;
-    const userIsGreater = percentageDifference > 0;
+const Slider = ({ width: sliderWidth, height: sliderHeight, label, color, val1, val2, name1, name2 }) => {
+    
+    // val2 must be greater than val1
+    if (val2 < val1) {
+        [name1, name2] = [name2, name1];
+        [val1, val2] = [val2, val1]
+    }
 
-    const leftWidth = userIsGreater ? '100%' : `${50 * (Math.abs(percentageDifference) / 100)}%`;
-    const rightWidth = !userIsGreater ? '100%' : `${50 * (Math.abs(percentageDifference) / 100)}%`;
-
-    const leftOpacity = userIsGreater ? '0' : '1';
-    const rightOpacity = !userIsGreater ? '0' : '1';
-
-    const justifyContent = userIsGreater ? 'flex-start' : 'flex-end';
+    const pattyWidth = sliderWidth * .04;
+    const nameWidth = sliderWidth * .2;
+    const sliderDifference = val2 - val1;
+    const labelAlignment = val2 > .5 ? 'left' : 'right';
+    const topNameOffsetX = (val2 * sliderWidth) - .15 * nameWidth;
+    const bottomNameOffsetX = (val1 * sliderWidth) - .35 * nameWidth;
 
     return (
-        <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent, paddingTop: '0px' }}>
-            <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-end', width: '50vw', paddingRight: '20px', boxSizing: 'content-box'}}>
-                <h1 className="MusicalAttr-Description" style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
-                    your music is {-percentageDifference}% {comparePhrase} than {user2Name}&apos;s
-                </h1>
-                <div 
-                className="MusicalAttr-Box-left"
-                style={{ width: leftWidth, opacity: leftOpacity }}
-                />
+        <div className="Slider" style={{ width: sliderWidth, height: sliderHeight }}>
+            <h1 className="Slider-Label" style={{ color: color, textAlign: labelAlignment }}>{label}</h1>
+            <h2 className="Slider-Name" style={{ width: nameWidth, transform: `translate(${topNameOffsetX}px, -20%)`}}>{name2}</h2>
+            <div className="Slider-Base">
+                <div className="Slider-InvisibleStarter" style={{ width: val1 * sliderWidth }}/> 
+                <div className="Slider-Patty" style={{ backgroundColor: color, width: pattyWidth}}/>
+                <div className="Slider-StripedMiddle" style={{ width: sliderDifference * sliderWidth }}/>  
+                <div className="Slider-Patty" style={{ backgroundColor: color, width: pattyWidth }}/>
             </div>
-            <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-start', width: '50vw', paddingLeft: '20px', boxSizing: 'content-box'}}>
-                <h1 className="MusicalAttr-Description" style={{ fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
-                    {user2Name}&apos;s music is {percentageDifference}% {comparePhrase} than yours
-                </h1>
-                <div 
-                className="MusicalAttr-Box-right"
-                style={{ width: rightWidth, opacity: rightOpacity }}
-                />
+            <div className="Slider-Axis">
+                <h1>0</h1>
+                <h1>100</h1>
             </div>
+            <h2 className="Slider-Name" style={{ width: nameWidth, transform: `translate(${bottomNameOffsetX}px, -40%)`}}>{name1}</h2>
         </div>
     )
-}
+};
 
 const MusicalAttr = ({ user_1, user_2 }) => {
     
-    const { taste: user1Taste } = user_1;
+    const { taste: user1Taste, display_name: user1Name } = user_1;
     const { taste: user2Taste, display_name: user2Name } = user_2;
 
     const saveScreen = () => {
@@ -61,50 +58,77 @@ const MusicalAttr = ({ user_1, user_2 }) => {
 
     const attributes = [
         {
-            name: 'valence',
-            comparePhrase: 'happier',
+            label: 'Happiness',
+            color: '#E5277B',
+            val1: user1Taste.valence,
+            val2: user2Taste.valence,
         },
         {
-            name: 'danceability',
-            comparePhrase: 'more danceable',
+            label: 'Acousticness',
+            color: '#F78D91',
+            val1: user1Taste.acousticness,
+            val2: user2Taste.acousticness,
         },
         {
-            name: 'acousticness',
-            comparePhrase: 'more acoustic',
+            label: 'Danceability',
+            color: '#FEEBDB',
+            val1: user1Taste.danceability,
+            val2: user2Taste.danceability,
         },
         {
-            name: 'energy',
-            comparePhrase: 'more energetic',
-        },
-        {
-            name: 'speechiness',
-            comparePhrase: 'speechier',
+            label: 'Energy',
+            color: '#171724',
+            val1: user1Taste.energy,
+            val2: user2Taste.energy,
         },
     ]
-  
+
+    const windowSize = useWindowSize();
+
+    const SLIDER_HEIGHT_PERCENTAGE = .06;
+    const SLIDER_WIDTH_PERCENTAGE = .8;
+
+    const [sliderWidth, setSliderWidth] = useState(300);
+    const [sliderHeight, setSliderHeight] = useState(50);
+
+    useEffect(() => {
+        const { height, width } = windowSize;
+        setSliderHeight(SLIDER_HEIGHT_PERCENTAGE * height)
+        setSliderWidth(SLIDER_WIDTH_PERCENTAGE * width)
+    }, [windowSize])
+
     return (
-        <Page background={'white'} numPages={6} pageNum={3}>
+        
+        <Page background={'#9BD6DC'} numPages={6} pageNum={3}>
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
                 <div id="popup" onClick={() => handleClick()}>
                 </div>
             </div>
-            <div className="MusicalAttr-Boxes">
-                <h1 className="MusicalAttr-Divider">
-                \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                </h1>
-                {attributes.map(({name, comparePhrase}) => {
-                    return ( 
-                        <PercentDifference 
-                            key={name} 
-                            comparePhrase={comparePhrase} 
-                            user1Attribute={user1Taste[name]} 
-                            user2Attribute={user2Taste[name]} 
-                            user2Name={user2Name}
-                        />
-                    )
-                })}
+            <div className="MusicalAttr-Page">
+                <div>
+                    <h1 className="MusicalAttr-Title-TextShadow">Taste :P</h1>
+                    <h2 className="MusicalAttr-subtitle">how happy, acoustic, danceable, and energetic is your music?</h2>
+                </div>
+                <div className="Sliders">
+                    {attributes.map((attribute) => {
+                        const { label, color, val1, val2 } = attribute
+                        return (
+                            <Slider 
+                                key={label} 
+                                width={sliderWidth} 
+                                height={sliderHeight} 
+                                label={label} 
+                                color={color} 
+                                val1={val1} 
+                                val2={val2}
+                                name1={user1Name}
+                                name2={user2Name}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </Page>
     )
