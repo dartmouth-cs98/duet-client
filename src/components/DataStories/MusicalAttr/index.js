@@ -20,7 +20,7 @@ const PercentDifference = ({ comparePhrase, user1Attribute, user2Attribute, user
     return (
         <div className="MusicalAttr-PercentDifference" style={{justifyContent: justifyContent, paddingTop: '0px' }}>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-end', width: '50vw', paddingRight: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
+                <h1 className="MusicalAttr-Description" style={{ fontSize: '100%', color: '#212034', width: '100%', textAlign: 'right', opacity: leftOpacity}}>
                     your music is {-percentageDifference}% {comparePhrase} than {user2Name}&apos;s
                 </h1>
                 <div 
@@ -29,8 +29,8 @@ const PercentDifference = ({ comparePhrase, user1Attribute, user2Attribute, user
                 />
             </div>
             <div style={{ display: 'flex', flexDirection : 'column', alignItems: 'flex-start', width: '50vw', paddingLeft: '20px', boxSizing: 'content-box'}}>
-                <h1 style={{ fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
-                    {user2Name}&apos; music is {percentageDifference}% {comparePhrase} than yours
+                <h1 className="MusicalAttr-Description" style={{ fontSize: '100%', color: '#E5277B', width: '100%', textAlign: 'left', opacity: rightOpacity}}>
+                    {user2Name}&apos;s music is {percentageDifference}% {comparePhrase} than yours
                 </h1>
                 <div 
                 className="MusicalAttr-Box-right"
