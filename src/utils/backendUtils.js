@@ -29,7 +29,13 @@ export const search = (id_) => {
         axios({
             method: 'get', 
             url: `https://cs98-duet.herokuapp.com/search/${id_}`,
-        }).then((response) => resolve(response.data));
+        }).then((users) => {
+            var results = [];
+            users.data.forEach((user) => {
+                results = results.concat([user])
+            })
+            resolve(Object.values(results))
+        })
     })
 }
 
@@ -38,6 +44,24 @@ export const addNewFriend = (userId, friendId) => {
         axios.post(`https://cs98-duet.herokuapp.com/addFriend`, {
             "id": userId,
             "user_two_id": friendId,
+        }).then((response) => resolve(response.data));
+    })
+}
+
+export const addGroup = (groupId, userId) => {
+    return new Promise((resolve) => {
+        axios.post(`https://cs98-duet.herokuapp.com/groups`, {
+            "user_id": userId,
+            "group_id": groupId,
+        }).then((response) => resolve(response.data));
+    })
+}
+
+export const joinGroup = (groupId, userId) => {
+    return new Promise((resolve) => {
+        axios.post(`https://cs98-duet.herokuapp.com/joingroup`, {
+            "user_id": userId,
+            "group_id": groupId,
         }).then((response) => resolve(response.data));
     })
 }

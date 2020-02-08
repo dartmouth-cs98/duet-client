@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { getCurrentUserProfile, getTrackInfos, getTaste, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
+import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
 
 export const fetchMeData = (token, time_range) => {
     return (dispatch) => {
@@ -40,7 +40,7 @@ export const setCompare = (entity) => {
     }
 }
 
-export const queryUsers = (query) => {
+export const queryUsers = () => {
     return [
         {
             display_name: 'Zac Gottschall',

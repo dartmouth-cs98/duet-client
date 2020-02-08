@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, /*useEffect*/ } from 'react';
 import { useDispatch } from 'react-redux';
 import * as types from '../../../constants/actionTypes';
 import Page from '../../Page';
 import FilterResults from 'react-filter-search';
-import { queryUsers } from '../../../actions';
+// import { queryUsers } from '../../../actions';
+import { addGroup, search } from '../../../utils/backendUtils';
 
-const Compare = ({jumpToPage}) => {
+
+const Compare = (user_1, {jumpToPage}) => {
 
     const [showPopup, setShowPopup] = useState(false);
 
@@ -22,6 +24,8 @@ const Compare = ({jumpToPage}) => {
     const [bottomUser, setBottomUser] = useState('');
     const [bottomQueryVal, setBottomQueryVal] = useState('');
 
+    const [groupNameVal, setGroupNameVal] = useState('');
+
     // useEffect(() => {
     //     fetch('https://cs98-duet.herokuapp.com/getall')
     //       .then(response => response.json())
@@ -31,25 +35,37 @@ const Compare = ({jumpToPage}) => {
     const renderPopup = () => {
         return (
             <div id="PopupBackground">
-                <button id="close" onClick={() => handleClick()}>x</button>
+                <button id="close" onClick={() => handleClose()}>x</button>
                 <h3>name your group</h3>
-                <input></input>
-                <button onClick={() => handleClick()}>create</button>
+                <input type="text" value={groupNameVal} onChange={handleGroupNameChange}></input>
+                <button onClick={() => handleAddGroupClick()}>create</button>
             </div>
         )
     }
 
-    const handleClick = () => {
+    const handleClose = () => {
         if (showPopup) {
             setShowPopup(!showPopup);
         } 
     }
 
+    const handleAddGroupClick = () => {
+        addGroup(groupNameVal, user_1.display_name)
+        if (showPopup) {
+            setShowPopup(!showPopup);
+        } 
+    }
+
+    const handleGroupNameChange = (e) => {
+        const { value } = e.target;
+        setGroupNameVal(value)
+    };
+
     const handleTopChange = (e) => {
         const { value } = e.target;
         setTopBarIsSearching(true)
         setTopQueryVal(value)
-        setUsers(queryUsers(value));
+        search(value).then(setUsers)
     };
 
     const handleTopUserSelect = (user) => {
@@ -62,7 +78,7 @@ const Compare = ({jumpToPage}) => {
         const { value } = e.target;
         setBottomBarIsSearching(true)
         setBottomQueryVal(value)
-        setUsers(queryUsers(value));
+        search(value).then(setUsers)
     };
 
     const handleBottomUserSelect = (user) => {
