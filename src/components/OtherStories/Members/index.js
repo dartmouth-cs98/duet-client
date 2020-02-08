@@ -28,7 +28,7 @@ const Members = ({jumpToPage}) => {
                 </div>
                 <h4>Are you a member of BLANK?</h4>
                 <button>join the group</button>
-                <i className="arrow right" onClick={() => jumpToPage(10)}></i>
+                <i className="arrow right" onClick={() => jumpToPage(9)}></i>
             </div>
         </Page>
     )
