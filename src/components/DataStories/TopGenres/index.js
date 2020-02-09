@@ -40,6 +40,7 @@ const Bubbles = ({ topGenres, bubbleColor }) => {
     bubbles.forEach((bubble) => {
         // bubble.x -= cx;
         // bubble.y -= cy;
+        
     });
 
     return (
