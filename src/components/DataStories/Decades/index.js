@@ -70,7 +70,7 @@ const Decades = ({ user_1, user_2 }) => {
     const barWidth = barChartWidth / user1DecadeCounts.length;
 
     return (
-        <Page background={'#212034'} numPages={6} pageNum={4}>
+        <Page background={'#212034'} numPages={5} pageNum={4}>
              {resizeListener}
             <button id="share" onClick={() => saveScreen()}>...</button>
 
