@@ -112,7 +112,7 @@ const MusicalAttr = ({ user_1, user_2 }) => {
 
     return (
         
-        <Page background={'#9BD6DC'} numPages={6} pageNum={3}>
+        <Page background={'#9BD6DC'} numPages={5} pageNum={3}>
             {resizeListener}
             <button id="share" onClick={() => saveScreen()}>...</button>
 

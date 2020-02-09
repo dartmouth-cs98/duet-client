@@ -4,7 +4,7 @@ import { string, number, node } from 'prop-types';
 
 const Page = ({ background, numPages, pageNum, children }) => {
     const returnBarColor = (pageNum, i) => {
-        if(pageNum == 0 || pageNum == 5) {
+        if(pageNum == 0) {
             if(pageNum == i) {
                 return('#E5277B');
             } else {

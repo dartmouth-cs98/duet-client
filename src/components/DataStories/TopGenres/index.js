@@ -76,7 +76,7 @@ const TopGenres = ({ user_1, user_2 }) => {
     }
 
     return (
-        <Page background={'#212034'} numPages={6} pageNum={2}>
+        <Page background={'#212034'} numPages={5} pageNum={2}>
             Top Genres
             <button id="share" onClick={() => saveScreen()}>...</button>
 

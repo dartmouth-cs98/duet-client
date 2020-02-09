@@ -21,7 +21,7 @@ const Trendex = ({ user_1, user_2 }) => {
     }
 
     return (
-        <Page background={'#9BD6DC'} numPages={6} pageNum={1}>
+        <Page background={'#9BD6DC'} numPages={5} pageNum={1}>
             <div className="Trendex-Page">
                 <button id="share" onClick={() => saveScreen()}>...</button>
                 <div id="popup-background">

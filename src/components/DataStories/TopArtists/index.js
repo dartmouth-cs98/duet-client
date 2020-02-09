@@ -31,7 +31,7 @@ const TopArtists = ({ user_1, user_2 }) => {
     }
 
     return (
-        <Page background={'white'} numPages={6} pageNum={0}>
+        <Page background={'white'} numPages={5} pageNum={0}>
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title"> 
                     <h1>You and {user2Name} share</h1>
