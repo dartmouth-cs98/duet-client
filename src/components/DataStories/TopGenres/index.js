@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 
-const TopGenres = ({ user_1, user_2 }) => {
+const TopGenres = () => {
     // const colors = ['#9BD6DC', '#212034', '#FFFFFF', '#E5277B'];
     // const totalGenres = 48;  
     // let percentages = [];

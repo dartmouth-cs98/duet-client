@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { User } from '../../../types';
 
 const TopArtists = ({ user_1, user_2 }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
@@ -67,6 +67,11 @@ const TopArtists = ({ user_1, user_2 }) => {
             </div>
         </Page>
     )
+}
+
+TopArtists.propTypes = {
+    user_1: User,
+    user_2: User
 }
 
 export default TopArtists;

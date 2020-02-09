@@ -1,8 +1,11 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
-import { useWindowSize } from '../../../utils/useWindowSize';
+import useResizeAware from 'react-resize-aware';
+import PropTypes from 'prop-types';
+import { User } from '../../../types';
+
+const { number, string } = PropTypes;
 
 const Slider = ({ width: sliderWidth, height: sliderHeight, label, color, val1, val2, name1, name2 }) => {
     
@@ -37,6 +40,17 @@ const Slider = ({ width: sliderWidth, height: sliderHeight, label, color, val1, 
         </div>
     )
 };
+
+Slider.propTypes = { 
+    width: number,
+    height: number,
+    label: string,
+    color: string,
+    val1: number,
+    val2: number,
+    name1: string,
+    name2: string
+}
 
 const MusicalAttr = ({ user_1, user_2 }) => {
     
@@ -83,23 +97,23 @@ const MusicalAttr = ({ user_1, user_2 }) => {
         },
     ]
 
-    const windowSize = useWindowSize();
-
     const SLIDER_HEIGHT_PERCENTAGE = .06;
     const SLIDER_WIDTH_PERCENTAGE = .8;
 
-    const [sliderWidth, setSliderWidth] = useState(300);
-    const [sliderHeight, setSliderHeight] = useState(50);
+    const [resizeListener, pageSize] = useResizeAware();
+    const [sliderWidth, setSliderWidth] = useState(SLIDER_WIDTH_PERCENTAGE * pageSize.width);
+    const [sliderHeight, setSliderHeight] = useState(SLIDER_HEIGHT_PERCENTAGE * pageSize.height);
 
     useEffect(() => {
-        const { height, width } = windowSize;
+        const { height, width } = pageSize;
         setSliderHeight(SLIDER_HEIGHT_PERCENTAGE * height)
         setSliderWidth(SLIDER_WIDTH_PERCENTAGE * width)
-    }, [windowSize])
+    }, [pageSize])
 
     return (
         
         <Page background={'#9BD6DC'} numPages={6} pageNum={3}>
+            {resizeListener}
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
@@ -132,6 +146,11 @@ const MusicalAttr = ({ user_1, user_2 }) => {
             </div>
         </Page>
     )
+}
+
+MusicalAttr.propTypes = {
+    user_1: User,
+    user_2: User
 }
 
 export default MusicalAttr;

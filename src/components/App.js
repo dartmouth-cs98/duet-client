@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import { Route, Switch } from "react-router-dom";
 // import Login from "./Login";
 // import NotFoundPage from "./NotFoundPage";

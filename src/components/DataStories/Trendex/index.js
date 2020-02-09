@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { User } from '../../../types';
 
 const Trendex = ({ user_1, user_2 }) => {
     const { trendex: user1Trendex } = user_1;
@@ -45,6 +45,11 @@ const Trendex = ({ user_1, user_2 }) => {
             </div>
         </Page>
     )
+}
+
+Trendex.propTypes = {
+    user_1: User,
+    user_2: User,
 }
 
 export default Trendex;

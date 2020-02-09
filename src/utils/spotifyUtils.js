@@ -2,7 +2,6 @@ import { getAvgObjectInArray } from './arrayUtils';
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import { flattenedGenres } from '../constants/flattenedGenres';
-import TopGenres from '../components/DataStories/TopGenres';
 
 export const getCurrentUserProfile = (token) => {
     return new Promise((resolve) => {

@@ -6,7 +6,7 @@
 
     .MusicalAttr-Title-TextShadow {
         font-family: Roboto;
-        font-size: 8vw;
+        font-size: 6vh;
         line-height: 100%;
         text-shadow: -2px 0px $ACCENT;
         margin: 20px 0 0 15px;
@@ -17,7 +17,7 @@
         font-family: Roboto;
         color: $SECONDARY;
         margin: 0 0 0 15px;
-        font-size: 3vw;
+        font-size: 2vh;
     }
     
     .Sliders {
@@ -25,16 +25,16 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        height: 70vh;
+        height: 70%;
 
         .Slider {
             .Slider-Label {
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 7vw;
-                transform: translateY(100%);
-                margin: 0;
+                font-size: 3vh;
+                transform: translateY(90%);
+                margin: 10px;
             }
         
             .Slider-Axis {
@@ -46,14 +46,14 @@
                     font-family: Roboto;
                     font-style: normal;
                     font-weight: bold;
-                    font-size: 3vw;
+                    font-size: 2vh;
                     margin: 0;
                 }
             }
 
             .Slider-Name {
                 margin: 0;
-                font-size: 3vw;
+                font-size: 1.5vh;
                 line-height: 2vh;
                 text-align: center;
                 font-family: Roboto;
