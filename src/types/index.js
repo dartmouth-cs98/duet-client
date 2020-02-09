@@ -19,6 +19,11 @@ const Taste = shape({
     energy: number,
 })
 
+export const Genre = shape({
+    label: string,
+    count: number,
+})
+
 export const User = shape({
   display_name: string,
   id: string,

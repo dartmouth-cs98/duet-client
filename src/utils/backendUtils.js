@@ -2,10 +2,22 @@ import axios from 'axios';
 
 const ROOT_URL = 'https://cs98-duet.herokuapp.com';
 
+const getAuthHeader = (token) => {
+    return {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${token}`
+    };
+}
 export const getBackendToken = (spotifyToken) => {
     return new Promise((resolve) => {
         axios.post(`${ROOT_URL}/auth`, { "refresh_token": spotifyToken})
             .then((response) => resolve(response.data));
+    })
+}
+
+export const postUser = (user, token) => {
+    return new Promise((resolve) => {
+        axios.post(`${ROOT_URL}/users`, user, { headers: getAuthHeader(token) }).then((response) => resolve(response.data));
     })
 }
 

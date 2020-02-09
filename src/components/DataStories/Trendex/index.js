@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import { User } from '../../../types';
 
 const Trendex = ({ user_1, user_2 }) => {
-    const { trendex: user1Trendex } = user_1;
+    const { trendex: user1Trendex, display_name: user1Name } = user_1;
     const { trendex: user2Trendex, display_name: user2Name } = user_2;
 
     const saveScreen = () => {
@@ -29,13 +29,13 @@ const Trendex = ({ user_1, user_2 }) => {
                 </div>
                 <div className="Trendex-TopSquare">
                     {user1Trendex > user2Trendex && 
-                        <h1 className="Trendex-Description"><mark>you&apos;re trendier than {user2Name}</mark></h1>}
+                        <h1 className="Trendex-Description"><mark>{user1Name} is trendier than {user2Name}</mark></h1>}
                     {user1Trendex < user2Trendex && 
-                        <h1 className="Trendex-Description"><mark>{user2Name} is trendier than u</mark></h1>}
+                        <h1 className="Trendex-Description"><mark>{user2Name} is trendier than {user1Name}</mark></h1>}
                     {user1Trendex == user2Trendex &&
-                         <h1 className="Trendex-Description"><mark>u and {user2Name} are equally trendy</mark></h1>}
+                         <h1 className="Trendex-Description"><mark>{user1Name} and {user2Name} are equally trendy</mark></h1>}
                     <h2 className="Trendex-Score">{user1Trendex}</h2>
-                    <h3 className="Trendex-Score-Label">your trendex</h3>
+                    <h3 className="Trendex-Score-Label">{user1Name}&apos;s trendex</h3>
                 </div>
                 <div className="Trendex-Divider">\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</div>
                 <div className="Trendex-BottomSquare">

@@ -1,15 +1,10 @@
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
-import { getBackendToken } from '../utils/backendUtils';
+import { getBackendToken, postUser } from '../utils/backendUtils';
 
 export const fetchMeData = (spotifyToken, time_range) => {
     return (dispatch) => {
-        getBackendToken(spotifyToken).then((response) => {
-          // TODO: DO SOMETHING IF USER DOES NOT EXIST (THE RESPONSE GIVES US THIS INFORMATION)
-          dispatch({ type: types.STORE_TOKEN, token: response.token })
-        })
-
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
 
@@ -26,10 +21,15 @@ export const fetchMeData = (spotifyToken, time_range) => {
             const artistNamesAndIds = topArtists.items.map((artist) => ({ name: artist.name, id: artist.id }))
        
             getGenreCount(spotifyToken, topTracks.items).then((genreCounts) => {
-                user = { ...user, genre_counts: genreCounts };
                 audioFeaturesPromise.then((tracks) => {
-                    const taste = getAvgTaste(tracks.audio_features);
-                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, taste };
+                    const avg_taste = getAvgTaste(tracks.audio_features);
+                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genre_counts: genreCounts, avg_taste};
+                    getBackendToken(spotifyToken).then((response) => {
+                      const { token } = response;
+                      dispatch({ type: types.STORE_TOKEN, token })
+                      postUser(user, token);
+                    })
+
                     dispatch({ type: types.FETCH_USER_1, user: user });
                 })  
             })
@@ -288,7 +288,7 @@ export const queryUsers = () => {
                 1
               ]
             ],
-            taste: {
+            avg_taste: {
               danceability: Math.random(),
               energy: Math.random(),
               speechiness: Math.random(),
