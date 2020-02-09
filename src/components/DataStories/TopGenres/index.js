@@ -2,15 +2,19 @@
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { Genre, User } from '../../../types';
+import { arrayOf, string } from 'prop-types';
 
 const Bubbles = ({ topGenres, bubbleColor }) => {
     const totalGenres = 48;
     const R = 400;  
     const t = 6.28318;
     var bubbles = [];
+
     topGenres.forEach((genre) => {
-        const percentage = (genre[1] / totalGenres);
-        bubbles = [...bubbles, {genre: genre[0], r: R*percentage, x: -R*percentage, y: -R*percentage}];
+        const { label, count } = genre
+        const percentage = (count / totalGenres);
+        bubbles = [...bubbles, {genre: label, r: R*percentage, x: -R*percentage, y: -R*percentage}];
     });
     
     bubbles.sort(function(a, b) {return b.r - a.r})
@@ -58,6 +62,11 @@ const Bubbles = ({ topGenres, bubbleColor }) => {
     )
 }
 
+Bubbles.propTypes = {
+    topGenres: arrayOf(Genre),
+    bubbleColor: string
+}
+
 
 
 const TopGenres = ({ user_1, user_2 }) => {
@@ -88,12 +97,17 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubblePink.png"}></Bubbles>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubbleBlue.png"}></Bubbles>
+                <Bubbles topGenres={user_1.genre_counts} bubbleColor={"/assets/bubblePink.png"}></Bubbles>
+                <Bubbles topGenres={user_2.genre_counts} bubbleColor={"/assets/bubbleBlue.png"}></Bubbles>
             </div>
         </Page>
     )
 }
+
+TopGenres.propTypes = {
+    user_1: User,
+    user_2: User
+};
 
 export default TopGenres;
 

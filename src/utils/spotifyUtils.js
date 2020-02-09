@@ -159,9 +159,6 @@ export const getGenreCount = (token, tracks) => {
             let topGenre = '';
             const topCount = 0;
             flattenedCount.forEach((count, genre) => {
-                // if (count == topCount) {
-                //     console.log('we have a tie',genre, topGenre);
-                // }
                 if (count > topCount) {
                     topGenre = genre;
                 }
@@ -174,6 +171,12 @@ export const getGenreCount = (token, tracks) => {
                 }
             } 
         })
-        return [...topGenres];
+
+        let topGenresObjectArray = [];
+        topGenres.forEach((count, label) => { 
+            topGenresObjectArray = [ ...topGenresObjectArray, { label, count }];
+        })
+
+        return topGenresObjectArray;
     })
 }
