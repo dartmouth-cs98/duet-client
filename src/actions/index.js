@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
@@ -44,10 +43,10 @@ export const setCompare = (entity) => {
     }
 }
 
-export const queryUsers = (query) => {
+export const queryUsers = () => {
     return [
           {
-            display_name: 'Gac Zottschall',
+            display_name: 'Bob Bobman',
             id: '1245234q385585',
             decade: 2010,
             trendex: '59.8',

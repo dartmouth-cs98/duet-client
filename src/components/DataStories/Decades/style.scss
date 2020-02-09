@@ -2,12 +2,12 @@
     font-weight: bold;
     border: none;
     position: absolute;
-    top: 2vh;
-    left: 55vw;
+    // top: 2vh;
+    // left: 55vw;
 }
 
 #popup {
-    width: 80vw;
+    // width: 80vw;
     height: auto;
 
     img {
@@ -30,7 +30,7 @@
 }
 
 .Decades-Page {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -93,7 +93,7 @@
                     .Decades-BarChart-Bar-Label{
                         margin: 10px;
                         font-family: Roboto;
-                        font-size: 4vw;
+                        font-size: 2vh;
                         font-style: normal;
                         color: $PRIMARY;
                     }

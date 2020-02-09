@@ -1,5 +1,13 @@
-.Page {
+.Page-Container {
     width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.Page {
+    position: relative;
+    width: 100vw;
+    max-width: 450px;
     height: 100vh;
     display: flex;
     flex-direction: column;

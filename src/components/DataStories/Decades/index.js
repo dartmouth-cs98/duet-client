@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { useWindowSize } from '../../../utils/useWindowSize';
+import useResizeAware from 'react-resize-aware';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { User } from '../../../types';
 
 const Decades = ({ user_1, user_2 }) => {
 
@@ -51,20 +51,19 @@ const Decades = ({ user_1, user_2 }) => {
         latestDecade -= 10;
     }
 
-    const windowSize = useWindowSize();
+    const [resizeListener, pageSize] = useResizeAware();
     
     const BAR_CHART_WIDTH_PERCENTAGE = .9;
     const BAR_CHART_HEIGHT_PERCENTAGE = .22;
 
     useEffect(() => {
-        const { height, width } = windowSize;
-        
+        const { height, width } = pageSize;
         setBarChartHeight(BAR_CHART_HEIGHT_PERCENTAGE * height)
         setBarChartWidth(BAR_CHART_WIDTH_PERCENTAGE * width)
-    }, [windowSize])
+    }, [pageSize])
 
-    const [barChartWidth, setBarChartWidth] = useState(BAR_CHART_WIDTH_PERCENTAGE * windowSize.width);
-    const [barChartHeight, setBarChartHeight] = useState(BAR_CHART_HEIGHT_PERCENTAGE * windowSize.height);
+    const [barChartWidth, setBarChartWidth] = useState(BAR_CHART_WIDTH_PERCENTAGE * pageSize.width);
+    const [barChartHeight, setBarChartHeight] = useState(BAR_CHART_HEIGHT_PERCENTAGE * pageSize.height);
 
     const user1BarHeightMultiplier = barChartHeight / user1MaxDecadeCount;
     const user2BarHeightMultiplier = barChartHeight / user2MaxDecadeCount;
@@ -72,6 +71,7 @@ const Decades = ({ user_1, user_2 }) => {
 
     return (
         <Page background={'#212034'} numPages={6} pageNum={4}>
+             {resizeListener}
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
@@ -134,6 +134,11 @@ const Decades = ({ user_1, user_2 }) => {
             </div>
         </Page>
     )
+}
+
+Decades.propTypes = {
+    user_1: User,
+    user_2: User,
 }
 
 export default Decades;

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
 // NOTE: options object should be the following schema: [{ key, label } ]

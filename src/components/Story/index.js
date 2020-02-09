@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import TopArists from '../DataStories/TopArtists';
 import Decades from '../DataStories/Decades';
