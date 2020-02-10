@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import * as types from '../../../constants/actionTypes';
+import { useDispatch, useSelector } from 'react-redux';
+// import * as types from '../../../constants/actionTypes';
 import Page from '../../Page';
-import FilterResults from 'react-filter-search';
-import { queryUsers } from '../../../actions';
+// import FilterResults from 'react-filter-search';
+import { fetchUser1, fetchUser2 } from '../../../actions';
+import { addGroup, search } from '../../../utils/backendUtils';
 import { func } from 'prop-types';
 
 const Compare = ({ jumpToPage }) => {
 
     const dispatch = useDispatch();
+    const { user_1 } = useSelector((state) => state.users);
     const [showPopup, setShowPopup] = useState(false);
 
     const [users, setUsers] = useState([]);
