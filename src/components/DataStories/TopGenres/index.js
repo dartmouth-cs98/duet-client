@@ -97,8 +97,8 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genre_counts} bubbleColor={"/assets/bubblePink.png"}></Bubbles>
-                <Bubbles topGenres={user_2.genre_counts} bubbleColor={"/assets/bubbleBlue.png"}></Bubbles>
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubblePink.png"}></Bubbles>
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubbleBlue.png"}></Bubbles>
             </div>
         </Page>
     )
