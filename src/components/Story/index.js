@@ -113,7 +113,7 @@ const Story = () => {
 
     return (
         <div onClick={handleClick} className="Story">
-            {pages[currPage].component}
+            { (user_1 && user_2 || currPage < 3) && pages[currPage].component}
         </div>
     )
 }
