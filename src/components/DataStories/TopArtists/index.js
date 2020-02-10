@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import { User } from '../../../types';
 
 const TopArtists = ({ user_1, user_2 }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
@@ -30,36 +30,35 @@ const TopArtists = ({ user_1, user_2 }) => {
     }
 
     return (
-            <Page background={'white'} numPages={6} pageNum={0}>
-                    <div className="TopArtists-Page">
-                        <div className="TopArtists-Title"> 
-                            <h1>You and Sig Ep share</h1>
-                            <h2 className="TopArtists-TextShadow">top artists</h2>
-                        </div>
-                        <div className="TopArtists-List">
-                            <h1 className="right-align">You</h1>
-                            {user1TruncatedArtists.map((artist) => {
-                                if (shared.indexOf(artist) < 0) {
-                                    return <h2 className="right-align" key={artist}>{artist}</h2>;
-                                } else {
-                                    return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
-                                }   
-                            })}
-                        </div>
-                        <div className="TopArtists-List">
-                            <h1 className="left-align">Sig Ep</h1>
-                            {user2TruncatedArtists.map((artist) => {
-                                if (shared.indexOf(artist) < 0) {
-                                    return <h2 className="left-align" key={artist}>{artist}</h2>;
-                                } else {
-                                    return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
-                                }  
-                            })}
-                        </div>
-                        {/* <div id="arrow"/> */}
-                    </div>
-                    
-                    <button id="share" onClick={() => saveScreen()}>...</button>
+
+        <Page background={'white'} numPages={5} pageNum={0}>
+            <div className="TopArtists-Page">
+                <div className="TopArtists-Title"> 
+                    <h1>{user_1.display_name} and {user_2.display_name} share</h1>
+                    <h2 className="TopArtists-TextShadow">top artists</h2>
+                </div>
+                <div className="TopArtists-List">
+                    <h1 className="right-align">{user_1.display_name}</h1>
+                    {user1TruncatedArtists.map((artist) => {
+                        if (shared.indexOf(artist) < 0) {
+                            return <h2 className="right-align" key={artist}>{artist}</h2>;
+                        } else {
+                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
+                        }   
+                    })}
+                </div>
+                <div className="TopArtists-List">
+                    <h1 className="left-align">{user_2.display_name}</h1>
+                    {user2TruncatedArtists.map((artist) => {
+                         if (shared.indexOf(artist) < 0) {
+                            return <h2 className="left-align" key={artist}>{artist}</h2>;
+                        } else {
+                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
+                        }  
+                    })}
+                </div>
+                {/* <div id="arrow"/> */}
+            </div>
 
                     <div id="popup-background">
                         <div id="popup" onClick={() => handleClick()}>
@@ -67,6 +66,11 @@ const TopArtists = ({ user_1, user_2 }) => {
                     </div>
             </Page>
     )
+}
+
+TopArtists.propTypes = {
+    user_1: User,
+    user_2: User
 }
 
 export default TopArtists;

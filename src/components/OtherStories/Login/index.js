@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Page from '../../Page';
 import { fetchMeData } from '../../../actions';
 import { getToken } from '../../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
+import { func } from 'prop-types';
 
 const Login = ({ jumpToPage }) => {
 
@@ -54,6 +54,10 @@ const Login = ({ jumpToPage }) => {
             }
         </Page>
     )
+}
+
+Login.propTypes = {
+    jumpToPage: func
 }
 
 export default Login;

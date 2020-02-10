@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
+import { func } from 'prop-types';
 
-const Share = ({jumpToPage}) => {
+const Share = ({ jumpToPage }) => {
     return (
         <Page background={'#9BD6DC'}>
             <div id="Share">
@@ -13,6 +13,10 @@ const Share = ({jumpToPage}) => {
             </div>
         </Page>
     )
+}
+
+Share.propTypes = {
+    jumpToPage: func
 }
 
 export default Share;

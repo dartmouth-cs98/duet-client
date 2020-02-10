@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import TopArists from '../DataStories/TopArtists';
 import Decades from '../DataStories/Decades';
@@ -57,7 +56,7 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 7
-            component: <Decades key="decades"/>,
+            component: <Decades user_1={user_1} user_2={user_2} key="decades"/>,
             pagination: ALL,
         },
         {   // page 8

@@ -1,11 +1,12 @@
-/* eslint-disable react/prop-types */
-import React, { useState, /*useEffect*/ } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import * as types from '../../../constants/actionTypes';
 import Page from '../../Page';
-import {fetchUser1, fetchUser2} from '../../../actions';
-import { addGroup, search } from '../../../utils/backendUtils';
-import { useDispatch} from 'react-redux';
+import FilterResults from 'react-filter-search';
+import { queryUsers } from '../../../actions';
+import { func } from 'prop-types';
 
-const Compare = ({ user_1, jumpToPage }) => {
+const Compare = ({ jumpToPage }) => {
 
     const dispatch = useDispatch();
     const [showPopup, setShowPopup] = useState(false);
@@ -133,6 +134,10 @@ const Compare = ({ user_1, jumpToPage }) => {
             }
         </Page>
     )
+}
+
+Compare.propTypes = {
+    jumpToPage: func
 }
 
 export default Compare;

@@ -1,3 +1,53 @@
+.TopGenres-Page {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    font-family: Roboto;
+    flex-direction: column;
+
+    .TopGenres-Title {
+        font-family: Roboto;
+        font-size: 8vw;
+        line-height: 100%;
+        text-shadow: -2px 0px $ACCENT;
+        margin: 20px 0 0 15px;
+        color: $WHITE;
+    }
+
+    .Bubbles {
+        position: relative;
+        width: 100vw;
+        height: 50%;
+
+        .Bubble {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            // transform: translate(-150px, -150px);
+            
+
+            .Bubble-Image {
+                width: 100%;
+            }
+
+            .Bubble-Label {
+                position: absolute;
+                width: 80%;
+                width: 80%;
+                font-size: 100%;
+                text-justify: auto;
+                text-align: center;
+                color: #ffffff;
+                margin: 0;
+            }
+        }
+    }
+}
+
 #popup {
     width: 80vw;
     height: auto;

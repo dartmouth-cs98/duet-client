@@ -2,7 +2,6 @@ import { getAvgObjectInArray } from './arrayUtils';
 import SpotifyWebApi from 'spotify-web-api-js';
 import axios from 'axios';
 import { flattenedGenres } from '../constants/flattenedGenres';
-import TopGenres from '../components/DataStories/TopGenres';
 
 export const getCurrentUserProfile = (token) => {
     return new Promise((resolve) => {
@@ -39,13 +38,28 @@ export const getTrackInfos = (tracks) => {
         }      
     })
 
-    let decadeCounts = [];
-    decadeToCount.forEach((count, decade) =>  decadeCounts = [...decadeCounts, { decade, count }]);
-    decadeCounts.sort((a, b) => b.count - a.count);
-    const { decade } = decadeCounts[0];
+    /*  first, we sort the deacdes into an array: incompleteDecadeCounts
+        it's named this way because it does not contain decades with count = 0
+    */
+    let incompleteDecadeCounts = [];
+    decadeToCount.forEach((count, decade) =>  incompleteDecadeCounts = [...incompleteDecadeCounts, { decade, count }]);
+    incompleteDecadeCounts.sort((a, b) => a.decade - b.decade);
+
+    // now, we add decades with count = 0
+    let decadeCounts = []
+    const earliestDecade = incompleteDecadeCounts[0].decade;
+    const latestDecade = incompleteDecadeCounts[incompleteDecadeCounts.length - 1].decade;
+    for (let k = earliestDecade; k <= latestDecade; k += 10) {
+        if (decadeToCount.has(k)) {
+            decadeCounts = [ ...decadeCounts, { decade: k, count: decadeToCount.get(k) }]
+        } else {
+            decadeCounts = [ ...decadeCounts, { decade: k, count: 0 }]
+        }
+    }
+   
     const popularity = (popularitySum / popularityCount).toFixed(1);
 
-    return { trackIds, popularity, decade }
+    return { trackIds, popularity, decadeCounts }
 }
 
 export const getTaste = (audioFeatures) => {
@@ -145,9 +159,6 @@ export const getGenreCount = (token, tracks) => {
             let topGenre = '';
             const topCount = 0;
             flattenedCount.forEach((count, genre) => {
-                // if (count == topCount) {
-                //     console.log('we have a tie',genre, topGenre);
-                // }
                 if (count > topCount) {
                     topGenre = genre;
                 }
@@ -160,6 +171,12 @@ export const getGenreCount = (token, tracks) => {
                 }
             } 
         })
-        return [...topGenres];
+
+        let topGenresObjectArray = [];
+        topGenres.forEach((count, label) => { 
+            topGenresObjectArray = [ ...topGenresObjectArray, { label, count }];
+        })
+
+        return topGenresObjectArray;
     })
 }
