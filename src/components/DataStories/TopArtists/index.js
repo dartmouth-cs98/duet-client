@@ -30,42 +30,42 @@ const TopArtists = ({ user_1, user_2 }) => {
     }
 
     return (
-        <Page background={'white'} numPages={6} pageNum={0}>
-            <div className="TopArtists-Page">
-                <div className="TopArtists-Title"> 
-                    <h1>You and Sig Ep share</h1>
-                    <h2 className="TopArtists-TextShadow">top artists</h2>
-                </div>
-                <div className="TopArtists-List">
-                    <h1 className="right-align">You</h1>
-                    {user1TruncatedArtists.map((artist) => {
-                        if (shared.indexOf(artist) < 0) {
-                            return <h2 className="right-align" key={artist}>{artist}</h2>;
-                        } else {
-                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
-                        }   
-                    })}
-                </div>
-                <div className="TopArtists-List">
-                    <h1 className="left-align">Sig Ep</h1>
-                    {user2TruncatedArtists.map((artist) => {
-                         if (shared.indexOf(artist) < 0) {
-                            return <h2 className="left-align" key={artist}>{artist}</h2>;
-                        } else {
-                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
-                        }  
-                    })}
-                </div>
-                {/* <div id="arrow"/> */}
-            </div>
+            <Page background={'white'} numPages={6} pageNum={0}>
+                    <div className="TopArtists-Page">
+                        <div className="TopArtists-Title"> 
+                            <h1>You and Sig Ep share</h1>
+                            <h2 className="TopArtists-TextShadow">top artists</h2>
+                        </div>
+                        <div className="TopArtists-List">
+                            <h1 className="right-align">You</h1>
+                            {user1TruncatedArtists.map((artist) => {
+                                if (shared.indexOf(artist) < 0) {
+                                    return <h2 className="right-align" key={artist}>{artist}</h2>;
+                                } else {
+                                    return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
+                                }   
+                            })}
+                        </div>
+                        <div className="TopArtists-List">
+                            <h1 className="left-align">Sig Ep</h1>
+                            {user2TruncatedArtists.map((artist) => {
+                                if (shared.indexOf(artist) < 0) {
+                                    return <h2 className="left-align" key={artist}>{artist}</h2>;
+                                } else {
+                                    return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
+                                }  
+                            })}
+                        </div>
+                        {/* <div id="arrow"/> */}
+                    </div>
+                    
+                    <button id="share" onClick={() => saveScreen()}>...</button>
 
-            <button id="share" onClick={() => saveScreen()}>...</button>
-
-            <div id="popup-background">
-                <div id="popup" onClick={() => handleClick()}>
-                </div>
-            </div>
-        </Page>
+                    <div id="popup-background">
+                        <div id="popup" onClick={() => handleClick()}>
+                        </div>
+                    </div>
+            </Page>
     )
 }
 

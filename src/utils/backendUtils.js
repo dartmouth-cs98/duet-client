@@ -5,7 +5,11 @@ export const getUser = (id) => {
         axios({
             method: 'get', 
             url: `https://cs98-duet.herokuapp.com/get/${id}`,
-        }).then((response) => resolve(response.data));
+        }).then(
+            (response) => {
+                resolve(response.data)
+            }
+        );
     })
 }
 
@@ -34,7 +38,7 @@ export const search = (id_) => {
             users.data.forEach((user) => {
                 results = results.concat([user])
             })
-            resolve(Object.values(results))
+            resolve(results)
         })
     })
 }

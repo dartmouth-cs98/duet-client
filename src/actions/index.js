@@ -2,6 +2,7 @@
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
+import { getUser } from '../utils/backendUtils';
 
 export const fetchMeData = (token, time_range) => {
     return (dispatch) => {
@@ -38,6 +39,25 @@ export const setCompare = (entity) => {
     return (dispatch) => {
         dispatch({ type: types.SET_COMPARE, compare: entity });
     }
+}
+
+export const fetchUser1 = (id) => {
+  return (dispatch) => {
+    getUser(id).then((user) => {
+      console.log(user)
+      dispatch({ type: types.FETCH_USER_1, user: user })
+    })
+  }
+}
+
+
+export const fetchUser2 = (id) => {
+  return (dispatch) => {
+    getUser(id).then((user) => {
+      console.log(user)
+      dispatch({ type: types.FETCH_USER_2, user: user })
+    })
+  }
 }
 
 export const queryUsers = () => {
