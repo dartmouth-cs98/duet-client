@@ -33,22 +33,43 @@ const Decades = ({ user_1, user_2 }) => {
     // grab earliest and lastest decade, and update decadeCounts such that their ranges are the same
     let earliestDecade = Math.min.apply(null, [...user1DecadeCounts, ...user2DecadeCounts].map(d => d.decade))
     let latestDecade = Math.max.apply(null, [...user1DecadeCounts, ...user2DecadeCounts].map(d => d.decade));
-    
 
-    while (earliestDecade < user1DecadeCounts[0].decade) {
-        user1DecadeCounts = [{ decade: user1DecadeCounts[0] - 10, count: 0}, ...user1DecadeCounts];
+    const user1Earliest = user1DecadeCounts[0].decade
+    if (earliestDecade < user1Earliest) {
+        let decade = user1Earliest - 10;
+        const count = 0;
+        for (decade; decade >= earliestDecade; decade -= 10) {
+            user1DecadeCounts = [ { decade, count }, ...user1DecadeCounts ]
+        }
     }
-    while (earliestDecade < user2DecadeCounts[0].decade) {
-        user2DecadeCounts = [{ decade: user2DecadeCounts[0] - 10, count: 0}, ...user2DecadeCounts];
+
+    const user1Latest = user1DecadeCounts[user1DecadeCounts.length - 1].decade
+    if (latestDecade > user1Latest) {
+        let decade = user1Latest + 10;
+        const count = 0;
+        for (decade; decade <= latestDecade; decade += 10) {
+            user1DecadeCounts = [ ...user1DecadeCounts, { decade, count } ]
+        }
     }
-    while (latestDecade > user1DecadeCounts[user1DecadeCounts.length - 1].decade) {
-        user1DecadeCounts = [ ...user1DecadeCounts, { decade: latestDecade, count: 0} ];
-        latestDecade -= 10;
+    
+    const user2Earliest = user2DecadeCounts[0].decade
+    if (earliestDecade < user2Earliest) {
+        let decade = user2Earliest - 10;
+        const count = 0;
+        for (decade; decade >= earliestDecade; decade -= 10) {
+            user2DecadeCounts = [ { decade, count }, ...user2DecadeCounts ]
+        }
     }
-    while (latestDecade > user2DecadeCounts[user2DecadeCounts.length - 1].decade) {
-        user2DecadeCounts = [ ...user2DecadeCounts, { decade: latestDecade, count: 0} ];
-        latestDecade -= 10;
+    const user2Latest = user2DecadeCounts[user2DecadeCounts.length - 1].decade
+
+    if (latestDecade > user2Latest) {
+        let decade = user2Latest + 10;
+        const count = 0;
+        for (decade; decade <= latestDecade; decade += 10) {
+            user2DecadeCounts = [ ...user2DecadeCounts, { decade, count } ]
+        }
     }
+
 
     const [resizeListener, pageSize] = useResizeAware();
     
