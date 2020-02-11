@@ -49,7 +49,7 @@ const Compare = ({ jumpToPage }) => {
     }
 
     const handleAddGroupClick = () => {
-        addGroup(groupNameVal, user_1.display_name)
+        addGroup(groupNameVal, user_1.id)
         if (showPopup) {
             setShowPopup(!showPopup);
         } 
