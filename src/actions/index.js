@@ -22,8 +22,8 @@ export const fetchMeData = (spotifyToken, time_range) => {
        
             getGenreCount(spotifyToken, topTracks.items).then((genreCounts) => {
                 audioFeaturesPromise.then((tracks) => {
-                    const taste = getAvgTaste(tracks.audio_features);
-                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, taste};
+                    const avg_taste = getAvgTaste(tracks.audio_features);
+                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, avg_taste};
                     getBackendToken(spotifyToken).then((response) => {
                       const { token } = response;
                       dispatch({ type: types.STORE_TOKEN, token })
