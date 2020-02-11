@@ -91,14 +91,14 @@ export const searchForUsers = (query) => {
 //     })
 // }
 
-// export const getAllUsers = () => {
-//     return new Promise((resolve) => {
-//         axios({
-//             method: 'get', 
-//             url: `https://cs98-duet.herokuapp.com/getall`,
-//         }).then((response) => resolve(response.data));
-//     })
-// }
+export const getAllUsers = () => {
+    return new Promise((resolve) => {
+        axios({
+            method: 'get', 
+            url: `https://cs98-duet.herokuapp.com/getall`,
+        }).then((response) => resolve(response.data));
+    })
+}
 
 // export const addNewFriend = (userId, friendId) => {
 //     return new Promise((resolve) => {
