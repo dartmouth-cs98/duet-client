@@ -4,7 +4,7 @@ import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
 
-const Decades = ({ user_1, user_2 }) => {
+const Decades = ({ user_1, user_2, my_id }) => {
 
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
