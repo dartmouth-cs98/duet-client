@@ -16,5 +16,6 @@ export const CLEAR_USER = "CLEAR_USER";
 
 
 // new types
+export const FETCH_MY_ID = "FETCH_MY_ID";
 export const FETCH_USER_1 = "FETCH_USER_1";
 export const FETCH_USER_2 = "FETCH_USER_2";
