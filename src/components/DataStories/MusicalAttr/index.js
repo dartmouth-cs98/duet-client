@@ -52,10 +52,20 @@ Slider.propTypes = {
     name2: string
 }
 
-const MusicalAttr = ({ user_1, user_2 }) => {
+const MusicalAttr = ({ user_1, user_2, my_id }) => {
     
-    const { avg_taste: user1Taste, display_name: user1Name } = user_1;
-    const { avg_taste: user2Taste, display_name: user2Name } = user_2;
+    const { avg_taste: user1Taste } = user_1;
+    const { avg_taste: user2Taste } = user_2;
+
+    var user1Name = user_1.display_name
+    var user2Name = user_2.display_name
+
+    if(user_1.id == my_id){
+        user1Name = 'You';
+    }
+    else if(user_2.id == my_id){
+        user2Name = 'You'
+    }
 
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
