@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import * as types from '../../../constants/actionTypes';
 import Page from '../../Page';
-// import FilterResults from 'react-filter-search';
 import { fetchUser1, fetchUser2 } from '../../../actions';
 import { addGroup, search } from '../../../utils/backendUtils';
 import { func } from 'prop-types';
@@ -24,12 +22,6 @@ const Compare = ({ jumpToPage }) => {
     const [bottomQueryVal, setBottomQueryVal] = useState('');
 
     const [groupNameVal, setGroupNameVal] = useState('');
-
-    // useEffect(() => {
-    //     fetch('https://cs98-duet.herokuapp.com/getall')
-    //       .then(response => response.json())
-    //       .then(json => setUsers(json));
-    //   }, []);
 
     const renderPopup = () => {
         return (
@@ -64,7 +56,12 @@ const Compare = ({ jumpToPage }) => {
         const { value } = e.target;
         setTopBarIsSearching(true)
         setTopQueryVal(value)
-        search(value).then(setUsers)
+        if(value.length > 0) {
+            search(value).then(setUsers)
+        } else {
+            setUsers([])
+            setTopBarIsSearching(false)
+        }
     };
 
     const handleTopUserSelect = (user) => {
@@ -77,7 +74,12 @@ const Compare = ({ jumpToPage }) => {
         const { value } = e.target;
         setBottomBarIsSearching(true)
         setBottomQueryVal(value)
-        search(value).then(setUsers)
+        if(value.length > 0) {
+            search(value).then(setUsers)
+        } else {
+            setUsers([])
+            setBottomBarIsSearching(false)
+        }
     };
 
     const handleBottomUserSelect = (user) => {
