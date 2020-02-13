@@ -6,35 +6,51 @@ import html2canvas from 'html2canvas';
 import { Genre, User } from '../../../types';
 import { arrayOf, string } from 'prop-types';
 
+
 const PINK = "Pink";
 const BLUE = "Blue";
 
-const Bubbles = ({ topGenres, bubbleColor }) => {
+function randRange(min, max) {return Math.random() * (max - min) + min}
+function randRangeInt(min, max) {return Math.floor(Math.random() * (max - min + 1) ) + min}
+function toRadians(degrees) {return degrees * (Math.PI / 180)}
+function toDegrees(radians) {return radians * (180 / Math.PI)}
+
+const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     const totalGenres = 48;
     const R = 400;  
-    const t = 6.28318;
+    const pi = Math.PI;
+    const t = 2 * pi;
     var bubbles = [];
 
     topGenres.forEach((genre) => {
         const { label, count } = genre
         const percentage = (count / totalGenres);
-        bubbles = [...bubbles, {genre: label, r: R*percentage, x: -R*percentage, y: -R*percentage}];
+        bubbles = [...bubbles, {genre: label, r: R*percentage, x: 0, y: 0, c: [], a: [], pa: 0}];
     });
     
     bubbles.sort(function(a, b) {return b.r - a.r})
-    // console.log(bubbles);
+    
+    //bubbles = [bubbles[0], bubbles[1], bubbles[2]];
+    bubbles[0].a.push([-t / 6, t / 6], [t / 3, t * 2 / 3]);
 
     for (var i = 1; i < bubbles.length; i++){
         var b1 = bubbles[i];
-        var b0 = bubbles[i-1];
-        //var a = Math.random()*t/3-(t/6);
-        var a = Math.random()*t;
-        b1.x = b0.x + (b0.r+b1.r*.8)*Math.cos(a);
-        b1.y = b0.y + (b0.r+b1.r*.8)*Math.sin(a);
+        var b0 = bubbles[randRangeInt(0, Math.floor(i/3))];
+        const angle_range = randRangeInt(0, b0.a.length - 1)
+        const a = randRange(b0.a[angle_range][0], b0.a[angle_range][1]);
+        //console.log(toDegrees(a));
+        const d = b0.r + b1.r * .6;
+        b1.a.push([a - toRadians(90), a + toRadians(90)]);
+        //var a = Math.random()*t;
+        b1.x = b0.x + d * Math.cos(a);
+        b1.y = b0.y + d * Math.sin(a);
     }
 
-    // bubbles[0].x = -bubbles[0].r;
-    // bubbles[0].y = -bubbles[0].r;
+    for (var i = 0; i < bubbles.length; i++){
+        var b = bubbles[i];
+        b.x -= b.r;
+        b.y -= b.r;
+    }
 
     var cx = 0;
     var cy = 0;
@@ -48,8 +64,9 @@ const Bubbles = ({ topGenres, bubbleColor }) => {
     bubbles.forEach((bubble) => {
         // bubble.x -= cx;
         // bubble.y -= cy;
-        
     });
+
+    //const RenderBubble({ })
 
     return (
         <div className="Bubbles">
@@ -57,8 +74,10 @@ const Bubbles = ({ topGenres, bubbleColor }) => {
                 const { genre, r, x, y } = bubble;
                 return (
                     <div className="Bubble" style={{ width: r*2, height: r*2, transform: `translate(${x}px, ${y}px)` }} >
-                        <h1 className="Bubble-Label" >{}</h1>
-                        <div className={`Bubble-Image-${bubbleColor}`}></div>    
+                        <h1 className="Bubble-Label" style={{ fontSize: 10 }}>{genre}</h1>
+                        {/* {$("h1").textfit('bestfit')} */}
+                        <div className={`Bubble-Image-${bubbleColor}`}></div>   
+                          
                     </div>
                 );
             })}
@@ -101,8 +120,18 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={PINK}></Bubbles>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={BLUE}></Bubbles>
+                <Bubbles topGenres={user_1.genre_counts}
+                         name={user_1.display_name} 
+                         bubbleColor={PINK}
+                         width={375}
+                         height={381}
+                />
+                <Bubbles topGenres={user_2.genre_counts}
+                         name={user_2.display_name} 
+                         bubbleColor={BLUE}
+                         width={375}
+                         height={381}
+                />
             </div>
         </Page>
     )
