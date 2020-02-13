@@ -24,7 +24,7 @@ const NEXT_ONLY = 'NEXT_ONLY';
 const PREV_ONLY = 'PREV_ONLY';
 
 const Story = () => {
-    const { user_1, user_2, my_id } = useSelector((state) => state.users);
+    const { user_1, user_2 } = useSelector((state) => state.users);
 
     const pages = [
         {   // page 0
@@ -40,11 +40,11 @@ const Story = () => {
             pagination: NONE,
         },
         {   // page 3
-            component: <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>,
+            component: <TopArists user_1={user_1} user_2={user_2} key="topartists"/>,
             pagination: NEXT_ONLY,
         },
         {   // page 4
-            component: <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>,
+            component: <Trendex user_1={user_1} user_2={user_2} key="trendex"/>,
             pagination: ALL,
         },
         {   // page 5
@@ -52,11 +52,11 @@ const Story = () => {
             pagination: ALL,
         },
         {   // page 6
-            component: <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>,
+            component: <MusicalAttr user_1={user_1} user_2={user_2} key="musicalattr"/>,
             pagination: ALL,
         },
         {   // page 7
-            component: <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/>,
+            component: <Decades user_1={user_1} user_2={user_2} key="decades"/>,
             pagination: ALL,
         },
         {   // page 8
