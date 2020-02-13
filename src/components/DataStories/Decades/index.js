@@ -4,7 +4,7 @@ import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
 
-const Decades = ({ user_1, user_2 }) => {
+const Decades = ({ user_1, user_2, my_id }) => {
 
     const saveScreen = () => {
         html2canvas(document.body).then(function(canvas) {
@@ -106,7 +106,10 @@ const Decades = ({ user_1, user_2 }) => {
                 </div>
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">
-                        <h3>{user_1.display_name}</h3>
+                        {user_1.id != my_id && 
+                            <h3>{user_1.display_name}</h3>}
+                        {user_1.id == my_id && 
+                            <h3>you</h3>}
                         <div className="Decades-GraphOwner-Underline"></div>
                     </div>
                     <div className="Decades-BarChart" style={{ width: barChartWidth }}>
@@ -130,7 +133,10 @@ const Decades = ({ user_1, user_2 }) => {
                 
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">
-                        <h3>{user_2.display_name}</h3>
+                        {user_2.id != my_id && 
+                            <h3>{user_2.display_name}</h3>}
+                        {user_2.id == my_id && 
+                            <h3>you</h3>}
                         <div className="Decades-GraphOwner-Underline"></div>
                     </div>
                     <div className="Decades-BarChart" style={{ width: barChartWidth }}>
