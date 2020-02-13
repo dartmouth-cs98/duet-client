@@ -3,6 +3,7 @@ import useResizeAware from 'react-resize-aware';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
+import { string } from 'prop-types';
 
 const Decades = ({ user_1, user_2, my_id }) => {
 
@@ -165,6 +166,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
 Decades.propTypes = {
     user_1: User,
     user_2: User,
+    my_id: string,
 }
 
 export default Decades;

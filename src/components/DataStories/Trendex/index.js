@@ -2,6 +2,7 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
+import { string } from 'prop-types';
 
 const Trendex = ({ user_1, user_2, my_id }) => {
     const { trendex: user1Trendex, display_name: user1Name } = user_1;
@@ -70,6 +71,7 @@ const Trendex = ({ user_1, user_2, my_id }) => {
 Trendex.propTypes = {
     user_1: User,
     user_2: User,
+    my_id: string,
 }
 
 export default Trendex;

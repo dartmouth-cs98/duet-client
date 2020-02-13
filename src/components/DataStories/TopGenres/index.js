@@ -141,7 +141,8 @@ const TopGenres = ({ user_1, user_2 }) => {
 
 TopGenres.propTypes = {
     user_1: User,
-    user_2: User
+    user_2: User,
+    my_id: string,
 };
 
 export default TopGenres;

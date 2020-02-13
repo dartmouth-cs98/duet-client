@@ -3,6 +3,7 @@ import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
+import { string } from 'prop-types';
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
@@ -84,7 +85,8 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
 
 TopArtists.propTypes = {
     user_1: User,
-    user_2: User
+    user_2: User,
+    my_id: string,
 }
 
 export default TopArtists;

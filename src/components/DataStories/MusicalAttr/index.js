@@ -160,7 +160,8 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
 
 MusicalAttr.propTypes = {
     user_1: User,
-    user_2: User
+    user_2: User,
+    my_id: string,
 }
 
 export default MusicalAttr;

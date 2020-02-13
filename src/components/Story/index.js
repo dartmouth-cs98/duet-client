@@ -24,7 +24,7 @@ const NEXT_ONLY = 'NEXT_ONLY';
 const PREV_ONLY = 'PREV_ONLY';
 
 const Story = () => {
-    const { user_1, user_2, my_id } = useSelector((state) => state.users);
+    const { loggedIn, user_1, user_2, my_id } = useSelector((state) => state.users);
 
     const pages = [
         {   // page 0
@@ -70,7 +70,7 @@ const Story = () => {
     ];
 
     const numPages = pages.length;
-    const [currPage, setCurrPage] = useState(0);
+    const [currPage, setCurrPage] = useState(loggedIn ? 1: 0);
     
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
