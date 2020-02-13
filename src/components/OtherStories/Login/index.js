@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import Page from '../../Page';
 import { fetchMeData } from '../../../actions';
@@ -11,11 +12,14 @@ const Login = ({ jumpToPage }) => {
     const token = getToken();
 
     const handleLogin = () => { 
+        console.log('line 14');
         if (token)  {
             dispatch(fetchMeData(token, "medium_term"));
             jumpToPage(1) 
         }
         else {
+            console.log('line 20');
+            console.log(process.env);
             window.open(process.env.AUTH_SERVER_URL, "_self");
         }
     }

@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
-import { getBackendToken, postUser } from '../utils/backendUtils';
+import { getBackendToken, postUser, getUser } from '../utils/backendUtils';
 
 export const fetchMeData = (spotifyToken, time_range) => {
     return (dispatch) => {
@@ -22,8 +22,8 @@ export const fetchMeData = (spotifyToken, time_range) => {
        
             getGenreCount(spotifyToken, topTracks.items).then((genreCounts) => {
                 audioFeaturesPromise.then((tracks) => {
-                    const avg_taste = getAvgTaste(tracks.audio_features);
-                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genre_counts: genreCounts, avg_taste};
+                    const taste = getAvgTaste(tracks.audio_features);
+                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, taste};
                     getBackendToken(spotifyToken).then((response) => {
                       const { token } = response;
                       dispatch({ type: types.STORE_TOKEN, token })
@@ -41,6 +41,23 @@ export const setCompare = (entity) => {
     return (dispatch) => {
         dispatch({ type: types.SET_COMPARE, compare: entity });
     }
+}
+
+export const fetchUser1 = (id) => {
+  return (dispatch) => {
+    getUser(id).then((user) => {
+      dispatch({ type: types.FETCH_USER_1, user: user })
+    })
+  }
+}
+
+
+export const fetchUser2 = (id) => {
+  return (dispatch) => {
+    getUser(id).then((user) => {
+      dispatch({ type: types.FETCH_USER_2, user: user })
+    })
+  }
 }
 
 export const queryUsers = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import Page from '../../Page';
@@ -6,11 +7,13 @@ import { Genre, User } from '../../../types';
 import { arrayOf, string } from 'prop-types';
 
 
+const PINK = "Pink";
+const BLUE = "Blue";
+
 function randRange(min, max) {return Math.random() * (max - min) + min}
 function randRangeInt(min, max) {return Math.floor(Math.random() * (max - min + 1) ) + min}
 function toRadians(degrees) {return degrees * (Math.PI / 180)}
 function toDegrees(radians) {return radians * (180 / Math.PI)}
-
 
 const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     const totalGenres = 48;
@@ -73,7 +76,8 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
                     <div className="Bubble" style={{ width: r*2, height: r*2, transform: `translate(${x}px, ${y}px)` }} >
                         <h1 className="Bubble-Label" style={{ fontSize: 10 }}>{genre}</h1>
                         {/* {$("h1").textfit('bestfit')} */}
-                        <img src={bubbleColor} className="Bubble-Image"></img>    
+                        <div className={`Bubble-Image-${bubbleColor}`}></div>   
+                          
                     </div>
                 );
             })}
@@ -104,7 +108,7 @@ const TopGenres = ({ user_1, user_2 }) => {
     }
 
     return (
-        <Page background={'#212034'} numPages={6} pageNum={2}>
+        <Page background={'#212034'} numPages={5} pageNum={2}>
             Top Genres
             <button id="share" onClick={() => saveScreen()}>...</button>
 
@@ -116,6 +120,7 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
+<<<<<<< HEAD
                 <Bubbles topGenres={user_1.genre_counts}
                          name={user_1.display_name} 
                          bubbleColor={"/assets/bubblePink.png"}
@@ -128,6 +133,10 @@ const TopGenres = ({ user_1, user_2 }) => {
                          width={375}
                          height={381}
                 />
+=======
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={PINK}></Bubbles>
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={BLUE}></Bubbles>
+>>>>>>> 9fb03b19bf47f027b9620263526367ea09b48d96
             </div>
         </Page>
     )

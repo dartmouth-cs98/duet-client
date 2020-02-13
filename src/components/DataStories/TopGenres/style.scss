@@ -46,6 +46,19 @@
             }
         }
     }
+    .Bubble-Image-Pink {
+        height: 100%;
+        width: 100%;
+        background: url('../images/bubblePink.png');
+        background-size: cover;
+    }
+
+    .Bubble-Image-Blue {
+        height: 100%;
+        width: 100%;
+        background: url('../images/bubbleBlue.png');
+        background-size: cover;
+    }
 }
 
 #popup {

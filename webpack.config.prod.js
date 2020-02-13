@@ -7,6 +7,7 @@ import path from 'path';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.AUTH_SERVER_URL': JSON.stringify('https://cs98-duet-auth-server.herokuapp.com/login'),
   __DEV__: false
 };
 
