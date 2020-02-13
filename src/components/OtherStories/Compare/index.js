@@ -65,9 +65,14 @@ const Compare = ({ jumpToPage }) => {
     };
 
     const handleTopUserSelect = (user) => {
-        setTopUser(user.id);
-        setTopBarIsSearching(false);
-        setTopQueryVal(user.display_name);
+        if ( topUser != 'Me' ) {
+            setTopBarIsSearching(false);
+            setTopUser(user.id);
+            setTopQueryVal(user.display_name);
+        } else {
+            setTopBarIsSearching(false);
+            setTopQueryVal('Me');
+        }
     }
 
     const handleBottomChange = (e) => {
@@ -91,6 +96,8 @@ const Compare = ({ jumpToPage }) => {
     const handleGoClick = () => {
         if ( topUser != 'Me' ) {
             dispatch(fetchUser1(topUser));
+        } else {
+            dispatch(fetchUser1(user_1.id));
         }
         dispatch(fetchUser2(bottomUser));
         jumpToPage(3)
