@@ -65,12 +65,13 @@ const Compare = ({ jumpToPage }) => {
     };
 
     const handleTopUserSelect = (user) => {
-        if ( topUser != 'Me' ) {
-            setTopBarIsSearching(false);
+        if ( user.display_name != 'Me' ) {
             setTopUser(user.id);
             setTopQueryVal(user.display_name);
+            setTopBarIsSearching(false);
         } else {
             setTopBarIsSearching(false);
+            setTopUser('Me');
             setTopQueryVal('Me');
         }
     }
