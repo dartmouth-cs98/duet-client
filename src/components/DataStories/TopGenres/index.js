@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { Genre, User } from '../../../types';
 import { arrayOf, string } from 'prop-types';
+
+const PINK = "Pink";
+const BLUE = "Blue";
 
 const Bubbles = ({ topGenres, bubbleColor }) => {
     const totalGenres = 48;
@@ -54,7 +58,7 @@ const Bubbles = ({ topGenres, bubbleColor }) => {
                 return (
                     <div className="Bubble" style={{ width: r*2, height: r*2, transform: `translate(${x}px, ${y}px)` }} >
                         <h1 className="Bubble-Label" >{}</h1>
-                        <img src={bubbleColor} className="Bubble-Image"></img>    
+                        <div className={`Bubble-Image-${bubbleColor}`}></div>    
                     </div>
                 );
             })}
@@ -97,8 +101,8 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubblePink.png"}></Bubbles>
-                <Bubbles topGenres={user_1.genreCounts} bubbleColor={"/assets/bubbleBlue.png"}></Bubbles>
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={PINK}></Bubbles>
+                <Bubbles topGenres={user_1.genreCounts} bubbleColor={BLUE}></Bubbles>
             </div>
         </Page>
     )
