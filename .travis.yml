@@ -10,6 +10,9 @@ after_success:
   # Send coverage data to coveralls.
   # - yarn run test:cover:CI
 
+env:
+  - AUTH_SERVER_URL=https://cs98-duet-auth-server.herokuapp.com/login
+
 deploy:
   skip_cleanup: true
   provider: surge
