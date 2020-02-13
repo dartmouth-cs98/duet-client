@@ -16,4 +16,4 @@ deploy:
   login: SURGE_LOGIN
   token: SURGE_TOKEN
   project: ./dist/
-  domain: cs98-duet.surge.sh
+  domain: duet.surge.sh
