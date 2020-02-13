@@ -2,18 +2,18 @@ language: node_js
 cache: yarn
 node_js:
   - "11"
-  - "10"
-  - "8"
+  # - "10"
+  # - "8"
 script: 
   - npm run build:CI
 after_success:
   # Send coverage data to coveralls.
   # - yarn run test:cover:CI
 
-# deploy:
-#   skip_cleanup: true
-#   provider: surge
-#   login: SURGE_LOGIN
-#   token: SURGE_TOKEN
-#   project: ./dist/
-#   domain: cs98-duet.surge.sh
+deploy:
+  skip_cleanup: true
+  provider: surge
+  login: SURGE_LOGIN
+  token: SURGE_TOKEN
+  project: ./dist/
+  domain: cs98-duet.surge.sh
