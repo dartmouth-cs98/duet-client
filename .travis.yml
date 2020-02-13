@@ -11,7 +11,7 @@ after_success:
   # - yarn run test:cover:CI
 
 env:
-  - AUTH_SERVER_URL=https://cs98-duet-auth-server.herokuapp.com/login
+  - AUTH_SERVER_URL="https://cs98-duet-auth-server.herokuapp.com/login"
 
 deploy:
   skip_cleanup: true
