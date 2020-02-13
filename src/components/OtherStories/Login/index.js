@@ -19,6 +19,7 @@ const Login = ({ jumpToPage }) => {
         }
         else {
             console.log('line 20');
+            console.log(process.env.AUTH_SERVER_URL);
             window.open(process.env.AUTH_SERVER_URL, "_self");
         }
     }
