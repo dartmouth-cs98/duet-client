@@ -3,12 +3,11 @@ import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
 
-const TopArtists = ({ user_1, user_2, my_id }) => {
+const TopArtists = ({ user_1, user_2 }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
 
     const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
-
     let shared = [];
 
     user1TruncatedArtists.forEach((artist) => {
@@ -31,24 +30,15 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
     }
 
     return (
+
         <Page background={'white'} numPages={5} pageNum={0}>
             <div className="TopArtists-Page">
-                <div className="TopArtists-Title">
-                    {user_1.id == my_id && user_2.id != my_id &&
-                        <h1>you and {user_2.display_name} share</h1>}
-                    {user_2.id == my_id && user_1.id != my_id &&
-                        <h1>{user_1.display_name} and you share</h1>}
-                    {user_2.id == my_id && user_1.id == my_id &&
-                        <h1>you and you share</h1>}
-                    {user_2.id != my_id && user_1.id != my_id &&
-                        <h1>{user_1.display_name} and {user_2.display_name} share</h1>}
+                <div className="TopArtists-Title"> 
+                    <h1>{user_1.display_name} and {user_2.display_name} share</h1>
                     <h2 className="TopArtists-TextShadow">top artists</h2>
                 </div>
                 <div className="TopArtists-List">
-                    {user_1.id == my_id &&
-                        <h1 className="right-align">you</h1>}
-                    {user_1.id != my_id &&
-                        <h1 className="right-align">{user_1.display_name}</h1>}
+                    <h1 className="right-align">{user_1.display_name}</h1>
                     {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
                             return <h2 className="right-align" key={artist}>{artist}</h2>;
@@ -58,10 +48,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     })}
                 </div>
                 <div className="TopArtists-List">
-                    {user_2.id == my_id &&
-                        <h1 className="left-align">you</h1>}
-                    {user_2.id != my_id &&
-                        <h1 className="left-align">{user_2.display_name}</h1>}
+                    <h1 className="left-align">{user_2.display_name}</h1>
                     {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
                             return <h2 className="left-align" key={artist}>{artist}</h2>;

@@ -24,7 +24,6 @@ export const fetchMeData = (spotifyToken, time_range) => {
                 audioFeaturesPromise.then((tracks) => {
                     const taste = getAvgTaste(tracks.audio_features);
                     user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, taste};
-                    dispatch({ type: types.FETCH_MY_ID, my_id: id })
                     getBackendToken(spotifyToken).then((response) => {
                       const { token } = response;
                       dispatch({ type: types.STORE_TOKEN, token })
