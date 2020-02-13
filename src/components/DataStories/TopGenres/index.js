@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
@@ -120,13 +122,13 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genre_counts}
+                <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
                          width={375}
                          height={381}
                 />
-                <Bubbles topGenres={user_2.genre_counts}
+                <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}
                          width={375}

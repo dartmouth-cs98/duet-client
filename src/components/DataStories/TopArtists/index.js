@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
