@@ -4,6 +4,7 @@ import Decades from './Decades';
 import MusicalAttr from './MusicalAttr';
 import TopGenres from './TopGenres';
 import Trendex from './Trendex';
+import PlaylistGenerator from './PlaylistGenerator';
 import Members from './Members';
 import Share from './Share';
 import { useSelector } from 'react-redux';
@@ -22,6 +23,7 @@ const Stories = ({ history }) => {
                 <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                 <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                 <Members key="membersscreen"/>
+                <PlaylistGenerator key="playlistgenerator" user_1={user_1} user_2={user_2} my_id={my_id} />
                 <Share history={history} key="sharepage" />
             </SwipeableViews>
         );

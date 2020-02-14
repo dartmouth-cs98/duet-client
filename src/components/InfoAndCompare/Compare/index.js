@@ -98,8 +98,6 @@ const Compare = ({ history }) => {
     const handleGoClick = () => {
         if ( topUser != 'Me' ) {
             dispatch(fetchUser1(topUser));
-        } else {
-            dispatch(fetchUser1(user_1.id));
         }
         dispatch(fetchUser2(bottomUser));
         history.push('/stories')
