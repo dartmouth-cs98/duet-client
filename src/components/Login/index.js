@@ -1,25 +1,23 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import Page from '../../Page';
-import { fetchMeData } from '../../../actions';
-import { getToken } from '../../../utils/tokenUtils';
+import Page from '../Page';
+import { fetchMeData } from '../../actions';
+import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
 
-const Login = ({ jumpToPage }) => {
+const Login = ({ history }) => {
 
     const dispatch = useDispatch();
     const token = getToken();
 
     const handleLogin = () => { 
-        console.log('line 14');
         if (token)  {
             dispatch(fetchMeData(token, "medium_term"));
-            jumpToPage(1) 
+            history.push("/info-compare")
         }
         else {
-            console.log('line 20');
-            console.log(process.env);
             window.open(process.env.AUTH_SERVER_URL, "_self");
         }
     }
