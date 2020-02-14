@@ -2,14 +2,27 @@ import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
-import AuthRedirect from './AuthRedirect';
-import Story from './Story';
+import Stories from '../components/Stories';
+import AuthRedirect from '../components/AuthRedirect';
+import Login from '../components/Login';
+import InfoAndCompare from "./InfoAndCompare";
+import { useSelector } from 'react-redux';
+
 
 const App = () => {
+  
+  const { loggedIn } = useSelector((state) => state.auth);
+
+  const authOnly = (Component) => {
+    return loggedIn ? Component : Login;
+  }
+
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Story} />
+        <Route exact path="/" component={Login} />
+        <Route path="/info-compare" component={authOnly(InfoAndCompare)}/>
+        <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />
       </Switch>
     </div>

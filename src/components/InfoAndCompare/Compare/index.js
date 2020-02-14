@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Page from '../../Page';
@@ -5,7 +6,7 @@ import { fetchUser1, fetchUser2 } from '../../../actions';
 import { addGroup, search } from '../../../utils/backendUtils';
 import { func } from 'prop-types';
 
-const Compare = ({ jumpToPage }) => {
+const Compare = ({ history }) => {
 
     const dispatch = useDispatch();
     const { user_1 } = useSelector((state) => state.users);
@@ -101,7 +102,7 @@ const Compare = ({ jumpToPage }) => {
             dispatch(fetchUser1(user_1.id));
         }
         dispatch(fetchUser2(bottomUser));
-        jumpToPage(3)
+        history.push('/stories')
     }
 
     return (
