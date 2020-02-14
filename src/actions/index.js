@@ -7,6 +7,7 @@ export const fetchMeData = (spotifyToken, time_range) => {
     return (dispatch) => {
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
+        dispatch({ type: types.STORE_SPOTIFY_TOKEN, token: spotifyToken });
 
         const userProfilePromise = getCurrentUserProfile(spotifyToken)
         const topTracksPromise = spotifyApi.getMyTopTracks({limit: 50, time_range}) 
@@ -14,7 +15,6 @@ export const fetchMeData = (spotifyToken, time_range) => {
    
         Promise.all([userProfilePromise, topTracksPromise, topArtistsPromise]).then(function([userProfile, topTracks, topArtists]) {   
             let user = {};
-
             const { display_name, id } = userProfile.data;
             const { trackIds, popularity, decadeCounts } = getTrackInfos(topTracks.items) ;
             const audioFeaturesPromise = spotifyApi.getAudioFeaturesForTracks(trackIds);
@@ -23,7 +23,7 @@ export const fetchMeData = (spotifyToken, time_range) => {
             getGenreCount(spotifyToken, topTracks.items).then((genreCounts) => {
                 audioFeaturesPromise.then((tracks) => {
                     const taste = getAvgTaste(tracks.audio_features);
-                    user = { display_name, id, decadeCounts, trendex: popularity, topArtists:artistNamesAndIds, genreCounts, taste};
+                    user = { display_name, id, decadeCounts, trendex: popularity, topTracks: trackIds, topArtists:artistNamesAndIds, genreCounts, taste};
                     dispatch({ type: types.FETCH_MY_ID, my_id: id })
                     getBackendToken(spotifyToken).then((response) => {
                       const { token } = response;
@@ -47,7 +47,9 @@ export const setCompare = (entity) => {
 export const fetchUser1 = (id) => {
   return (dispatch) => {
     getUser(id).then((user) => {
-      dispatch({ type: types.FETCH_USER_1, user: user })
+      // TODO: eliminate this once we switch the backend back to taste:
+      const taste = user.avg_taste ? user.avg_taste : taste;
+      dispatch({ type: types.FETCH_USER_1, user: { ...user, taste }})
     })
   }
 }
@@ -56,7 +58,9 @@ export const fetchUser1 = (id) => {
 export const fetchUser2 = (id) => {
   return (dispatch) => {
     getUser(id).then((user) => {
-      dispatch({ type: types.FETCH_USER_2, user: user })
+      // TODO: eliminate this once we switch the backend back to taste:
+      const taste = user.avg_taste ? user.avg_taste : taste;
+      dispatch({ type: types.FETCH_USER_2, user: { ...user, taste }})
     })
   }
 }

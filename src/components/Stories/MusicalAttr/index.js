@@ -54,8 +54,8 @@ Slider.propTypes = {
 
 const MusicalAttr = ({ user_1, user_2, my_id }) => {
     
-    const { avg_taste: user1Taste } = user_1;
-    const { avg_taste: user2Taste } = user_2;
+    const { taste: user1Taste } = user_1;
+    const { taste: user2Taste } = user_2;
 
     var user1Name = user_1.display_name
     var user2Name = user_2.display_name
