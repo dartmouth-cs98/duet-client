@@ -1,5 +1,3 @@
-/* eslint-disable no-redeclare */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
@@ -147,8 +145,7 @@ const TopGenres = ({ user_1, user_2 }) => {
 
 TopGenres.propTypes = {
     user_1: User,
-    user_2: User,
-    my_id: string,
+    user_2: User
 };
 
 export default TopGenres;
