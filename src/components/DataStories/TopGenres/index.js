@@ -19,7 +19,6 @@ function splitRange(angle_range, radius, angle, s) {return [[angle_range[0], ang
 
 
 const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
-    const totalGenres = 48;
     const R = height*.9;
     const pi = Math.PI;
     const t = 2 * pi;
@@ -27,7 +26,7 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
 
     topGenres.forEach((genre) => {
         const { label, count } = genre
-        const percentage = (count / totalGenres);
+        const percentage = (count / topGenres.length);
         bubbles = [...bubbles, {genre: label, r: R*percentage, x: 0, y: 0, c: [], a: [], pa: 0}];
     });
     
@@ -128,7 +127,7 @@ const TopGenres = ({ user_1, user_2 }) => {
                 </div>
                 <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
-                         bubbleColor={PINK}
+                         bubbleColor={BLUE}
                          width={375}
                          height={381}
                 />
