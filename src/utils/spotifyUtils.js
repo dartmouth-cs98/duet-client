@@ -16,13 +16,13 @@ export const getCurrentUserProfile = (token) => {
 }
 
 export const getTrackInfos = (tracks) => {
-    let trackIds = []; 
+    let trackObjects = [];
     let popularitySum = 0;
     let popularityCount = 0;
     let decadeToCount = new Map();
 
     tracks.forEach((track) => {
-        trackIds = [...trackIds, track.id];
+        trackObjects = [...trackObjects, { id: track.id, uri: track.uri, name: track.name }]
 
         popularitySum += track.popularity;
         popularityCount++;
@@ -59,7 +59,7 @@ export const getTrackInfos = (tracks) => {
    
     const popularity = (popularitySum / popularityCount).toFixed(1);
 
-    return { trackIds, popularity, decadeCounts }
+    return { trackObjects, popularity, decadeCounts }
 }
 
 export const getTaste = (audioFeatures) => {
