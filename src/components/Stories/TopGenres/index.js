@@ -2,9 +2,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
+import useResizeAware from 'react-resize-aware';
 import { Genre, User } from '../../../types';
 import { arrayOf, string } from 'prop-types';
 
@@ -21,16 +22,20 @@ function splitRange(angle_range, radius, angle, s) {return [[angle_range[0], ang
 
 
 const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
-    const totalGenres = 48;
-    const R = height*.9;
     const pi = Math.PI;
     const t = 2 * pi;
+    const A = pi * Math.pow((height * .5), 2);
     var bubbles = [];
+    console.log(topGenres);
+
+    var total_count = 0;
+    topGenres.forEach((genre) => {total_count += genre.count;});
+    console.log(total_count);
 
     topGenres.forEach((genre) => {
         const { label, count } = genre
-        const percentage = (count / totalGenres);
-        bubbles = [...bubbles, {genre: label, r: R*percentage, x: 0, y: 0, c: [], a: [], pa: 0}];
+        const percentage = (count / total_count);
+        bubbles = [...bubbles, {genre: label, r: Math.sqrt((A*percentage))/pi, x: 0, y: 0, c: [], a: [], pa: 0}];
     });
     
     bubbles.sort(function(a, b) {return b.r - a.r})
@@ -115,9 +120,24 @@ const TopGenres = ({ user_1, user_2 }) => {
         document.getElementById("popup").innerHTML = "";
     }
 
+    const BUBBLE_BOX_WIDTH_PERCENTAGE  = 1.0;
+    const BUBBLE_BOX_HEIGHT_PERCENTAGE = 0.5;
+
+    const [resizeListener, pageSize] = useResizeAware();
+    const [bubbleBoxWidth, setBubbleBoxWidth] = useState(BUBBLE_BOX_WIDTH_PERCENTAGE * pageSize.width);
+    const [bubbleBoxHeight, setBubbleBoxHeight] = useState(BUBBLE_BOX_HEIGHT_PERCENTAGE * pageSize.height);
+
+    useEffect(() => {
+        const { height, width } = pageSize;
+        setBubbleBoxWidth(BUBBLE_BOX_WIDTH_PERCENTAGE * width)
+        setBubbleBoxHeight(BUBBLE_BOX_HEIGHT_PERCENTAGE * height)     
+    }, [pageSize])
+
+
+
     return (
         <Page background={'#212034'} numPages={5} pageNum={2}>
-            Top Genres
+            {resizeListener}
             <button id="share" onClick={() => saveScreen()}>...</button>
 
             <div id="popup-background">
@@ -125,20 +145,18 @@ const TopGenres = ({ user_1, user_2 }) => {
                 </div>
             </div>
             <div className ="TopGenres-Page">
-                <div>
-                    <h1 className="TopGenres-Title">Top Genres</h1>
-                </div>
+                <h1 className="TopGenres-Title">Top Genres</h1>
                 <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
-                         width={375}
-                         height={381}
+                         width={bubbleBoxWidth}
+                         height={bubbleBoxHeight}
                 />
                 <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}
-                         width={375}
-                         height={381}
+                         width={bubbleBoxWidth}
+                         height={bubbleBoxHeight}
                 />
             </div>
         </Page>
