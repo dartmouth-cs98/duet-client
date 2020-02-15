@@ -15,9 +15,12 @@ function randRangeInt(min, max) {return Math.floor(Math.random() * (max - min + 
 function toRadians(degrees) {return degrees * (Math.PI / 180)}
 function toDegrees(radians) {return radians * (180 / Math.PI)}
 
+function splitRange(angle_range, radius, angle, s) {return [[angle_range[0], angle - s/radius], [angle + s/radius, angle_range[1]]]}
+
+
 const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     const totalGenres = 48;
-    const R = 400;  
+    const R = height*.9;
     const pi = Math.PI;
     const t = 2 * pi;
     var bubbles = [];
@@ -30,17 +33,20 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     
     bubbles.sort(function(a, b) {return b.r - a.r})
     
-    //bubbles = [bubbles[0], bubbles[1], bubbles[2]];
+    //bubbles = [bubbles[0], bubbles[1], bubbles[2], bubbles[3]];
     bubbles[0].a.push([-t / 6, t / 6], [t / 3, t * 2 / 3]);
 
     for (var i = 1; i < bubbles.length; i++){
         var b1 = bubbles[i];
-        var b0 = bubbles[randRangeInt(0, Math.floor(i/3))];
-        const angle_range = randRangeInt(0, b0.a.length - 1)
-        const a = randRange(b0.a[angle_range][0], b0.a[angle_range][1]);
+        var b0 = bubbles[randRangeInt(0, Math.floor(i/4))];
+        const angle_range_i = randRangeInt(0, b0.a.length - 1)
+        const a = randRange(b0.a[angle_range_i][0], b0.a[angle_range_i][1]);
         //console.log(toDegrees(a));
         const d = b0.r + b1.r * .6;
         b1.a.push([a - toRadians(90), a + toRadians(90)]);
+        //const new_range = splitRange(b0.a[angle_range_i]);
+        //b0.a.push(new_range[0], new_range[1]);
+        //b0.angle_range
         //var a = Math.random()*t;
         b1.x = b0.x + d * Math.cos(a);
         b1.y = b0.y + d * Math.sin(a);
@@ -52,19 +58,19 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
         b.y -= b.r;
     }
 
-    var cx = 0;
-    var cy = 0;
-    bubbles.forEach((bubble) => {
-        cx += bubble.x;
-        cy += bubble.y;
-    });
-    cx /= bubbles.length;
-    cy /= bubbles.length;
+    // var cx = 0;
+    // var cy = 0;
+    // bubbles.forEach((bubble) => {
+    //     cx += bubble.x;
+    //     cy += bubble.y;
+    // });
+    // cx /= bubbles.length;
+    // cy /= bubbles.length;
 
-    bubbles.forEach((bubble) => {
-        // bubble.x -= cx;
-        // bubble.y -= cy;
-    });
+    // bubbles.forEach((bubble) => {
+    //     // bubble.x -= cx;
+    //     // bubble.y -= cy;
+    // });
 
     //const RenderBubble({ })
 
@@ -120,13 +126,13 @@ const TopGenres = ({ user_1, user_2 }) => {
                 <div>
                     <h1 className="TopGenres-Title">Top Genres</h1>
                 </div>
-                <Bubbles topGenres={user_1.genre_counts}
+                <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
                          width={375}
                          height={381}
                 />
-                <Bubbles topGenres={user_2.genre_counts}
+                <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}
                          width={375}
