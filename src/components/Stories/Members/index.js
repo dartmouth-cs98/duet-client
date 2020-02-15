@@ -5,7 +5,7 @@ import { joinGroup } from '../../../utils/backendUtils';
 import { useSelector } from 'react-redux';
 
 
-const Members = ({ jumpToPage }) => {
+const Members = () => {
     const { user_1, user_2 } = useSelector((state) => state.users);
 
     const handleJoinGroupClick = () => {
@@ -37,7 +37,6 @@ const Members = ({ jumpToPage }) => {
                 </div>
                 <h4>Are you a member of BLANK?</h4>
                 <button onClick={handleJoinGroupClick}>join the group</button>
-                <i className="arrow right" onClick={() => jumpToPage(9)}></i>
             </div>
         </Page>
     )
