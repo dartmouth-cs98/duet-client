@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import Page from '../../Page';
 import html2canvas from 'html2canvas';
 import { User } from '../../../types';
@@ -19,21 +19,41 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
         }
     })
 
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
+    const [showPopup, setShowPopup] = useState(false);
+
+    const renderPopup = () => {
+
+        return (
+            <div id="PopupBackground">
+                <button>X</button>                
+                <h1>About Top Artists</h1>
+                <h2> What am I looking at?</h2>
+                <p>This all has to get filled in- maybe other questions headers too idk- doesn’t always have to be “what am i looking at?</p>
+                <h1>About Duet</h1>
+                <h2>What information does Duet have?</h2>
+                <p>Duet only stores information given to us from Spotify: your username and your top artists/songs- that’s it! As much as we would like your credit card information or email and password- Spotify’s authentication process prevents us. Dang!</p>
+                <h2>How does Duet work?</h2>
+                <p>Once you’ve logged in through Spotify’s website and selected a person or friend to compare with, Duet receives the top fifty artists/songs from the past six months of yourself and whoever you chose to compare with. From there, using Spotify’s public api, we look at all the metadata of your music to show how it contrasts! We can even generate playlists to blend your two music tastes like a tropical smoothie on a hot day. Neato!</p>
+                <h2>Who made Duet?</h2>
+                <p>Duet was made by group of collegiate seniors as a capstone project. We would have been something that cures global warming (easy) or systemic racism and misogyny (child’s play), but unfortunately we were bound by an ancient form of magic known as onomancy, the arcane school of names, to Xolgoth- Daedric prince of the seventh layer of hell/Duet marketing lead. </p>
+                <h2>Why is it mobile only?</h2>
+                <p>Listen here you little shit...</p>
+                <h2>Contact us</h2>
+                <p>Have any more questions? You can send us emails at duetwastaken@gmail.com.</p>
+                <h2>Donate!</h2>
+                <p>To keep Duet ad free, we have been paying for hosting out of pocket :((  consider donating to my venmo: @nicBerg... jk.... unless?</p>
+            </div>
+        )
     }
 
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
+    const handleInfoClick = () => {
+        if (showPopup) {
+            setShowPopup(!showPopup);
+        } 
     }
 
     return (
-        <Page background={'white'} numPages={5} pageNum={0}>
+        <Page background={'#212034'} numPages={5} pageNum={0}>
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
@@ -53,9 +73,9 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         <h1 className="right-align">{user_1.display_name}</h1>}
                     {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
-                            return <h2 className="right-align" key={artist}>{artist}</h2>;
+                            return <h2 className="right-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
+                            return <h2 className="right-align-t" key={artist}><mark className="blue">{artist}</mark></h2>;
                         }   
                     })}
                 </div>
@@ -66,19 +86,23 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         <h1 className="left-align">{user_2.display_name}</h1>}
                     {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
-                            return <h2 className="left-align" key={artist}>{artist}</h2>;
+                            return <h2 className="left-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
+                            return <h2 className="left-align-t" key={artist}><mark className="pink">{artist}</mark></h2>;
                         }  
                     })}
                 </div>
-                {/* <div id="arrow"/> */}
-            </div>
+                
+                <div className="btnDiv">
+                    <button onClick={() => setShowPopup(!showPopup)}>?</button>
+                </div>
 
-                    <div id="popup-background">
-                        <div id="popup" onClick={() => handleClick()}>
-                        </div>
+                { showPopup &&
+                    <div className="popupInfo" onClick={handleInfoClick}>
+                        {renderPopup()}
                     </div>
+                }
+            </div>
             </Page>
     )
 }
