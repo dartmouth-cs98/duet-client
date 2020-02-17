@@ -1,30 +1,66 @@
-#popup {
-    width: 80vw;
-    height: auto;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-#popup-background {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(.9, .9, .9, .5);
-    z-index: -1;
-}
 
 .TopArtists-Page {
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    #PopupBackground {
+        width: 90vw;
+        height: 80vh;
+        overflow: auto;
+        background-color: white;
+        position: absolute;
+        z-index: 100;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10vh;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        h1 {
+            font-family: Roboto;
+            font-size: 5vw;
+            text-align: center;
+            width: 95%;
+            }
+    
+        h2 {
+            font-family: Roboto;
+            font-size: 4vw;
+            text-align: center;
+            width: 95%;
+        }
+    
+        p {
+            font-family: Roboto;
+            font-size: 3vw;
+            text-align: center;
+            width: 95%;
+        }
+    
+        button {
+            background-color: $WHITE;
+            border: none;
+            color: $SECONDARY;
+            font-size: 16px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+    }
+    
+    .popupInfo {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(.9, .9, .9, .5);
+        z-index: 99;
+    }
+    
 
     .TopArtists-Title{
         display: flex;
@@ -37,7 +73,7 @@
             font-size: 13vw;
             line-height: 100%;
             text-shadow: -2px 0px $ACCENT;
-            color: $SECONDARY;
+            color: $WHITE;
             margin: 0;
         }
 
@@ -53,7 +89,7 @@
             font-size: 18px;
             letter-spacing: 0.09em;
             margin: 0;
-            color: $SECONDARY;
+            color: $WHITE;
         }
 
     }
@@ -65,8 +101,17 @@
 
         .right-align {
             text-align: right;
+            color: $PRIMARY;
         }
         .left-align {
+            text-align: left;
+            color: $ACCENT;
+        }
+
+        .right-align-t {
+            text-align: right;
+        }
+        .left-align-t {
             text-align: left;
         }
         
@@ -78,24 +123,28 @@
             line-height: 5px;
             letter-spacing: 0.09em;
             margin: 0px 0 7% 0;
-            color: $ACCENT;
         }
 
         h2 {
             font-family: Roboto;
             font-style: normal;
-            font-weight: 900;
+            font-weight: 00;
             font-size: 3vh;
             line-height: 13px;
             letter-spacing: 0.09em;
             margin-top: 0;
-            color: $SECONDARY;
+            color: $WHITE;
         }
 
-        mark {
+        mark.pink {  
+            background-color: $ACCENT;
+            color: $WHITE;
+        }   
+
+        mark.blue{
             background-color: $PRIMARY;
             color: black;
-          }   
+        }
           
         @media screen and (max-height: 700px) {
             h2 {
@@ -103,6 +152,22 @@
             }
         }
     } 
+
+    .btnDiv{
+        padding-left: 90%;
+        padding-top: 5%;
+
+        button {
+            background-color: $WHITE;
+            border: none;
+            color: $SECONDARY;
+            font-size: 16px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+          }
+    }
+
 
     #arrow {
         position: relative;
