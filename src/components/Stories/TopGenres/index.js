@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-redeclare */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -26,11 +27,11 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     const t = 2 * pi;
     const A = pi * Math.pow((height * .5), 2);
     var bubbles = [];
-    console.log(topGenres);
+    // console.log(topGenres);
 
     var total_count = 0;
     topGenres.forEach((genre) => {total_count += genre.count;});
-    console.log(total_count);
+    // console.log(total_count);
 
     topGenres.forEach((genre) => {
         const { label, count } = genre
