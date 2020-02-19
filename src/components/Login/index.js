@@ -9,6 +9,9 @@ import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
 
+const LOGO_HEIGHT = 150;
+const LOGO_WIDTH = 240;
+
 const Login = ({ history }) => {
 
     const dispatch = useDispatch();
@@ -45,7 +48,7 @@ const Login = ({ history }) => {
         <Page background={'#212034'}>
             <div className="Login-Page">
                 <div className="Login-Button-Logo-Info">
-                    <DuetLogo/>
+                    <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT} />
                     <Button onClick={handleLogin}>login with spotify</Button>
                     <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
                 </div>

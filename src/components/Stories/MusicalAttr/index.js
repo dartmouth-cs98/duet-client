@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
-import html2canvas from 'html2canvas';
+import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
-import PropTypes from 'prop-types';
+import { number, string } from 'prop-types';
 import { User } from '../../../types';
 
-const { number, string } = PropTypes;
+const PAGE_NAME = "Taste";
+const PAGE_INFO = "This is the information about Taste";
 
 const Slider = ({ width: sliderWidth, height: sliderHeight, label, val1, val2, name1, name2 }) => {
     
@@ -82,19 +83,6 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
         user2Name = 'You'
     }
 
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
-    }
-
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
-    }
-
     const attributes = [
         {
             label: 'Happiness',
@@ -139,12 +127,6 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
         
         <Page background={'#212034'} numPages={5} pageNum={3}>
             {resizeListener}
-            <button id="share" onClick={() => saveScreen()}>...</button>
-
-            <div id="popup-background">
-                <div id="popup" onClick={() => handleClick()}>
-                </div>
-            </div>
             <div className="MusicalAttr-Page">
                 <div>
                     <h1 className="MusicalAttr-Title-TextShadow">Taste :P</h1>
@@ -168,6 +150,7 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
                         );
                     })}
                 </div>
+                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </div>
         </Page>
     )

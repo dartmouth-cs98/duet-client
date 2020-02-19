@@ -1,0 +1,152 @@
+.Compare-Page {
+    margin-top: 10%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 2;
+
+    .Compare-Inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75%;
+    
+        .Compare-Input {
+            width: 100%;
+            input {
+                width: 100%;
+                height: 40px;
+                background: $SECONDARY;
+                border: 2px solid $WHITE;
+                box-sizing: border-box;
+                box-shadow: inset 0px 6px 4px rgba(0, 0, 0, 0.35);
+                border-radius: 5px;
+                color: $WHITE;
+                font-family: Roboto;
+                font-size: 2vh;
+                font-style: normal;
+                font-weight: normal;
+                color: $WHITE; 
+            }
+        }
+    
+        h1 {
+            color: $WHITE;
+            font-size: 2vh;
+        }
+
+        .Compare-ShareDuet {
+            font-family: Roboto;
+            font-style: normal;
+            font-size: 1.8vh;
+            font-weight: 500;
+            align-items: center;
+            color: $WHITE;
+            width: 100%;
+            text-align: right;
+            margin-top: 5px;
+
+            u {
+                color: $ACCENT;
+            }
+        }
+    }
+
+    .Compare-Toggles {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+
+        .Compare-Toggle {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        
+            .Compare-Toggle-Description {
+                display: flex;
+                flex-direction: column;
+    
+                h1, h2 {
+                    font-family: Roboto;
+                    font-style: normal;
+                    font-weight: normal;
+                    color: $WHITE;
+                }
+    
+                h1 {
+                    margin: 0;
+                    font-size: 2.2vh;
+                }
+    
+                h2 {
+                    margin: 0;
+                    line-height: 1.5vh;
+                    font-size: 1.5vh;
+                    color: #494773;
+                }
+            }
+        }
+    }
+
+    .Compare-Buttons {
+        display: flex;
+        flex-direction: column;
+
+        .Compare-CreateGroup {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            align-items: center;
+            color: $WHITE;
+        }
+    }
+}
+
+
+
+#PopupBackground {
+    height: 40vh;
+    margin-top: 20vh;
+
+    input {
+        border: 1px solid $SECONDARY;
+        border-radius: 5px;
+        background: transparent;
+        height: 30px;
+        width: 280px;
+        color: $SECONDARY;
+    }
+
+    button {
+        font-size: 16px;
+        color: $PRIMARY;
+        border-radius: 5px;
+        background: $SECONDARY;
+        height: 30px;
+        width: 80px;
+        z-index: 99;
+        outline: none;
+        margin-top: 30px;
+        padding: 0;
+    }
+
+    #close {
+        background: transparent;
+        font-size: 20px;
+        font-weight: bold;
+        color: $SECONDARY;
+        border: none;
+        width: auto;
+        height: auto;
+        margin: 0;
+        position: relative;
+        top: -5vh;
+        left: 21vh;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+}
