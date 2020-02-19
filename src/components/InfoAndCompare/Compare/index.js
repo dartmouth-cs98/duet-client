@@ -103,9 +103,9 @@ const Compare = ({ history }) => {
         history.push('/stories')
     }
 
+    // #9BD6DC
     return (
-        <Page background={'lightblue'}>
-            <div id="background"/>
+        <Page background={'#212034'}>
             <div id="content">
                 <h3>compare...</h3>
                 <div>
