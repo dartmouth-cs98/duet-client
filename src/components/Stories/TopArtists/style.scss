@@ -20,25 +20,37 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    
-        h1 {
+
+        .topHeader{
+            font-family: Roboto;
+            font-size: 7vw;
+            text-align: center;
+            width: 95%;
+        }
+
+        .innerCollapsible{
             font-family: Roboto;
             font-size: 5vw;
             text-align: center;
             width: 95%;
-            }
+        }
+
+        .innerContent{
+            text-decoration: none;
+        }
     
         h2 {
             font-family: Roboto;
             font-size: 4vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
+            text-decoration: none;
         }
     
         p {
             font-family: Roboto;
             font-size: 3vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
         }
     
@@ -97,7 +109,7 @@
     .TopArtists-List{
         display: flex;
         flex-direction: column;
-        margin: 5px 5px 10px 5px;
+        margin: 5px 5px 0 5px;
 
         .right-align {
             text-align: right;
@@ -155,7 +167,6 @@
 
     .btnDiv{
         padding-left: 90%;
-        padding-top: 5%;
 
         button {
             background-color: $WHITE;

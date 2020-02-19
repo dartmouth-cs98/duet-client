@@ -5,7 +5,7 @@
     align-items: center;
 
     #PopupBackground {
-        height: 50vh;
+        width: 90vw;
         height: 80vh;
         overflow: auto;
         background-color: white;
@@ -16,30 +16,41 @@
         margin-top: 10vh;
         right: 0;
         left: 0;
-        border-radius: 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    
-        h1 {
+
+        .topHeader{
+            font-family: Roboto;
+            font-size: 7vw;
+            text-align: center;
+            width: 95%;
+        }
+
+        .innerCollapsible{
             font-family: Roboto;
             font-size: 5vw;
             text-align: center;
             width: 95%;
-            }
+        }
+
+        .innerContent{
+            text-decoration: none;
+        }
     
         h2 {
             font-family: Roboto;
             font-size: 4vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
+            text-decoration: none;
         }
     
         p {
             font-family: Roboto;
             font-size: 3vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
         }
     
