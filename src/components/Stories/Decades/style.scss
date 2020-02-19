@@ -1,10 +1,8 @@
-
 .Decades-Page {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 
     #PopupBackground {
         width: 90vw;
@@ -40,7 +38,7 @@
         .innerContent{
             text-decoration: none;
         }
-
+    
         h2 {
             font-family: Roboto;
             font-size: 4vw;
@@ -48,14 +46,14 @@
             width: 95%;
             text-decoration: none;
         }
-
+    
         p {
             font-family: Roboto;
             font-size: 3vw;
             text-align: left;
             width: 95%;
         }
-
+    
         button {
             background-color: $WHITE;
             border: none;
@@ -66,7 +64,7 @@
             border-radius: 50%;
         }
     }
-
+    
     .popupInfo {
         position: absolute;
         width: 100%;

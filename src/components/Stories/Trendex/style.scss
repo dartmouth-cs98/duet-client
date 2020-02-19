@@ -5,7 +5,7 @@
     align-items: center;
 
     #PopupBackground {
-        height: 50vh;
+        width: 90vw;
         height: 80vh;
         overflow: auto;
         background-color: white;
@@ -16,7 +16,6 @@
         margin-top: 10vh;
         right: 0;
         left: 0;
-        border-radius: 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,8 +42,9 @@
         h2 {
             font-family: Roboto;
             font-size: 4vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
+            text-decoration: none;
         }
     
         p {

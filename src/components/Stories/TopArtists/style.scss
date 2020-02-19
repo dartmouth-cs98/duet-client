@@ -38,7 +38,6 @@
         .innerContent{
             text-decoration: none;
         }
-
         h2 {
             font-family: Roboto;
             font-size: 4vw;
@@ -46,14 +45,13 @@
             width: 95%;
             text-decoration: none;
         }
-
         p {
             font-family: Roboto;
             font-size: 3vw;
             text-align: left;
             width: 95%;
         }
-
+    
         button {
             background-color: $WHITE;
             border: none;
@@ -64,7 +62,7 @@
             border-radius: 50%;
         }
     }
-
+    
     .popupInfo {
         position: absolute;
         width: 100%;
@@ -109,7 +107,7 @@
     .TopArtists-List{
         display: flex;
         flex-direction: column;
-        margin: 5px 5px 10px 5px;
+        margin: 5px 5px 0 5px;
 
         .right-align {
             text-align: right;
@@ -167,7 +165,6 @@
 
     .btnDiv{
         padding-left: 90%;
-        padding-top: 5%;
 
         button {
             background-color: $WHITE;
