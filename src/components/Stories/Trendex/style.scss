@@ -21,13 +21,24 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    
-        h1 {
+
+        .topHeader{
+            font-family: Roboto;
+            font-size: 7vw;
+            text-align: center;
+            width: 95%;
+        }
+
+        .innerCollapsible{
             font-family: Roboto;
             font-size: 5vw;
             text-align: center;
             width: 95%;
-            }
+        }
+
+        .innerContent{
+            text-decoration: none;
+        }
     
         h2 {
             font-family: Roboto;

@@ -20,28 +20,40 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    
-        h1 {
+
+        .topHeader{
+            font-family: Roboto;
+            font-size: 7vw;
+            text-align: center;
+            width: 95%;
+        }
+
+        .innerCollapsible{
             font-family: Roboto;
             font-size: 5vw;
             text-align: center;
             width: 95%;
-            }
-    
+        }
+
+        .innerContent{
+            text-decoration: none;
+        }
+
         h2 {
             font-family: Roboto;
             font-size: 4vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
+            text-decoration: none;
         }
-    
+
         p {
             font-family: Roboto;
             font-size: 3vw;
-            text-align: center;
+            text-align: left;
             width: 95%;
         }
-    
+
         button {
             background-color: $WHITE;
             border: none;
@@ -52,7 +64,7 @@
             border-radius: 50%;
         }
     }
-    
+
     .popupInfo {
         position: absolute;
         width: 100%;
