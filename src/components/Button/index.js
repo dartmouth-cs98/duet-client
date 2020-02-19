@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-const Button = ({ onClick, children }) => {
+const Button = ({ onClick, children, width }) => {
 
     return (
-        <button className="Generic-Button" onClick={onClick}>{children}</button>
+        <button className="Generic-Button" onClick={onClick} style={{ width }}>{children}</button>
     )
 
 }

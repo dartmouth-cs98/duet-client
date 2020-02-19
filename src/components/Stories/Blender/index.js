@@ -7,6 +7,10 @@ import { string, func } from 'prop-types';
 import { getRecommendations, createPlaylist } from '../../../utils/playlistGenerator';
 import _ from 'lodash';
 import Slider from './Slider';
+import Popup from '../../Popup';
+
+const PAGE_NAME = "Music Taste Mixer";
+const PAGE_INFO = "This is the information about Music Taste Mixer";
 
 const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
 
@@ -113,6 +117,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                 })}
             </div>
             <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>
+            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }

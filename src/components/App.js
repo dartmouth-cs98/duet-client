@@ -5,7 +5,7 @@ import { hot } from "react-hot-loader";
 import Stories from '../components/Stories';
 import AuthRedirect from '../components/AuthRedirect';
 import Login from '../components/Login';
-import InfoAndCompare from "./InfoAndCompare";
+import Compare from "./Compare";
 import { useSelector } from 'react-redux';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/info-compare" component={authOnly(InfoAndCompare)}/>
+        <Route path="/info-compare" component={authOnly(Compare)}/>
         <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />
       </Switch>
