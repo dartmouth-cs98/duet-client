@@ -31,7 +31,7 @@ export const fetchMeData = (spotifyToken, time_range) => {
                       const { token } = response;
                       dispatch({ type: types.STORE_TOKEN, token })
                       postUser(user, token);
-                      joinGroup(user.id, EVERYONE_ID);
+                      joinGroup(EVERYONE_ID, id);
                     })
                     dispatch({ type: types.FETCH_USER_1, user: user });
                 })  
