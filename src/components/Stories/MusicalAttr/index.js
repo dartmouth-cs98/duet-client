@@ -7,11 +7,11 @@ import { User } from '../../../types';
 
 const PAGE_NAME = "Taste";
 const PAGE_INFO = "This is the information about Taste";
+const USER_1_COLOR = '#E5277B';
+const USER_2_COLOR = '#9BD6DC';
 
 const Slider = ({ width: sliderWidth, height: sliderHeight, label, val1, val2 }) => {
     
-    const USER_1_COLOR = '#E5277B';
-    const USER_2_COLOR = '#9BD6DC';
     let slider1Color;
     let slider2Color;
     let winnerColor;
@@ -123,6 +123,18 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
                 <div>
                     <h1 className="MusicalAttr-Title-TextShadow">Taste :P</h1>
                     <h2 className="MusicalAttr-subtitle">how happy, acoustic, danceable, and energetic is your music?</h2>
+                </div>
+                <div className="MusicalAttr-Key">
+                    <div className="MusicalAttr-Key-Item">
+                        <h1>{user1Name}</h1>
+                        <h1>-</h1>
+                        <div style={{ background: USER_1_COLOR }}/>
+                    </div>
+                    <div className="MusicalAttr-Key-Item">
+                        <h1>{user2Name}</h1>
+                        <h1>-</h1>
+                        <div style={{ background: USER_2_COLOR }}/>
+                    </div>
                 </div>
                 <div className="Sliders">
                     {attributes.map((attribute) => {
