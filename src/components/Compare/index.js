@@ -112,6 +112,16 @@ const Compare = ({ history }) => {
         history.push('/stories', { isComparing, isMixing })
     }
 
+    const handleToggleMixing = () => {
+        if (isMixing) setIsComparing(true);
+        setIsMixing(!isMixing);
+    }
+
+    const handleToggleComparing = () => {
+        if (isComparing) setIsMixing(true);
+        setIsComparing(!isComparing);
+    }
+
     return (
         <Page background={'#212034'}>
             <div className="Compare-Page">
@@ -154,7 +164,7 @@ const Compare = ({ history }) => {
                         <Switch
                             isOn={isComparing}
                             id={"comparing"}
-                            handleToggle={() => setIsComparing(!isComparing)}
+                            handleToggle={handleToggleComparing}
                         />
                     </div>
                     <div className="Compare-Toggle">
@@ -165,7 +175,7 @@ const Compare = ({ history }) => {
                         <Switch
                             isOn={isMixing}
                             id={"mixing"}
-                            handleToggle={() => setIsMixing(!isMixing)}
+                            handleToggle={handleToggleMixing}
                         />
                     </div>
                 </div>
