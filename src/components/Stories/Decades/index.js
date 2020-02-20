@@ -84,7 +84,6 @@ const Decades = ({ user_1, user_2, my_id }) => {
                 <div>
                     <h1 className="Decades-Title-TextShadow">A Blast from the Past</h1>
                     <h2 className="Decades-subtitle">your music spans the decades</h2>
-                    <div className="top">\\\\\\\\\\\\\\\\\</div>
                 </div>
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">
@@ -139,7 +138,6 @@ const Decades = ({ user_1, user_2, my_id }) => {
                         <div className="Decades-BarChart-Axis"></div>
                     </div>
                 </div>
-                <div className="bottom">\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</div>
             </div>
             <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
