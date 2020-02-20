@@ -12,7 +12,7 @@ const Trendex = ({ user_1, user_2, my_id }) => {
     const { trendex: user2Trendex, display_name: user2Name } = user_2;
 
     return (
-        <Page background={'#212034'} numPages={5} pageNum={1}>
+        <Page background={'#212034'} >
             <div className="Trendex-Page">
                 <div className="Trendex-TopSquare">
                     {user1Trendex > user2Trendex && user_1.id == my_id && user_2.id != my_id &&

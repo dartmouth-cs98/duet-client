@@ -77,7 +77,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
     const barWidth = barChartWidth / user1DecadeCounts.length;
 
     return (
-        <Page background={'#212034'} numPages={5} pageNum={4}>
+        <Page background={'#212034'} >
              {resizeListener}
 
             <div className="Decades-Page">

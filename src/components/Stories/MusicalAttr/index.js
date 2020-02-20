@@ -125,7 +125,7 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
 
     return (
         
-        <Page background={'#212034'} numPages={5} pageNum={3}>
+        <Page background={'#212034'}>
             {resizeListener}
             <div className="MusicalAttr-Page">
                 <div>
