@@ -45,6 +45,24 @@ const Login = ({ history }) => {
         } 
     }
 
+   const toggleFullScreen = () => {
+        console.log('line 49')
+        var doc = window.document;
+        var docEl = doc.documentElement;
+        
+        var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+        
+        if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
+            console.log('line 58');
+        }
+        else {
+            console.log('line 61');
+            cancelFullScreen.call(doc);
+        }
+    }
+
     return (
         <Page background={'#212034'}>
             <div className="Login-Page">
@@ -53,7 +71,7 @@ const Login = ({ history }) => {
                     <Button onClick={handleLogin} width={BUTTON_WIDTH}>login with spotify</Button>
                     <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
                 </div>
-                <button className="Login-LearnMore" id="goFS">Go fullscreen</button>
+                <button className="Login-LearnMore" oncClick={toggleFullScreen}>Go fullscreen</button>
                 <button className="Login-LearnMore" onClick={() => setShowPopup(!showPopup)}>learn more</button>
                 { showPopup &&
                     <div className="popup" onClick={handleClick}>
