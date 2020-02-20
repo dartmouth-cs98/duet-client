@@ -102,7 +102,7 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
         },
     ]
 
-    const SLIDER_HEIGHT_PERCENTAGE = .06;
+    const SLIDER_HEIGHT_PERCENTAGE = .02;
     const SLIDER_WIDTH_PERCENTAGE = .8;
 
     const [resizeListener, pageSize] = useResizeAware();
