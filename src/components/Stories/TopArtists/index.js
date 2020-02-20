@@ -36,11 +36,10 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     <h2 className="TopArtists-TextShadow">top artists</h2>
                 </div>
                 <div className="TopArtists-List">
-                    {/* {user_1.id == my_id &&
+                    {user_1.id == my_id &&
                         <h1 className="right-align">you</h1>}
                     {user_1.id != my_id &&
-                        <h1 className="right-align">{user_1.display_name}</h1>} */}
-                    <h1 className="right-align">{user_1.display_name}</h1>
+                        <h1 className="right-align">{user_1.display_name}</h1>}
                     {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
                             return <h2 className="right-align-t" key={artist}>{artist}</h2>;
@@ -50,11 +49,10 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     })}
                 </div>
                 <div className="TopArtists-List">
-                    {/* {user_2.id == my_id &&
+                    {user_2.id == my_id &&
                         <h1 className="left-align">you</h1>}
                     {user_2.id != my_id &&
-                        <h1 className="left-align">{user_2.display_name}</h1>} */}
-                    <h1 className="left-align">{user_2.display_name}</h1>
+                        <h1 className="left-align">{user_2.display_name}</h1>}
                     {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
                             return <h2 className="left-align-t" key={artist}>{artist}</h2>;
