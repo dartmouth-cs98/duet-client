@@ -23,7 +23,7 @@ const Compare = ({ history }) => {
     const [topUser, setTopUser] = useState({ name: 'Me' });
 
     const [bottomIsSearching, setBottomIsSearching] = useState(false);
-    const [bottomUser, setBottomUser] = useState({ name: 'Everyone' });
+    const [bottomUser, setBottomUser] = useState({ name: 'Search for user' });
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);

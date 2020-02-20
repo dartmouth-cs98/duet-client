@@ -30,10 +30,11 @@ const Search = ({ setUser, setIsSearching, enabled }) => {
         { enabled &&
             <div className="Search">
                 <div className="Search-Top">
-                    <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg onClick={() => setIsSearching(false)} width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6691 3L3.00003 16.669L16.6691 30.3381" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                     <input 
+                        autoFocus
                         type="text" 
                         value={queryVal} 
                         onClick={() => setQueryVal('')}
