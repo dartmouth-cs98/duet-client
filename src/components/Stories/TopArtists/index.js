@@ -3,9 +3,9 @@ import Page from '../../Page';
 import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import { TopArtistsDescription } from '../../../constants/helpInfo';
 
-const PAGE_NAME = "Top Artists";
-const PAGE_INFO = "This is the information about Top Artists";
+const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;

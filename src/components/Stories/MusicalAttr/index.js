@@ -4,9 +4,9 @@ import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
 import { number, string } from 'prop-types';
 import { User } from '../../../types';
+import { MusicalAttrDescription } from '../../../constants/helpInfo';
 
-const PAGE_NAME = "Taste";
-const PAGE_INFO = "This is the information about Taste";
+const { PAGE_INFO, PAGE_NAME } = MusicalAttrDescription;
 const USER_1_COLOR = '#E5277B';
 const USER_2_COLOR = '#9BD6DC';
 

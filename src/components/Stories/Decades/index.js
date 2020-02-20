@@ -4,9 +4,9 @@ import Page from '../../Page';
 import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import { DecadesDescription } from '../../../constants/helpInfo';
 
-const PAGE_NAME = "Decades";
-const PAGE_INFO = "This is the information about Decades";
+const { PAGE_INFO, PAGE_NAME } = DecadesDescription;
 
 const Decades = ({ user_1, user_2, my_id }) => {
 

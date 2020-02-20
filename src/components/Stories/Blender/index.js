@@ -8,9 +8,9 @@ import { getRecommendations, createPlaylist } from '../../../utils/playlistGener
 import _ from 'lodash';
 import Slider from './Slider';
 import Popup from '../../Popup';
+import { BlenderDescription } from '../../../constants/helpInfo';
 
-const PAGE_NAME = "Music Taste Mixer";
-const PAGE_INFO = "This is the information about Music Taste Mixer";
+const { PAGE_INFO, PAGE_NAME } = BlenderDescription;
 
 const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
 

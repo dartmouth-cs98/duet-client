@@ -3,9 +3,9 @@ import Page from '../../Page';
 import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import { TrendexDescription } from '../../../constants/helpInfo';
 
-const PAGE_NAME = "Trendex";
-const PAGE_INFO = "This is the information about Trendex";
+const { PAGE_INFO, PAGE_NAME } = TrendexDescription;
 
 const Trendex = ({ user_1, user_2, my_id }) => {
     const { trendex: user1Trendex, display_name: user1Name } = user_1;
