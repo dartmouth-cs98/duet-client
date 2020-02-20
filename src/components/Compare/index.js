@@ -109,7 +109,7 @@ const Compare = ({ history }) => {
             dispatch(fetchUser1(topUser));
         }
         dispatch(fetchUser2(bottomUser));
-        history.push('/stories')
+        history.push('/stories', { isComparing, isMixing })
     }
 
     return (
