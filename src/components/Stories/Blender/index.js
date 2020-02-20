@@ -7,6 +7,10 @@ import { string, func } from 'prop-types';
 import { getRecommendations, createPlaylist } from '../../../utils/playlistGenerator';
 import _ from 'lodash';
 import Slider from './Slider';
+import Popup from '../../Popup';
+import { BlenderDescription } from '../../../constants/helpInfo';
+
+const { PAGE_INFO, PAGE_NAME } = BlenderDescription;
 
 const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
 
@@ -91,28 +95,31 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
 
     return (
         <Page background={'#212034'}>
-            <div>
-                <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
-                <h2 className="Blender-subtitle">generates and adds a playlist to your Spoitify account that mixes your and Bob’s musical taste to your specifications</h2>
+            <div className="Blender-Page">
+                <div>
+                    <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
+                    <h2 className="Blender-subtitle">generates and adds a playlist to your Spoitify account that mixes your and Bob’s musical taste to your specifications</h2>
+                </div>
+                <div className="Blender-Sliders">
+                    {sliderObjects.map((sliderObject) => {
+                        const { leftLabel, rightLabel, updateAttribute, defaultVal } = sliderObject;
+                        return (
+                            <Slider 
+                                key={leftLabel}
+                                leftLabel={leftLabel}
+                                rightLabel={rightLabel}
+                                setSwipeDisable={setSwipeDisable} 
+                                updateAttribute={updateAttribute} 
+                                defaultVal={[defaultVal]} 
+                                height={SLIDER_HEIGHT} 
+                                width={SLIDER_WIDTH}
+                            />
+                        )
+                    })}
+                </div>
+                <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>
+                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </div>
-            <div className="Blender-Sliders">
-                {sliderObjects.map((sliderObject) => {
-                    const { leftLabel, rightLabel, updateAttribute, defaultVal } = sliderObject;
-                    return (
-                        <Slider 
-                            key={leftLabel}
-                            leftLabel={leftLabel}
-                            rightLabel={rightLabel}
-                            setSwipeDisable={setSwipeDisable} 
-                            updateAttribute={updateAttribute} 
-                            defaultVal={[defaultVal]} 
-                            height={SLIDER_HEIGHT} 
-                            width={SLIDER_WIDTH}
-                        />
-                    )
-                })}
-            </div>
-            <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>
         </Page>
     )
 }

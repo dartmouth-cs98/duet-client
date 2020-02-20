@@ -1,15 +1,10 @@
-.Story {
-    width: 100vw;
-    height: 100vh;
-}
-
-.Story-progress {
+.Stories-progress {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.Story-progress-bar {
+.Stories-progress-bar {
     height: 5px;
     margin: 0 3px;
 

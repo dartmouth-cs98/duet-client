@@ -5,7 +5,6 @@
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
-import html2canvas from 'html2canvas';
 import useResizeAware from 'react-resize-aware';
 import { Genre, User } from '../../../types';
 import { arrayOf, string } from 'prop-types';
@@ -108,19 +107,6 @@ Bubbles.propTypes = {
 
 const TopGenres = ({ user_1, user_2 }) => {
 
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
-    }
-
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
-    }
-
     const BUBBLE_BOX_WIDTH_PERCENTAGE  = 1.0;
     const BUBBLE_BOX_HEIGHT_PERCENTAGE = 0.5;
 
@@ -137,14 +123,9 @@ const TopGenres = ({ user_1, user_2 }) => {
 
 
     return (
-        <Page background={'#212034'} numPages={5} pageNum={2}>
+        <Page background={'#212034'}>
             {resizeListener}
-            <button id="share" onClick={() => saveScreen()}>...</button>
 
-            <div id="popup-background">
-                <div id="popup" onClick={() => handleClick()}>
-                </div>
-            </div>
             <div className ="TopGenres-Page">
                 <h1 className="TopGenres-Title">Top Genres</h1>
                 <Bubbles topGenres={user_1.genreCounts}

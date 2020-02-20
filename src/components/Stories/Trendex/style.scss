@@ -1,31 +1,9 @@
 .Trendex-Page {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    #popup {
-        // width: 80vw;
-        height: auto;
-    
-        img {
-            height: 100%;
-            width: 100%;
-        }
-    }
- 
-    #popup-background {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(.9, .9, .9, .5);
-        z-index: -1;    
-    }
 
     .Trendex-Description {
         font-family: Roboto;
@@ -41,7 +19,7 @@
         }
     }
 
-    .Trendex-Score {
+    .Trendex-Score-T {
         font-family: Roboto;
         font-style: normal;
         font-weight: bold;
@@ -51,6 +29,18 @@
         letter-spacing: 0.1em;
         margin: 0;
         color: $ACCENT;
+    }
+
+    .Trendex-Score-B {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25vw;
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: 0.1em;
+        margin: 0;
+        color: $PRIMARY;
     }
 
     .Trendex-Score-Label {
@@ -65,7 +55,7 @@
     }
 
     .Trendex-TopSquare {
-        background-color: $PRIMARY;
+        background-color: $SECONDARY;
         width: 100vw;
         height: 50vh;
         display: flex;
@@ -75,19 +65,16 @@
         padding: 10%;
         box-sizing: border-box;
         .Trendex-Score-Label {
-            color: $SECONDARY;
+            color: $WHITE;
         }
     }
 
     .Trendex-BottomSquare {
-        background-color: $SECONDARY;
-        width: 100vw;
-        height: 50vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        padding: 20%;
+        padding: 17%;
         box-sizing: border-box;
         .Trendex-Score-Label {
             color: $WHITE;

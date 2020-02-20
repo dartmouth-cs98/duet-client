@@ -1,47 +1,43 @@
-.Page {
+.Login-Page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Login-Button-Logo-Info {
+    margin-top: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 40%;
+}
+
+.Login-description {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    color: $WHITE;
+    font-size: 2vh;
+    line-height: 2vh;
     display: flex;
     align-items: center;
-    color: $SECONDARY;
-}
-
-#background {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../images/LoginScreen.png");
-    background-size: 100% 100%;
-}
-
-.DuetLogo{
-    transform: scale(.6);
-    display: flex;
-    justify-content: center;
-    margin-top: 13vh;
-}
-
-button {
-    font-size: 20px;
-    color: $SECONDARY;
-    border: 1px solid $SECONDARY;
-    border-radius: 5px;
-    background: transparent;
-    height: 40px;
-    width: 280px;
-    z-index: 99;
-    outline: none;
-}
-
-#infobox {
-    height: 40px;
-    width: 260px;
     text-align: center;
 }
 
-#smallLink {
-    color: $SECONDARY;
-    border: none;
-    font-size: 14px;
-    margin-top: 21vh;
+.Login-LearnMore {
+    margin-top: 15%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2vh;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: $ACCENT;
 }
 
 #PopupBackground {

@@ -1,28 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import useResizeAware from 'react-resize-aware';
 import Page from '../../Page';
-import html2canvas from 'html2canvas';
+import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import { DecadesDescription } from '../../../constants/helpInfo';
+
+const { PAGE_INFO, PAGE_NAME } = DecadesDescription;
 
 const Decades = ({ user_1, user_2, my_id }) => {
-
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            // var link = document.createElement('a');
-            // link.download = 'DecadeStory.png';
-            // link.href = canvas.toDataURL()
-            // link.click();
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
-    }
-
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
-    }
 
     let { decadeCounts: user1DecadeCounts } = user_1;
     let { decadeCounts: user2DecadeCounts } = user_2;
@@ -91,14 +77,8 @@ const Decades = ({ user_1, user_2, my_id }) => {
     const barWidth = barChartWidth / user1DecadeCounts.length;
 
     return (
-        <Page background={'#212034'} numPages={5} pageNum={4}>
+        <Page background={'#212034'} >
              {resizeListener}
-            <button id="share" onClick={() => saveScreen()}>...</button>
-
-            <div id="popup-background">
-                <div id="popup" onClick={() => handleClick()}>
-                </div>
-            </div>
 
             <div className="Decades-Page">
                 <div>
@@ -110,7 +90,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
                         {user_1.id != my_id && 
                             <h3>{user_1.display_name}</h3>}
                         {user_1.id == my_id && 
-                            <h3>you</h3>}
+                            <h3>You</h3>}
                         <div className="Decades-GraphOwner-Underline"></div>
                     </div>
                     <div className="Decades-BarChart" style={{ width: barChartWidth }}>
@@ -120,7 +100,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
                                 return (
                                     <div className="Decades-BarChart-Bar" key={`user1${decade}`} style={{ width: barWidth }}>
                                         <div 
-                                            className="Decades-BarChart-Bar-Bar"
+                                            className="Decades-BarChart-Bar-Bar-T"
                                             style={{ height: count * user1BarHeightMultiplier}}
                                         />
                                         <h1 className="Decades-BarChart-Bar-Label">{decade.toString().slice(-2)}s</h1>
@@ -135,9 +115,9 @@ const Decades = ({ user_1, user_2, my_id }) => {
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">
                         {user_2.id != my_id && 
-                            <h3>{user_2.display_name}</h3>}
+                            <h4>{user_2.display_name}</h4>}
                         {user_2.id == my_id && 
-                            <h3>you</h3>}
+                            <h4>You</h4>}
                         <div className="Decades-GraphOwner-Underline"></div>
                     </div>
                     <div className="Decades-BarChart" style={{ width: barChartWidth }}>
@@ -147,7 +127,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
                                 return (
                                     <div className="Decades-BarChart-Bar" key={`user2${decade}`} style={{ width: barWidth }}>
                                         <div 
-                                            className="Decades-BarChart-Bar-Bar"
+                                            className="Decades-BarChart-Bar-Bar-B"
                                             style={{ height: count * user2BarHeightMultiplier}}
                                         />
                                         <h1 className="Decades-BarChart-Bar-Label">{decade.toString().slice(-2)}s</h1>
@@ -159,6 +139,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
                     </div>
                 </div>
             </div>
+            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }
