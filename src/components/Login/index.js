@@ -21,7 +21,7 @@ const Login = ({ history }) => {
     const handleLogin = () => { 
         if (token)  {
             dispatch(fetchMeData(token, "medium_term"));
-            history.push("/info-compare")
+            history.push("/compare")
         }
         else {
             window.open(process.env.AUTH_SERVER_URL, "_self");

@@ -26,6 +26,7 @@
         justify-content: space-around;
         align-items: center;
         height: 70%;
+        transform: translateY(-10%);
 
         .Slider {
             .Slider-Label {
@@ -33,7 +34,6 @@
                 font-style: normal;
                 font-weight: bold;
                 font-size: 3vh;
-                transform: translateY(90%);
                 margin: 10px;
             }
         

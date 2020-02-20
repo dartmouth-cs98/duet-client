@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/info-compare" component={authOnly(Compare)}/>
+        <Route path="/compare" component={authOnly(Compare)}/>
         <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />
       </Switch>
