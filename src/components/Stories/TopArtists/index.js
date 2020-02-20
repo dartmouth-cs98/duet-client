@@ -44,7 +44,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         if (shared.indexOf(artist) < 0) {
                             return <h2 className="right-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="right-align-t" key={artist}><mark className="blue">{artist}</mark></h2>;
+                            return <h2 className="right-align-t" key={artist}><mark className="pink">{artist}</mark></h2>;
                         }   
                     })}
                 </div>
@@ -57,7 +57,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                          if (shared.indexOf(artist) < 0) {
                             return <h2 className="left-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="left-align-t" key={artist}><mark className="pink">{artist}</mark></h2>;
+                            return <h2 className="left-align-t" key={artist}><mark className="blue">{artist}</mark></h2>;
                         }  
                     })}
                 </div>   

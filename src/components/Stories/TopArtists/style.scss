@@ -43,11 +43,11 @@
 
         .right-align {
             text-align: right;
-            color: $PRIMARY;
+            color: $ACCENT;
         }
         .left-align {
             text-align: left;
-            color: $ACCENT;
+            color: $PRIMARY;
         }
 
         .right-align-t {
@@ -92,6 +92,13 @@
             h2 {
                 font-size: 2vh;
             }
+        }
+
+        @media screen and (max-width: 450px) {
+            h1{
+                font-size: 3vh
+            }
+            
         }
     } 
 }
