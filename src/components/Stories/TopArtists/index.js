@@ -22,7 +22,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
     })
 
     return (
-        <Page background={'#212034'} numPages={5} pageNum={0}>
+        <Page background={'#212034'} >
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
