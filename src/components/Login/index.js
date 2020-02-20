@@ -53,6 +53,7 @@ const Login = ({ history }) => {
                     <Button onClick={handleLogin} width={BUTTON_WIDTH}>login with spotify</Button>
                     <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
                 </div>
+                <button className="Login-LearnMore" id="goFS">Go fullscreen</button>
                 <button className="Login-LearnMore" onClick={() => setShowPopup(!showPopup)}>learn more</button>
                 { showPopup &&
                     <div className="popup" onClick={handleClick}>
