@@ -7,7 +7,6 @@ export const fetchMeData = (spotifyToken, time_range) => {
     return (dispatch) => {
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
-        dispatch({ type: types.STORE_SPOTIFY_TOKEN, token: spotifyToken });
 
         const userProfilePromise = getCurrentUserProfile(spotifyToken)
         const topTracksPromise = spotifyApi.getMyTopTracks({limit: 50, time_range}) 

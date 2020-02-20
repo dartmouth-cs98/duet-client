@@ -15,9 +15,10 @@
     
         .Compare-Input {
             width: 100%;
-            input {
+            button {
                 width: 100%;
                 height: 40px;
+                text-align: left;
                 background: $SECONDARY;
                 border: 2px solid $WHITE;
                 box-sizing: border-box;
