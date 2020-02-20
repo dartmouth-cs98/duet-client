@@ -70,16 +70,25 @@
     }
 }
 
-.Popup-Button {
-    padding-left: 90%;
+.Popup-Button-Container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-    button {
-        background-color: $WHITE;
+    .Popup-Button {
+        background-color: #FFFFFF;
         border: none;
-        color: $SECONDARY;
-        font-size: 16px;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-      }
+        color: #212034;
+        height: 30px;
+        width: 30px;
+        border-radius: 100%;
+        text-align: center;
+        margin: 8px;
+       
+        p {
+            margin: 3px 0 0 0;
+            font-family: Roboto;
+            font-size: 3vh;
+        }
+    }
 }

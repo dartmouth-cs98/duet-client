@@ -44,9 +44,10 @@ const Popup = ({ pageInfo, pageName }) => {
                     </Collapsible>
                 </div>
                 :
-                <div className="Popup-Button">
-                    <button onClick={() => setShowPopup(!showPopup)}>?</button>
+                <div className="Popup-Button-Container">
+                     <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
                 </div>
+               
              }
         </>
     )
