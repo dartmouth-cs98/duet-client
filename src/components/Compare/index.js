@@ -12,6 +12,7 @@ import { func } from 'prop-types';
 
 const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
+const EVERYONE_ID = "Everyone";
 
 const Compare = ({ history }) => {
 
@@ -20,10 +21,10 @@ const Compare = ({ history }) => {
     const [showPopup, setShowPopup] = useState(false);
 
     const [topIsSearching, setTopIsSearching] = useState(false);
-    const [topUser, setTopUser] = useState({ name: 'Me' });
+    const [topUser, setTopUser] = useState({ name: 'Me', id: my_id });
 
     const [bottomIsSearching, setBottomIsSearching] = useState(false);
-    const [bottomUser, setBottomUser] = useState({ name: 'Search for user' });
+    const [bottomUser, setBottomUser] = useState({ name: 'Everyone', id: EVERYONE_ID });
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
@@ -60,11 +61,7 @@ const Compare = ({ history }) => {
     };
 
     const handleGoClick = () => {
-        if ( topUser.name == 'Me') {
-            dispatch(fetchUser1(my_id));
-        } else {
-            dispatch(fetchUser1(topUser.id));
-        }
+        dispatch(fetchUser1(topUser.id))
         dispatch(fetchUser2(bottomUser.id));
         history.push('/stories', { isComparing, isMixing })
     }
