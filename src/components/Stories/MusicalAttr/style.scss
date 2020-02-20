@@ -4,20 +4,46 @@
     height: 100%;
     flex-direction: column;
 
+    .MusicalAttr-Key {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10%;
+
+        .MusicalAttr-Key-Item {
+            display: flex;
+            align-items: center;
+            h1 {
+                margin: 0 10px 0 0;
+                font-size: 2vh;
+                color: white;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+            }
+            div {
+                width: 10px;
+                height: 10px;
+                border-radius: 4px;
+            }
+        }
+    }
+
     .MusicalAttr-Title-TextShadow {
+        color: $WHITE;
         font-family: Roboto;
         font-size: 6vh;
         line-height: 100%;
         text-shadow: -2px 0px $ACCENT;
-        margin: 20px 0 0 15px;
-        color: $WHITE;
+        margin: 8% 0 0 8%;
     }
     
     .MusicalAttr-subtitle {
         font-family: Roboto;
-        color: $SECONDARY;
-        margin: 0 0 0 15px;
+        color: $WHITE;
+        margin: 5px 0 0 8%;
         font-size: 2vh;
+        width: 80%;
     }
     
     .Sliders {
