@@ -36,7 +36,7 @@ const Stories = ({ history, location }) => {
         if (isMixing && isComparing) {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
-                    <SwipeableViews disabled={swipeDisabled}>
+                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -49,7 +49,7 @@ const Stories = ({ history, location }) => {
                 );
             } else {
                 return (
-                    <SwipeableViews disabled={swipeDisabled}>
+                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -80,7 +80,7 @@ const Stories = ({ history, location }) => {
         } else {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
-                    <SwipeableViews disabled={swipeDisabled}>
+                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -92,7 +92,7 @@ const Stories = ({ history, location }) => {
                 );
             } else {
                 return (
-                    <SwipeableViews disabled={swipeDisabled}>
+                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
