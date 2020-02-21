@@ -7,7 +7,6 @@ import AuthRedirect from '../components/AuthRedirect';
 import Login from '../components/Login';
 import Compare from "./Compare";
 import { useSelector } from 'react-redux';
-import Search from './Search';
 
 const App = () => {
   
@@ -21,7 +20,6 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route path="/search" component={Search}/>
         <Route path="/compare" component={authOnly(Compare)}/>
         <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />

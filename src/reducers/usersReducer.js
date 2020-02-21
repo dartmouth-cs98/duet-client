@@ -8,6 +8,8 @@ const usersReducer = (state = {}, action) => {
       return { ...state, user_1: action.user }
     case types.FETCH_USER_2:
       return { ...state, user_2: action.user }
+    case types.CLEAR_USERS:
+      return { my_id: state.my_id} 
     default: 
       return state
   }

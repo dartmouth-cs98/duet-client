@@ -1,6 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchMeData } from '../../actions';
+import React, { useEffect } from 'react';
+import Loading from '../Loading';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { storeToken } from '../../utils/tokenUtils';
 
@@ -17,15 +16,16 @@ const getHashParams = () => {
 }
 
 const LoadingLoginPage = ({ history }) => {
-    const params = getHashParams();
-    const token = params.access_token;
-    const dispatch = useDispatch();
-    storeToken(token);
-    dispatch(fetchMeData(token, "medium_term"))
-    history.push(token ? '/compare' : '/');
     
+    useEffect(() => {
+        const params = getHashParams();
+        const spotify_token = params.access_token;
+        storeToken(spotify_token);
+        history.push('/');
+    }, [])
+ 
     return (
-        <h1>Logging you in...</h1>
+        <Loading>logging you in...</Loading>
     );
 };
 
