@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Page from '../Page';
 import DuetLogo from '../DuetLogo';
 import Button from '../Button';
+import Loading from '../Loading';
 import { fetchMeData } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
@@ -16,16 +17,27 @@ const BUTTON_WIDTH = 250;
 const Login = ({ history }) => {
 
     const dispatch = useDispatch();
-    const token = getToken();
+    const spotify_token = getToken();
+    const [loggingIn, setLoggingIn] = useState(!!spotify_token);
+
+    useEffect(() => {
+        if (loggingIn) {
+            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
+                history.push("/compare")
+            })
+        }
+    }, [])
 
     const handleLogin = () => { 
-        if (token)  {
-            dispatch(fetchMeData(token, "medium_term"));
-            history.push("/compare")
-        }
-        else {
+        setLoggingIn(true);
+        // if (spotify_token)  {
+        //     dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
+        //         history.push("/compare")
+        //     })
+        // }
+        // else {
             window.open(process.env.AUTH_SERVER_URL, "_self");
-        }
+        // }
     }
     
     const [showPopup, setShowPopup] = useState(false);
@@ -47,19 +59,23 @@ const Login = ({ history }) => {
 
     return (
         <Page background={'#212034'}>
-            <div className="Login-Page">
-                <div className="Login-Button-Logo-Info">
-                    <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT} />
-                    <Button onClick={handleLogin} width={BUTTON_WIDTH}>login with spotify</Button>
-                    <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
-                </div>
-                <button className="Login-LearnMore" onClick={() => setShowPopup(!showPopup)}>learn more</button>
-                { showPopup &&
-                    <div className="popup" onClick={handleClick}>
-                        {renderPopup()}
+            
+        { loggingIn ? <Loading>{`${spotify_token ? 'logging you in...' : 'connecting to spotify...'}`}</Loading> :
+            
+                <div className="Login-Page">
+                    <div className="Login-Button-Logo-Info">
+                        <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT} />
+                        <Button onClick={handleLogin} width={BUTTON_WIDTH}>login with spotify</Button>
+                        <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
                     </div>
-                }
-            </div>
+                    <button className="Login-LearnMore" onClick={() => setShowPopup(!showPopup)}>learn more</button>
+                    { showPopup &&
+                        <div className="popup" onClick={handleClick}>
+                            {renderPopup()}
+                        </div>
+                    }
+                </div> 
+            }
         </Page>
     )
 }

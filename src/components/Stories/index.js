@@ -9,6 +9,7 @@ import Members from './Members';
 import Share from './Share';
 import { useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
+import Loading from '../Loading';
 import _ from 'lodash';
 
 
@@ -123,7 +124,7 @@ const Stories = ({ history, location }) => {
         );
     } 
     else {
-        return <div/>
+        return <Loading>loading...</Loading>
     }
 }
 

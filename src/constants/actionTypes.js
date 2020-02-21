@@ -13,7 +13,7 @@ export const SET_COMPARE = "SET_COMPARE";
 export const STORE_USER = "STORE_USER";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const CLEAR_AUTH = "CLEAR_AUTH";
-export const CLEAR_USER = "CLEAR_USER";
+export const CLEAR_USERS = "CLEAR_USERS";
 
 
 // new types
