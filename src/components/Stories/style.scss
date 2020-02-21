@@ -1,18 +1,18 @@
-.Story {
-    width: 100vw;
-    height: 100vh;
-}
-
-.Story-progress {
+.Stories-progress {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.Story-progress-bar {
+.Stories-progress-bar {
     height: 5px;
     margin: 0 3px;
 
     &:first-child { margin-left: 0 !important; }
     &:last-child { margin-right: 0 !important; }
+}
+
+.Empty {
+    width: 0;
+    height: 0;
 }

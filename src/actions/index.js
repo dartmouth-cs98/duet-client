@@ -1,13 +1,14 @@
 import * as types from '../constants/actionTypes';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { getCurrentUserProfile, getTrackInfos, getAvgTaste, getGenreCount } from '../utils/spotifyUtils';
-import { getBackendToken, postUser, getUser } from '../utils/backendUtils';
+import { getBackendToken, postUser, getUser, joinGroup } from '../utils/backendUtils';
+
+const EVERYONE_ID = "Everyone";
 
 export const fetchMeData = (spotifyToken, time_range) => {
     return (dispatch) => {
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
-        dispatch({ type: types.STORE_SPOTIFY_TOKEN, token: spotifyToken });
 
         const userProfilePromise = getCurrentUserProfile(spotifyToken)
         const topTracksPromise = spotifyApi.getMyTopTracks({limit: 50, time_range}) 
@@ -30,6 +31,7 @@ export const fetchMeData = (spotifyToken, time_range) => {
                       const { token } = response;
                       dispatch({ type: types.STORE_TOKEN, token })
                       postUser(user, token);
+                      joinGroup(EVERYONE_ID, id);
                     })
                     dispatch({ type: types.FETCH_USER_1, user: user });
                 })  

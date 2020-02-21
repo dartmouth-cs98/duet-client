@@ -22,7 +22,7 @@ const LoadingLoginPage = ({ history }) => {
     const dispatch = useDispatch();
     storeToken(token);
     dispatch(fetchMeData(token, "medium_term"))
-    history.push(token ? '/' : '/');
+    history.push(token ? '/compare' : '/');
     
     return (
         <h1>Logging you in...</h1>

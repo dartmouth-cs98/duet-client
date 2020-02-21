@@ -1,42 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
-import html2canvas from 'html2canvas';
+import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
-import PropTypes from 'prop-types';
+import { number, string } from 'prop-types';
 import { User } from '../../../types';
+import { MusicalAttrDescription } from '../../../constants/helpInfo';
 
-const { number, string } = PropTypes;
+const { PAGE_INFO, PAGE_NAME } = MusicalAttrDescription;
+const USER_1_COLOR = '#E5277B';
+const USER_2_COLOR = '#9BD6DC';
 
-const Slider = ({ width: sliderWidth, height: sliderHeight, label, color, val1, val2, name1, name2 }) => {
+const Slider = ({ width: sliderWidth, height: sliderHeight, label, val1, val2 }) => {
     
+    let slider1Color;
+    let slider2Color;
+    let winnerColor;
+
     // val2 must be greater than val1
     if (val2 < val1) {
-        [name1, name2] = [name2, name1];
         [val1, val2] = [val2, val1]
+        slider1Color = USER_2_COLOR;
+        slider2Color = USER_1_COLOR;
+        winnerColor = USER_1_COLOR
+    } else {
+        slider1Color = USER_1_COLOR;
+        slider2Color = USER_2_COLOR;
+        winnerColor = USER_2_COLOR
     }
 
     const pattyWidth = sliderWidth * .04;
-    const nameWidth = sliderWidth * .2;
     const sliderDifference = val2 - val1;
     const labelAlignment = val2 > .5 ? 'left' : 'right';
-    const topNameOffsetX = (val2 * sliderWidth) - .15 * nameWidth;
-    const bottomNameOffsetX = (val1 * sliderWidth) - .35 * nameWidth;
 
     return (
         <div className="Slider" style={{ width: sliderWidth, height: sliderHeight }}>
-            <h1 className="Slider-Label" style={{ color: color, textAlign: labelAlignment }}>{label}</h1>
-            <h2 className="Slider-Name" style={{ width: nameWidth, transform: `translate(${topNameOffsetX}px, -20%)`}}>{name2}</h2>
-            <div className="Slider-Base">
-                <div className="Slider-InvisibleStarter" style={{ width: val1 * sliderWidth }}/> 
-                <div className="Slider-Patty" style={{ backgroundColor: color, width: pattyWidth}}/>
-                <div className="Slider-StripedMiddle" style={{ width: sliderDifference * sliderWidth }}/>  
-                <div className="Slider-Patty" style={{ backgroundColor: color, width: pattyWidth }}/>
+            <h1 className="Slider-Label" style={{ color: winnerColor, textAlign: labelAlignment }}>{label}</h1>
+            <div className="Slider-Base" style={{ border: `3px solid ${winnerColor}`, backgroundColor: '#212034' }}>
+                <div className="Slider-InvisibleStarter" style={{ width: val1 * sliderWidth, background: winnerColor}}/> 
+                <div className="Slider-Patty" style={{ backgroundColor: slider1Color, width: pattyWidth}}/>
+                <div className="Slider-Middle" style={{ width: sliderDifference * sliderWidth, background: winnerColor}}/>  
+                <div className="Slider-Patty" style={{ backgroundColor: slider2Color, width: pattyWidth }}/>
             </div>
             <div className="Slider-Axis">
                 <h1>0</h1>
                 <h1>100</h1>
             </div>
-            <h2 className="Slider-Name" style={{ width: nameWidth, transform: `translate(${bottomNameOffsetX}px, -40%)`}}>{name1}</h2>
         </div>
     )
 };
@@ -65,19 +73,6 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
     }
     else if(user_2.id == my_id){
         user2Name = 'You'
-    }
-
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
-    }
-
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
     }
 
     const attributes = [
@@ -122,18 +117,24 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
 
     return (
         
-        <Page background={'#9BD6DC'} numPages={5} pageNum={3}>
+        <Page background={'#212034'}>
             {resizeListener}
-            <button id="share" onClick={() => saveScreen()}>...</button>
-
-            <div id="popup-background">
-                <div id="popup" onClick={() => handleClick()}>
-                </div>
-            </div>
             <div className="MusicalAttr-Page">
                 <div>
                     <h1 className="MusicalAttr-Title-TextShadow">Taste :P</h1>
                     <h2 className="MusicalAttr-subtitle">how happy, acoustic, danceable, and energetic is your music?</h2>
+                </div>
+                <div className="MusicalAttr-Key">
+                    <div className="MusicalAttr-Key-Item">
+                        <h1>{user1Name}</h1>
+                        <h1>-</h1>
+                        <div style={{ background: USER_1_COLOR }}/>
+                    </div>
+                    <div className="MusicalAttr-Key-Item">
+                        <h1>{user2Name}</h1>
+                        <h1>-</h1>
+                        <div style={{ background: USER_2_COLOR }}/>
+                    </div>
                 </div>
                 <div className="Sliders">
                     {attributes.map((attribute) => {
@@ -147,12 +148,11 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
                                 color={color} 
                                 val1={val1} 
                                 val2={val2}
-                                name1={user1Name}
-                                name2={user2Name}
                             />
                         );
                     })}
                 </div>
+                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </div>
         </Page>
     )

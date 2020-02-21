@@ -1,9 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import Page from '../../Page';
-import html2canvas from 'html2canvas';
+import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import { TopArtistsDescription } from '../../../constants/helpInfo';
+
+const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
@@ -19,21 +21,8 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
         }
     })
 
-    const saveScreen = () => {
-        html2canvas(document.body).then(function(canvas) {
-            var canvasData = canvas.toDataURL();
-            document.getElementById("popup-background").style.zIndex = "99";
-            document.getElementById("popup").innerHTML = '<img src="' + canvasData + '">';
-        })
-    }
-
-    const handleClick = () => {
-        document.getElementById("popup-background").style.zIndex = "-1";
-        document.getElementById("popup").innerHTML = "";
-    }
-
     return (
-        <Page background={'white'} numPages={5} pageNum={0}>
+        <Page background={'#212034'} >
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
@@ -53,9 +42,9 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         <h1 className="right-align">{user_1.display_name}</h1>}
                     {user1TruncatedArtists.map((artist) => {
                         if (shared.indexOf(artist) < 0) {
-                            return <h2 className="right-align" key={artist}>{artist}</h2>;
+                            return <h2 className="right-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="right-align" key={artist}><mark>{artist}</mark></h2>;
+                            return <h2 className="right-align-t" key={artist}><mark className="pink">{artist}</mark></h2>;
                         }   
                     })}
                 </div>
@@ -66,20 +55,15 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         <h1 className="left-align">{user_2.display_name}</h1>}
                     {user2TruncatedArtists.map((artist) => {
                          if (shared.indexOf(artist) < 0) {
-                            return <h2 className="left-align" key={artist}>{artist}</h2>;
+                            return <h2 className="left-align-t" key={artist}>{artist}</h2>;
                         } else {
-                            return <h2 className="left-align" key={artist}><mark>{artist}</mark></h2>;
+                            return <h2 className="left-align-t" key={artist}><mark className="blue">{artist}</mark></h2>;
                         }  
                     })}
-                </div>
-                {/* <div id="arrow"/> */}
+                </div>   
             </div>
-
-                    <div id="popup-background">
-                        <div id="popup" onClick={() => handleClick()}>
-                        </div>
-                    </div>
-            </Page>
+            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
+        </Page>
     )
 }
 
