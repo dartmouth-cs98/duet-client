@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopArists from './TopArtists';
 import Decades from './Decades';
 import MusicalAttr from './MusicalAttr';
@@ -19,6 +19,7 @@ const Stories = ({ history, location }) => {
     const { user_1, user_2, my_id } = useSelector((state) => state.users);
 
     const [swipeDisabled, setSwipeDisable] = useState(false);
+    const [loaded, setLoaded] = useState(false);
 
     const numPages = (isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1;
     const [currPage, setCurrPage] = useState(0);
@@ -32,6 +33,10 @@ const Stories = ({ history, location }) => {
         }
         
     }
+
+    useEffect(() => {
+        setTimeout(() => setLoaded(true), 2000);
+    });
 
     const renderSwipableViews = () => {
         if (isMixing && isComparing) {
@@ -107,7 +112,7 @@ const Stories = ({ history, location }) => {
         
     }
 
-    if (user_1 && user_2) {
+    if (loaded && user_1 && user_2) {
         return (
             <div>
                 <div className="Stories-progress">
