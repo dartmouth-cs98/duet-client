@@ -17,7 +17,7 @@ export const createPlaylist = (spotifyToken, user_id, name, description, uris) =
         spotifyApi.createPlaylist(user_id, {name, description }).then((playlist) => {
             const { id } = playlist;
             spotifyApi.addTracksToPlaylist(id, uris)
-            setTimeout(resolve, 1500);
+            setTimeout(resolve, 2000);
         }, (err) => reject(err));
     });
 }

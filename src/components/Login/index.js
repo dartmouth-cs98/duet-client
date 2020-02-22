@@ -23,21 +23,14 @@ const Login = ({ history }) => {
     useEffect(() => {
         if (loggingIn) {
             dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
-                history.push("/compare")
+                setTimeout(() => history.push('/compare'), 2000);
             })
         }
     }, [])
 
     const handleLogin = () => { 
         setLoggingIn(true);
-        // if (spotify_token)  {
-        //     dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
-        //         history.push("/compare")
-        //     })
-        // }
-        // else {
-            window.open(process.env.AUTH_SERVER_URL, "_self");
-        // }
+        setTimeout(() => window.open(process.env.AUTH_SERVER_URL, "_self"), 2000);
     }
     
     const [showPopup, setShowPopup] = useState(false);
