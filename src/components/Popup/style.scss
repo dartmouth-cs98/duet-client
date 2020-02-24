@@ -17,16 +17,38 @@
     justify-content: flex-start;
     align-items: center;
 
+    .Collapsible__trigger {
+        display: block;
+        font-weight: 400;
+        text-decoration: none;
+        color: #333333;
+        position: relative;
+        padding: 10px;
+        
+    }
+
+        .Collapsible__trigger:after {
+          font-family: Andale Mono, monospace;
+          content: 'v';
+          position: absolute;
+          right: -2px;
+          top: 10px;
+          display: block;
+          transition: transform 300ms; }
+
+        .Collapsible__trigger.is-open:after {
+          transform: rotateZ(180deg); }
+
     .topHeader{
         font-family: Roboto;
-        font-size: 7vw;
+        font-size: 7.5vw;
         text-align: center;
         width: 95%;
     }
 
     .innerCollapsible{
         font-family: Roboto;
-        font-size: 5vw;
+        font-size: 6vw;
         text-align: center;
         width: 95%;
     }
@@ -36,14 +58,14 @@
     }
     h2 {
         font-family: Roboto;
-        font-size: 4vw;
+        font-size: 6vw;
         text-align: left;
         width: 95%;
         text-decoration: none;
     }
     p {
         font-family: Roboto;
-        font-size: 3vw;
+        font-size: 4vw;
         text-align: left;
         width: 95%;
     }
