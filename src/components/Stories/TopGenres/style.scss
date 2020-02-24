@@ -37,9 +37,8 @@
 
             .Bubble-Label {
                 position: absolute;
-                width: 80%;
-                width: 80%;
-                font-size: fit-content(1px);
+                width: 90%;
+                font-size: 5px;
                 text-justify: auto;
                 text-align: center;
                 color: #ffffff;
@@ -60,4 +59,27 @@
         background: url('../images/bubbleBlue.png');
         background-size: cover;
     }
+}
+
+#popup {
+    width: 80vw;
+    height: auto;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#popup-background {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(.9, .9, .9, .5);
+    z-index: -1;
 }
