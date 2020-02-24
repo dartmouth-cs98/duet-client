@@ -309,6 +309,7 @@ const TopGenres = ({ user_1, user_2 }) => {
                          width={bubbleBoxWidth}
                          height={bubbleBoxHeight}
                 />
+                <div className="Genres-Divider">\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</div>
                 <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}

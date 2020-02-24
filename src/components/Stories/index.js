@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopArists from './TopArtists';
 import Decades from './Decades';
 import MusicalAttr from './MusicalAttr';
@@ -9,6 +9,7 @@ import Members from './Members';
 import Share from './Share';
 import { useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
+import Loading from '../Loading';
 import _ from 'lodash';
 
 
@@ -18,6 +19,7 @@ const Stories = ({ history, location }) => {
     const { user_1, user_2, my_id } = useSelector((state) => state.users);
 
     const [swipeDisabled, setSwipeDisable] = useState(false);
+    const [loaded, setLoaded] = useState(false);
 
     const numPages = (isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1;
     const [currPage, setCurrPage] = useState(0);
@@ -26,11 +28,27 @@ const Stories = ({ history, location }) => {
     const returnBarColor = (currPage, i) => {
         if (currPage == i) {
             return PAGE_COLORS[i % 2]
+        } else if (currPage == numPages || currPage==numPages-1) {
+            return '#9BD6DC';
         } else {
             return '#ffffff';
         }
         
     }
+
+    const returnBarExistence = (currPage) => {
+        var result = (currPage==numPages-1 || currPage==numPages  ) ? "100%": "100%";
+        return(result)
+    }
+
+    const returnBarBackgroundColor = (currPage) => {
+        var result = (currPage==numPages-1 || currPage==numPages  ) ? "#9BD6DC": "#212034";
+        return(result)
+    }
+
+    useEffect(() => {
+        setTimeout(() => setLoaded(true), 2000);
+    });
 
     const renderSwipableViews = () => {
         if (isMixing && isComparing) {
@@ -106,11 +124,11 @@ const Stories = ({ history, location }) => {
         
     }
 
-    if (user_1 && user_2) {
+    if (loaded && user_1 && user_2) {
         return (
             <div>
-                <div className="Stories-progress">
-                    {_.range(numPages).map((i) => 
+                <div className="Stories-progress" style={{opacity: returnBarExistence(currPage), backgroundColor: returnBarBackgroundColor(currPage)}}>
+                    {_.range(numPages-1).map((i) => 
                         <div 
                             className="Stories-progress-bar"
                             key={i}
@@ -123,7 +141,7 @@ const Stories = ({ history, location }) => {
         );
     } 
     else {
-        return <div/>
+        return <Loading>loading...</Loading>
     }
 }
 

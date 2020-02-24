@@ -15,6 +15,16 @@
         color: $WHITE;
     }
 
+    .Genres-Divider {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 6vw;
+        letter-spacing: 0.12em;
+        color: $WHITE;
+        transform: translateY(10px);
+    }
+
     .Bubbles {
         position: relative;
         width: 100vw;
