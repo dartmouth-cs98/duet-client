@@ -9,7 +9,7 @@ import { string, func } from 'prop-types';
 import Button from '../../Button';
 import Loading from '../../Loading';
 import { getRecommendations, createPlaylist } from '../../../utils/playlistGenerator';
-import _ from 'lodash';
+import _ from 'lodash'; 
 import Slider from './Slider';
 import Popup from '../../Popup';
 import { BlenderDescription } from '../../../constants/helpInfo';
