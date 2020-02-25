@@ -52,11 +52,11 @@ export const postUser = (user, token) => {
 
 
 export const addGroup = (groupId, userId) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         axios.post(`https://cs98-duet.herokuapp.com/groups`, {
             "user_id": userId,
             "group_id": groupId,
-        }).then((response) => resolve(response.data));
+        }).then((response) => setTimeout(() => resolve(response.data), 2000), () => reject());
     })
 }
 
