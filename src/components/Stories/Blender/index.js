@@ -156,7 +156,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                 <div className="Blender-Page">
                     <div>
                         <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
-                        <h2 className="Blender-subtitle">generates and adds a playlist to your Spoitify account that mixes your and Bob’s musical taste to your specifications</h2>
+                        <h2 className="Blender-subtitle">use this to generate and add a playlist to your Spoitify account that mixes your musical taste with {user_2.id}&apos;s to your specifications</h2>
                     </div>
                     <div className="Blender-Sliders">
                         {sliderObjects.map((sliderObject) => {

@@ -21,7 +21,7 @@ const Members = () => {
     }
 
     return (
-        <Page background={'#9BD6DC'}>
+        <Page background={'#212034'}>
             <div id="Members">
                 <h1>These are the members of {user_2.id}</h1>
                 <div id="memberlist">
@@ -30,6 +30,7 @@ const Members = () => {
                         Object.values(members).map((member) => (
                             <li key={member}><span>{member}</span></li>
                         )
+                        
                     )}
                     </ul>
                 </div>
