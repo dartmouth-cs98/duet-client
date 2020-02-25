@@ -10,8 +10,13 @@ const { PAGE_INFO, PAGE_NAME } = DecadesDescription;
 
 const Decades = ({ user_1, user_2, my_id }) => {
 
-    let { decadeCounts: user1DecadeCounts } = user_1;
-    let { decadeCounts: user2DecadeCounts } = user_2;
+    const compareDecades = (a,b) => {
+        if (a.decade > b.decade) return 1;
+        else return -1
+    }
+
+    let user1DecadeCounts = user_1.decadeCounts.sort(compareDecades);
+    let user2DecadeCounts = user_2.decadeCounts.sort(compareDecades);
 
     // grab max decade counts so we can control heights of graphs
     const user1MaxDecadeCount = Math.max.apply(null, user1DecadeCounts.map(d => d.count));
