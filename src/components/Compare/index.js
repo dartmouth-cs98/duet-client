@@ -8,6 +8,7 @@ import Button from '../Button';
 import Switch from '../Switch';
 import Search from '../Search';
 import ModalWrapper from '../Modal';
+import ReactLoading from 'react-loading';
 import { fetchUser1, fetchUser2 } from '../../actions';
 import { addGroup } from '../../utils/backendUtils';
 import { func } from 'prop-types';
@@ -17,7 +18,21 @@ const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
 const EVERYONE_ID = "Everyone";
 
-const CreateGroupModal = ({ toggleModal }) => {
+const CreateGroupModal = ({ toggleModal, my_id }) => {
+
+    const NAMING_GROUP = 'NAMING_GROUP';
+    const CREATING_GROUP = 'CREATING_GROUP';
+    const GROUP_CREATED = 'GROUP_CREATED';
+    const GROUP_FAILED = 'GROUP_FAILED';
+
+    const [groupName, setGroupName] = useState('');
+    const [status, setStatus] = useState(NAMING_GROUP)
+
+    const handleAddGroupClick = () => {
+        setStatus(CREATING_GROUP);
+        addGroup(groupName, my_id).then(() => setStatus(GROUP_CREATED), () => setStatus(GROUP_FAILED));
+    }
+
     return (
         <div className="Compare-CreateGroup-Modal">
             <div className="Compare-CreateGroup-Modal-Close">
@@ -28,10 +43,37 @@ const CreateGroupModal = ({ toggleModal }) => {
                     </svg>  
                 </button>  
             </div>
-            <>  
-                <h1>Name your group</h1>
-                {/* <ReactLoading type={'bars'} color="#fff" /> */}
-            </>
+            { status === NAMING_GROUP &&
+                <>  
+                    <h1>Name your group</h1>
+                    <input 
+                        autoFocus
+                        type="text" 
+                        value={groupName} 
+                        onClick={() => setGroupName}
+                        onChange={(e) => setGroupName(e.target.value)}
+                        className="Search-Bar"
+                        placeholder="name your group here"
+                    />
+                    <Button onClick={handleAddGroupClick} width={200} >create group!</Button>
+                </>
+            }
+            { status === CREATING_GROUP && 
+                <>
+                    <h1>creating your group...</h1>
+                    <ReactLoading type={'bars'} color="#fff" />
+                </>
+            }
+            { status === GROUP_CREATED && 
+                <>
+                    <h1>group created!</h1>
+                </>
+            }
+            { status === GROUP_FAILED && 
+                <>
+                    <h1>group failed!</h1>
+                </>
+            }
         </div>
     )
 }
@@ -93,7 +135,7 @@ const Compare = ({ history }) => {
 
     return (
         <ModalWrapper showModal={showModal}>
-            <CreateGroupModal toggleModal={toggleModal} />
+            <CreateGroupModal toggleModal={toggleModal} my_id={my_id} />
             <Page background={'#212034'}>
                 <Search 
                     enabled={topIsSearching || bottomIsSearching} 
