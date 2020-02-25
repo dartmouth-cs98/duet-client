@@ -21,29 +21,16 @@ const Stories = ({ history, location }) => {
     const [swipeDisabled, setSwipeDisable] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
-    const numPages = (isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1;
+    const numPages = (isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 2;
     const [currPage, setCurrPage] = useState(0);
 
     const PAGE_COLORS = ['#9BD6DC', '#E5277B']
     const returnBarColor = (currPage, i) => {
         if (currPage == i) {
             return PAGE_COLORS[i % 2]
-        } else if (currPage == numPages || currPage==numPages-1) {
-            return '#9BD6DC';
         } else {
             return '#ffffff';
         }
-        
-    }
-
-    const returnBarExistence = (currPage) => {
-        var result = (currPage==numPages-1 || currPage==numPages  ) ? "100%": "100%";
-        return(result)
-    }
-
-    const returnBarBackgroundColor = (currPage) => {
-        var result = (currPage==numPages-1 || currPage==numPages  ) ? "#9BD6DC": "#212034";
-        return(result)
     }
 
     useEffect(() => {
@@ -127,8 +114,8 @@ const Stories = ({ history, location }) => {
     if (loaded && user_1 && user_2) {
         return (
             <div>
-                <div className="Stories-progress" style={{opacity: returnBarExistence(currPage), backgroundColor: returnBarBackgroundColor(currPage)}}>
-                    {_.range(numPages-1).map((i) => 
+                <div className="Stories-progress">
+                    {_.range(numPages).map((i) => 
                         <div 
                             className="Stories-progress-bar"
                             key={i}
