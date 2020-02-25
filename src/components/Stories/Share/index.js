@@ -19,11 +19,11 @@ const Share = ({ history }) => {
     }
 
     return (
-        <Page background={'#9BD6DC'}>
+        <Page background={'#212034'}>
             <div id="Share">
                 <div id="headline">
                     <h1>wanna</h1>
-                    <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT} color="#212034"/>
+                    <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT}/>
                     <h1>again?</h1>
                 </div>
                 <a href="sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20http://cs98-duet.surge.sh/">
