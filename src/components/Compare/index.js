@@ -12,6 +12,7 @@ import { fetchUser1, fetchUser2 } from '../../actions';
 import { addGroup } from '../../utils/backendUtils';
 import { func } from 'prop-types';
 
+
 const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
 const EVERYONE_ID = "Everyone";
