@@ -9,6 +9,8 @@ import Search from '../Search';
 import { fetchUser1, fetchUser2 } from '../../actions';
 import { addGroup } from '../../utils/backendUtils';
 import { func } from 'prop-types';
+import ModalWrapper from '../Modal';
+
 
 const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
@@ -18,7 +20,6 @@ const Compare = ({ history }) => {
 
     const dispatch = useDispatch();
     const { user_1, my_id } = useSelector((state) => state.users);
-    const [showPopup, setShowPopup] = useState(false);
 
     const [topIsSearching, setTopIsSearching] = useState(false);
     const [topUser, setTopUser] = useState({ name: 'Me', id: my_id });
@@ -29,36 +30,43 @@ const Compare = ({ history }) => {
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
 
-    const [groupNameVal, setGroupNameVal] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
-    const renderPopup = () => {
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    }
+
+    const handleAddGroupClick = (groupNameVal) => {
+        addGroup(groupNameVal, user_1.id)
+        if (showModal) {
+            setShowModal(!showModal);
+        } 
+    }
+
+    const AddGroupModal = () => {
+        const [innerGroupNameVal, setInnerGroupNameVal] = useState('');
+
+        const handleInnerGroupNameChange = (e) => {
+            const { value } = e.target;
+            setInnerGroupNameVal(value)
+        };
+
         return (
-            <div id="PopupBackground">
-                <button id="close" onClick={() => handleClose()}>x</button>
-                <h3>name your group</h3>
-                <input type="text" value={groupNameVal} onChange={handleGroupNameChange}></input>
-                <button onClick={() => handleAddGroupClick()}>create</button>
+            <div className="Group-Modal">
+                <div className="Group-Modal-Close">
+                    <button onClick={toggleModal}>
+                        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L16.5 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                            <path d="M16.5 1L0.999999 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                        </svg>  
+                    </button>  
+                </div>
+                <h1>name your group</h1>
+                <input type="text" value={innerGroupNameVal} onChange={handleInnerGroupNameChange}></input>
+                <button id="createButton" onClick={() => handleAddGroupClick(innerGroupNameVal)}>create</button>
             </div>
         )
     }
-
-    const handleClose = () => {
-        if (showPopup) {
-            setShowPopup(!showPopup);
-        } 
-    }
-
-    const handleAddGroupClick = () => {
-        addGroup(groupNameVal, user_1.id)
-        if (showPopup) {
-            setShowPopup(!showPopup);
-        } 
-    }
-
-    const handleGroupNameChange = (e) => {
-        const { value } = e.target;
-        setGroupNameVal(value)
-    };
 
     const handleGoClick = () => {
         dispatch(fetchUser1(topUser.id))
@@ -77,6 +85,8 @@ const Compare = ({ history }) => {
     }
 
     return (
+        <ModalWrapper showModal={showModal}>
+        <AddGroupModal />
         <Page background={'#212034'}>
             <Search 
                 enabled={topIsSearching || bottomIsSearching} 
@@ -122,17 +132,12 @@ const Compare = ({ history }) => {
                     </div>
                     <div className="Compare-Buttons">
                         <Button onClick={handleGoClick} width={178} >go!</Button>
-                        <button className="Compare-CreateGroup" onClick={() => setShowPopup(!showPopup)}>or <u>create a group!</u></button>
+                        <button className="Compare-CreateGroup" onClick={() => setShowModal(!showModal)}>or <u>create a group!</u></button>
                     </div>
-    
-                    { showPopup &&
-                        <div className="popup">
-                            {renderPopup()}
-                        </div>
-                    }
                 </div>   
             }
         </Page>
+        </ModalWrapper>
     )
 }
 

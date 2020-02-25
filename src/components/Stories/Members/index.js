@@ -34,8 +34,9 @@ const Members = () => {
                     </ul>
                 </div>
                 <h4>Are you a member of {user_2.id}?</h4>
-                { joined ? <button disabled>you&apos;re a member!</button> :
-                <button onClick={handleJoinGroupClick}>join the group</button>
+                { joined ? 
+                    <button disabled>you&apos;re a member!</button> :
+                    <button onClick={handleJoinGroupClick}>join the group</button>
                 }
             </div>
         </Page>
