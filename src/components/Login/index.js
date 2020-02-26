@@ -5,7 +5,7 @@ import Page from '../Page';
 import DuetLogo from '../DuetLogo';
 import Button from '../Button';
 import Loading from '../Loading';
-import { fetchMeData } from '../../actions';
+import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
@@ -14,13 +14,15 @@ const LOGO_HEIGHT = 150;
 const LOGO_WIDTH = 240;
 const BUTTON_WIDTH = 250;
 
-const Login = ({ history }) => {
+const Login = ({ history, match }) => {
 
     const dispatch = useDispatch();
     const spotify_token = getToken();
     const [loggingIn, setLoggingIn] = useState(!!spotify_token);
+    const { id } = match.params;
 
     useEffect(() => {
+        dispatch(fetchUser2(id));
         if (loggingIn) {
             dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
                 setTimeout(() => history.push('/compare'), 2000);

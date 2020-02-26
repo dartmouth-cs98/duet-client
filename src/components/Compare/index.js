@@ -73,37 +73,17 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
 const Compare = ({ history }) => {
 
     const dispatch = useDispatch();
-    const { user_1, my_id } = useSelector((state) => state.users);
+    const { user_1, user_2, my_id } = useSelector((state) => state.users);
     const [showModal, setShowModal] = useState(false);
 
     const [topIsSearching, setTopIsSearching] = useState(false);
     const [topUser, setTopUser] = useState({ name: 'Me', id: my_id });
 
     const [bottomIsSearching, setBottomIsSearching] = useState(false);
-    const [bottomUser, setBottomUser] = useState({ name: 'Everyone', id: EVERYONE_ID });
+    const [bottomUser, setBottomUser] = useState(user_2.display_name ? { name: user_2.display_name, id: user_2.id } : { name: 'Everyone', id: EVERYONE_ID });
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
-
-    // const [groupNameVal, setGroupNameVal] = useState('');
-
-    // const handleClose = () => {
-    //     if (showPopup) {
-    //         setShowPopup(!showPopup);
-    //     } 
-    // }
-
-    // const handleAddGroupClick = () => {
-    //     addGroup(groupNameVal, user_1.id)
-    //     if (showPopup) {
-    //         setShowPopup(!showPopup);
-    //     } 
-    // }
-
-    // const handleGroupNameChange = (e) => {
-    //     const { value } = e.target;
-    //     setGroupNameVal(value)
-    // };
 
     const toggleModal = () => {
         setShowModal(!showModal);
