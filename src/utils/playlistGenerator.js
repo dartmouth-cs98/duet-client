@@ -2,6 +2,9 @@ import SpotifyWebApi from 'spotify-web-api-js';
 
 export const getRecommendations = (spotifyToken, seedArtists, targetTaste, limit) => {
     return new Promise((resolve, reject) => {
+        if (limit == 0 ) {
+            return resolve([]);
+        }
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
         spotifyApi.getRecommendations({ ...targetTaste, seed_artists: seedArtists, limit }).then((response) => {
