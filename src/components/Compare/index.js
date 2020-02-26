@@ -46,21 +46,13 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
             { status === NAMING_GROUP &&
                 <>  
                     <h1>Name your group</h1>
-                    <input 
-                        autoFocus
-                        type="text" 
-                        value={groupName} 
-                        onClick={() => setGroupName}
-                        onChange={(e) => setGroupName(e.target.value)}
-                        className="Search-Bar"
-                        placeholder="name your group here"
-                    />
-                    <Button onClick={handleAddGroupClick} width={200} >create group!</Button>
+                    <input type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)}></input>
+                    <Button onClick={handleAddGroupClick} width={200} >create</Button>
                 </>
             }
             { status === CREATING_GROUP && 
                 <>
-                    <h1>creating your group...</h1>
+                    <h1>{`creating ${groupName}...`}</h1>
                     <ReactLoading type={'bars'} color="#fff" />
                 </>
             }

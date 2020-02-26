@@ -56,7 +56,7 @@ export const addGroup = (groupId, userId) => {
         axios.post(`https://cs98-duet.herokuapp.com/groups`, {
             "user_id": userId,
             "group_id": groupId,
-        }).then((response) => setTimeout(() => resolve(response.data), 2000), () => reject());
+        }).then((response) => setTimeout(() => resolve(response.data), 1000), () => reject());
     })
 }
 
