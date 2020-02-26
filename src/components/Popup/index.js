@@ -12,6 +12,7 @@ const Popup = ({ pageInfo, pageName }) => {
                 <div id="PopupOuter">
                     <div id="blur"></div>
                     <div className="Popup">
+                        <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
                         <div className="Popup-Close-Button">
                             <button onClick={() => setShowPopup(!showPopup)}>
                                 <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
