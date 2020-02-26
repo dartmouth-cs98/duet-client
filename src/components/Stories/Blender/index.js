@@ -97,7 +97,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     const generatePlaylist = () => {
         toggleModal();
 
-        const numTopSongs = Math.round((adventurousness[0] / 100) * PLAYLIST_LENGTH);
+        const numTopSongs = Math.round(((100 - adventurousness[0]) / 100) * PLAYLIST_LENGTH);
         const numRecommendedSongs = PLAYLIST_LENGTH - numTopSongs;
         const halfNumTopSongs = Math.round(numTopSongs / 2);
 
