@@ -1,0 +1,29 @@
+.RadioButton-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .RadioButton {
+        width: 50px;
+        height: 50px;
+        border: 2px solid $WHITE;
+        border-radius: 100%;
+        background: $SECONDARY;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .RadioButton-Enabled {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background: $ACCENT;
+        }
+    }
+    .RadioButton-Label {
+        color: $WHITE;
+        font-family: Roboto;
+        font-size: 1.5vh;
+    }
+}
+
