@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Page from '../Page';
 import DuetLogo from '../DuetLogo';
@@ -27,10 +27,16 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
 
     const [groupName, setGroupName] = useState('');
     const [status, setStatus] = useState(NAMING_GROUP)
+    const [error, setError] = useState('');
 
     const handleAddGroupClick = () => {
         setStatus(CREATING_GROUP);
-        addGroup(groupName, my_id).then(() => setStatus(GROUP_CREATED), () => setStatus(GROUP_FAILED));
+        addGroup(groupName, my_id).then((response) => {
+            setStatus(GROUP_CREATED)
+        }, (response) => {
+            setStatus(GROUP_FAILED);
+            setError(response['ERROR GROUP EXISTS']);
+        });
     }
 
     return (
@@ -59,11 +65,17 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
             { status === GROUP_CREATED && 
                 <>
                     <h1>group created!</h1>
+                    <Button 
+                        onClick={() => 
+                            window.open(`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/joingroup/${groupName}`, "_self")}
+                    > invite friends
+                    </Button>
                 </>
             }
             { status === GROUP_FAILED && 
                 <>
-                    <h1>group failed!</h1>
+                    <h1>group creation failed!</h1>
+                    <h2>{error}</h2>
                 </>
             }
         </div>
@@ -73,23 +85,31 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
 const Compare = ({ history }) => {
 
     const dispatch = useDispatch();
-    const { user_1, user_2, my_id } = useSelector((state) => state.users);
+    const { my_id } = useSelector((state) => state.users);
+
+    const referrer = JSON.parse(localStorage.getItem("referrer"));
+
     const [showModal, setShowModal] = useState(false);
 
     const [topIsSearching, setTopIsSearching] = useState(false);
     const [topUser, setTopUser] = useState({ name: 'Me', id: my_id });
 
     const [bottomIsSearching, setBottomIsSearching] = useState(false);
-    const [bottomUser, setBottomUser] = useState(user_2.display_name ? { name: user_2.display_name, id: user_2.id } : { name: 'Everyone', id: EVERYONE_ID });
+    const [bottomUser, setBottomUser] = useState(referrer ? { name: referrer.display_name, id: referrer.id } : { name: 'Everyone', id: EVERYONE_ID });
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
+
+    useEffect(() => {
+
+    })
 
     const toggleModal = () => {
         setShowModal(!showModal);
     }
 
     const handleGoClick = () => {
+        localStorage.removeItem("referrer");
         dispatch(fetchUser1(topUser.id))
         dispatch(fetchUser2(bottomUser.id));
         history.push('/stories', { isComparing, isMixing })
@@ -125,7 +145,10 @@ const Compare = ({ history }) => {
                             <div className="Compare-Input">
                                 <button onClick={() => setBottomIsSearching(true)}>{bottomUser.name}</button>
                             </div>
-                            <div className="Compare-ShareDuet">can&apos;t find your friend? <u>share duet!</u></div>
+                            <a className="Compare-ShareDuet" href={`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/join/${my_id}`}>
+                                can&apos;t find your friend? <u>share duet!</u>
+                            </a>
+                            {/* <div className="Compare-ShareDuet">can&apos;t find your friend? <u>share duet!</u></div> */}
                         </div>
                         <div className="Compare-Toggles">
                             <div className="Compare-Toggle">

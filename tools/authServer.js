@@ -43,6 +43,8 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/login', function(req, res) {
 
+  console.log('line 46');
+  
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 

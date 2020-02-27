@@ -12,7 +12,6 @@ const LOGO_WIDTH = 90;
 const Share = ({ history, my_id }) => {
 
     const dispatch = useDispatch();
-    const shareURL = `${window.origin}/join/${my_id}`;
 
     const handleCompareAgain = () => {
         dispatch({ type: types.CLEAR_USERS })
@@ -27,7 +26,7 @@ const Share = ({ history, my_id }) => {
                     <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT}/>
                     <h1>again?</h1>
                 </div>
-                <a href={`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${shareURL}`}>
+                <a href={`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/join/${my_id}`}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#9BD6DC" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM6 16L4 18V4H20V16H6ZM9 9H7V11H9V9ZM11 9H13V11H11V9ZM17 9H15V11H17V9Z" fill="9BD6DC" fillOpacity="1"/>
                     </svg>

@@ -19,10 +19,14 @@ const Login = ({ history, match }) => {
     const dispatch = useDispatch();
     const spotify_token = getToken();
     const [loggingIn, setLoggingIn] = useState(!!spotify_token);
-    const { id } = match.params;
-
+   
     useEffect(() => {
-        dispatch(fetchUser2(id));
+        if (history.location.pathname.substring(0, 6) == '/join/') {
+            dispatch(fetchUser2(match.params.id)).then((user) => {
+                localStorage.setItem("referrer", JSON.stringify(user));
+            })  
+        } 
+
         if (loggingIn) {
             dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
                 setTimeout(() => history.push('/compare'), 2000);

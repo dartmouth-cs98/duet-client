@@ -61,8 +61,11 @@ export const fetchUser1 = (id) => {
 
 export const fetchUser2 = (id) => {
   return (dispatch) => {
-    getUser(id).then((user) => {
-      dispatch({ type: types.FETCH_USER_2, user })
+    return new Promise((resolve) => {
+      getUser(id).then((user) => {
+        dispatch({ type: types.FETCH_USER_2, user })
+        resolve(user);
+      })
     })
   }
 }
