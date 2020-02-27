@@ -92,15 +92,13 @@ const Compare = ({ history }) => {
     const dispatch = useDispatch();
     const { my_id } = useSelector((state) => state.users);
 
-    const referrer = JSON.parse(localStorage.getItem("referrer"));
-
     const [showModal, setShowModal] = useState(false);
 
     const [topIsSearching, setTopIsSearching] = useState(false);
     const [topUser, setTopUser] = useState({ name: 'Me', id: my_id });
 
     const [bottomIsSearching, setBottomIsSearching] = useState(false);
-    const [bottomUser, setBottomUser] = useState(referrer ? { name: referrer.display_name, id: referrer.id } : { name: 'Everyone', id: EVERYONE_ID });
+    const [bottomUser, setBottomUser] = useState({ name: 'Everyone', id: EVERYONE_ID });
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);

@@ -19,8 +19,9 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/join/:id" component={Login} />
         <Route exact path="/" component={Login} />
+        <Route exact path="/join/:id" component={Login} />
+        <Route exact path="/joingroup/:id" component={Login} />
         <Route path="/compare" component={authOnly(Compare)}/>
         <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />

@@ -5,6 +5,7 @@ import Page from '../Page';
 import DuetLogo from '../DuetLogo';
 import Button from '../Button';
 import Loading from '../Loading';
+import * as types from '../../constants/actionTypes';
 import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
@@ -22,14 +23,31 @@ const Login = ({ history, match }) => {
    
     useEffect(() => {
         if (history.location.pathname.substring(0, 6) == '/join/') {
+            console.log('line 25');
             dispatch(fetchUser2(match.params.id)).then((user) => {
                 localStorage.setItem("referrer", JSON.stringify(user));
             })  
         } 
+        if (history.location.pathname.substring(0, 11) == '/joingroup/') {
+            console.log('line 30');
+            dispatch(fetchUser2(match.params.id)).then((user) => {
+                localStorage.setItem("referrerGroup", JSON.stringify(user));
+            })  
+        } 
 
         if (loggingIn) {
-            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
-                setTimeout(() => history.push('/compare'), 2000);
+            const referrer = JSON.parse(localStorage.getItem('referrer'));
+            const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
+            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {  
+                if (referrer || referrerGroup ) {
+                    localStorage.removeItem('referrer');
+                    localStorage.removeItem('referrerGroup');
+                    dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
+                    setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
+                } 
+                else {
+                    setTimeout(() => history.push('/compare'), 2000);
+                }
             })
         }
     }, [])
