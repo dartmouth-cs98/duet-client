@@ -5,6 +5,7 @@ import Page from '../Page';
 import DuetLogo from '../DuetLogo';
 import Button from '../Button';
 import Loading from '../Loading';
+import * as types from '../../constants/actionTypes';
 import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
@@ -19,17 +20,38 @@ const Login = ({ history, match }) => {
     const dispatch = useDispatch();
     const spotify_token = getToken();
     const [loggingIn, setLoggingIn] = useState(!!spotify_token);
-   
+    
     useEffect(() => {
-        if (history.location.pathname.substring(0, 6) == '/join/') {
+        const pathname = history.location.pathname;
+        if (pathname.substring(0, 6) == '/join/') {
             dispatch(fetchUser2(match.params.id)).then((user) => {
                 localStorage.setItem("referrer", JSON.stringify(user));
             })  
         } 
+        else if (pathname.substring(0, 11) == '/joingroup/') {
+            dispatch(fetchUser2(match.params.id)).then((user) => {
+                localStorage.setItem("referrerGroup", JSON.stringify(user));
+            })  
+        } 
 
         if (loggingIn) {
-            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {
-                setTimeout(() => history.push('/compare'), 2000);
+            const referrer = JSON.parse(localStorage.getItem('referrer'));
+            const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
+            console.log(referrer, referrerGroup);
+            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {  
+                if (referrer || referrerGroup ) {
+                    dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
+                    localStorage.removeItem('referrer');
+                    localStorage.removeItem('referrerGroup');
+                    setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
+                } 
+                else if (pathname.substring(0, 5) == '/join') {
+                    localStorage.removeItem('referrer');
+                    localStorage.removeItem('referrerGroup');
+                    setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
+                } else {
+                    setTimeout(() => history.push('/compare'), 2000);
+                }
             })
         }
     }, [])
