@@ -20,16 +20,15 @@ const Login = ({ history, match }) => {
     const dispatch = useDispatch();
     const spotify_token = getToken();
     const [loggingIn, setLoggingIn] = useState(!!spotify_token);
-   
+    
     useEffect(() => {
-        if (history.location.pathname.substring(0, 6) == '/join/') {
-            console.log('line 25');
+        const pathname = history.location.pathname;
+        if (pathname.substring(0, 6) == '/join/') {
             dispatch(fetchUser2(match.params.id)).then((user) => {
                 localStorage.setItem("referrer", JSON.stringify(user));
             })  
         } 
-        if (history.location.pathname.substring(0, 11) == '/joingroup/') {
-            console.log('line 30');
+        else if (pathname.substring(0, 11) == '/joingroup/') {
             dispatch(fetchUser2(match.params.id)).then((user) => {
                 localStorage.setItem("referrerGroup", JSON.stringify(user));
             })  
@@ -38,14 +37,19 @@ const Login = ({ history, match }) => {
         if (loggingIn) {
             const referrer = JSON.parse(localStorage.getItem('referrer'));
             const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
+            console.log(referrer, referrerGroup);
             dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {  
                 if (referrer || referrerGroup ) {
+                    dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
                     localStorage.removeItem('referrer');
                     localStorage.removeItem('referrerGroup');
-                    dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
                     setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
                 } 
-                else {
+                else if (pathname.substring(0, 5) == '/join') {
+                    localStorage.removeItem('referrer');
+                    localStorage.removeItem('referrerGroup');
+                    setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
+                } else {
                     setTimeout(() => history.push('/compare'), 2000);
                 }
             })
