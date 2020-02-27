@@ -10,6 +10,7 @@ import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
+import { joinGroup } from '../../utils/backendUtils';
 
 const LOGO_HEIGHT = 150;
 const LOGO_WIDTH = 240;
@@ -38,11 +39,12 @@ const Login = ({ history, match }) => {
             const referrer = JSON.parse(localStorage.getItem('referrer'));
             const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
             console.log(referrer, referrerGroup);
-            dispatch(fetchMeData(spotify_token, "medium_term")).then(() => {  
+            dispatch(fetchMeData(spotify_token, "medium_term")).then((user) => {  
                 if (referrer || referrerGroup ) {
                     dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
                     localStorage.removeItem('referrer');
                     localStorage.removeItem('referrerGroup');
+                    if (referrerGroup) joinGroup(referrerGroup.id, user.id);
                     setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
                 } 
                 else if (pathname.substring(0, 5) == '/join') {
