@@ -28,10 +28,11 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
     const [groupName, setGroupName] = useState('');
     const [status, setStatus] = useState(NAMING_GROUP)
     const [error, setError] = useState('');
+    const [isPrivate, setIsPrivate] = useState(false);
 
     const handleAddGroupClick = () => {
         setStatus(CREATING_GROUP);
-        addGroup(groupName, my_id).then((response) => {
+        addGroup(groupName, my_id, isPrivate).then((response) => {
             setStatus(GROUP_CREATED)
         }, (response) => {
             setStatus(GROUP_FAILED);
@@ -43,7 +44,7 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
         <div className="Compare-CreateGroup-Modal">
             <div className="Compare-CreateGroup-Modal-Close">
                 <button onClick={toggleModal}>
-                    <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="15" height="15" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L16.5 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                         <path d="M16.5 1L0.999999 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                     </svg>  
@@ -53,6 +54,10 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
                 <>  
                     <h1>Name your group</h1>
                     <input type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)}></input>
+                    <div className="checkbox">
+                        <input name="isPrivate" type="checkbox" checked={isPrivate} onChange={() => setIsPrivate(!isPrivate)}/>
+                        <span>make this group private</span>
+                    </div>
                     <Button onClick={handleAddGroupClick} width={200} >create</Button>
                 </>
             }
@@ -99,10 +104,6 @@ const Compare = ({ history }) => {
 
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
-
-    useEffect(() => {
-
-    })
 
     const toggleModal = () => {
         setShowModal(!showModal);
