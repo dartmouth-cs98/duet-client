@@ -39,7 +39,7 @@ const Popup = ({ pageInfo, pageName }) => {
                             <p>Have any more questions? You can send us emails at duetwastaken@gmail.com.</p>
                         </Collapsible>
                         <Collapsible className='innerCollapsible' openedClassName='innerCollapsible' trigger="Donate!">
-                            <p>To keep Duet ad free, we have been paying for hosting out of pocket :((  consider donating to my venmo: @nicBerg... jk.... unless?</p>
+                            <p>To keep Duet ad free, we have been paying for hosting out of pocket :((</p>
                         </Collapsible>
                     </Collapsible>
                 </div>
