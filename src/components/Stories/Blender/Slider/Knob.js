@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment } from 'react'
 
-const Handle = ({
+const Knob = ({
     domain: [min, max],
     handle: { id, value, percent },
     getHandleProps,
@@ -49,4 +49,4 @@ const Handle = ({
     )
   }
   
-  export default Handle;
+  export default Knob;
