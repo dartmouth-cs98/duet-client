@@ -12,6 +12,9 @@ import SwipeableViews from 'react-swipeable-views';
 import Loading from '../Loading';
 import _ from 'lodash';
 
+const swipableViewsStyle = {
+    height: '100%',
+}
 
 const Stories = ({ history, location }) => {
     const { isComparing, isMixing } = location.state;
@@ -44,7 +47,7 @@ const Stories = ({ history, location }) => {
         if (isMixing && isComparing) {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -57,7 +60,7 @@ const Stories = ({ history, location }) => {
                 );
             } else {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -71,7 +74,7 @@ const Stories = ({ history, location }) => {
         } else if (isMixing) {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
                         <Share history={history} my_id={my_id} key="sharepage" />
@@ -79,7 +82,7 @@ const Stories = ({ history, location }) => {
                 );
             } else {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
                         <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
@@ -88,7 +91,7 @@ const Stories = ({ history, location }) => {
         } else {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -100,7 +103,7 @@ const Stories = ({ history, location }) => {
                 );
             } else {
                 return (
-                    <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
+                    <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
@@ -116,7 +119,7 @@ const Stories = ({ history, location }) => {
 
     if (loaded && user_1 && user_2) {
         return (
-            <div>
+            <div className="Stories">
                 <div className="Stories-progress">
                     {_.range(numPages).map((i) => 
                         <div 
