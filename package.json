@@ -54,6 +54,7 @@
     "object-assign": "4.1.1",
     "querystring": "~0.2.0",
     "react": "16.8.6",
+    "react-addons-css-transition-group": "15.6.2",
     "react-bootstrap": "1.0.0-beta.14",
     "react-collapsible": "2.6.3",
     "react-compound-slider": "2.5.0",
