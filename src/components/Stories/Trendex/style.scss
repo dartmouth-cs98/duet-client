@@ -1,9 +1,10 @@
 .Trendex-Page {
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 
     .Trendex-Description {
         font-family: Roboto;
@@ -13,7 +14,7 @@
         line-height: 100%;
         letter-spacing: 0.12em;
         color: $SECONDARY;
-        margin: 0;
+        margin: 0 12%;
         mark {
             background: $WHITE;
         }
@@ -27,7 +28,7 @@
         line-height: 100%;
         text-align: center;
         letter-spacing: 0.1em;
-        margin: 0;
+        margin: 20px;
         color: $ACCENT;
     }
 
@@ -39,7 +40,7 @@
         line-height: 100%;
         text-align: center;
         letter-spacing: 0.1em;
-        margin: 0;
+        margin: 20px;
         color: $PRIMARY;
     }
 
@@ -56,13 +57,10 @@
 
     .Trendex-TopSquare {
         background-color: $SECONDARY;
-        width: 100vw;
-        height: 50vh;
         display: flex;
-        flex-direction: column;
+        height: 45%;
         align-items: center;
-        justify-content: space-around;
-        padding: 10%;
+        justify-content: center;
         box-sizing: border-box;
         .Trendex-Score-Label {
             color: $WHITE;
@@ -71,10 +69,8 @@
 
     .Trendex-BottomSquare {
         display: flex;
-        flex-direction: column;
+        height: 45%;
         align-items: center;
-        justify-content: space-around;
-        padding: 17%;
         box-sizing: border-box;
         .Trendex-Score-Label {
             color: $WHITE;
