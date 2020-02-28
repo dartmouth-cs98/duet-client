@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Page from '../../Page';
 import { func } from 'prop-types';
 import { joinGroup, getGroupMembers } from '../../../utils/backendUtils';
@@ -11,9 +11,11 @@ const Members = () => {
     const [members, setMembers] = useState([]);
     const [joined, setJoined] = useState(false);
 
-    getGroupMembers(user_2.id).then((members) => 
-        setMembers(members.users)
-    );
+    useEffect(() => {
+        getGroupMembers(user_2.id).then((members) => 
+            setMembers(members.users)
+        );
+    }, [])
 
     const handleJoinGroupClick = () => {
         joinGroup(user_2.id, user_1.id)

@@ -152,31 +152,36 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
             rightLabel: 'Trendy',
             defaultVal: target_popularity,
             updateAttribute: setTrendiness,
+            dots: [parseInt(user_1.trendex), parseInt(user_2.trendex)]
         },
         {
             leftLabel: 'Sad',
             rightLabel: 'Happy',
             defaultVal: target_valence,
             updateAttribute: setHappiness,
+            dots: [user1Taste.valence * 100, user2Taste.valence * 100],
         },
         {
             leftLabel: 'Synthetic',
             rightLabel: 'Acoustic',
             defaultVal: target_acousticness,
-            updateAttribute: setAcousticness
+            updateAttribute: setAcousticness,
+            dots: [user1Taste.acousticness * 100, user2Taste.acousticness * 100],
         },
         {
             leftLabel: 'Standy',
             rightLabel: 'Dancey',
             defaultVal: target_danceability,
             updateAttribute: setDanceability,
+            dots: [user1Taste.danceability * 100, user2Taste.danceability * 100],
         },
         {
             leftLabel: 'Relaxed',
             rightLabel: 'Energetic',
             defaultVal: target_energy,
-            updateAttribute: setEnergy
-        },
+            updateAttribute: setEnergy,
+            dots: [user1Taste.energy * 100, user2Taste.energy * 100],
+        }
     ]
 
     return (
@@ -209,7 +214,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     
                     <div className="Blender-Sliders">
                         {sliderObjects.map((sliderObject) => {
-                            const { leftLabel, rightLabel, updateAttribute, defaultVal } = sliderObject;
+                            const { leftLabel, rightLabel, updateAttribute, defaultVal, dots } = sliderObject;
                             return (
                                 <Slider 
                                     key={leftLabel}
@@ -217,7 +222,8 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                                     rightLabel={rightLabel}
                                     setSwipeDisable={setSwipeDisable} 
                                     updateAttribute={updateAttribute} 
-                                    defaultVal={[defaultVal]} 
+                                    dots={dots}
+                                    defaultVal={defaultVal} 
                                     height={SLIDER_HEIGHT} 
                                     width={SLIDER_WIDTH}
                                 />
