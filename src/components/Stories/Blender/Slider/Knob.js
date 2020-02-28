@@ -6,6 +6,7 @@ const Knob = ({
     handle: { id, value, percent },
     getHandleProps,
   }) => {
+
     return (
       <Fragment>
         <div
@@ -13,6 +14,7 @@ const Knob = ({
             left: `${percent}%`,
             position: 'absolute',
             transform: 'translate(-50%, -50%)',
+            transition: 'left 4s',
             WebkitTapHighlightColor: 'rgba(0,0,0,0)',
             zIndex: 5,
             width: 75,

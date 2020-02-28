@@ -133,7 +133,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     const generatePlaylist = () => {
         toggleModal();
 
-        const numTopSongs = Math.round(((100 - adventurousness[0]) / 100) * PLAYLIST_LENGTH);
+        const numTopSongs = Math.round(((100 - adventurousness) / 100) * PLAYLIST_LENGTH);
         const numRecommendedSongs = PLAYLIST_LENGTH - numTopSongs;
         const halfNumTopSongs = Math.round(numTopSongs / 2);
 
@@ -161,8 +161,12 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
         const user1TopTrackUris = _.shuffle(user_1.topTracks).slice(0, numUserTopSongs.user1).map((track) => track.uri);
         const user2TopTrackUris = _.shuffle(user_2.topTracks).slice(0, numUserTopSongs.user2).map((track) => track.uri);
 
-        const targetTaste = {
-            target_valence, target_acousticness, target_danceability, target_energy, target_popularity
+        const targetTaste = { 
+            target_valence: target_valence / 100,
+            target_acousticness: target_acousticness / 100,
+            target_danceability: target_danceability / 100,
+            target_energy: target_energy / 100,
+            target_popularity: target_popularity,
         }
 
         getRecommendations(spotify_token, seedArtists, targetTaste, numRecommendedSongs).then((recommendedTracks) => {

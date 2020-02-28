@@ -7,6 +7,7 @@ import AuthRedirect from '../components/AuthRedirect';
 import Login from '../components/Login';
 import Compare from "./Compare";
 import { useSelector } from 'react-redux';
+import Div100vh from 'react-div-100vh'
 
 const App = () => {
   
@@ -17,7 +18,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <Div100vh>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/join/:id" component={Login} />
@@ -26,7 +27,7 @@ const App = () => {
         <Route path="/stories" component={authOnly(Stories)} />
         <Route path="/login" component={AuthRedirect} />
       </Switch>
-    </div>
+    </Div100vh>
   );
 }
 
