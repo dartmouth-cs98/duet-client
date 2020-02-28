@@ -19,6 +19,14 @@ const CREATING_PLAYLIST = "CREATING_PLAYLIST";
 const PLAYLIST_CREATED = "PLAYLIST_CREATED";
 const PLAYLIST_FAILED = "PLAYLIST_FAILED";
 
+const PLAYLIST_LENGTH = 20;
+const SLIDER_HEIGHT = 90;
+const SLIDER_WIDTH = '80%';
+
+export const USER_1 = 'USER_1';
+export const USER_2 = 'USER_2';
+export const MIX = 'MIX';
+
 const BlenderModal = ({ playlistStatus, toggleModal, playlistLink }) => {
     return (
         <div className="Blender-Modal">
@@ -66,22 +74,39 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     const { taste: user1Taste } = user_1;
     const { taste: user2Taste } = user_2;
 
-    const PLAYLIST_LENGTH = 20;
-    const ATTRIBUTE_DEFAULT = [50];
-    const SLIDER_HEIGHT = 90;
-    const SLIDER_WIDTH = '80%';
-    
-    // ARTIST SETTINGS
-    const USER_1 = 'USER_1';
-    const USER_2 = 'USER_2';
-    const MIX = 'MIX';
+    //  TODO: make sure attributes are between 0 and 1 when being passed to spotify endpoint
 
-    const [target_valence, setHappiness] = useState(ATTRIBUTE_DEFAULT);
-    const [target_acousticness, setAcousticness] = useState(ATTRIBUTE_DEFAULT);
-    const [target_danceability, setDanceability] = useState(ATTRIBUTE_DEFAULT);
-    const [target_energy, setEnergy] = useState(ATTRIBUTE_DEFAULT);
-    const [target_popularity, setTrendiness] = useState(ATTRIBUTE_DEFAULT);
-    const [adventurousness, setAdventurousness] = useState(ATTRIBUTE_DEFAULT);
+    const getAttributeDefaults = (attributes, setting) => {
+        let attributeDefaults = {};
+        if (setting == USER_1) {
+            attributes.forEach((attribute) => attributeDefaults = { ...attributeDefaults, [attribute]: user1Taste[attribute] * 100 });
+        } else if (setting == USER_2) {
+            attributes.forEach((attribute) => attributeDefaults = { ...attributeDefaults, [attribute]: user2Taste[attribute] * 100 });
+        } else {
+            attributes.forEach((attribute) => attributeDefaults = { ...attributeDefaults, [attribute]: ((user2Taste[attribute] + user1Taste[attribute]) / 2) * 100 });
+        }
+        return attributeDefaults;
+    }
+
+    const getTrendinessDefault = (setting) => {
+        if (setting == USER_1) {
+            return parseInt(user_1.trendex);
+        } else if (setting == USER_2) {
+            return parseInt(user_2.trendex);
+        } else {
+            return (parseInt(user_1.trendex) + parseInt(user_2.trendex)) / 2;
+        }
+    }
+
+    const attributes = ['valence', 'acousticness', 'danceability', 'energy'];
+    const initialDefaults = getAttributeDefaults(attributes, MIX);
+
+    const [target_valence, setHappiness] = useState(initialDefaults.valence);
+    const [target_acousticness, setAcousticness] = useState(initialDefaults.acousticness);
+    const [target_danceability, setDanceability] = useState(initialDefaults.danceability);
+    const [target_energy, setEnergy] = useState(initialDefaults.energy);
+    const [target_popularity, setTrendiness] = useState((parseInt(user_1.trendex) + parseInt(user_2.trendex)) / 2);
+    const [adventurousness, setAdventurousness] = useState(50);
     const [showModal, setShowModal] = useState(false);
     const [playlistStatus, setPlaylistStatus] = useState(CREATING_PLAYLIST)
     const [playlistLink, setPlaylistLink] = useState('');
@@ -92,6 +117,17 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
         if (!showModal) {
             setPlaylistStatus(CREATING_PLAYLIST);
         }
+    }
+
+    const handleRadioButtons = (setting) => {
+        setUserSetting(setting);
+        const updatedDefaults = getAttributeDefaults(attributes, setting);
+        const { valence, acousticness, danceability, energy } = updatedDefaults;
+        setTrendiness(getTrendinessDefault(setting));
+        setHappiness(valence);
+        setAcousticness(acousticness);
+        setDanceability(danceability);
+        setEnergy(energy);
     }
 
     const generatePlaylist = () => {
@@ -144,39 +180,44 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
         {
             leftLabel: 'Unadventurous',
             rightLabel: 'Adventurous',
-            defaultVal: adventurousness,
+            val: adventurousness,
             updateAttribute: setAdventurousness,
         },
         {
             leftLabel: 'Obscure',
             rightLabel: 'Trendy',
-            defaultVal: target_popularity,
+            val: target_popularity,
             updateAttribute: setTrendiness,
+            dots: { user1: parseInt(user_1.trendex), user2: parseInt(user_2.trendex) }
         },
         {
             leftLabel: 'Sad',
             rightLabel: 'Happy',
-            defaultVal: target_valence,
+            val: target_valence,
             updateAttribute: setHappiness,
+            dots: { user1: user1Taste.valence * 100, user2: user2Taste.valence * 100 },
         },
         {
             leftLabel: 'Synthetic',
             rightLabel: 'Acoustic',
-            defaultVal: target_acousticness,
-            updateAttribute: setAcousticness
+            val: target_acousticness,
+            updateAttribute: setAcousticness,
+            dots: { user1: user1Taste.acousticness * 100, user2: user2Taste.acousticness * 100 },
         },
         {
             leftLabel: 'Standy',
             rightLabel: 'Dancey',
-            defaultVal: target_danceability,
+            val: target_danceability,
             updateAttribute: setDanceability,
+            dots: { user1: user1Taste.danceability * 100, user2: user2Taste.danceability * 100 },
         },
         {
             leftLabel: 'Relaxed',
             rightLabel: 'Energetic',
-            defaultVal: target_energy,
-            updateAttribute: setEnergy
-        },
+            val: target_energy,
+            updateAttribute: setEnergy,
+            dots: { user1: user1Taste.energy * 100, user2: user2Taste.energy * 100 },
+        }
     ]
 
     return (
@@ -191,17 +232,17 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                     <h2 className="Blender-SeedArtist-Label">generate playlist for</h2>
                     <div className="Blender-RadioButtons">
                         <RadioButton 
-                            onClick={() => setUserSetting(USER_1)} 
+                            onClick={() => handleRadioButtons(USER_1)} 
                             enabled={userSetting == USER_1} 
                             label={user_1.display_name}
                         />
                         <RadioButton 
-                            onClick={() => setUserSetting(MIX)} 
+                            onClick={() => handleRadioButtons(MIX)} 
                             enabled={userSetting == MIX} 
                             label={'both'}
                         />
                         <RadioButton 
-                            onClick={() => setUserSetting(USER_2)} 
+                            onClick={() => handleRadioButtons(USER_2)} 
                             enabled={userSetting == USER_2} 
                             label={user_2.display_name}
                         />
@@ -209,7 +250,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     
                     <div className="Blender-Sliders">
                         {sliderObjects.map((sliderObject) => {
-                            const { leftLabel, rightLabel, updateAttribute, defaultVal } = sliderObject;
+                            const { leftLabel, rightLabel, updateAttribute, val, dots } = sliderObject;
                             return (
                                 <Slider 
                                     key={leftLabel}
@@ -217,7 +258,9 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                                     rightLabel={rightLabel}
                                     setSwipeDisable={setSwipeDisable} 
                                     updateAttribute={updateAttribute} 
-                                    defaultVal={[defaultVal]} 
+                                    dots={dots}
+                                    userSetting={userSetting}
+                                    val={[val]} 
                                     height={SLIDER_HEIGHT} 
                                     width={SLIDER_WIDTH}
                                 />
