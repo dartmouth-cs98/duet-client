@@ -21,7 +21,7 @@ const Members = () => {
     }
 
     return (
-        <Page background={'#9BD6DC'}>
+        <Page background={'#212034'}>
             <div id="Members">
                 <h1>These are the members of {user_2.id}</h1>
                 <div id="memberlist">
@@ -30,12 +30,14 @@ const Members = () => {
                         Object.values(members).map((member) => (
                             <li key={member}><span>{member}</span></li>
                         )
+                        
                     )}
                     </ul>
                 </div>
                 <h4>Are you a member of {user_2.id}?</h4>
-                { joined ? <button disabled>you&apos;re a member!</button> :
-                <button onClick={handleJoinGroupClick}>join the group</button>
+                { joined ? 
+                    <button disabled>you&apos;re a member!</button> :
+                    <button onClick={handleJoinGroupClick}>join the group</button>
                 }
             </div>
         </Page>

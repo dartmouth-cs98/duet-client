@@ -51,12 +51,19 @@ export const postUser = (user, token) => {
 }
 
 
-export const addGroup = (groupId, userId) => {
-    return new Promise((resolve) => {
+export const addGroup = (groupId, userId, isPrivate) => {
+    return new Promise((resolve, reject) => {
         axios.post(`https://cs98-duet.herokuapp.com/groups`, {
             "user_id": userId,
             "group_id": groupId,
-        }).then((response) => resolve(response.data));
+            "is_private": isPrivate,
+        }).then((response) =>  {
+            if (response.data.SUCCESS) {
+                setTimeout(() => resolve(response.data), 1000);
+            } else {
+                reject(response.data);
+            }
+        });
     })
 }
 

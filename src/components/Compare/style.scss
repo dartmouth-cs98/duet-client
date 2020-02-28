@@ -1,6 +1,6 @@
 .Compare-Page {
     margin-top: 10%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +12,7 @@
         flex-direction: column;
         align-items: center;
         width: 75%;
+        margin-top: 20px;
     
         .Compare-Input {
             width: 100%;
@@ -48,6 +49,7 @@
             width: 100%;
             text-align: right;
             margin-top: 5px;
+            text-decoration: none;
 
             u {
                 color: $ACCENT;
@@ -59,9 +61,10 @@
         display: flex;
         flex-direction: column;
         width: 65%;
+        margin-top: 20px;
+        margin-bottom: 30px;
 
         .Compare-Toggle {
-            margin-bottom: 10px;
             display: flex;
             align-items: center;
         
@@ -105,49 +108,151 @@
     }
 }
 
+.Group-Modal {
+    width: 80%;
+    height: 212px;
+    background: #212034;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    filter: none;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 
+    h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        color: $WHITE;
+        font-size: 24px;
+        margin-top: 0;
+    }
 
-#PopupBackground {
-    height: 40vh;
-    margin-top: 20vh;
+    .Group-Modal-Close {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 8px;
+        margin-right: 8px;
+    
+        button {
+            border: none;
+            margin: 3px;
+            width: 30px;
+            height: 30px;
+        }
+    }
 
     input {
-        border: 1px solid $SECONDARY;
+        border: 1px solid white;
         border-radius: 5px;
         background: transparent;
         height: 30px;
-        width: 280px;
-        color: $SECONDARY;
+        width: 260px;
+        margin: 10px 0px;
+        color: white;
+    }
+
+    #createButton {
+        font-size: 20px;
+        color: $PRIMARY;
+    }
+}
+
+.Compare-CreateGroup-Modal {
+    width: 80%;
+    // height: 212px;
+    background: #212034;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    filter: none;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+        border: 1px solid white;
+        border-radius: 5px;
+        background: transparent;
+        height: 30px;
+        width: 260px;
+        margin: 10px 0px;
+        color: white;
+    }
+
+    .Compare-CreateGroup-Modal-Close {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    
+        button {
+            border: none;
+            margin: 3px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    h1, h2 {
+        color: $WHITE;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        margin: 0 10px 10px 10px;
+    }
+
+    h1 {
+        font-size: 3vh;
+    }
+
+    h2 {
+        font-size: 2vh;
     }
 
     button {
-        font-size: 16px;
-        color: $PRIMARY;
-        border-radius: 5px;
-        background: $SECONDARY;
-        height: 30px;
-        width: 80px;
-        z-index: 99;
+        margin-bottom: 40px;
+    }
+
+    .checkbox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    
+    .checkbox > span {
+        color:white;
+        font-family: Roboto;
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    
+    .checkbox > input {
+        height: 15px;
+        width: 15px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        border: 1px solid white;
+        border-radius: 4px;
         outline: none;
-        margin-top: 30px;
-        padding: 0;
+        transition-duration: 0.3s;
+        background-color: none;
+        }
+    
+    .checkbox > input:checked {
+        border: 1px solid white;
+        background-color: $ACCENT;
     }
-
-    #close {
-        background: transparent;
-        font-size: 20px;
-        font-weight: bold;
-        color: $SECONDARY;
-        border: none;
-        width: auto;
-        height: auto;
-        margin: 0;
-        position: relative;
-        top: -5vh;
-        left: 21vh;
-    }
-
-    h3 {
-        margin-top: 0;
+    
+    .checkbox > input:active {
+        border: 1px solid white;
+        background-color: $ACCENT;
     }
 }

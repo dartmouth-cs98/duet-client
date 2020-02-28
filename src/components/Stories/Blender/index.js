@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { User } from '../../../types';
 import { string, func } from 'prop-types';
 import Button from '../../Button';
-import Loading from '../../Loading';
+import RadioButton from './RadioButton';
 import { getRecommendations, createPlaylist } from '../../../utils/playlistGenerator';
 import _ from 'lodash'; 
 import Slider from './Slider';
@@ -19,7 +19,7 @@ const CREATING_PLAYLIST = "CREATING_PLAYLIST";
 const PLAYLIST_CREATED = "PLAYLIST_CREATED";
 const PLAYLIST_FAILED = "PLAYLIST_FAILED";
 
-const BlenderModal = ({ playlistStatus, toggleModal }) => {
+const BlenderModal = ({ playlistStatus, toggleModal, playlistLink }) => {
     return (
         <div className="Blender-Modal">
             <div className="Blender-Modal-Close">
@@ -40,13 +40,13 @@ const BlenderModal = ({ playlistStatus, toggleModal }) => {
                 <>
                     <h1>Mixed!</h1>
                     <h2>your new playlist has succesfully been mixed and added to your spoitfy</h2>
-                    <Button>listen to mix</Button>
+                    <Button onClick={() => window.open(playlistLink, "_self")}>listen to mix</Button>
                 </>
             }
             { playlistStatus == PLAYLIST_FAILED && 
                 <>
                     <h1>playlist failed!</h1>
-                    <h2>email us at duetwastaken@gmail.com and we will investigate the problem!</h2>
+                    <h2>if the problem persists, email us at duetwastaken@gmail.com and we will investigate the problem!</h2>
                 </>
             } 
         </div>
@@ -66,16 +66,87 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     const { taste: user1Taste } = user_1;
     const { taste: user2Taste } = user_2;
 
+    const PLAYLIST_LENGTH = 20;
     const ATTRIBUTE_DEFAULT = [50];
     const SLIDER_HEIGHT = 90;
     const SLIDER_WIDTH = '80%';
+    
+    // ARTIST SETTINGS
+    const USER_1 = 'USER_1';
+    const USER_2 = 'USER_2';
+    const MIX = 'MIX';
+
     const [target_valence, setHappiness] = useState(ATTRIBUTE_DEFAULT);
     const [target_acousticness, setAcousticness] = useState(ATTRIBUTE_DEFAULT);
     const [target_danceability, setDanceability] = useState(ATTRIBUTE_DEFAULT);
     const [target_energy, setEnergy] = useState(ATTRIBUTE_DEFAULT);
     const [target_popularity, setTrendiness] = useState(ATTRIBUTE_DEFAULT);
+    const [adventurousness, setAdventurousness] = useState(ATTRIBUTE_DEFAULT);
+    const [showModal, setShowModal] = useState(false);
+    const [playlistStatus, setPlaylistStatus] = useState(CREATING_PLAYLIST)
+    const [playlistLink, setPlaylistLink] = useState('');
+    const [userSetting, setUserSetting] = useState(MIX);
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
+        if (!showModal) {
+            setPlaylistStatus(CREATING_PLAYLIST);
+        }
+    }
+
+    const generatePlaylist = () => {
+        toggleModal();
+
+        const numTopSongs = Math.round(((100 - adventurousness[0]) / 100) * PLAYLIST_LENGTH);
+        const numRecommendedSongs = PLAYLIST_LENGTH - numTopSongs;
+        const halfNumTopSongs = Math.round(numTopSongs / 2);
+
+        const numUserTopSongs = (
+            userSetting == USER_1 ? { user1: numTopSongs, user2: 0}:
+            userSetting == MIX ? { user1: halfNumTopSongs, user2: halfNumTopSongs } :
+            userSetting == USER_2 ? { user1: 0, user2: numTopSongs } :
+            null
+        );
+
+        const numUserTopArtists = (
+            userSetting == USER_1 ? { user1: 5, user2: 0 } :
+            userSetting == MIX ? { user1: 2, user2: 2 } :
+            userSetting == USER_2 ? { user1: 0, user2: 5 } :
+            null
+        );
+
+        const a = Math.floor(Math.random() * 5);
+        const b = Math.floor(Math.random() * 5);
+        const user1TopArtists = user_1.topArtists.slice(a, a + numUserTopArtists.user1).map((artist) => artist.id);
+        const user2TopArtists = user_2.topArtists.slice(b, b + numUserTopArtists.user2).map((artist) => artist.id);
+        const seedArtists = [...user1TopArtists, ...user2TopArtists];
+
+
+        const user1TopTrackUris = _.shuffle(user_1.topTracks).slice(0, numUserTopSongs.user1).map((track) => track.uri);
+        const user2TopTrackUris = _.shuffle(user_2.topTracks).slice(0, numUserTopSongs.user2).map((track) => track.uri);
+
+        const targetTaste = {
+            target_valence, target_acousticness, target_danceability, target_energy, target_popularity
+        }
+
+        getRecommendations(spotify_token, seedArtists, targetTaste, numRecommendedSongs).then((recommendedTracks) => {
+            const recommendedTrackUris = recommendedTracks.map((track) => track.uri);
+            const trackUris = _.shuffle([ ...user1TopTrackUris, ...user2TopTrackUris, ...recommendedTrackUris ]);
+            createPlaylist(spotify_token, my_id, `${user_1.display_name} & ${user_2.display_name} collab`, "playlist generated by Duet", trackUris)
+                .then((href) => {
+                    setPlaylistLink(href);
+                    setPlaylistStatus(PLAYLIST_CREATED);
+                }, () => setPlaylistStatus(PLAYLIST_FAILED));
+        }, () => setPlaylistStatus(PLAYLIST_FAILED))
+    }
 
     const sliderObjects = [
+        {
+            leftLabel: 'Unadventurous',
+            rightLabel: 'Adventurous',
+            defaultVal: adventurousness,
+            updateAttribute: setAdventurousness,
+        },
         {
             leftLabel: 'Obscure',
             rightLabel: 'Trendy',
@@ -108,56 +179,34 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
         },
     ]
 
-    const [showModal, setShowModal] = useState(false);
-    const [playlistStatus, setPlaylistStatus] = useState(CREATING_PLAYLIST)
-
-    const toggleModal = () => {
-        setShowModal(!showModal);
-        if (!showModal) {
-            setPlaylistStatus(CREATING_PLAYLIST);
-        }
-    }
-
-    const generatePlaylist = () => {
-        toggleModal();
-        /* seedArtists: user_1's top 3 & user_2's top 2
-           targetTaste: average of user_1 and user_2
-        */
-
-        // we grab top songs from each + recommmended songs from spotify
-        const NUM_RECOMMENDED_SONGS = 10;
-        // const NUM_TOP_SONGS_EACH = 5;
-        
-        const a = Math.floor(Math.random() * 8);
-        const b = Math.floor(Math.random() * 8);
-        const user1TopArtists = user_1.topArtists.slice(a, a + 3).map((artist) => artist.id);
-        const user2TopArtists = user_2.topArtists.slice(b, b + 2).map((artist) => artist.id);
-        const seedArtists = [...user1TopArtists, ...user2TopArtists];
-
-        const user1TopTrackUris = []; // _.shuffle(user_1.topTracks).slice(0, NUM_TOP_SONGS_EACH).map((track) => track.uri);
-        const user2TopTrackUris = []; //_.shuffle(user_2.topTracks).slice(0, NUM_TOP_SONGS_EACH).map((track) => track.uri);
-
-        const targetTaste = {
-            target_valence, target_acousticness, target_danceability, target_energy, target_popularity
-        }
-
-        getRecommendations(spotify_token, seedArtists, targetTaste, NUM_RECOMMENDED_SONGS).then((recommendedTracks) => {
-            const recommendedTrackUris = recommendedTracks.map((track) => track.uri);
-            const trackUris = [ ...user1TopTrackUris, ...user2TopTrackUris, ...recommendedTrackUris ];
-            createPlaylist(spotify_token, my_id, `${user_1.display_name} & ${user_2.display_name} collab`, "playlist generated by Duet", trackUris)
-                .then(() => setPlaylistStatus(PLAYLIST_CREATED), () => setPlaylistStatus(PLAYLIST_FAILED));
-        }, () => setPlaylistStatus(PLAYLIST_FAILED))
-    }
-
     return (
         <ModalWrapper showModal={showModal}>
-            <BlenderModal playlistStatus={playlistStatus} toggleModal={toggleModal}/>
+            <BlenderModal playlistStatus={playlistStatus} toggleModal={toggleModal} playlistLink={playlistLink}/>
             <Page background={'#212034'}>
                 <div className="Blender-Page">
                     <div>
                         <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
-                        <h2 className="Blender-subtitle">generates and adds a playlist to your Spoitify account that mixes your and Bob’s musical taste to your specifications</h2>
+                        {/* <h2 className="Blender-subtitle">mix an optimal playlist to your liking!</h2> */}
                     </div>
+                    <h2 className="Blender-SeedArtist-Label">generate playlist for</h2>
+                    <div className="Blender-RadioButtons">
+                        <RadioButton 
+                            onClick={() => setUserSetting(USER_1)} 
+                            enabled={userSetting == USER_1} 
+                            label={user_1.display_name}
+                        />
+                        <RadioButton 
+                            onClick={() => setUserSetting(MIX)} 
+                            enabled={userSetting == MIX} 
+                            label={'both'}
+                        />
+                        <RadioButton 
+                            onClick={() => setUserSetting(USER_2)} 
+                            enabled={userSetting == USER_2} 
+                            label={user_2.display_name}
+                        />
+                    </div>
+    
                     <div className="Blender-Sliders">
                         {sliderObjects.map((sliderObject) => {
                             const { leftLabel, rightLabel, updateAttribute, defaultVal } = sliderObject;

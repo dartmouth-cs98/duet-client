@@ -20,35 +20,25 @@ const Stories = ({ history, location }) => {
 
     const [swipeDisabled, setSwipeDisable] = useState(false);
     const [loaded, setLoaded] = useState(false);
+    const [numPages, setNumPages] = useState((isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1);
 
-    const numPages = (isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1;
     const [currPage, setCurrPage] = useState(0);
 
     const PAGE_COLORS = ['#9BD6DC', '#E5277B']
     const returnBarColor = (currPage, i) => {
         if (currPage == i) {
             return PAGE_COLORS[i % 2]
-        } else if (currPage == numPages || currPage==numPages-1) {
-            return '#9BD6DC';
         } else {
             return '#ffffff';
         }
-        
-    }
-
-    const returnBarExistence = (currPage) => {
-        var result = (currPage==numPages-1 || currPage==numPages  ) ? "100%": "100%";
-        return(result)
-    }
-
-    const returnBarBackgroundColor = (currPage) => {
-        var result = (currPage==numPages-1 || currPage==numPages  ) ? "#9BD6DC": "#212034";
-        return(result)
     }
 
     useEffect(() => {
+        if (user_2 && user_2.isGroup) {
+            setNumPages(numPages + 1);
+        }
         setTimeout(() => setLoaded(true), 2000);
-    });
+    }, [user_2]);
 
     const renderSwipableViews = () => {
         if (isMixing && isComparing) {
@@ -62,7 +52,7 @@ const Stories = ({ history, location }) => {
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
                         <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             } else {
@@ -74,7 +64,7 @@ const Stories = ({ history, location }) => {
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             }
@@ -84,14 +74,14 @@ const Stories = ({ history, location }) => {
                     <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             } else {
                 return (
                     <SwipeableViews onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             }
@@ -105,7 +95,7 @@ const Stories = ({ history, location }) => {
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             } else {
@@ -116,7 +106,7 @@ const Stories = ({ history, location }) => {
                         <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
-                        <Share history={history} key="sharepage" />
+                        <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
             }
@@ -127,8 +117,8 @@ const Stories = ({ history, location }) => {
     if (loaded && user_1 && user_2) {
         return (
             <div>
-                <div className="Stories-progress" style={{opacity: returnBarExistence(currPage), backgroundColor: returnBarBackgroundColor(currPage)}}>
-                    {_.range(numPages-1).map((i) => 
+                <div className="Stories-progress">
+                    {_.range(numPages).map((i) => 
                         <div 
                             className="Stories-progress-bar"
                             key={i}

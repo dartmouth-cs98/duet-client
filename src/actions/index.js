@@ -36,7 +36,7 @@ export const fetchMeData = (spotifyToken, time_range) => {
                         joinGroup(EVERYONE_ID, id);
                       })
                       dispatch({ type: types.FETCH_USER_1, user: user });
-                      resolve();
+                      resolve(user);
                   })  
               })
           });
@@ -61,8 +61,11 @@ export const fetchUser1 = (id) => {
 
 export const fetchUser2 = (id) => {
   return (dispatch) => {
-    getUser(id).then((user) => {
-      dispatch({ type: types.FETCH_USER_2, user })
+    return new Promise((resolve) => {
+      getUser(id).then((user) => {
+        dispatch({ type: types.FETCH_USER_2, user })
+        resolve(user);
+      })
     })
   }
 }

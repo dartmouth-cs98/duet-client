@@ -21,15 +21,31 @@
 .Blender-subtitle {
     font-family: Roboto;
     color: $WHITE;
-    font-size: 2vh;
+    font-size: 1.8vh;
     box-sizing: border-box;
+    text-align: center;
     margin: 10px 20px;
+}
+
+.Blender-SeedArtist-Label {
+    color: $WHITE;
+    font-size: 1.8vh;
+    margin: 5px;
+    font-family: Roboto;
+}
+
+.Blender-RadioButtons {
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .Blender-Sliders {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 65%;
     margin-top: 20px;
     width: 100%;
 

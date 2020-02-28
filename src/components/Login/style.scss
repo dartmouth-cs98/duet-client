@@ -2,9 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100%;
-}
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/squigs.svg');
+    background-size: 100%;
+    position: absolute;
+
 
 .Login-Button-Logo-Info {
     margin-top: 20%;
@@ -26,10 +29,11 @@
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: $SECONDARY;
 }
 
 .Login-LearnMore {
-    margin-top: 15%;
+    margin-top: 25%;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -38,6 +42,7 @@
     text-align: center;
     text-decoration-line: underline;
     color: $ACCENT;
+    background-color: $SECONDARY;
 }
 
 #PopupBackground {
@@ -73,4 +78,5 @@
     height: 100%;
     background-color: rgba(.9, .9, .9, .5);
     z-index: 99;
+}
 }
