@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
+import React from 'react'
 import { Slider, Rail, Handles } from 'react-compound-slider'
 import SliderRail from './SliderRail';
+import { USER_1, USER_2, MIX } from '../index';
 import Knob from './Knob';
 import Dot from './Dot';
 
@@ -13,9 +14,7 @@ const sliderStyle = {
 
 const DOMAIN = [0, 100];
 
-const CustomSlider = ({ leftLabel, rightLabel, setSwipeDisable, width, height, updateAttribute, defaultVal, dots }) => {
-
-  const [values, setValues] = useState(defaultVal);
+const CustomSlider = ({ leftLabel, rightLabel, setSwipeDisable, width, height, updateAttribute, val, dots, userSetting }) => {
 
   const onSlideStart = () => {
     setSwipeDisable(true);
@@ -25,12 +24,8 @@ const CustomSlider = ({ leftLabel, rightLabel, setSwipeDisable, width, height, u
     setSwipeDisable(false);
   }
 
-  const onUpdate = update => {
-    updateAttribute(update);
-  }
-
   const onChange = values => {
-    setValues(values);
+    updateAttribute(values[0])
   }
 
   return (
@@ -46,9 +41,8 @@ const CustomSlider = ({ leftLabel, rightLabel, setSwipeDisable, width, height, u
         rootStyle={sliderStyle}
         onSlideEnd={onSlideEnd}
         onSlideStart={onSlideStart}
-        onUpdate={onUpdate}
         onChange={onChange}
-        values={values}
+        values={val}
       >
         <Rail>
           {({ getRailProps }) => <SliderRail getRailProps={getRailProps} />}
@@ -58,20 +52,25 @@ const CustomSlider = ({ leftLabel, rightLabel, setSwipeDisable, width, height, u
             <div className="slider-handles">
               { dots && 
                 <>
-                  <Dot
-                    key={'dot1'}
-                    handle={{id: 'dot1', value: dots[0], percent: dots[0]}}
-                    domain={DOMAIN}
-                    getHandleProps={getHandleProps}
-                    color={'#E5277B'}
-                  />
-                  <Dot
-                    key={'dot2'}
-                    handle={{id: 'dot2', value: dots[1], percent: dots[1]}}
-                    domain={DOMAIN}
-                    getHandleProps={getHandleProps}
-                    color={'#9BD6DC'}
-                  />
+                  { dots.user1 && (userSetting == USER_1 || userSetting == MIX) &&
+                    <Dot
+                      key={'dot1'}
+                      handle={{ id: 'dot1', value: dots.user1, percent: dots.user1 }}
+                      domain={DOMAIN}
+                      getHandleProps={getHandleProps}
+                      color={'#E5277B'}
+                    />
+                  }
+                  
+                  { dots.user2 && (userSetting == USER_2 || userSetting == MIX) &&
+                    <Dot
+                      key={'dot2'}
+                      handle={{ id: 'dot2', value: dots.user2, percent: dots.user2 }}
+                      domain={DOMAIN}
+                      getHandleProps={getHandleProps}
+                      color={'#9BD6DC'}
+                    />
+                  }
                 </>   
               }
                <Knob
