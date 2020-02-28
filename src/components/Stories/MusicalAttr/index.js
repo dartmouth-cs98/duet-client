@@ -152,8 +152,8 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
                         );
                     })}
                 </div>
-                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </div>
+            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }
