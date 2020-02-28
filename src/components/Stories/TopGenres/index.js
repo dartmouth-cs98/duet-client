@@ -5,13 +5,19 @@
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
+import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
 import { Genre, User } from '../../../types';
 import { arrayOf, string, func } from 'prop-types';
+import { TopGenresDescription } from '../../../constants/helpInfo';
 
+
+var ReactFitText = require('react-fittext');
+var seedrandom = require('seedrandom');
 
 const PINK = "Pink";
 const BLUE = "Blue";
+const { PAGE_INFO, PAGE_NAME } = TopGenresDescription;
 
 const PI = Math.PI;
 const OVERLAP = .6;
@@ -205,7 +211,7 @@ function layer_sort(a, b) {
 }
 
 function build_bubbles(bubbles) {
-    const m = randRange(-1, 1);
+    const m = randRange(-.6, .6);
 
     bubbles.sort(function(a, b) {return b.r - a.r});
     for (var i = 1; i < bubbles.length; i++){
@@ -241,9 +247,8 @@ function build_bubbles(bubbles) {
 
 
 const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
-    var seedrandom = require('seedrandom');
     seedrandom(name, { global: true }); 
-    const A = PI * Math.pow((height * .5), 2);
+    const A = PI * Math.pow((height * .5), 2) * 1;
     var bubbles = [];
 
     var total_count = 0;
@@ -262,9 +267,8 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
             {bubbles.map((bubble) => {
                 return (
                     <div key={name+bubble.label} className="Bubble" style={{ width: bubble.r*2, height: bubble.r*2, transform: `translate(${bubble.x}px, ${bubble.y}px)` }} >
-                        <p className="Bubble-Label">{bubble.label}</p>
+                        <ReactFitText compressor={0.5}><h1 className="Bubble-Label">{bubble.label}</h1></ReactFitText>
                         <div className={`Bubble-Image-${bubbleColor}`}></div>   
-                          
                     </div>
                 );
             })}
@@ -303,19 +307,21 @@ const TopGenres = ({ user_1, user_2 }) => {
 
             <div className ="TopGenres-Page">
                 <h1 className="TopGenres-Title">Top Genres</h1>
+                <h1 className="Top-Name">{user_1.display_name}</h1>
                 <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
                          width={bubbleBoxWidth}
                          height={bubbleBoxHeight}
                 />
-                <div className="Genres-Divider">\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</div>
+                <h1 className="Bot-Name">{user_2.display_name}</h1>
                 <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}
                          width={bubbleBoxWidth}
                          height={bubbleBoxHeight}
                 />
+                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </div>
         </Page>
     )
