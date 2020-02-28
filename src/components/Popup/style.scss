@@ -6,6 +6,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 99;
 }
 
 #blur {
@@ -18,7 +19,7 @@
 
 .Popup {
     width: 80%;
-    height: 90vh;
+    height: 80vh;
     background: #212034;
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
@@ -38,6 +39,7 @@
     h1 {
         color: $ACCENT;
         font-family: Roboto;
+        margin-top: 0;
     }
 
     .Collapsible__trigger {
@@ -123,6 +125,8 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    top: calc(100vh - 130px);
 
     .Popup-Button {
         background-color: #FFFFFF;

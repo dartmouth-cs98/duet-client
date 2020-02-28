@@ -120,9 +120,9 @@ const Decades = ({ user_1, user_2, my_id }) => {
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">
                         {user_2.id != my_id && 
-                            <h4>{user_2.display_name}</h4>}
+                            <h3 id="second">{user_2.display_name}</h3>}
                         {user_2.id == my_id && 
-                            <h4>You</h4>}
+                            <h3 id="second">You</h3>}
                         <div className="Decades-GraphOwner-Underline"></div>
                     </div>
                     <div className="Decades-BarChart" style={{ width: barChartWidth }}>
