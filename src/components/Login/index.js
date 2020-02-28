@@ -38,7 +38,6 @@ const Login = ({ history, match }) => {
         if (loggingIn) {
             const referrer = JSON.parse(localStorage.getItem('referrer'));
             const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
-            console.log(referrer, referrerGroup);
             dispatch(fetchMeData(spotify_token, "medium_term")).then((user) => {  
                 if (referrer || referrerGroup ) {
                     dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });

@@ -272,8 +272,8 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         })}
                     </div>
                     <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>
-                    <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
                 </div>
+                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </Page>
         </ModalWrapper>
     )
