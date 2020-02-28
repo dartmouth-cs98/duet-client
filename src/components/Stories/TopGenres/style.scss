@@ -40,7 +40,7 @@
 
     .Bubbles {
         position: relative;
-        width: 100vw;
+        width: 100%;
         height: 50%;
 
         .Bubble {
@@ -84,25 +84,3 @@
     }
 }
 
-#popup {
-    width: 80vw;
-    height: auto;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-#popup-background {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(.9, .9, .9, .5);
-    z-index: -1;
-}
