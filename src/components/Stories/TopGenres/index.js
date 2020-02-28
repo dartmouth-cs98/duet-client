@@ -213,6 +213,7 @@ function layer_sort(a, b) {
 function build_bubbles(bubbles) {
     const m = randRange(-.6, .6);
 
+    // bubbles = bubbles.slice(0, Math.min(bubbles.length-1, 7));
     bubbles.sort(function(a, b) {return b.r - a.r});
     for (var i = 1; i < bubbles.length; i++){
         var b1 = bubbles[i];
@@ -254,10 +255,12 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     var total_count = 0;
     topGenres.forEach((genre) => {total_count += genre.count;});
 
+    var total = 0;
     topGenres.forEach((genre) => {
         const { label, count } = genre
         const percentage = (count / total_count);
-        bubbles = [...bubbles, new Bubble(label, Math.sqrt((A*percentage))/PI, 0, 0)]; 
+        total += percentage;
+        if (total < 100) bubbles = [...bubbles, new Bubble(label, Math.sqrt((A*percentage))/PI, 0, 0)]; 
     });
     
     bubbles = build_bubbles(bubbles);
@@ -267,7 +270,7 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
             {bubbles.map((bubble) => {
                 return (
                     <div key={name+bubble.label} className="Bubble" style={{ width: bubble.r*2, height: bubble.r*2, transform: `translate(${bubble.x}px, ${bubble.y}px)` }} >
-                        <ReactFitText compressor={0.5}><h1 className="Bubble-Label">{bubble.label}</h1></ReactFitText>
+                        <ReactFitText compressor={1}><h1 className="Bubble-Label">{bubble.label}</h1></ReactFitText>
                         <div className={`Bubble-Image-${bubbleColor}`}></div>   
                     </div>
                 );
