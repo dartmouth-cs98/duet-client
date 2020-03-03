@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Page from '../../Page';
 import Popup from '../../Popup';
 import { User } from '../../../types';
@@ -9,6 +9,7 @@ const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
     const NUM_ARTISTS_TO_DISPLAY = 8;
+    const [showOverlay, setShowOverlay] = useState(true);
 
     const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
@@ -20,9 +21,17 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
             shared = [...shared, artist];
         }
     })
+    
+    setTimeout(() => setShowOverlay(false), 3000);
 
+    const handleOverlayClick = () => {
+        setShowOverlay(false)
+    }
     return (
         <Page background={'#212034'} >
+            <div id="Overlay" onClick={() => handleOverlayClick()} className={showOverlay ? '' :'fadeOut'}  >
+                <div id={Math.floor( Math.random() * 1000 ) == 42 ? 'swipe2' : 'swipe'}></div>
+            </div>
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
