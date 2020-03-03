@@ -27,6 +27,6 @@ export const DecadesDescription = {
 
 export const BlenderDescription = {
     PAGE_NAME: "Music Taste Mixer",
-    PAGE_INFO: "Congrats! You've made it to our music taste mixer. Are you intrigued by your friend or a group's music taste and want to explore it or create the perfect playlists for you two? Our music taste mixer seeds a playlist with yours and your parter in your duet's top artists and songs. It then allows you to select attributes which you would like to highlight in the songs which are added to your playlist. We then use our recommendation engine to generate songs from artists you would both enjoy with the attributes you select.",
+    PAGE_INFO: "Congrats! You've made it to our music taste mixer. Are you intrigued by your friend or a group's music taste and want to explore it or create the perfect playlists for you two? First, you can decide whose tastes you want to include in your playlist - you can include your own taste, your parter in your duet's taste, or both your tastes. Our music taste mixer then seeds a playlist with your selection's top artists and songs. It then allows you to select attributes which you would like to highlight in the songs which are added to your playlist. We then use our recommendation engine to generate songs from artists you would both enjoy with the attributes you select.",
 }
 
