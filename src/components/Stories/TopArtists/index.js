@@ -21,18 +21,26 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
         }
     })
 
+    var share = ""
+
+    if (shared.length > 0) {
+        share = " share "
+    } else {
+        share = " don't share "
+    }
+
     return (
         <Page background={'#212034'} >
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
-                        <h1>you and {user_2.display_name} share</h1>}
+                        <h1>you and {user_2.display_name} {share}</h1>}
                     {user_2.id == my_id && user_1.id != my_id &&
-                        <h1>{user_1.display_name} and you share</h1>}
+                        <h1>{user_1.display_name} and you {share}</h1>}
                     {user_2.id == my_id && user_1.id == my_id &&
-                        <h1>you and you share</h1>}
+                        <h1>you and you {share}</h1>}
                     {user_2.id != my_id && user_1.id != my_id &&
-                        <h1>{user_1.display_name} and {user_2.display_name} share</h1>}
+                        <h1>{user_1.display_name} and {user_2.display_name} {share}</h1>}
                     <h2 className="TopArtists-TextShadow">top artists</h2>
                 </div>
                 <div className="TopArtists-List">
