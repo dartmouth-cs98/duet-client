@@ -75,8 +75,8 @@ const Stories = ({ history, location }) => {
             if (user_2.isGroup && user_1.id == my_id) {
                 return (
                     <SwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
+                        <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
                         <Share history={history} my_id={my_id} key="sharepage" />
                     </SwipeableViews>
                 );
