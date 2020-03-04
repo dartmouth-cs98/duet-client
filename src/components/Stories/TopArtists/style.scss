@@ -10,14 +10,23 @@
 
     #swipe {
         background: url('../images/swipe.svg');
+        background-repeat: no-repeat;
         height: 99px;
         width: 289px;
     }
 
     #swipe2 {
         background: url('../images/swipe2.svg');
+        background-repeat: no-repeat;
         height: 99px;
         width: 289px;
+    }
+
+    #arrowKeys {
+        background: url('../images/arrowKeys.svg');
+        background-repeat: no-repeat;
+        width: 280px;
+        height: 100px;
     }
 }
 
