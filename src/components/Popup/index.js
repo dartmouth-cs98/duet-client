@@ -21,11 +21,13 @@ const Popup = ({ pageInfo, pageName }) => {
                                 </svg>  
                             </button>        
                         </div>      
-                        <h1>FAQ</h1>    
-                        <Collapsible className="topHeader" openedClassName="topHeader" trigger={`About ${pageName}`} open="true">
-                            <h2> What am I looking at?</h2>
-                            <p>{pageInfo}</p>
-                        </Collapsible>
+                        <h1>FAQ</h1>   
+                        { pageInfo && pageName && 
+                            <Collapsible className="topHeader" openedClassName="topHeader" trigger={`About ${pageName}`} open="true">
+                                <h2> What am I looking at?</h2>
+                                <p>{pageInfo}</p>
+                            </Collapsible>
+                        } 
                         <Collapsible className="topHeader" openedClassName="topHeader" trigger="About Duet" open="true">
                             <Collapsible className='innerCollapsible' openedClassName='innerCollapsible' trigger="What information does Duet have?">
                                 <p>Duet only stores information given to us from Spotify: your username and your top artists/songs- that’s it! As much as we would like your credit card information or email and password- Spotify’s authentication process prevents us. Dang!</p>
