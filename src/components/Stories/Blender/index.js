@@ -295,14 +295,10 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                             )
                         })}
                     </div>
-<<<<<<< HEAD
-                    <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>
-=======
                     <div className="Blender-Buttons">
                         <button className="Shuffle-Button" onClick={shuffleSliders}></button>
-                        <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>                        
+                        <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>                        
                     </div>
->>>>>>> d18126035e5c88cd9fc56ba4b97fab4e1862fb67
                 </div>
                 <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </Page>
