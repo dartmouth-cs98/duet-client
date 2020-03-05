@@ -14,13 +14,18 @@
         text-shadow: -2px 0px $ACCENT;
     }
 
-    #memberlist {
+    .area {
         height: 50vh;
         align-items: flex-start;
-        width: 100%;
-        overflow: scroll;
-        padding-left: 8vw;
+        width: 90%;
+        margin: auto;
+    }
 
+    .scrollbar {
+        background-color: white;
+    }
+
+    #memberlist {
         ul {
             padding-left: 6px;
         }

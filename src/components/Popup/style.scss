@@ -60,10 +60,12 @@
         content: "\f0d8";
         font-weight: 900;
         transition: transform 300ms; 
+        transform: rotateZ(180deg);
     }
 
     .Collapsible__trigger.is-open:after {
-        transform: rotateZ(180deg); }
+        transform: rotateZ(0deg);
+    }
 
     .topHeader{
         font-family: Roboto;
