@@ -336,7 +336,7 @@ TopGenres.propTypes = {
     my_id: string,
 };
 
-export default TopGenres;
+export default React.memo(TopGenres);
 
 
 

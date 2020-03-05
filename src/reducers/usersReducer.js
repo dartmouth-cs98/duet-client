@@ -4,6 +4,8 @@ const usersReducer = (state = {}, action) => {
   switch(action.type) {
     case types.FETCH_MY_ID:
       return { ...state, my_id: action.my_id }
+    case types.FETCH_MY_GROUPS:
+      return { ...state, my_groups: action.groups }
     case types.FETCH_USER_1:
       return { ...state, user_1: action.user }
     case types.FETCH_USER_2:

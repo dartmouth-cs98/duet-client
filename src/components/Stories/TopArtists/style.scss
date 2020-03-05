@@ -1,3 +1,41 @@
+#Overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(.3, .3, .3, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #swipe {
+        background: url('../images/swipe.svg');
+        background-repeat: no-repeat;
+        height: 99px;
+        width: 289px;
+    }
+
+    #swipe2 {
+        background: url('../images/swipe2.svg');
+        background-repeat: no-repeat;
+        height: 99px;
+        width: 289px;
+    }
+
+    #arrowKeys {
+        background: url('../images/arrowKeys.svg');
+        background-repeat: no-repeat;
+        width: 280px;
+        height: 100px;
+    }
+}
+
+.fadeOut {
+    opacity:0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+    width: 0 !important;
+    height: 0 !important;
+}
 
 .TopArtists-Page {
     display: flex;

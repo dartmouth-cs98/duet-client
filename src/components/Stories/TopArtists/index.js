@@ -6,9 +6,10 @@ import { string } from 'prop-types';
 import { TopArtistsDescription } from '../../../constants/helpInfo';
 
 const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
+const NUM_ARTISTS_TO_DISPLAY = 8;
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
-    const NUM_ARTISTS_TO_DISPLAY = 8;
+
 
     const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
@@ -20,9 +21,9 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
             shared = [...shared, artist];
         }
     })
-
+    
     return (
-        <Page background={'#212034'} >
+        <Page background={'#212034'} showOverlay>
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
@@ -54,7 +55,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     {user_2.id != my_id &&
                         <h1 className="left-align">{user_2.display_name}</h1>}
                     {user2TruncatedArtists.map((artist) => {
-                         if (shared.indexOf(artist) < 0) {
+                        if (shared.indexOf(artist) < 0) {
                             return <h2 className="left-align-t" key={artist}>{artist}</h2>;
                         } else {
                             return <h2 className="left-align-t" key={artist}><mark className="blue">{artist}</mark></h2>;
@@ -73,4 +74,4 @@ TopArtists.propTypes = {
     my_id: string,
 }
 
-export default TopArtists;
+export default React.memo(TopArtists);

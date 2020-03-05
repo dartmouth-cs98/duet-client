@@ -59,6 +59,7 @@
     "react-collapsible": "2.6.3",
     "react-compound-slider": "2.5.0",
     "react-country-region-selector": "1.4.5",
+    "react-device-detect": "1.11.14",
     "react-div-100vh": "0.3.8",
     "react-dom": "16.8.6",
     "react-dropdown": "1.6.4",

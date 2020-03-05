@@ -9,6 +9,7 @@ import Switch from '../Switch';
 import Search from '../Search';
 import ModalWrapper from '../Modal';
 import ReactLoading from 'react-loading';
+import * as types from '../../constants/actionTypes';
 import { fetchUser1, fetchUser2 } from '../../actions';
 import { addGroup } from '../../utils/backendUtils';
 import { func } from 'prop-types';
@@ -18,12 +19,14 @@ const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
 const EVERYONE_ID = "Everyone";
 
-const CreateGroupModal = ({ toggleModal, my_id }) => {
+const CreateGroupModal = ({ toggleModal, my_id, my_groups, token }) => {
 
     const NAMING_GROUP = 'NAMING_GROUP';
     const CREATING_GROUP = 'CREATING_GROUP';
     const GROUP_CREATED = 'GROUP_CREATED';
     const GROUP_FAILED = 'GROUP_FAILED';
+
+    const dispatch = useDispatch();
 
     const [groupName, setGroupName] = useState('');
     const [status, setStatus] = useState(NAMING_GROUP)
@@ -32,7 +35,9 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
 
     const handleAddGroupClick = () => {
         setStatus(CREATING_GROUP);
-        addGroup(groupName, my_id, isPrivate).then((response) => {
+        addGroup(groupName, my_id, isPrivate, token).then(() => {
+            const newGroup = { display_name: groupName, id: groupName, private: isPrivate };
+            dispatch({ type: types.FETCH_MY_GROUPS, groups: [...my_groups, newGroup ]})
             setStatus(GROUP_CREATED)
         }, (response) => {
             setStatus(GROUP_FAILED);
@@ -90,7 +95,8 @@ const CreateGroupModal = ({ toggleModal, my_id }) => {
 const Compare = ({ history }) => {
 
     const dispatch = useDispatch();
-    const { my_id } = useSelector((state) => state.users);
+    const { my_groups, my_id } = useSelector((state) => state.users);
+    const { token } = useSelector((state) => state.auth);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -109,8 +115,8 @@ const Compare = ({ history }) => {
 
     const handleGoClick = () => {
         localStorage.removeItem("referrer");
-        dispatch(fetchUser1(topUser.id))
-        dispatch(fetchUser2(bottomUser.id));
+        dispatch(fetchUser1(topUser.id, token))
+        dispatch(fetchUser2(bottomUser.id, token));
         history.push('/stories', { isComparing, isMixing })
     }
 
@@ -126,9 +132,11 @@ const Compare = ({ history }) => {
 
     return (
         <ModalWrapper showModal={showModal}>
-            <CreateGroupModal toggleModal={toggleModal} my_id={my_id} />
+            <CreateGroupModal toggleModal={toggleModal} my_id={my_id} my_groups={my_groups} token={token} />
             <Page background={'#212034'}>
                 <Search 
+                    my_groups={my_groups}
+                    my_id={my_id}
                     enabled={topIsSearching || bottomIsSearching} 
                     setIsSearching={topIsSearching ? setTopIsSearching : setBottomIsSearching}
                     setUser={topIsSearching ? setTopUser : setBottomUser}

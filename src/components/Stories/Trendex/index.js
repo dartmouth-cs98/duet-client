@@ -65,4 +65,4 @@ Trendex.propTypes = {
     my_id: string,
 }
 
-export default Trendex;
+export default React.memo(Trendex);
