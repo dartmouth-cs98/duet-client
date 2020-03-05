@@ -25,10 +25,10 @@ const Login = ({ history, match }) => {
     useEffect(() => {
         const pathname = history.location.pathname;
         if (pathname.substring(0, 6) == '/join/') {
-            localStorage.setItem("referrer", match.params.id);
+            localStorage.setItem("referrer", decodeURI(match.params.id));
         } 
         else if (pathname.substring(0, 11) == '/joingroup/') {
-            localStorage.setItem("referrerGroup", match.params.id);
+            localStorage.setItem("referrerGroup", decodeURI(match.params.id));
         } 
 
         if (loggingIn) {

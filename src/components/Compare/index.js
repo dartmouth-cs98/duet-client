@@ -77,7 +77,7 @@ const CreateGroupModal = ({ toggleModal, my_id, my_groups, token }) => {
                     <h1>group created!</h1>
                     <Button 
                         onClick={() => 
-                            window.open(`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/joingroup/${groupName}`, "_self")}
+                            window.open(`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/joingroup/${encodeURI(groupName)}`, "_self")}
                     > invite friends
                     </Button>
                 </>
