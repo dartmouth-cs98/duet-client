@@ -18,5 +18,6 @@ export const CLEAR_USERS = "CLEAR_USERS";
 
 // new types
 export const FETCH_MY_ID = "FETCH_MY_ID";
+export const FETCH_MY_GROUPS = "FETCH_MY_GROUPS";
 export const FETCH_USER_1 = "FETCH_USER_1";
 export const FETCH_USER_2 = "FETCH_USER_2";

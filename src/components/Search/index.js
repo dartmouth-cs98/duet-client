@@ -1,20 +1,30 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { search } from '../../utils/backendUtils';
+import { useSelector } from 'react-redux';
 
-const Search = ({ setUser, setIsSearching, enabled }) => {
+const Search = ({ my_id, my_groups, setUser, setIsSearching, enabled }) => {
+
+    const { token } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (my_groups) {
+            setDefaultUsers([{ id: my_id, display_name: 'Me' }, ...my_groups]);
+            if (queryVal == '') setUsers([{ id: my_id, display_name: 'Me' }, ...my_groups]);
+        }
+    },[my_groups]);
 
     const [queryVal, setQueryVal] = useState('');
-    const [users, setUsers] = useState([]);
-    
+    const [defaultUsers, setDefaultUsers] = useState([{ id: my_id, display_name: 'Me' }]);
+    const [users, setUsers] = useState([{ id: my_id, display_name: 'Me' }]);
 
     const handleChange = (e) => {
         const { value } = e.target;
         setQueryVal(value)
         if(value.length > 0) {
-            search(value).then(setUsers)
+            search(value, token).then(setUsers)
         } else {
-            setUsers([])
+            setUsers(defaultUsers)
         }
     };  
 
@@ -22,6 +32,7 @@ const Search = ({ setUser, setIsSearching, enabled }) => {
         setUser({ id: user.id, name: user.display_name })
         setIsSearching(false);
         setQueryVal('');
+        setUsers(defaultUsers);
     }
 
 

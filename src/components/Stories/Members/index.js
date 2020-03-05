@@ -8,11 +8,12 @@ import { useSelector } from 'react-redux';
 
 const Members = () => {
     const { user_1, user_2 } = useSelector((state) => state.users);
+    const { token } = useSelector((state) => state.auth);
     const [members, setMembers] = useState([]);
     const [joined, setJoined] = useState(false);
 
     useEffect(() => {
-        getGroupMembers(user_2.id).then((members) => 
+        getGroupMembers(user_2.id, token).then((members) => 
             setMembers(members.users)
         );
     }, [])
@@ -50,4 +51,4 @@ Members.propTypes = {
     jumpToPage: func
 }
 
-export default Members;
+export default React.memo(Members);

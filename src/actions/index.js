@@ -30,13 +30,18 @@ export const fetchMeData = (spotifyToken, time_range) => {
                       user = { display_name, id, decadeCounts, trendex: popularity, topTracks: trackObjects, topArtists:artistNamesAndIds, genreCounts, taste};
                       dispatch({ type: types.FETCH_MY_ID, my_id: id })
                       getBackendToken(spotifyToken).then((response) => {
-                        const { token } = response;
+                        const { token, message } = response;
+                        if (message == 'user exists') {
+                          getUser(id, token).then((user) => {
+                            dispatch({ type: types.FETCH_MY_GROUPS, groups: user.group })
+                          })
+                        }
                         dispatch({ type: types.STORE_TOKEN, token })
                         postUser(user, token);
-                        joinGroup(EVERYONE_ID, id);
+                        joinGroup(EVERYONE_ID, id, token);
+                        resolve({user, token});
                       })
                       dispatch({ type: types.FETCH_USER_1, user: user });
-                      resolve(user);
                   })  
               })
           });
@@ -44,25 +49,25 @@ export const fetchMeData = (spotifyToken, time_range) => {
     }
 }
 
-export const setCompare = (entity) => {
-    return (dispatch) => {
-        dispatch({ type: types.SET_COMPARE, compare: entity });
-    }
-}
+// export const setCompare = (entity) => {
+//     return (dispatch) => {
+//         dispatch({ type: types.SET_COMPARE, compare: entity });
+//     }
+// }
 
-export const fetchUser1 = (id) => {
+export const fetchUser1 = (id, token) => {
   return (dispatch) => {
-    getUser(id).then((user) => {
+    getUser(id, token).then((user) => {
       dispatch({ type: types.FETCH_USER_1, user })
     })
   }
 }
 
 
-export const fetchUser2 = (id) => {
+export const fetchUser2 = (id, token) => {
   return (dispatch) => {
     return new Promise((resolve) => {
-      getUser(id).then((user) => {
+      getUser(id, token).then((user) => {
         dispatch({ type: types.FETCH_USER_2, user })
         resolve(user);
       })

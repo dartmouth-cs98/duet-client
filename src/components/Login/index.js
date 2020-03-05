@@ -5,7 +5,6 @@ import Page from '../Page';
 import DuetLogo from '../DuetLogo';
 import Button from '../Button';
 import Loading from '../Loading';
-import * as types from '../../constants/actionTypes';
 import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
@@ -26,25 +25,22 @@ const Login = ({ history, match }) => {
     useEffect(() => {
         const pathname = history.location.pathname;
         if (pathname.substring(0, 6) == '/join/') {
-            dispatch(fetchUser2(match.params.id)).then((user) => {
-                localStorage.setItem("referrer", JSON.stringify(user));
-            })  
+            localStorage.setItem("referrer", match.params.id);
         } 
         else if (pathname.substring(0, 11) == '/joingroup/') {
-            dispatch(fetchUser2(match.params.id)).then((user) => {
-                localStorage.setItem("referrerGroup", JSON.stringify(user));
-            })  
+            localStorage.setItem("referrerGroup", match.params.id);
         } 
 
         if (loggingIn) {
-            const referrer = JSON.parse(localStorage.getItem('referrer'));
-            const referrerGroup = JSON.parse(localStorage.getItem('referrerGroup'));
-            dispatch(fetchMeData(spotify_token, "medium_term")).then((user) => {  
+            const referrer = localStorage.getItem('referrer');
+            const referrerGroup = localStorage.getItem('referrerGroup');
+            dispatch(fetchMeData(spotify_token, "medium_term")).then((response) => {  
+                const { user, token } = response;
                 if (referrer || referrerGroup ) {
-                    dispatch({ type: types.FETCH_USER_2, user: referrer ? referrer : referrerGroup });
+                    dispatch(fetchUser2(referrer ? referrer : referrerGroup, token))
                     localStorage.removeItem('referrer');
                     localStorage.removeItem('referrerGroup');
-                    if (referrerGroup) joinGroup(referrerGroup.id, user.id);
+                    if (referrerGroup) joinGroup(referrerGroup.id, user.id, token);
                     setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
                 } 
                 else if (pathname.substring(0, 5) == '/join') {

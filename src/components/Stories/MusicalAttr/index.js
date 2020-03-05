@@ -164,4 +164,4 @@ MusicalAttr.propTypes = {
     my_id: string,
 }
 
-export default MusicalAttr;
+export default React.memo(MusicalAttr);

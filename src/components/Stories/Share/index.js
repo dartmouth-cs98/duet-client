@@ -3,7 +3,8 @@ import React from 'react';
 import Page from '../../Page';
 import DuetLogo from '../../DuetLogo';
 import * as types from '../../../constants/actionTypes';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser1 } from '../../../actions';
 import { func } from 'prop-types';
 
 const LOGO_HEIGHT = 60;
@@ -12,9 +13,11 @@ const LOGO_WIDTH = 90;
 const Share = ({ history, my_id }) => {
 
     const dispatch = useDispatch();
+    const { token } = useSelector((state) => state.auth);
 
     const handleCompareAgain = () => {
         dispatch({ type: types.CLEAR_USERS })
+        dispatch(fetchUser1(my_id, token))
         history.push('/compare');
     }
 
@@ -46,5 +49,5 @@ Share.propTypes = {
     jumpToPage: func
 }
 
-export default Share;
+export default React.memo(Share);
 
