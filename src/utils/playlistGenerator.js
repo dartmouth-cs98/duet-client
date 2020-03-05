@@ -17,7 +17,7 @@ export const createPlaylist = (spotifyToken, user_id, name, description, uris) =
     return new Promise((resolve, reject) => {
         const spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(spotifyToken);
-        spotifyApi.createPlaylist(user_id, {name, description }).then((playlist) => {
+        spotifyApi.createPlaylist(user_id, { name, description }).then((playlist) => {
             const { external_urls, id } = playlist;
             spotifyApi.addTracksToPlaylist(id, uris)
             setTimeout(() => resolve(external_urls.spotify), 2000);
