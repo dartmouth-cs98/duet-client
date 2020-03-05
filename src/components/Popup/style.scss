@@ -60,10 +60,12 @@
         content: "\f0d8";
         font-weight: 900;
         transition: transform 300ms; 
+        transform: rotateZ(180deg);
     }
 
     .Collapsible__trigger.is-open:after {
-        transform: rotateZ(180deg); }
+        transform: rotateZ(0deg);
+    }
 
     .topHeader{
         font-family: Roboto;
@@ -124,7 +126,7 @@
 .Popup-Button-Container {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     .Popup-Button {
         background-color: #FFFFFF;
@@ -144,5 +146,15 @@
             font-family: Roboto;
             font-size: 14px;
         }
+    }
+
+    h1 {
+        color: #282740;
+        font-family: Roboto;
+        font-size: 2vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        transform: translateX(10px);
     }
 }

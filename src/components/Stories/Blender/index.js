@@ -145,6 +145,15 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
         setEnergy(energy);
     }
 
+    const shuffleSliders = () => {
+        setAdventurousness(Math.random()*100);
+        setTrendiness(Math.random()*100);
+        setHappiness(Math.random()*100);
+        setAcousticness(Math.random()*100);
+        setDanceability(Math.random()*100);
+        setEnergy(Math.random()*100);
+    }
+
     const generatePlaylist = (playlistName) => {
 
         const numTopSongs = Math.round(((100 - adventurousness) / 100) * PLAYLIST_LENGTH);
@@ -248,7 +257,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
                         {/* <h2 className="Blender-subtitle">mix an optimal playlist to your liking!</h2> */}
                     </div>
-                    <h2 className="Blender-SeedArtist-Label">generate playlist for</h2>
+                    <h2 className="Blender-SeedArtist-Label">generate playlist from the tastes of</h2>
                     <div className="Blender-RadioButtons">
                         <RadioButton 
                             onClick={() => handleRadioButtons(USER_1)} 
@@ -286,7 +295,14 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                             )
                         })}
                     </div>
+<<<<<<< HEAD
                     <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>
+=======
+                    <div className="Blender-Buttons">
+                        <button className="Shuffle-Button" onClick={shuffleSliders}></button>
+                        <button className="Blender-Button" onClick={generatePlaylist}>generate mixed playlist</button>                        
+                    </div>
+>>>>>>> d18126035e5c88cd9fc56ba4b97fab4e1862fb67
                 </div>
                 <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </Page>

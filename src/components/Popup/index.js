@@ -10,7 +10,7 @@ const Popup = ({ pageInfo, pageName }) => {
         <>
             { showPopup ?  
                 <div id="PopupOuter">
-                    <div id="blur"></div>
+                    <div id="blur" onClick={() => setShowPopup(!showPopup)}></div>
                     <div className="Popup">
                         <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
                         <div className="Popup-Close-Button">
@@ -52,6 +52,7 @@ const Popup = ({ pageInfo, pageName }) => {
                 </div>
                 :
                 <div className="Popup-Button-Container">
+                     <h1>cs98-duet.surge.sh</h1>
                      <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
                 </div>
              }

@@ -213,6 +213,7 @@ function layer_sort(a, b) {
 function build_bubbles(bubbles) {
     const m = randRange(-.6, .6);
 
+    // bubbles = bubbles.slice(0, Math.min(bubbles.length-1, 7));
     bubbles.sort(function(a, b) {return b.r - a.r});
     for (var i = 1; i < bubbles.length; i++){
         var b1 = bubbles[i];
@@ -254,10 +255,12 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
     var total_count = 0;
     topGenres.forEach((genre) => {total_count += genre.count;});
 
+    var total = 0;
     topGenres.forEach((genre) => {
         const { label, count } = genre
         const percentage = (count / total_count);
-        bubbles = [...bubbles, new Bubble(label, Math.sqrt((A*percentage))/PI, 0, 0)]; 
+        total += percentage;
+        if (total < 100) bubbles = [...bubbles, new Bubble(label, Math.sqrt((A*percentage))/PI, 0, 0)]; 
     });
     
     bubbles = build_bubbles(bubbles);
@@ -284,7 +287,16 @@ Bubbles.propTypes = {
 
 
 
-const TopGenres = ({ user_1, user_2 }) => {
+const TopGenres = ({ user_1, user_2, my_id }) => {
+    var user1Name = user_1.display_name
+    var user2Name = user_2.display_name
+
+    if(user_1.id == my_id){
+        user1Name = 'You';
+    }
+    else if(user_2.id == my_id){
+        user2Name = 'You'
+    }
 
     const BUBBLE_BOX_WIDTH_PERCENTAGE  = 1.0;
     const BUBBLE_BOX_HEIGHT_PERCENTAGE = 0.5;
@@ -307,14 +319,14 @@ const TopGenres = ({ user_1, user_2 }) => {
 
             <div className ="TopGenres-Page">
                 <h1 className="TopGenres-Title">Top Genres</h1>
-                <h1 className="Top-Name">{user_1.display_name}</h1>
+                <h1 className="Top-Name">{user1Name}</h1>
                 <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
                          width={bubbleBoxWidth}
                          height={bubbleBoxHeight}
                 />
-                <h1 className="Bot-Name">{user_2.display_name}</h1>
+                <h1 className="Bot-Name">{user2Name}</h1>
                 <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}

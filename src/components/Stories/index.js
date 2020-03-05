@@ -54,7 +54,7 @@ const Stories = ({ history, location }) => {
                     <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
+                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
@@ -67,7 +67,7 @@ const Stories = ({ history, location }) => {
                     <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
+                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
@@ -98,7 +98,7 @@ const Stories = ({ history, location }) => {
                     <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
+                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
@@ -110,7 +110,7 @@ const Stories = ({ history, location }) => {
                     <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
                         <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
                         <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} key="topgenres"/>
+                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
                         <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
                         <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
                         <Share history={history} my_id={my_id} key="sharepage" />
