@@ -10,7 +10,7 @@ const Popup = ({ pageInfo, pageName }) => {
         <>
             { showPopup ?  
                 <div id="PopupOuter">
-                    <div id="blur"></div>
+                    <div id="blur" onClick={() => setShowPopup(!showPopup)}></div>
                     <div className="Popup">
                         <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
                         <div className="Popup-Close-Button">
