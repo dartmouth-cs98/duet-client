@@ -279,7 +279,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     )
 }
 
-export default Blender;
+export default React.memo(Blender);
 
 Blender.propTypes = {
     user_1: User,

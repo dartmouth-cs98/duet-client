@@ -6,9 +6,10 @@ import { string } from 'prop-types';
 import { TopArtistsDescription } from '../../../constants/helpInfo';
 
 const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
+const NUM_ARTISTS_TO_DISPLAY = 8;
 
 const TopArtists = ({ user_1, user_2, my_id }) => {
-    const NUM_ARTISTS_TO_DISPLAY = 8;
+
 
     const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
     const user2TruncatedArtists = user_2.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
@@ -73,4 +74,4 @@ TopArtists.propTypes = {
     my_id: string,
 }
 
-export default TopArtists;
+export default React.memo(TopArtists);

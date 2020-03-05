@@ -4,19 +4,15 @@ import Page from '../../Page';
 import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
+import _ from 'lodash';
 import { DecadesDescription } from '../../../constants/helpInfo';
 
 const { PAGE_INFO, PAGE_NAME } = DecadesDescription;
 
 const Decades = ({ user_1, user_2, my_id }) => {
 
-    const compareDecades = (a,b) => {
-        if (a.decade > b.decade) return 1;
-        else return -1
-    }
-
-    let user1DecadeCounts = user_1.decadeCounts.sort(compareDecades);
-    let user2DecadeCounts = user_2.decadeCounts.sort(compareDecades);
+    let user1DecadeCounts = _.sortBy(user_1.decadeCounts, ['decade']);
+    let user2DecadeCounts = _.sortBy(user_2.decadeCounts, ['decade']);
 
     // grab max decade counts so we can control heights of graphs
     const user1MaxDecadeCount = Math.max.apply(null, user1DecadeCounts.map(d => d.count));
@@ -155,4 +151,4 @@ Decades.propTypes = {
     my_id: string,
 }
 
-export default Decades;
+export default React.memo(Decades);
