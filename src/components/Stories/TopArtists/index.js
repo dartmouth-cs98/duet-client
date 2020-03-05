@@ -41,13 +41,8 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     {user_2.id == my_id && user_1.id == my_id &&
                         <h1>you and you {share}</h1>}
                     {user_2.id != my_id && user_1.id != my_id &&
-<<<<<<< HEAD
-                        <h1>{user_1.display_name} and {user_2.display_name} share</h1>}
-                    <h2 className="TopArtists-TextShadow">Top Artists</h2>
-=======
                         <h1>{user_1.display_name} and {user_2.display_name} {share}</h1>}
                     <h2 className="TopArtists-TextShadow">top artists</h2>
->>>>>>> 648924c58c0891c6c58849447903f10cf8b2a814
                 </div>
                 <div className="TopArtists-List">
                     {user_1.id == my_id &&
