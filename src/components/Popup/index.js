@@ -52,7 +52,7 @@ const Popup = ({ pageInfo, pageName }) => {
                 </div>
                 :
                 <div className="Popup-Button-Container">
-                     <h1>cs98-duet.surge.sh</h1>
+                     <h1>duetwith.me</h1>
                      <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
                 </div>
              }
