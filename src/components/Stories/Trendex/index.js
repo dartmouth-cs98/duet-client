@@ -8,8 +8,18 @@ import { TrendexDescription } from '../../../constants/helpInfo';
 const { PAGE_INFO, PAGE_NAME } = TrendexDescription;
 
 const Trendex = ({ user_1, user_2, my_id }) => {
-    const { trendex: user1Trendex, display_name: user1Name } = user_1;
-    const { trendex: user2Trendex, display_name: user2Name } = user_2;
+    const { trendex: user1Trendex } = user_1;
+    const { trendex: user2Trendex } = user_2;
+
+    var user1Name = user_1.display_name
+    var user2Name = user_2.display_name
+
+    if(user_1.id == "Everyone"){
+        user1Name = 'the average user';
+    }
+    else if(user_2.id == "Everyone"){
+        user2Name = 'the average user'
+    }
 
     return (
         <Page background={'#212034'} >

@@ -38,7 +38,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                 </div>
                 <div className="TopArtists-List">
                     {user_1.id == my_id &&
-                        <h1 className="right-align">you</h1>}
+                        <h1 className="right-align">You</h1>}
                     {user_1.id != my_id &&
                         <h1 className="right-align">{user_1.display_name}</h1>}
                     {user1TruncatedArtists.map((artist) => {

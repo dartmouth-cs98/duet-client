@@ -287,7 +287,16 @@ Bubbles.propTypes = {
 
 
 
-const TopGenres = ({ user_1, user_2 }) => {
+const TopGenres = ({ user_1, user_2, my_id }) => {
+    var user1Name = user_1.display_name
+    var user2Name = user_2.display_name
+
+    if(user_1.id == my_id){
+        user1Name = 'You';
+    }
+    else if(user_2.id == my_id){
+        user2Name = 'You'
+    }
 
     const BUBBLE_BOX_WIDTH_PERCENTAGE  = 1.0;
     const BUBBLE_BOX_HEIGHT_PERCENTAGE = 0.5;
@@ -310,14 +319,14 @@ const TopGenres = ({ user_1, user_2 }) => {
 
             <div className ="TopGenres-Page">
                 <h1 className="TopGenres-Title">Top Genres</h1>
-                <h1 className="Top-Name">{user_1.display_name}</h1>
+                <h1 className="Top-Name">{user1Name}</h1>
                 <Bubbles topGenres={user_1.genreCounts}
                          name={user_1.display_name} 
                          bubbleColor={PINK}
                          width={bubbleBoxWidth}
                          height={bubbleBoxHeight}
                 />
-                <h1 className="Bot-Name">{user_2.display_name}</h1>
+                <h1 className="Bot-Name">{user2Name}</h1>
                 <Bubbles topGenres={user_2.genreCounts}
                          name={user_2.display_name} 
                          bubbleColor={BLUE}
