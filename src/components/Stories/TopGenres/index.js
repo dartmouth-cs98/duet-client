@@ -270,7 +270,7 @@ const Bubbles = ({ topGenres, name, bubbleColor, width, height }) => {
             {bubbles.map((bubble) => {
                 return (
                     <div key={name+bubble.label} className="Bubble" style={{ width: bubble.r*2, height: bubble.r*2, transform: `translate(${bubble.x}px, ${bubble.y}px)` }} >
-                        <ReactFitText compressor={1}><h1 className="Bubble-Label">{bubble.label}</h1></ReactFitText>
+                        <ReactFitText compressor={0.5}><h1 className="Bubble-Label">{bubble.label}</h1></ReactFitText>
                         <div className={`Bubble-Image-${bubbleColor}`}></div>   
                     </div>
                 );

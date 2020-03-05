@@ -88,7 +88,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
             <div className="Decades-Page">
                 <div>
                     <h1 className="Decades-Title-TextShadow">A Blast from the Past</h1>
-                    <h2 className="Decades-subtitle">your music spans the decades</h2>
+                    <h2 className="Decades-subtitle">your music across the decades</h2>
                 </div>
                 <div className="Decades-BarChart-Container">
                     <div className="Decades-GraphOwner">

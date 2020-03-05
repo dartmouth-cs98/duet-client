@@ -4,6 +4,7 @@
     height: 95%;
     font-family: Roboto;
     flex-direction: column;
+    justify-content: space-around;
 
     .TopGenres-Title {
         font-family: Roboto;
@@ -12,16 +13,6 @@
         text-shadow: -2px 0px $ACCENT;
         margin: 20px 0 10px 15px;
         color: $WHITE;
-    }
-
-    .Genres-Divider {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 6vw;
-        letter-spacing: 0.12em;
-        color: $WHITE;
-        margin: 5px;
     }
 
     .Top-Name {
@@ -62,7 +53,7 @@
                 position: absolute;
                 width: 90%;
                 font-size: 5px;
-                line-height: 8px;
+                //line-height: 8px;
                 text-justify: auto;
                 text-align: center;
                 color: #ffffff;

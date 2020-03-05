@@ -33,7 +33,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                         <h1>you and you share</h1>}
                     {user_2.id != my_id && user_1.id != my_id &&
                         <h1>{user_1.display_name} and {user_2.display_name} share</h1>}
-                    <h2 className="TopArtists-TextShadow">top artists</h2>
+                    <h2 className="TopArtists-TextShadow">Top Artists</h2>
                 </div>
                 <div className="TopArtists-List">
                     {user_1.id == my_id &&
