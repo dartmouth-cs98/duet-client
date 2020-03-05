@@ -4,36 +4,27 @@
     height: 95%;
     font-family: Roboto;
     flex-direction: column;
+    justify-content: space-around;
 
     .TopGenres-Title {
         font-family: Roboto;
-        font-size: 12vw;
+        font-size: 6vh;
         line-height: 100%;
         text-shadow: -2px 0px $ACCENT;
         margin: 20px 0 10px 15px;
         color: $WHITE;
     }
 
-    .Genres-Divider {
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 6vw;
-        letter-spacing: 0.12em;
-        color: $WHITE;
-        margin: 5px;
-    }
-
     .Top-Name {
         text-align: right;
-        font-size: 8vw;
+        font-size: 3vh;
         color: $ACCENT;
         margin: 0 5px 0 0;
     }
 
     .Bot-Name {
         text-align: left;
-        font-size: 8vw;
+        font-size: 3vh;
         color: $PRIMARY;
         margin: 0 0 0 5px;
     }
@@ -62,6 +53,7 @@
                 position: absolute;
                 width: 90%;
                 font-size: 5px;
+                //line-height: 8px;
                 text-justify: auto;
                 text-align: center;
                 color: #ffffff;
