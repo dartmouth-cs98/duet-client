@@ -30,6 +30,14 @@ export const getBackendToken = (spotifyToken) => {
     })
 }
 
+export const getNumUsers = () => {
+    return new Promise((resolve) => {
+        axios({
+            method: 'get', 
+            url: `https://cs98-duet.herokuapp.com/stats`,
+        }).then((response) => resolve(response.data))
+    })
+}
 export const search = (id_, token) => {
     return new Promise((resolve) => {
         axios({

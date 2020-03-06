@@ -9,7 +9,7 @@
     background: url('../images/squigs.svg');
     background-size: 100%;
 
-    button {
+    .Invite-Button {
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
@@ -20,9 +20,15 @@
         box-sizing: border-box;
         box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.35);
         border-radius: 5px;
-        background-color: #2B2A42;
+        background-color: $OFFBLUE;
         margin-bottom: 25vh;
         width: 200px;
+    }
+
+    .Invite-Button:active {
+        background: $SECONDARY;
+        transform: translateY(3px);
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.35);
     }
     
     .Share-Invite {
@@ -38,7 +44,7 @@
         box-sizing: border-box;
         box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.35);
         border-radius: 5px;
-        background-color: #2B2A42;
+        background-color: $OFFBLUE;
         text-decoration: none;
         margin-bottom: 20px;
         display: flex;
@@ -51,6 +57,12 @@
             margin-right: 5px;
             fill: #E5277B;
         }
+    }
+
+    .Share-Invite:active {
+        background: $SECONDARY;
+        transform: translateY(3px);
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.35);
     }
 
     #headline {

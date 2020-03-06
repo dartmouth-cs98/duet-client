@@ -1,10 +1,16 @@
 .Generic-Button {
-    background: $SECONDARY;
+    background: $OFFBLUE;
     color: $ACCENT;
     border: 2px solid $ACCENT;
     box-sizing: border-box;
     box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
+}
+
+.Generic-Button:active {
+    background: $SECONDARY;
+    transform: translateY(3px);
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.35);
 }
 
 button {

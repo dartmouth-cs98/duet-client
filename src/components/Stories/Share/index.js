@@ -43,7 +43,7 @@ const Share = ({ history, my_id }) => {
                     <div className="Share-Invite" onClick={toggleModal}>
                         invite your friends 
                     </div>
-                    <button onClick={handleCompareAgain}> 
+                    <button className="Invite-Button" onClick={handleCompareAgain}> 
                     duet again
                     </button>
                 </div>

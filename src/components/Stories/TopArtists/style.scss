@@ -53,18 +53,19 @@
 
         .TopArtists-TextShadow {
             font-family: Roboto;
-            font-size: 12vw;
+            font-size: 7vh;
             line-height: 100%;
             text-shadow: -2px 0px $ACCENT;
             color: $WHITE;
             margin: 0;
         }
 
-        @media screen and (min-width: 600px) {
-            .TopArtists-TextShadow {
-                font-size: 80px;
-            }
-        }
+        // @media screen and (min-width: 600px) {
+        //     .TopArtists-TextShadow {
+        //         font-size: 80px;
+        //     }
+        // }
+
         h1 {
             font-family: Roboto;
             font-style: normal;
