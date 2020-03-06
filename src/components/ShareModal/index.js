@@ -12,9 +12,9 @@ const BUTTON_WIDTH = 50;
 
 const ShareModal = ({ toggleModal, shareRoute }) => {
 
-    const shareLink = `${window.origin}${shareRoute}`;
-    const messageLink = `sms:&body=${SHARE_MESSAGE}${shareLink}`;
-    const emailLink = `mailto:?to=&body=${SHARE_MESSAGE}${shareLink}&subject=${SHARE_SUBJECT}`;
+    const shareLink = encodeURI(`${window.origin}${shareRoute}`);
+    const messageLink = `sms:&body=${encodeURI(SHARE_MESSAGE + shareLink)}`;
+    const emailLink = `mailto:?to=&body=${SHARE_MESSAGE + shareLink}&subject=${SHARE_SUBJECT}`;
 
     const [copied, setCopied] = useState(false)
 
