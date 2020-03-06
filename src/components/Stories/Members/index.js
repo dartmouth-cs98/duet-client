@@ -31,7 +31,7 @@ const Members = () => {
 
     return (
         <ModalWrapper showModal={showModal}>
-            <ShareModal toggleModal={toggleModal} shareRoute={`/joingroup/${user_2.id}`} />
+            <ShareModal toggleModal={toggleModal} shareRoute={`/joingroup/${encodeURI(user_2.id)}`} />
             <Page background={'#212034'}>
                 <div id="Members">
                     <h1>These are the members of {user_2.id}</h1>
