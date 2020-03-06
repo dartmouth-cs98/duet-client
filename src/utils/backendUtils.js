@@ -109,7 +109,8 @@ export const getGroupMembers = (groupId, token) => {
         axios({
             method: 'get', 
             url: `https://cs98-duet.herokuapp.com/groups/users/${groupId}`,
-        }, { headers: getAuthHeader(token) }).then((response) => {
+            headers: getAuthHeader(token),
+        }).then((response) => {
             resolve(response.data)
         });
     })

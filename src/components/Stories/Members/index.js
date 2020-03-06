@@ -18,7 +18,7 @@ const Members = () => {
     }, [])
 
     const handleJoinGroupClick = () => {
-        joinGroup(user_2.id, user_1.id)
+        joinGroup(user_2.id, user_1.id, token);
         setJoined(true)
     }
     
