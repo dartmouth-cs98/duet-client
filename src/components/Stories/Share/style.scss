@@ -22,11 +22,7 @@
         border-radius: 5px;
         background-color: #2B2A42;
         margin-bottom: 25vh;
-
-        svg {
-            margin-right: 5px;
-            stroke: #E5277B;
-        }
+        width: 200px;
     }
     
     .Share-Invite {
@@ -49,6 +45,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        width: 200px;
 
         svg {
             margin-right: 5px;

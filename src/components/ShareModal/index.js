@@ -33,7 +33,7 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
         <div className="Share-Modal">
             <div className="Share-Modal-Close">
                 <button onClick={toggleModal}>
-                    <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="12" height="12" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L16.5 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                         <path d="M16.5 1L0.999999 16.5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                     </svg>  
@@ -50,13 +50,13 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
                         <h1>text</h1>
                     </div>
                 }
-                <div className="Share-Modal-Button">
+                <div className="Share-Modal-Button" id={copied ? "copied" : ""}>
                     <Button width={BUTTON_WIDTH} onClick={handleCopyClick}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
-                            fill={ copied ?  "#9BD6DC" : "#E5277B" }
+                            fill={ copied ?  "#3D3C64" : "#E5277B" }
                             enableBackground="new 0 0 561 561"
                             version="1.1"
                             viewBox="0 0 561 561"
@@ -65,7 +65,7 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
                             <path d="M395.25 0h-306c-28.05 0-51 22.95-51 51v357h51V51h306V0zm76.5 102h-280.5c-28.05 0-51 22.95-51 51v357c0 28.05 22.95 51 51 51h280.5c28.05 0 51-22.95 51-51V153c0-28.05-22.95-51-51-51zm0 408h-280.5V153h280.5v357z"></path>
                         </svg>
                     </Button>
-                    <h1>copy link</h1>
+                    <h1 style={{ color: copied ? "#3D3C64" : "#E5277B" }} >{ copied ?  "copied!" : "copy link" }</h1>
                 </div>
                 <div className="Share-Modal-Button">
                     <Button width={BUTTON_WIDTH} onClick={handleEmailClick}>
