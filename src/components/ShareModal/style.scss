@@ -60,7 +60,7 @@
     .Share-Modal-Buttons {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         width: 80%;
 
         .Share-Modal-Button {
@@ -68,7 +68,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 8px;
+            margin-top: 15px;
+
+            button {
+                border: none;
+                box-shadow: none;
+                height: auto;
+                padding: 0;
+            }
 
             svg {
                 display: block;
