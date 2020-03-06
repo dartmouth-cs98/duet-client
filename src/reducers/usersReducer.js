@@ -11,7 +11,7 @@ const usersReducer = (state = {}, action) => {
     case types.FETCH_USER_2:
       return { ...state, user_2: action.user }
     case types.CLEAR_USERS:
-      return { my_id: state.my_id} 
+      return { my_id: state.my_id, my_groups: state.my_groups } 
     default: 
       return state
   }

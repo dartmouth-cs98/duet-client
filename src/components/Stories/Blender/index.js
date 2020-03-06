@@ -262,7 +262,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         <RadioButton 
                             onClick={() => handleRadioButtons(USER_1)} 
                             enabled={userSetting == USER_1} 
-                            label={user_1.display_name}
+                            label={user1Name}
                         />
                         <RadioButton 
                             onClick={() => handleRadioButtons(MIX)} 
@@ -272,7 +272,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         <RadioButton 
                             onClick={() => handleRadioButtons(USER_2)} 
                             enabled={userSetting == USER_2} 
-                            label={user_2.display_name}
+                            label={user2Name}
                         />
                     </div>
     

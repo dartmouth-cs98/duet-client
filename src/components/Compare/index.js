@@ -8,6 +8,7 @@ import Button from '../Button';
 import Switch from '../Switch';
 import Search from '../Search';
 import ModalWrapper from '../Modal';
+import ShareModal from '../ShareModal';
 import ReactLoading from 'react-loading';
 import * as types from '../../constants/actionTypes';
 import { fetchUser1, fetchUser2 } from '../../actions';
@@ -19,7 +20,7 @@ const LOGO_HEIGHT = 130;
 const LOGO_WIDTH = 210;
 const EVERYONE_ID = "Everyone";
 
-const CreateGroupModal = ({ toggleModal, my_id, my_groups, token }) => {
+const CreateGroupModal = ({ toggleModal, setIsSharing, setShareRoute, my_id, my_groups, token }) => {
 
     const NAMING_GROUP = 'NAMING_GROUP';
     const CREATING_GROUP = 'CREATING_GROUP';
@@ -43,6 +44,11 @@ const CreateGroupModal = ({ toggleModal, my_id, my_groups, token }) => {
             setStatus(GROUP_FAILED);
             setError(response['ERROR GROUP EXISTS']);
         });
+    }
+
+    const handleInviteClick = () => {
+        setIsSharing(true);
+        setShareRoute(`/joingroup/${encodeURI(groupName)}`);
     }
 
     return (
@@ -75,11 +81,7 @@ const CreateGroupModal = ({ toggleModal, my_id, my_groups, token }) => {
             { status === GROUP_CREATED && 
                 <>
                     <h1>group created!</h1>
-                    <Button 
-                        onClick={() => 
-                            window.open(`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/joingroup/${encodeURI(groupName)}`, "_self")}
-                    > invite friends
-                    </Button>
+                    <Button onClick={handleInviteClick}> invite friends </Button>
                 </>
             }
             { status === GROUP_FAILED && 
@@ -109,8 +111,18 @@ const Compare = ({ history }) => {
     const [isComparing, setIsComparing] = useState(true);
     const [isMixing, setIsMixing] = useState(true);
 
+    const [shareRoute, setShareRoute] = useState('');
+    const [isSharing, setIsSharing] = useState(false);
+
     const toggleModal = () => {
         setShowModal(!showModal);
+        if (isSharing) setIsSharing(false);
+    }
+
+    const handleShareClick = () => {
+        setIsSharing(true);
+        setShareRoute(`/join/${my_id}`);
+        toggleModal();
     }
 
     const handleGoClick = () => {
@@ -132,7 +144,18 @@ const Compare = ({ history }) => {
 
     return (
         <ModalWrapper showModal={showModal}>
-            <CreateGroupModal toggleModal={toggleModal} my_id={my_id} my_groups={my_groups} token={token} />
+            { isSharing ?  
+                <ShareModal toggleModal={toggleModal} shareRoute={shareRoute} />
+            :
+                <CreateGroupModal 
+                    toggleModal={toggleModal} 
+                    setIsSharing={setIsSharing} 
+                    setShareRoute={setShareRoute}
+                    my_id={my_id} 
+                    my_groups={my_groups} 
+                    token={token} 
+                />
+             }
             <Page background={'#212034'}>
                 <Search 
                     my_groups={my_groups}
@@ -152,10 +175,9 @@ const Compare = ({ history }) => {
                             <div className="Compare-Input">
                                 <button onClick={() => setBottomIsSearching(true)}>{bottomUser.name}</button>
                             </div>
-                            <a className="Compare-ShareDuet" href={`sms:&body=hey!%20let's%20compare%20and%20blend%20music%20tastes%20-%20join%20duet!%20${window.origin}/join/${my_id}`}>
+                            <div className="Compare-ShareDuet" onClick={handleShareClick}>
                                 can&apos;t find your friend? <u>share duet!</u>
-                            </a>
-                            {/* <div className="Compare-ShareDuet">can&apos;t find your friend? <u>share duet!</u></div> */}
+                            </div>
                         </div>
                         <div className="Compare-Toggles">
                             <div className="Compare-Toggle">
