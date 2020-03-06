@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Button from '../Button';
+import { isMobile } from "react-device-detect";
 
 const SHARE_SUBJECT = "let's compare music taste on duetwith.me!"
 const SHARE_MESSAGE = encodeURI("hey! let's compare and blend music tastes - join duet! ");
@@ -39,14 +40,16 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
                 </button>  
             </div>     
             <div className="Share-Modal-Buttons">
-                <div className="Share-Modal-Button">
-                    <Button width={BUTTON_WIDTH} onClick={handleMessageClick}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#E5277B" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd" clipRule="evenodd" d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM6 16L4 18V4H20V16H6ZM9 9H7V11H9V9ZM11 9H13V11H11V9ZM17 9H15V11H17V9Z" fill="9BD6DC" fillOpacity="1"/>
-                        </svg>
-                    </Button>
-                    <h1>text</h1>
-                </div>
+                { isMobile &&
+                    <div className="Share-Modal-Button">
+                        <Button width={BUTTON_WIDTH} onClick={handleMessageClick}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#E5277B" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM6 16L4 18V4H20V16H6ZM9 9H7V11H9V9ZM11 9H13V11H11V9ZM17 9H15V11H17V9Z" fill="9BD6DC" fillOpacity="1"/>
+                            </svg>
+                        </Button>
+                        <h1>text</h1>
+                    </div>
+                }
                 <div className="Share-Modal-Button">
                     <Button width={BUTTON_WIDTH} onClick={handleCopyClick}>
                         <svg
