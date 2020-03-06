@@ -263,6 +263,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                             onClick={() => handleRadioButtons(USER_1)} 
                             enabled={userSetting == USER_1} 
                             label={user1Name}
+                            color={'#E5277B'}
                         />
                         <RadioButton 
                             onClick={() => handleRadioButtons(MIX)} 
@@ -273,6 +274,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                             onClick={() => handleRadioButtons(USER_2)} 
                             enabled={userSetting == USER_2} 
                             label={user2Name}
+                            color={'#9BD6DC'}
                         />
                     </div>
     
