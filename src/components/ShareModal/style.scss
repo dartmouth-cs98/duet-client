@@ -50,22 +50,36 @@
     h2 {
         font-size: 2vh;
     }
+
+    #copied {
+        button {
+            border-color: #3D3C64 !important;
+        }
+    }
+
     .Share-Modal-Buttons {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         width: 80%;
-        height: 60%;
 
         .Share-Modal-Button {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+
+            svg {
+                display: block;
+                margin: auto;
+            }
 
             h1 {
                 font-family: Roboto;
                 color: $ACCENT;
                 font-size: 14px;
+                margin-top: 8px;
             }
         }
     }

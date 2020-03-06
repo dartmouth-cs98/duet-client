@@ -296,7 +296,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         })}
                     </div>
                     <div className="Blender-Buttons">
-                        <button className="Shuffle-Button" onClick={shuffleSliders}></button>
+                        <button className="Shuffle-Button" onClick={shuffleSliders}><div id="shuffle-icon"></div></button>
                         <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>                        
                     </div>
                 </div>
