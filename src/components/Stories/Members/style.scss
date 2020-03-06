@@ -5,6 +5,7 @@
     justify-content: center;
     background-color: $SECONDARY;
     font-family: Roboto;
+    height: 85%;
 
     h1 {
         line-height: 1.3em;
@@ -15,7 +16,7 @@
     }
 
     .area {
-        height: 50vh;
+        height: 50%;
         align-items: flex-start;
         width: 90%;
         margin: auto;

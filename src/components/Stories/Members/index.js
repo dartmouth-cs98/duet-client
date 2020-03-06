@@ -38,6 +38,7 @@ const Members = () => {
                     <ScrollArea
                         speed={0.8}
                         className="area"
+                        // verticalScrollbarStyle={{ background: 'white' }}
                         contentClassName="content"
                         horizontal={false}
                     >
