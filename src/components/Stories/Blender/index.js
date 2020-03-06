@@ -62,7 +62,7 @@ const BlenderModal = ({ generatePlaylist, playlistStatus, setPlaylistStatus, tog
             { playlistStatus == PLAYLIST_CREATED && 
                 <>
                     <h1>Mixed!</h1>
-                    <h2>your new playlist has succesfully been mixed and added to your spoitfy</h2>
+                    <h2>your new playlist has succesfully been mixed and added to your Spotify account</h2>
                     <Button onClick={() => window.open(playlistLink, "_self")}>listen to mix</Button>
                 </>
             }
