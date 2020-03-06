@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Button from '../Button';
 import { isMobile } from "react-device-detect";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 const SHARE_SUBJECT = "let's compare music taste on duetwith.me!"
 const SHARE_MESSAGE = encodeURI("hey! let's compare and blend music tastes - join duet! ");
@@ -18,11 +20,6 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
 
     const handleMessageClick = () => {
         window.open(messageLink, "_self");
-    }
-
-    const handleCopyClick = () => {
-        navigator.clipboard.writeText(shareLink);
-        setCopied(true);
     }
 
     const handleEmailClick = () => {
@@ -51,7 +48,7 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
                     </div>
                 }
                 <div className="Share-Modal-Button" id={copied ? "copied" : ""}>
-                    <Button width={BUTTON_WIDTH} onClick={handleCopyClick}>
+                    <CopyToClipboard onCopy={() => setCopied(true)} text={shareLink}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -64,7 +61,7 @@ const ShareModal = ({ toggleModal, shareRoute }) => {
                             >
                             <path d="M395.25 0h-306c-28.05 0-51 22.95-51 51v357h51V51h306V0zm76.5 102h-280.5c-28.05 0-51 22.95-51 51v357c0 28.05 22.95 51 51 51h280.5c28.05 0 51-22.95 51-51V153c0-28.05-22.95-51-51-51zm0 408h-280.5V153h280.5v357z"></path>
                         </svg>
-                    </Button>
+                    </CopyToClipboard>
                     <h1 style={{ color: copied ? "#3D3C64" : "#E5277B" }} >{ copied ?  "copied!" : "copy link" }</h1>
                 </div>
                 <div className="Share-Modal-Button">
