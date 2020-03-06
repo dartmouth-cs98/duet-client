@@ -8,7 +8,7 @@ const DARTMOUTH_GROUP = { display_name: 'Dartmouth', id: 'Dartmouth', isGroup: '
 
 const Search = ({ my_id, my_groups, setUser, setIsSearching, enabled }) => {
 
-    const ME = { id: my_id, display_name: 'Me' };
+    const ME = { id: my_id, display_name: 'Me', isGroup: false };
 
     const { token } = useSelector((state) => state.auth);
 
@@ -35,7 +35,7 @@ const Search = ({ my_id, my_groups, setUser, setIsSearching, enabled }) => {
     };  
 
     const handleUserSelect = (user) => {
-        setUser({ id: user.id, name: user.display_name })
+        setUser({ id: user.id, name: user.display_name, isGroup: user.isGroup })
         setIsSearching(false);
         setQueryVal('');
         setUsers(defaultUsers);
