@@ -2,13 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 95%;
     background: url('../images/squigs.svg');
     background-size: 100%;
 
     .Login-Button-Logo-Info {
-        margin-top: 20%;
+        margin-top: 35%;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -16,7 +17,8 @@
         align-items: center;
 
         button {
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         h2 {
@@ -24,7 +26,12 @@
         }
     }
 
+    .Logo {
+        
+    }
+
     .Login-description {
+        align-self: flex-end;
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
@@ -40,10 +47,32 @@
     .Login-User-count {
         font-family: Roboto;
         font-style: normal;
-        font-size: 25px;
+        font-size: 2vh;
         margin: 0;
         color: $WHITE;
         background-color: $SECONDARY;
     }
 
+    .Stats {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+
 }
+
+
+// .Squigs {
+//     width: 600px;
+//     height: 400px;
+
+//     .Squig {
+//         stroke: white;
+//         stroke-width: 10px;
+//         stroke-linecap: round;
+//         fill: none;
+//     }
+// }
