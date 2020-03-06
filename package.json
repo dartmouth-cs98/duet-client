@@ -69,6 +69,7 @@
     "react-full-screen": "0.2.4",
     "react-loading": "2.0.3",
     "react-minimal-pie-chart": "6.0.1",
+    "react-number-format": "4.4.1",
     "react-redux": "7.1.1",
     "react-resize-aware": "3.0.0",
     "react-router-dom": "5.0.0",

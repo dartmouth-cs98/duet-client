@@ -9,8 +9,9 @@ import { fetchMeData, fetchUser2 } from '../../actions';
 import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
-import { joinGroup } from '../../utils/backendUtils';
+import { joinGroup, getNumUsers } from '../../utils/backendUtils';
 import Popup from '../Popup';
+import NumberFormat from 'react-number-format';
 
 const LOGO_HEIGHT = 150;
 const LOGO_WIDTH = 240;
@@ -21,8 +22,11 @@ const Login = ({ history, match }) => {
     const dispatch = useDispatch();
     const spotify_token = getToken();
     const [loggingIn, setLoggingIn] = useState(!!spotify_token);
+    const [stats, setStats] = useState(null);
     
     useEffect(() => {
+
+        getNumUsers().then(setStats);
         const pathname = history.location.pathname;
         if (pathname.substring(0, 6) == '/join/') {
             localStorage.setItem("referrer", decodeURI(match.params.id));
@@ -69,6 +73,12 @@ const Login = ({ history, match }) => {
                             <DuetLogo width={LOGO_WIDTH} height={LOGO_HEIGHT} />
                             <Button onClick={handleLogin} width={BUTTON_WIDTH}>login with spotify</Button>
                             <h2 className="Login-description">what duet does: <br/> visually compares your music taste with others generates playlists to mix your taste with others</h2>
+                            { stats && 
+                                <>
+                                    <h3 className="Login-User-count">users of duet: <NumberFormat value={stats.users} displayType='text' thousandSeparator={true} /></h3>
+                                    <h3 className="Login-User-count">groups of duet: <NumberFormat value={stats.groups} displayType='text' thousandSeparator={true} /></h3>
+                                </>  
+                            }
                         </div>
                     </div> 
                     <Popup/>
