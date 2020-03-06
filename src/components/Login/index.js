@@ -40,7 +40,7 @@ const Login = ({ history, match }) => {
                     dispatch(fetchUser2(referrer ? referrer : referrerGroup, token))
                     localStorage.removeItem('referrer');
                     localStorage.removeItem('referrerGroup');
-                    if (referrerGroup) joinGroup(referrerGroup.id, user.id, token);
+                    if (referrerGroup) joinGroup(referrerGroup, user.id, token);
                     setTimeout(() => history.push('/stories', { isComparing: true, isMixing: true }), 2000)
                 } 
                 else if (pathname.substring(0, 5) == '/join') {
