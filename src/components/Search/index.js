@@ -4,8 +4,6 @@ import { search } from '../../utils/backendUtils';
 import { useSelector } from 'react-redux';
 import ScrollArea from 'react-scrollbar';
 
-const DARTMOUTH_GROUP = { display_name: 'Dartmouth', id: 'Dartmouth', isGroup: 'True' };
-
 const Search = ({ my_id, my_groups, setUser, setIsSearching, enabled }) => {
 
     const ME = { id: my_id, display_name: 'Me', isGroup: false };
@@ -15,14 +13,14 @@ const Search = ({ my_id, my_groups, setUser, setIsSearching, enabled }) => {
     useEffect(() => {
         if (my_groups) {
             const groups = my_groups.map((group) => ({ ...group, isGroup: true }))
-            setDefaultUsers([ME, DARTMOUTH_GROUP, ...groups]);
-            if (queryVal == '') setUsers([ME, DARTMOUTH_GROUP, ...groups]);
+            setDefaultUsers([ME, ...groups]);
+            if (queryVal == '') setUsers([ME, ...groups]);
         }
     },[my_groups]);
 
     const [queryVal, setQueryVal] = useState('');
-    const [defaultUsers, setDefaultUsers] = useState([DARTMOUTH_GROUP, ME]);
-    const [users, setUsers] = useState([DARTMOUTH_GROUP, ME]);
+    const [defaultUsers, setDefaultUsers] = useState([ME]);
+    const [users, setUsers] = useState([ME]);
 
     const handleChange = (e) => {
         const { value } = e.target;
