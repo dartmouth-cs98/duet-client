@@ -196,7 +196,8 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
             const recommendedTrackUris = recommendedTracks.map((track) => track.uri);
             const description = `Adventurousness: ${adventurousness} Trendiness: ${target_popularity} Happiness: ${target_valence} Acousticness: ${target_acousticness} Danceability: ${target_danceability} Energy: ${target_energy}`;
             const trackUris = _.shuffle([ ...user1TopTrackUris, ...user2TopTrackUris, ...recommendedTrackUris ]);
-            createPlaylist(spotify_token, my_id, playlistName, description, trackUris)
+            const uniqueTrackUris = [ ...new Set(trackUris)];
+            createPlaylist(spotify_token, my_id, playlistName, description, uniqueTrackUris)
                 .then((href) => {
                     setPlaylistLink(href);
                     setPlaylistStatus(PLAYLIST_CREATED);
