@@ -7,6 +7,7 @@ import TopGenres from './TopGenres';
 import Trendex from './Trendex';
 import Blender from './Blender';
 import Members from './Members';
+import Instructions from './Instructions';
 import Share from './Share';
 import { useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
@@ -27,7 +28,7 @@ const Stories = ({ history, location }) => {
 
     const [swipeDisabled, setSwipeDisable] = useState(false);
     const [loaded, setLoaded] = useState(false);
-    const [numPages, setNumPages] = useState((isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 1);
+    const [numPages, setNumPages] = useState((isMixing ? 1 : 0) + (isComparing ? 5 : 0) + 2);
 
     const [currPage, setCurrPage] = useState(0);
 
@@ -41,84 +42,44 @@ const Stories = ({ history, location }) => {
     }
 
     useEffect(() => {
-        if (user_2 && user_2.isGroup) {
+        if (user_1 && user_1.id == my_id && user_2 && user_2.isGroup) {
             setNumPages(numPages + 1);
         }
         setTimeout(() => setLoaded(true), 2000);
     }, [user_2]);
 
+   
     const renderSwipableViews = () => {
-        if (isMixing && isComparing) {
-            if (user_2.isGroup && user_1.id == my_id) {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
-                        <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
-                        <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
-                        <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
-                        <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            } else {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
-                        <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
-                        <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
-                        <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
-                        <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            }
-        } else if (isMixing) {
-            if (user_2.isGroup && user_1.id == my_id) {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            } else {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <Blender key="blender" user_1={user_1} user_2={user_2} my_id={my_id} setSwipeDisable={setSwipeDisable}/>
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            }
-        } else {
-            if (user_2.isGroup && user_1.id == my_id) {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
-                        <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
-                        <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
-                        <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
-                        <Members user_1={user_1} user_2={user_2} my_id={my_id} key="membersscreen"/>
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            } else {
-                return (
-                    <BindKeyboardSwipeableViews style={swipableViewsStyle} onChangeIndex={(i) => setCurrPage(i)} disabled={swipeDisabled}>
-                        <TopArists user_1={user_1} user_2={user_2} my_id={my_id} key="topartists"/>
-                        <Trendex user_1={user_1} user_2={user_2} my_id={my_id} key="trendex"/>
-                        <TopGenres user_1={user_1} user_2={user_2} my_id={my_id} key="topgenres"/>
-                        <MusicalAttr user_1={user_1} user_2={user_2} my_id={my_id} key="musicalattr"/>
-                        <Decades user_1={user_1} user_2={user_2} my_id={my_id} key="decades"/> 
-                        <Share history={history} my_id={my_id} key="sharepage" />
-                    </BindKeyboardSwipeableViews>
-                );
-            }
+        const props = { user_1, user_2, my_id, history };
+        let views = [ <Instructions {...props} key="instructions"/> ];
+        if (isComparing) {
+            views = [
+                ...views,
+                <TopArists {...props} key="topartists"/>,
+                <Trendex {...props} key="trendex"/>,
+                <TopGenres {...props} key="topgenres"/>,
+                <MusicalAttr {...props} key="musicalattr"/>,
+                <Decades {...props} key="decades"/>,
+            ]
         }
-        
+        if (isMixing) {
+            views =  [ ...views, <Blender {...props} key="blender" setSwipeDisable={setSwipeDisable}/> ];
+        }
+        if (user_2.isGroup && user_1.id == my_id) {
+            views = [ ...views, <Members {...props} key="membersscreen"/> ];
+        }
+        views = [ ...views, <Share {...props} key="sharepage" />];
+
+        return (
+            <BindKeyboardSwipeableViews 
+                style={swipableViewsStyle} 
+                onChangeIndex={(i) => setCurrPage(i)} 
+                index={currPage}
+                disabled={swipeDisabled}
+            >
+                {views}
+            </BindKeyboardSwipeableViews>
+        )
     }
 
     if (loaded && user_1 && user_2) {
@@ -128,6 +89,7 @@ const Stories = ({ history, location }) => {
                     {_.range(numPages).map((i) => 
                         <div 
                             className="Stories-progress-bar"
+                            onClick={() => setCurrPage(i)}
                             key={i}
                             style={{ width: `${100 / numPages}%`, background: returnBarColor(currPage, i)}}
                         />
@@ -147,4 +109,4 @@ const Stories = ({ history, location }) => {
     }
 }
 
-export default Stories;
+export default React.memo(Stories);

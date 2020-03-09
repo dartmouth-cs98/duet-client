@@ -1,8 +1,54 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser1 } from '../../actions';
+import * as types from '../../constants/actionTypes';
 
-const Popup = ({ pageInfo, pageName }) => {
+const Restart = ({ history }) => {
+
+    const dispatch = useDispatch();
+    const { token } = useSelector((state) => state.auth);
+    const { my_id } = useSelector((state) => state.users);
+
+    const handleClick = () => {
+        dispatch({ type: types.CLEAR_USERS })
+        dispatch(fetchUser1(my_id, token))
+        history.push('/compare');
+    }
+    return (
+        <div onClick={handleClick} className="Restart-Button">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
+                height="100%"
+                fill="none"
+                viewBox="0 0 45 45"
+            >
+                <ellipse cx="25" cy="25.22" fill="#EEE" rx="20" ry="19.78"></ellipse>
+                <ellipse
+                cx="25"
+                cy="25.22"
+                fill="#212034"
+                rx="17.5"
+                ry="17.308"
+                ></ellipse>
+                <path
+                fill="#212034"
+                d="M0 0H13.366V16.917H0z"
+                transform="rotate(-88.316 14.818 14.298) skewX(.037)"
+                ></path>
+                <path
+                fill="#EEE"
+                d="M6.352 17.695l2.982-13.97L20.335 14.15 6.352 17.695z"
+                ></path>
+            </svg>
+        </div>
+    );
+  }
+  
+
+const Popup = ({ pageInfo, pageName, history }) => {
 
     const [showPopup, setShowPopup] = useState(false);
 
@@ -52,8 +98,9 @@ const Popup = ({ pageInfo, pageName }) => {
                 </div>
                 :
                 <div className="Popup-Button-Container">
-                     <h1>duetwith.me</h1>
-                     <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
+                    <Restart history={history}/>
+                    <h1>duetwith.me</h1>
+                    <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
                 </div>
              }
         </>

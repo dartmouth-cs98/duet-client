@@ -1,0 +1,18 @@
+.Instructions {
+    height: 95%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .Instructions-TouchToJump {
+        position: absolute;
+        top: 10px;
+    }
+
+    .Instructions-HelpAndRestart {
+        position: absolute;
+        bottom: 70px;
+    }
+}

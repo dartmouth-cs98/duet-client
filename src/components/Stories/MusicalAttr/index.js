@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
-import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
 import { number, string } from 'prop-types';
 import { User } from '../../../types';
@@ -60,7 +60,7 @@ Slider.propTypes = {
     name2: string
 }
 
-const MusicalAttr = ({ user_1, user_2, my_id }) => {
+const MusicalAttr = ({ user_1, user_2, my_id, history }) => {
     
     const { taste: user1Taste } = user_1;
     const { taste: user2Taste } = user_2;
@@ -117,7 +117,7 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
 
     return (
         
-        <Page background={'#212034'}>
+        <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
             {resizeListener}
             <div className="MusicalAttr-Page">
                 <div>
@@ -153,7 +153,6 @@ const MusicalAttr = ({ user_1, user_2, my_id }) => {
                     })}
                 </div>
             </div>
-            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }

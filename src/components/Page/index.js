@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import Popup from '../Popup';
 import { string, number, node, bool } from 'prop-types';
-import { isMobile } from "react-device-detect";
 
-const Page = ({ background, children, showOverlay }) => {
-    const [showingOverlay, setShowingOverlay] = useState(!!showOverlay);
-
-    setTimeout(() => setShowingOverlay(false), 3000);
-
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-    })
-
-    const handleKeyDown = () => {
-        setShowingOverlay(false);
-    }
-
-    const handleOverlayClick = () => {
-        setShowingOverlay(false);
-    }
+const Page = ({ background, children, showPopup, history, pageInfo, pageName }) => {
 
     return (
-        <div className="Page-Container"onKeyDown={handleKeyDown} style={{ background }}>
-            <div id="Overlay" onClick={() => handleOverlayClick()} className={showingOverlay ? '' :'fadeOut'}  >
-                <div id={isMobile ? (Math.floor( Math.random() * 10000 ) == 42 ? 'swipe2' : 'swipe') : 'arrowKeys'}></div>
-            </div>
+        <div className="Page-Container" style={{ background }}>
             <div className="Page" style={{ background }}>
                 {children}
+                { showPopup && <Popup history={history} pageInfo={pageInfo} pageName={pageName}/> }
             </div>  
         </div>
     )
@@ -36,7 +20,9 @@ Page.propTypes = {
     numPages: number,
     pageNum: number,
     children: node,
-    showOverlay: bool,
+    showPopup: bool,
+    pageInfo: string,
+    pageName: string,
 };
 
 export default Page;

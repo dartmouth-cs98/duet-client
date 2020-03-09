@@ -5,7 +5,6 @@
 /* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from 'react';
 import Page from '../../Page';
-import Popup from '../../Popup';
 import useResizeAware from 'react-resize-aware';
 import { Genre, User } from '../../../types';
 import { arrayOf, string, func } from 'prop-types';
@@ -287,7 +286,7 @@ Bubbles.propTypes = {
 
 
 
-const TopGenres = ({ user_1, user_2, my_id }) => {
+const TopGenres = ({ user_1, user_2, my_id, history }) => {
     var user1Name = user_1.display_name
     var user2Name = user_2.display_name
 
@@ -314,7 +313,7 @@ const TopGenres = ({ user_1, user_2, my_id }) => {
 
 
     return (
-        <Page background={'#212034'}>
+        <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
             {resizeListener}
 
             <div className ="TopGenres-Page">
@@ -334,7 +333,6 @@ const TopGenres = ({ user_1, user_2, my_id }) => {
                          height={bubbleBoxHeight}
                 /> 
             </div>
-            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }
