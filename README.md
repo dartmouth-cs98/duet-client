@@ -2,7 +2,7 @@
 
 We're using React Slingshot as a starterpack. Read about it [here](https://github.com/coryhouse/react-slingshot) or look in `docs/FAQ.md`.
 
-[Duet.com](http://cs98-duet.surge.sh/)
+See the main ReadMe [here](https://github.com/dartmouth-cs98/duet-wiki) and the app in action [here](http://duetwith.me).
 
 ## Getting Setup on your Local Machine
 
