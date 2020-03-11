@@ -79,7 +79,7 @@ const BlenderModal = ({ generatePlaylist, playlistStatus, setPlaylistStatus, tog
 
 const { PAGE_INFO, PAGE_NAME } = BlenderDescription;
 
-const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
+const Blender = ({ user_1, user_2, my_id, history, setSwipeDisable }) => {
 
     const { spotify_token } = useSelector((state) => state.auth);
 
@@ -252,7 +252,7 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
     return (
         <ModalWrapper showModal={showModal}>
             <BlenderModal playlistStatus={playlistStatus} setPlaylistStatus={setPlaylistStatus} generatePlaylist={generatePlaylist} toggleModal={toggleModal} playlistLink={playlistLink}/>
-            <Page background={'#212034'}>
+            <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
                 <div className="Blender-Page">
                     <div>
                         <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
@@ -303,7 +303,6 @@ const Blender = ({ user_1, user_2, my_id, setSwipeDisable }) => {
                         <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>                        
                     </div>
                 </div>
-                <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
             </Page>
         </ModalWrapper>
     )

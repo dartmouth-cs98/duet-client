@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import useResizeAware from 'react-resize-aware';
 import Page from '../../Page';
-import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
 import _ from 'lodash';
@@ -9,7 +9,7 @@ import { DecadesDescription } from '../../../constants/helpInfo';
 
 const { PAGE_INFO, PAGE_NAME } = DecadesDescription;
 
-const Decades = ({ user_1, user_2, my_id }) => {
+const Decades = ({ user_1, user_2, my_id, history }) => {
 
     let user1DecadeCounts = _.sortBy(user_1.decadeCounts, ['decade']);
     let user2DecadeCounts = _.sortBy(user_2.decadeCounts, ['decade']);
@@ -78,7 +78,7 @@ const Decades = ({ user_1, user_2, my_id }) => {
     const barWidth = barChartWidth / user1DecadeCounts.length;
 
     return (
-        <Page background={'#212034'} >
+        <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
              {resizeListener}
 
             <div className="Decades-Page">
@@ -140,7 +140,6 @@ const Decades = ({ user_1, user_2, my_id }) => {
                     </div>
                 </div>
             </div>
-            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }

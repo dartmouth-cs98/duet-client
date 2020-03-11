@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
-import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
 import { TopArtistsDescription } from '../../../constants/helpInfo';
@@ -8,7 +8,7 @@ import { TopArtistsDescription } from '../../../constants/helpInfo';
 const { PAGE_INFO, PAGE_NAME } = TopArtistsDescription;
 const NUM_ARTISTS_TO_DISPLAY = 8;
 
-const TopArtists = ({ user_1, user_2, my_id }) => {
+const TopArtists = ({ user_1, user_2, my_id, history }) => {
 
 
     const user1TruncatedArtists = user_1.topArtists.slice(0, NUM_ARTISTS_TO_DISPLAY).map((artist) => artist.name);
@@ -31,7 +31,7 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
     }
 
     return (
-        <Page background={'#212034'} showOverlay>
+        <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
             <div className="TopArtists-Page">
                 <div className="TopArtists-Title">
                     {user_1.id == my_id && user_2.id != my_id &&
@@ -71,7 +71,6 @@ const TopArtists = ({ user_1, user_2, my_id }) => {
                     })}
                 </div>   
             </div>
-            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }

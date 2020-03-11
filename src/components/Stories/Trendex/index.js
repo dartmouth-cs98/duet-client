@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Page from '../../Page';
-import Popup from '../../Popup';
 import { User } from '../../../types';
 import { string } from 'prop-types';
 import { TrendexDescription } from '../../../constants/helpInfo';
 
 const { PAGE_INFO, PAGE_NAME } = TrendexDescription;
 
-const Trendex = ({ user_1, user_2, my_id }) => {
+const Trendex = ({ user_1, user_2, my_id, history }) => {
     const { trendex: user1Trendex } = user_1;
     const { trendex: user2Trendex } = user_2;
 
@@ -22,7 +22,7 @@ const Trendex = ({ user_1, user_2, my_id }) => {
     }
 
     return (
-        <Page background={'#212034'} >
+        <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
             <div className="Trendex-Page">
                 <div className="Trendex-TopSquare">
                     <div>
@@ -64,7 +64,6 @@ const Trendex = ({ user_1, user_2, my_id }) => {
                     </div>
                 </div>
             </div>
-            <Popup pageInfo={PAGE_INFO} pageName={PAGE_NAME}/>
         </Page>
     )
 }
