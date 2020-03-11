@@ -16,4 +16,4 @@ const LoadingPage = ({ children }) => (
     </div>
 );
 
-export default LoadingPage;
+export default React.memo(LoadingPage);

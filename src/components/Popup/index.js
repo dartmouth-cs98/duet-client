@@ -48,7 +48,7 @@ const Restart = ({ history }) => {
   }
   
 
-const Popup = ({ pageInfo, pageName, history }) => {
+const Popup = ({ pageInfo, pageName, history, showRestart }) => {
 
     const [showPopup, setShowPopup] = useState(false);
 
@@ -98,7 +98,7 @@ const Popup = ({ pageInfo, pageName, history }) => {
                 </div>
                 :
                 <div className="Popup-Button-Container">
-                    <Restart history={history}/>
+                    {showRestart && <Restart history={history}/>}
                     <h1>duetwith.me</h1>
                     <div className="Popup-Button" onClick={() => setShowPopup(!showPopup)}><p>?</p></div>
                 </div>

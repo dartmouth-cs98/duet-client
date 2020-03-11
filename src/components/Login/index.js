@@ -10,7 +10,6 @@ import { getToken } from '../../utils/tokenUtils';
 import { useDispatch } from 'react-redux';
 import { func } from 'prop-types';
 import { joinGroup, getNumUsers } from '../../utils/backendUtils';
-import Popup from '../Popup';
 import NumberFormat from 'react-number-format';
 
 const LOGO_HEIGHT = 150;
@@ -75,7 +74,7 @@ const Login = ({ history, match }) => {
     // animate();
 
     return (
-        <Page background={'#212034'}>
+        <Page background={'#212034'} showPopup={!loggingIn} disableRestart>
    
             { loggingIn ? <Loading>{`${spotify_token ? 'logging you in...' : 'connecting to spotify...'}`}</Loading> :
                 <>
@@ -96,7 +95,6 @@ const Login = ({ history, match }) => {
                             </div>  
                         }
                     </div> 
-                    <Popup/>
                 </>  
             }         
         </Page>
@@ -107,4 +105,4 @@ Login.propTypes = {
     jumpToPage: func
 }
 
-export default Login;
+export default React.memo(Login);
