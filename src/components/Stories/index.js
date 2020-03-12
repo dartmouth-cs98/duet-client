@@ -88,11 +88,17 @@ const Stories = ({ history, location }) => {
                 <div className="Stories-progress">
                     {_.range(numPages).map((i) => 
                         <div 
-                            className="Stories-progress-bar"
+                            style={{ width: `${100 / numPages}%` }}
+                            key={`progress-wrapper-${i}`} 
+                            className="Stories-progress-bar-wrapper"
                             onClick={() => setCurrPage(i)}
-                            key={i}
-                            style={{ width: `${100 / numPages}%`, background: returnBarColor(currPage, i)}}
-                        />
+                        >    
+                            <div 
+                                className="Stories-progress-bar"
+                                key={`progress-bar-${i}`}
+                                style={{ background: returnBarColor(currPage, i)}}
+                            />
+                        </div>
                     )}
                 </div>
                 {renderSwipableViews()}
