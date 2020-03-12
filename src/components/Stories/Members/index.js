@@ -16,7 +16,7 @@ const Members = () => {
 
     useEffect(() => {
         getGroupMembers(user_2.id, token).then((members) => 
-            setMembers(members.users)
+            setMembers(members.users.reverse())
         );
     }, [])
 
