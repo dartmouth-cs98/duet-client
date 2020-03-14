@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Page from '../Page';
 
-const ModalWrapper = ({ children, showModal }) => {
+const ModalWrapper = ({ children, showModal, history, pageInfo, pageName, disableRestart }) => {
     // first element is the modal
     const Modal = children[0];
     // everything else is Content
@@ -10,7 +11,16 @@ const ModalWrapper = ({ children, showModal }) => {
     return (
         <div className="Modal-Container">
             <div className="Modal-Blur" style={{ filter: showModal ? 'blur(4px)' : 'none' }}>
+            <Page 
+                background={'#212034'} 
+                showPopup 
+                history={history} 
+                pageInfo={pageInfo} 
+                pageName={pageName}
+                disableRestart={disableRestart}
+            >
                 {Content}
+            </Page>
             </div>
             { showModal && Modal }
         </div>

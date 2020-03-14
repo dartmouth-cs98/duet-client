@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Page from '../../Page';
 import ReactLoading from 'react-loading';
 import { useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ import RadioButton from './RadioButton';
 import { getRecommendations, createPlaylist } from '../../../utils/playlistGenerator';
 import _ from 'lodash'; 
 import Slider from './Slider';
-import Popup from '../../Popup';
+import useResizeAware from 'react-resize-aware';
 import { BlenderDescription } from '../../../constants/helpInfo';
 import ModalWrapper from '../../Modal';
 
@@ -21,7 +21,7 @@ const PLAYLIST_CREATED = "PLAYLIST_CREATED";
 const PLAYLIST_FAILED = "PLAYLIST_FAILED";
 
 const PLAYLIST_LENGTH = 20;
-const SLIDER_HEIGHT = 90;
+const SLIDERS_HEIGHT_PERCENTAGE = .65;
 const SLIDER_WIDTH = '80%';
 
 export const USER_1 = 'USER_1';
@@ -74,7 +74,7 @@ const BlenderModal = ({ generatePlaylist, playlistStatus, setPlaylistStatus, tog
             } 
         </div>
     )
-}
+};
 
 
 const { PAGE_INFO, PAGE_NAME } = BlenderDescription;
@@ -249,61 +249,69 @@ const Blender = ({ user_1, user_2, my_id, history, setSwipeDisable }) => {
         }
     ]
 
+    const [resizeListener, pageSize] = useResizeAware();
+    const [slidersHeight, setSlidersHeight] = useState(SLIDERS_HEIGHT_PERCENTAGE * pageSize.width);
+
+    useEffect(() => {
+        const { height} = pageSize;
+        setSlidersHeight(SLIDERS_HEIGHT_PERCENTAGE * height);
+    }, [pageSize])
+
+
     return (
-        <ModalWrapper showModal={showModal}>
+        <ModalWrapper showModal={showModal} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
             <BlenderModal playlistStatus={playlistStatus} setPlaylistStatus={setPlaylistStatus} generatePlaylist={generatePlaylist} toggleModal={toggleModal} playlistLink={playlistLink}/>
-            <Page background={'#212034'} history={history} showPopup pageInfo={PAGE_INFO} pageName={PAGE_NAME}>
-                <div className="Blender-Page">
-                    <div>
-                        <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
-                        {/* <h2 className="Blender-subtitle">mix an optimal playlist to your liking!</h2> */}
-                    </div>
-                    <h2 className="Blender-SeedArtist-Label">generate playlist from the tastes of</h2>
-                    <div className="Blender-RadioButtons">
-                        <RadioButton 
-                            onClick={() => handleRadioButtons(USER_1)} 
-                            enabled={userSetting == USER_1} 
-                            label={user1Name}
-                            color={'#E5277B'}
-                        />
-                        <RadioButton 
-                            onClick={() => handleRadioButtons(MIX)} 
-                            enabled={userSetting == MIX} 
-                            label={'both'}
-                        />
-                        <RadioButton 
-                            onClick={() => handleRadioButtons(USER_2)} 
-                            enabled={userSetting == USER_2} 
-                            label={user2Name}
-                            color={'#9BD6DC'}
-                        />
-                    </div>
-    
-                    <div className="Blender-Sliders">
-                        {sliderObjects.map((sliderObject) => {
-                            const { leftLabel, rightLabel, updateAttribute, val, dots } = sliderObject;
-                            return (
-                                <Slider 
-                                    key={leftLabel}
-                                    leftLabel={leftLabel}
-                                    rightLabel={rightLabel}
-                                    setSwipeDisable={setSwipeDisable} 
-                                    updateAttribute={updateAttribute} 
-                                    dots={dots}
-                                    userSetting={userSetting}
-                                    val={[val]} 
-                                    height={SLIDER_HEIGHT} 
-                                    width={SLIDER_WIDTH}
-                                />
-                            )
-                        })}
-                    </div>
-                    <div className="Blender-Buttons">
-                        <button className="Shuffle-Button" onClick={shuffleSliders}><div id="shuffle-icon"></div></button>
-                        <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>                        
-                    </div>
+            <div className="Blender-Page">
+                {resizeListener}
+                <div>
+                    <h1 className="Blender-Title-TextShadow">Music Taste Mixer</h1>
+                    {/* <h2 className="Blender-subtitle">mix an optimal playlist to your liking!</h2> */}
                 </div>
-            </Page>
+                <h2 className="Blender-SeedArtist-Label">generate playlist from the tastes of</h2>
+                <div className="Blender-RadioButtons">
+                    <RadioButton 
+                        onClick={() => handleRadioButtons(USER_1)} 
+                        enabled={userSetting == USER_1} 
+                        label={user1Name}
+                        color={'#E5277B'}
+                    />
+                    <RadioButton 
+                        onClick={() => handleRadioButtons(MIX)} 
+                        enabled={userSetting == MIX} 
+                        label={'both'}
+                    />
+                    <RadioButton 
+                        onClick={() => handleRadioButtons(USER_2)} 
+                        enabled={userSetting == USER_2} 
+                        label={user2Name}
+                        color={'#9BD6DC'}
+                    />
+                </div>
+
+                <div className="Blender-Sliders">
+                    {sliderObjects.map((sliderObject) => {
+                        const { leftLabel, rightLabel, updateAttribute, val, dots } = sliderObject;
+                        return (
+                            <Slider 
+                                key={leftLabel}
+                                leftLabel={leftLabel}
+                                rightLabel={rightLabel}
+                                setSwipeDisable={setSwipeDisable} 
+                                updateAttribute={updateAttribute} 
+                                dots={dots}
+                                userSetting={userSetting}
+                                val={[val]} 
+                                height={slidersHeight / 6} 
+                                width={SLIDER_WIDTH}
+                            />
+                        )
+                    })}
+                </div>
+                <div className="Blender-Buttons">
+                    <button className="Shuffle-Button" onClick={shuffleSliders}><div id="shuffle-icon"></div></button>
+                    <button className="Blender-Button" onClick={toggleModal}>generate mixed playlist</button>                        
+                </div>
+            </div>
         </ModalWrapper>
     )
 }

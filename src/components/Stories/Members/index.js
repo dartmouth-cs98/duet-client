@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Page from '../../Page';
 import ModalWrapper from '../../Modal';
 import ShareModal from '../../ShareModal';
 import { func } from 'prop-types';
@@ -30,36 +29,36 @@ const Members = () => {
     }
 
     return (
-        <ModalWrapper showModal={showModal}>
+        <ModalWrapper showModal={showModal} showPopup>
             <ShareModal toggleModal={toggleModal} shareRoute={`/joingroup/${encodeURI(user_2.id)}`} />
-            <Page background={'#212034'}>
-                <div id="Members">
-                    <h1>These are the members of {user_2.id}</h1>
+            <div id="Members">
+                <h1>These are the members of {user_2.id}</h1>
+                <div className="Members-Sroll-Container" style={{ height: 500, width: '90%' }}>
                     <ScrollArea
                         speed={0.8}
-                        className="area"
-                        // verticalScrollbarStyle={{ background: 'white' }}
-                        contentClassName="content"
+                        className="Members-Scroll-Area"
                         horizontal={false}
                     >
-                    <div id="memberlist">
-                        <ul>
-                        {
-                            Object.values(members).map((member) => (
-                                <li key={member}><span>{member}</span></li>
-                            )
-                            
-                        )}
-                        </ul>
-                    </div>
+                        <div className="Members-Scroll-List">
+                            <ul>
+                            {
+                                Object.values(members).map((member) => (
+                                    <div key={member}>
+                                        <li><span>{member}</span></li>
+                                    </div>
+                                )
+                                
+                            )}
+                            </ul>
+                        </div>
                     </ScrollArea>
-                    <h4>Are you a member of {user_2.id}?</h4>
-                    { joined ? 
-                        <button onClick={toggleModal}>invite your friends</button> :
-                        <button onClick={handleJoinGroupClick}>join the group</button>
-                    }
                 </div>
-            </Page>
+                <h4>Are you a member of {user_2.id}?</h4>
+                { joined ? 
+                    <button onClick={toggleModal}>invite your friends</button> :
+                    <button onClick={handleJoinGroupClick}>join the group</button>
+                }
+            </div>
         </ModalWrapper>
     )
 }

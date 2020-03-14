@@ -31,7 +31,7 @@ const Share = ({ history, my_id }) => {
     }
 
     return (
-        <ModalWrapper showModal={showModal}>
+        <ModalWrapper showModal={showModal} disableRestart>
             <ShareModal toggleModal={toggleModal} shareRoute={`/join/${my_id}`} />
             <Page background={'#212034'}>
                 <div id="Share">

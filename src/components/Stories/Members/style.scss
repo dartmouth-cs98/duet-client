@@ -5,7 +5,7 @@
     justify-content: center;
     background-color: $SECONDARY;
     font-family: Roboto;
-    height: 85%;
+    height: 100%;
 
     h1 {
         line-height: 1.3em;
@@ -13,20 +13,30 @@
         background-color: $SECONDARY;
         color: white;
         text-shadow: -2px 0px $ACCENT;
+    }   
+
+    .Members-Sroll-Container {
+        height: 500px;
+        width: 90%;
+        border: 2px solid $WHITE;
+        border-radius: 5px;
     }
 
-    .area {
-        height: 50%;
+    .Members-Scroll-Area {
+        height: 100%;
         align-items: flex-start;
-        width: 90%;
-        margin: auto;
+        width: 100%;
     }
 
     .scrollbar {
         background-color: white;
     }
 
-    #memberlist {
+    .Members-Scroll-List{
+        div {
+            display: flex;
+            justify-content: center;
+        }
         ul {
             padding-left: 6px;
         }
@@ -34,8 +44,11 @@
         li {
             list-style: none;
             font-weight: bold;
+            margin: 0;
             margin-bottom: 15px;
             color: white;
+            border-bottom: 2px solid #312F4D;
+            width: 90%;
         }
 
         span {
