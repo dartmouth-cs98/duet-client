@@ -4,6 +4,7 @@ import ShareModal from '../../ShareModal';
 import { func } from 'prop-types';
 import { joinGroup, getGroupMembers } from '../../../utils/backendUtils';
 import { useSelector } from 'react-redux';
+import useResizeAware from 'react-resize-aware';
 import ScrollArea from 'react-scrollbar';
 
 const Members = () => {
@@ -28,12 +29,15 @@ const Members = () => {
         setJoined(true)
     }
 
+    const [resizeListener, pageSize] = useResizeAware();
+
     return (
         <ModalWrapper showModal={showModal} showPopup>
             <ShareModal toggleModal={toggleModal} shareRoute={`/joingroup/${encodeURI(user_2.id)}`} />
             <div id="Members">
+                {resizeListener}
                 <h1>These are the members of {user_2.id}</h1>
-                <div className="Members-Sroll-Container" style={{ height: 500, width: '90%' }}>
+                <div className="Members-Sroll-Container" style={{ height: pageSize.height * .5}}>
                     <ScrollArea
                         speed={0.8}
                         className="Members-Scroll-Area"
