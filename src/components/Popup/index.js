@@ -84,9 +84,6 @@ const Popup = ({ pageInfo, pageName, history, showRestart }) => {
                             <Collapsible className='innerCollapsible' openedClassName='innerCollapsible' trigger="Who made Duet?">
                                 <p>Duet was made by a group of college seniors as a capstone project. We would have been something that cures global warming (easy) or systemic racism and misogyny (child’s play), but unfortunately we were bound by an ancient form of magic known as onomancy, the arcane school of names, to Xolgoth- Demon prince of the seventh layer of hell/Duet marketing lead. Group members: Ally Mahmoud, Emma Langfitt, Himadri Narasimhamurthy, Linford Zirangwa, Nic Bergen, and Zac Gottschall</p>
                             </Collapsible>
-                            <Collapsible className='innerCollapsible' openedClassName='innerCollapsible' trigger="Why is it mobile only?">
-                                <p>Listen here you little shit...</p>
-                            </Collapsible>
                             <Collapsible className='innerCollapsible' openedClassName='innerCollapsible' trigger="Contact us">
                                 <p>Have any more questions? You can send us emails at duetwastaken@gmail.com.</p>
                             </Collapsible>
