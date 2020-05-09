@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import Page from '../../Page';
 import ReactLoading from 'react-loading';
 import { useSelector } from 'react-redux';
 import { User } from '../../../types';
