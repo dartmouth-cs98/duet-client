@@ -42,7 +42,7 @@ const Stories = ({ history, location }) => {
     }
 
     useEffect(() => {
-        if (user_1 && user_1.id == my_id && user_2 && user_2.isGroup) {
+        if (user_1 && user_1.id == my_id && user_2 && user_2.isGroup && user_2.display_name !== "Everyone") {
             setNumPages(numPages + 1);
         }
         setTimeout(() => setLoaded(true), 2000);
