@@ -65,7 +65,7 @@ const Stories = ({ history, location }) => {
         if (isMixing) {
             views =  [ ...views, <Blender {...props} key="blender" setSwipeDisable={setSwipeDisable}/> ];
         }
-        if (user_2.isGroup && user_1.id == my_id) {
+        if (user_2.isGroup && user_2.display_name !== "Everyone" && user_1.id == my_id) {
             views = [ ...views, <Members {...props} key="membersscreen"/> ];
         }
         views = [ ...views, <Share {...props} key="sharepage" />];
