@@ -14,8 +14,8 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'c8befa57bfe848f7a9fd44e09e5450d6';
-var client_secret = '00812ab3a29d4c6e869542c7cc762d54';
+var client_id = 'f5beb5e0c1f94db8a1fd5507453259e7';
+var client_secret = 'b722e133c99c443e82718ddb38550a1c';
 var redirect_uri = 'http://localhost:8081/callback'; //'https://cs98-duet-auth-server.herokuapp.com/callback';
 
 /**
