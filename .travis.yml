@@ -16,4 +16,4 @@ deploy:
   login: SURGE_LOGIN
   token: SURGE_TOKEN
   project: ./dist/
-  domain: duetwith.me
+  domain: duetwithme.surge.sh
